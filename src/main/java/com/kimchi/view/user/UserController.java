@@ -16,13 +16,7 @@ public class UserController {
 	@RequestMapping(value = "/login.do", method = RequestMethod.GET)
 	public String loginView(@ModelAttribute("user") UserVO vo) {
 		System.out.println("로그인 화면으로 이동");
-		vo.setEmail("arav@gmail.com");
-		vo.setPw("arav1234");
-		// Command 객체를 request에 저장해준다
-		// ${user.id}
-		// ${user.password}
-		// 이렇게 login.jsp에서 사용가능하다.
-		return "login.jsp";
+		return "main.do";
 	}
 
 	@RequestMapping(value = "/login.do", method = RequestMethod.POST)
@@ -38,9 +32,9 @@ public class UserController {
 			session.setAttribute("userName", user.getName());
 			System.out.println(user.getName());
 //			return "getMain.do";
-			return "main.jsp";
+			return "main.do";
 		} else {
-			return "login.jsp";
+			return "main.do";
 		}
 	}
 
@@ -57,7 +51,7 @@ public class UserController {
 		System.out.println(vo.toString());
 		if (vo.getEmail() == null) {
 			System.out.println("회원가입 화면으로 이동");
-			return "join.jsp";
+			return "main.do";
 		} else {
 			System.out.println("회원가입 됨. DB에 저장.");
 			// DB에 저장
