@@ -1,5 +1,5 @@
 package com.kimchi.biz.e_review;
 
-public class 짠 {
+public class E_ReviewDAO {
 
 }
