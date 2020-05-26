@@ -22,5 +22,6 @@
 </head>
 <body>
 	<center>마이 페이지 화면 입니다.</center>
+	<a>나의 잔액 </a>${sessionScope.userMoney }원
 </body>
 </html>

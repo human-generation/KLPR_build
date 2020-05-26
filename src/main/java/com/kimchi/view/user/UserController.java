@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.kimchi.biz.user.UserVO;
-import com.kimchi.biz.user.impl.UserDAOImpl;
+import com.kimchi.biz.user.impl.UserDAOMybatis;
 
 @Controller
 public class UserController {
@@ -20,13 +20,14 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/login.do", method = RequestMethod.POST)
-	public String login(UserVO vo, UserDAOImpl userDAO, HttpSession session) {
+	public String login(UserVO vo, UserDAOMybatis userDAO, HttpSession session) {
 		System.out.println("로그인 인증 처리");
 
 		if (vo.getEmail() == null || vo.getEmail() == "") {
 			throw new IllegalArgumentException("이메일 반드시 입력해야 됩니다.");
 		}
 
+		System.out.println(vo.toString());
 		UserVO user = userDAO.getUser(vo);
 		if (user != null) {
 			session.setAttribute("userName", user.getName());
@@ -47,7 +48,7 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/join.do", method = { RequestMethod.GET, RequestMethod.POST })
-	public String join(UserVO vo, UserDAOImpl userDAO) {
+	public String join(UserVO vo, UserDAOMybatis userDAO) {
 		System.out.println(vo.toString());
 		if (vo.getEmail() == null) {
 			System.out.println("회원가입 화면으로 이동");
