@@ -12,7 +12,7 @@ import com.kimchi.biz.user.UserVO;
 
 @Repository("userDAO")
 public class UserDAOImpl implements UserDAO {
-
+	//test
 	// JDBC 관련 변수들
 	private Connection conn = null;
 	private PreparedStatement stmt = null;
