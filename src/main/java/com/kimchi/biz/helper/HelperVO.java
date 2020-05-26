@@ -3,8 +3,6 @@ package com.kimchi.biz.helper;
 import java.sql.Date;
 
 public class HelperVO {
-	private int rno;	// 헬퍼 번호
-	private int uno;	// 사용자 번호
 	private Date sta;	// 가능 시작일
 	private Date end;	// 가능 종료일
 	private int rplace;	// 헬퍼의 지역
@@ -12,19 +10,9 @@ public class HelperVO {
 	private int hospital;	// 병원
 	private int immigration;// 출입국
 	private int lno;	// 언어 번호
-	
-	public int getRno() {
-		return rno;
-	}
-	public void setRno(int rno) {
-		this.rno = rno;
-	}
-	public int getUno() {
-		return uno;
-	}
-	public void setUno(int uno) {
-		this.uno = uno;
-	}
+	private int rscore;	// 리뷰 점수
+	private String name;// 이름
+	private String ucomment;	// 자기소개
 	public Date getSta() {
 		return sta;
 	}
@@ -67,11 +55,31 @@ public class HelperVO {
 	public void setLno(int lno) {
 		this.lno = lno;
 	}
+	public int getRscore() {
+		return rscore;
+	}
+	public void setRscore(int rscore) {
+		this.rscore = rscore;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getUcomment() {
+		return ucomment;
+	}
+	public void setUcomment(String ucomment) {
+		this.ucomment = ucomment;
+	}
 	@Override
 	public String toString() {
-		return "helperVO [rno=" + rno + ", uno=" + uno + ", sta=" + sta + ", end=" + end + ", rplace=" + rplace
-				+ ", moving=" + moving + ", hospital=" + hospital + ", immigration=" + immigration + ", lno=" + lno
-				+ "]";
+		return "HelperVO [sta=" + sta + ", end=" + end + ", rplace=" + rplace + ", moving=" + moving + ", hospital="
+				+ hospital + ", immigration=" + immigration + ", lno=" + lno + ", rscore=" + rscore + ", name=" + name
+				+ ", ucomment=" + ucomment + "]";
 	}
+	
+	
 	
 }

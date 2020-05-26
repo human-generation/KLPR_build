@@ -3,6 +3,7 @@ package com.kimchi.biz.helper.impl;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.List;
 
 import com.kimchi.biz.common.JDBCUtil;
 import com.kimchi.biz.helper.HelperDAO;
@@ -56,6 +57,12 @@ public class HelperDAOImpl implements HelperDAO {
 
 	@Override
 	public HelperVO getImmigration(HelperVO vo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<HelperVO> getHelperList(HelperVO vo) {
 		// TODO Auto-generated method stub
 		return null;
 	}
