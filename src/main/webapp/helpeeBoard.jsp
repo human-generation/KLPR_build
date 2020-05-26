@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,12 +19,11 @@
 	crossorigin="anonymous"></script>
 
 <!-- custom css-->
-
 <link rel="stylesheet" href="index.css">
+
 <title>K:LPER | Get help in Korea</title>
 </head>
 <body>
-
 	<nav id="mainNavbar"
 		class="navbar navbar-expand-md navbar-dark py-1 fixed-top">
 		<a href="#" class="navbar-brand">K:LPER</a>
@@ -36,147 +33,162 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navLinks">
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item"><a href="helperBoard.jsp" class="nav-link">HELPER</a>
-				</li>
-				<li class="nav-item"><a href="helpeeBoard.jsp" class="nav-link">HELPEE</a>
-				</li>
+				<li class="nav-item"><a href="" class="nav-link">HELPER</a></li>
+				<li class="nav-item"><a href="" class="nav-link">HELPEE</a></li>
 			</ul>
 			<ul class="navbar-nav ml-auto">
-				<c:if test="${empty sessionScope.userName}">
-					<li class="nav-item"><a class="nav-link" data-toggle="modal"
-						data-target="#loginModal">Login</a></li>
-					<li class="nav-item"><a class="nav-link " data-toggle="modal"
-						data-target="#signupModal">Signup</a></li>
-				</c:if>
-				<c:if test="${!empty sessionScope.userName}">
-					${sessionScope.userNumber}님&nbsp;
-					<li class="nav-item"><a class="nav-link" href="myPage.do">MyPage</a></li>
-					<li class="nav-item"><a class="nav-link" href="logout.do">Logout</a></li>
-				</c:if>
+				<li class="nav-item"><a class="nav-link" data-toggle="modal"
+					data-target="#loginModal">Login</a></li>
+				<li class="nav-item"><a class="nav-link " data-toggle="modal"
+					data-target="#signupModal">Signup</a></li>
 			</ul>
 		</div>
 	</nav>
 
 	<!-- HEADER END -->
 	<!-- 본문 -->
-	<div class="container-fluid">
-		<div class="jumbotron jumbotron-fluid">
-			<div class="container text-center jt-text">
-				<h1 class="display-4">K:LPER</h1>
-				<p class="lead">We are here When you need help!</p>
-				<button type="button" class="btn btn-primary">Searching for
-					HELPER</button>
-				<button type="button" class="btn btn-primary">Searching for
-					HELPEE</button>
-			</div>
-		</div>
 
 
-		<div id="carouselCaptions" class="carousel slide" data-ride="carousel">
-			<ol class="carousel-indicators">
-				<li data-target="#carouselCaptions" data-slide-to="0" class="active"></li>
-				<li data-target="#carouselCaptions" data-slide-to="1"></li>
-			</ol>
-			<div class="carousel-inner">
-				<div class="carousel-item active">
-					<img
-						src="https://images.unsplash.com/photo-1589828994425-cee7c6e8dbf8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1086&q=80"
-						class="d-block w-100" alt="...">
-					<div class="carousel-caption ">
-						<h5>Get help, When you need it</h5>
-						<p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+	<div class="jumbotron jumbotron-fluid">
+		<div class="container">
+			<h1 class="display-4">I need your help!</h1>
+			<p class="lead">Lorem ipsum dolor sit, amet consectetur
+				adipisicing elit. Qui perferendis dignissimos aliquam. Eaque,
+				inventore.</p>
+
+			<div class="container">
+				<div class="row float-right">
+					<div class="dropdown">
+						<button
+							class="btn btn-sm btn-secondary helpee-button dropdown-toggle"
+							type="button" id="dropdownAddr" data-toggle="dropdown"
+							aria-haspopup="true" aria-expanded="false">I'm near..</button>
+						<div class="dropdown-menu" aria-labelledby="dropdownAddr">
+							<button class="dropdown-item" type="button">지역구가</button>
+							<button class="dropdown-item" type="button">들어갑니다</button>
+							<button class="dropdown-item" type="button">수정예정</button>
+						</div>
 					</div>
-				</div>
-				<div class="carousel-item">
-					<img
-						src="https://images.unsplash.com/photo-1586726972122-f20f59d4bbb2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"
-						class="d-block w-100" alt="...">
-					<div class="carousel-caption">
-						<h5>First time user? Here is the guide for YOU!</h5>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+					<div class="btn-group" role="group" aria-label="SortBtn">
+						<button type="button"
+							class="btn btn-secondary helpee-button btn-sm">최신순</button>
+						<button type="button"
+							class="btn btn-secondary helpee-button btn-sm">평점순</button>
 					</div>
 				</div>
 			</div>
-			<a class="carousel-control-prev" href="#carouselCaptions"
-				role="button" data-slide="prev"> <span
-				class="carousel-control-prev-icon" aria-hidden="true"></span> <span
-				class="sr-only">Previous</span>
-			</a> <a class="carousel-control-next" href="#carouselCaptions"
-				role="button" data-slide="next"> <span
-				class="carousel-control-next-icon" aria-hidden="true"></span> <span
-				class="sr-only">Next</span>
-			</a>
 		</div>
 	</div>
 
-	<!--DS JS-->
-	<section class="container">
-		<div class="row align-items-center">
-			<div class="col-lg-6 ds-data1"></div>
-			<div class="col-lg-6 ds-data2"></div>
+
+	<div class="container helpeeBoard">
+		<div class="row">
+			<div class="col-md-2 order-1 order-md-1">
+				<div class="btn-group-vertical d-none d-md-block">
+					<button type="button" class="btn btn-secondary helpee-button">All</button>
+					<button type="button" class="btn btn-secondary helpee-button">이사</button>
+					<button type="button" class="btn btn-secondary helpee-button">병원</button>
+					<button type="button" class="btn btn-secondary helpee-button">출입국</button>
+				</div>
+				<div class="btn-group d-md-none">
+					<button type="button" class="btn btn-secondary helpee-button">All</button>
+					<button type="button" class="btn btn-secondary helpee-button">이사</button>
+					<button type="button" class="btn btn-secondary helpee-button">병원</button>
+					<button type="button" class="btn btn-secondary helpee-button">출입국</button>
+				</div>
+
+
+
+				<button type="button"
+					class="btn btn-primary helpee-button-main d-none d-md-block">Pleas
+					help me!</button>
+
+				<button type="button"
+					class="btn btn-primary helpee-button-main mobile-write-btn d-md-none">
+					<i class="fas fa-plus"></i>
+				</button>
+
+			</div>
+
+			<div class="col-md-10 order-2 order-md-2">
+				<div class="row media helpeePost">
+					<div class="col-md-3 order-1 order-md-1 align-items-center">
+						<img class="mr-3"
+							src="https://cdn.pixabay.com/photo/2013/10/28/19/23/cat-201969_960_720.jpg"
+							alt="profileImage">
+					</div>
+					<div class="col-md-9 order-2 order-md-2">
+						<div class="media-body">
+							<a href="#" class="badge badge-primary helpee-button-main">이사</a>
+							<a href="#" class="badge badge-primary helpee-button-main">병원</a>
+							<div class="row">
+								<div class="col-md-6 order-2 order-md-1">
+									<h4>Doja Cat</h4>
+								</div>
+								<div class="col-md-6 order-1 order-md-2">
+									<h5>{⭐️⭐️⭐️⭐️⭐️}</h5>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-6 order-2 order-sm-1">
+									<div class="lang">Language {language}</div>
+									<div class="reviewNum">Total usage {rv_no}</div>
+
+								</div>
+								<div class="col-sm-6 order-1 order-sm-2">
+									<div class="avDate">Available date {sta - end}</div>
+									<div class="area">
+										Placed in <i class="fas fa-map-marker-alt"></i>{rplace}
+									</div>
+								</div>
+							</div>
+							<div>
+								{자기소개} hi I'm a cute cat. I'm useless other than being cute.
+								<div id="dots"></div>
+								<div id="more">
+									<div class="boardReview">
+										<ul class="list-group">
+											<li class="list-group-item">리뷰가 들어갈 예정?</li>
+											<li class="list-group-item">시간을 잘안지켜요</li>
+											<li class="list-group-item">예의가 없어요</li>
+											<li class="list-group-item">말을 못해요</li>
+											<li class="list-group-item">잠만 자요</li>
+										</ul>
+									</div>
+									<button type="button"
+										class="btn btn-primary helpee-button-main">연락하기</button>
+								</div>
+
+							</div>
+
+							<button onclick="readMoreFunction()" id="myBtn">
+								<i class="fas fa-angle-down"></i>
+							</button>
+						</div>
+
+					</div>
+				</div>
+				<!--PAGING -->
+				<div class="row justify-content-center">
+					<nav aria-label="Page navigation">
+						<ul class="pagination">
+							<li class="page-item"><a class="page-link" href="#"
+								aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+									<span class="sr-only">Previous</span>
+							</a></li>
+							<li class="page-item"><a class="page-link" href="#">1</a></li>
+							<li class="page-item"><a class="page-link" href="#">2</a></li>
+							<li class="page-item"><a class="page-link" href="#">3</a></li>
+							<li class="page-item"><a class="page-link" href="#"
+								aria-label="Next"> <span aria-hidden="true">&raquo;</span> <span
+									class="sr-only">Next</span>
+							</a></li>
+						</ul>
+					</nav>
+				</div>
+			</div>
 		</div>
-	</section>
-
-	<!--RANKING-->
-	<section class="container">
-		<div class="row align-items-center">
-			<div class="col-md-4">
-				<div class="card border-light">
-					<div class=" card-header">See Best Helpers!</div>
-					<div class="card-body">
-						<p class="card-text">
-							<ul>
-							<li>1 누구누구</li>
-							<li>2 누구누구</li>
-							<li>3 누구누구</li>
-							<li>4 누구누구</li>
-							<li>5 누구누구</li>
-						</ul>
-						</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-4">
-				<div class="card border-light">
-					<div class=" card-header">See Most participated Helpers!</div>
-					<div class="card-body">
-						<p class="card-text">
-						
-						<ul>
-							<li>1 누구누구</li>
-							<li>2 누구누구</li>
-							<li>3 누구누구</li>
-							<li>4 누구누구</li>
-							<li>5 누구누구</li>
-						</ul>
-						</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-4">
-				<div class="card border-light">
-					<div class=" card-header">Someone needs a lot of help!</div>
-					<div class="card-body">
-						<p class="card-text">
-						
-						<ul>
-							<li>1 누구누구</li>
-							<li>2 누구누구</li>
-							<li>3 누구누구</li>
-							<li>4 누구누구</li>
-							<li>5 누구누구</li>
-						</ul>
-						</p>
-					</div>
-				</div>
-			</div>
-		</div>
-
-	</section>
-
-
-
-
+	</div>
 
 	<!--AUTH MODAL-->
 	<!--LOGIN-->
@@ -207,19 +219,22 @@
 								class="form-check-label" for="logInCheck">Keep me logged
 								in </label> <a class="help-password" href="#">forgot your password?</a>
 						</div>
-						<button type="submit" class="btn btn-primary">Login</button>
+						<button type="submit" class="btn btn-primary helpee-button-main">Login</button>
 					</form>
 					<hr>
 					<h5>OR</h5>
 					<div class="sns-login">
-						<a class="btn btn-primary " href="#"><i class="fab fa-google"></i>
-							Continue with Google</a>
+						<a class="btn btn-primary helpee-button-main " href="#"><i
+							class="fab fa-google"></i> Continue with Google </a>
 
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+
+
+
 
 	<!--SIGNUP-->
 	<div class="modal fade" id="signupModal" tabindex="-1" role="dialog"
@@ -265,13 +280,13 @@
 								<option value="2">Male</option>
 							</select>
 						</div>
-						<button type="submit" class="btn btn-primary">Signup</button>
+						<button type="submit" class="btn btn-primary helpee-button-main">Signup</button>
 					</form>
 					<hr>
 					<h5>OR</h5>
 					<div class="sns-login">
-						<a class="btn btn-primary " href="#"><i class="fab fa-google"></i>
-							Continue with Google</a>
+						<a class="btn btn-primary helpee-button-main " href="#"><i
+							class="fab fa-google"></i> Continue with Google</a>
 
 					</div>
 
@@ -279,9 +294,6 @@
 			</div>
 		</div>
 	</div>
-
-
-
 
 	<!--본문끝-->
 	<!--FOOTER START-->
@@ -317,6 +329,8 @@
 
 		</section>
 	</div>
+
+
 
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -360,6 +374,6 @@
 				moreText.style.display = "inline";
 			}
 		}
-	</script></
-						body>
+	</script>
+</body>
 </html>

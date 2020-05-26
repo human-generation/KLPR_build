@@ -23,6 +23,8 @@ public class PagesController {
 		System.out.println("마이페이지로 이동");
 		return "myPage.jsp";
 	}
+	
+	
 
 	@RequestMapping(value = "/alert.do", method = RequestMethod.GET)
 	public String alertView() {

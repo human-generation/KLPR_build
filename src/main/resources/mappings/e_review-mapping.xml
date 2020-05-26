@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- parameterType의 생략이 가능하다 #{title}은 parameter로 전달된 getTitle()메서드를 호출한다. -->
+<mapper namespace="E_ReviewDAO">
+
+	<!-- 컬럼이름과 자바객체의 프로퍼티명이 다를 때는 아래처럼 매핑 규칙을 정해줘야 한다 -->
+	<resultMap id="e_reviewResult" type="e_review">
+		<id property="e_vno" column="E_VNO" />
+		<result property="eno" column="ENO" />
+		<result property="rno" column="RNO" />
+		<result property="ecomment" column="ECOMMENT" />
+		<result property="escore" column="ESCORE" />
+	</resultMap>
+
+	<insert id="insertE_Review" parameterType="e_review">
+		insert into
+		e_review(ENO,
+		RNO, ECOMMENT, ESCORE)
+		values(#{eno},
+		#{title},#{writer},#{content})
+	</insert>
+
+	<select id="getE_Review" resultMap="e_reviewResult">
+		select * from e_review where
+		E_VNO=#{e_vno}
+	</select>
+
+	<!-- CDATA영역에 작성된 데이터는 단순 문자 데이터이다 그러므로 XML 파서는 처리하지 말아라. -->
+	<select id="getE_ReviewList" resultMap="e_reviewResult">
+		<![CDATA[
+		select * from board where E_VNO <= #{e_vno}
+		]]>
+	</select>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

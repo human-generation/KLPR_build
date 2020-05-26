@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -108,8 +110,8 @@
 
 
 
-				<button type="button" class="btn btn-primary helper-button-main" href="#">Let
-					me be a helper!</button>
+				<button type="button" class="btn btn-primary helper-button-main"
+					href="#">Let me be a helper!</button>
 			</div>
 
 			<div class="col-md-10 order-2 order-md-2">

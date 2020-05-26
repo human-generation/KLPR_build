@@ -21,12 +21,11 @@
 	crossorigin="anonymous"></script>
 
 <!-- custom css-->
-
 <link rel="stylesheet" href="index.css">
+
 <title>K:LPER | Get help in Korea</title>
 </head>
 <body>
-
 	<nav id="mainNavbar"
 		class="navbar navbar-expand-md navbar-dark py-1 fixed-top">
 		<a href="#" class="navbar-brand">K:LPER</a>
@@ -49,7 +48,7 @@
 						data-target="#signupModal">Signup</a></li>
 				</c:if>
 				<c:if test="${!empty sessionScope.userName}">
-					${sessionScope.userNumber}님&nbsp;
+					${sessionScope.userName}님&nbsp;
 					<li class="nav-item"><a class="nav-link" href="myPage.do">MyPage</a></li>
 					<li class="nav-item"><a class="nav-link" href="logout.do">Logout</a></li>
 				</c:if>
@@ -59,122 +58,77 @@
 
 	<!-- HEADER END -->
 	<!-- 본문 -->
-	<div class="container-fluid">
-		<div class="jumbotron jumbotron-fluid">
-			<div class="container text-center jt-text">
-				<h1 class="display-4">K:LPER</h1>
-				<p class="lead">We are here When you need help!</p>
-				<button type="button" class="btn btn-primary">Searching for
-					HELPER</button>
-				<button type="button" class="btn btn-primary">Searching for
-					HELPEE</button>
-			</div>
-		</div>
 
 
-		<div id="carouselCaptions" class="carousel slide" data-ride="carousel">
-			<ol class="carousel-indicators">
-				<li data-target="#carouselCaptions" data-slide-to="0" class="active"></li>
-				<li data-target="#carouselCaptions" data-slide-to="1"></li>
-			</ol>
-			<div class="carousel-inner">
-				<div class="carousel-item active">
-					<img
-						src="https://images.unsplash.com/photo-1589828994425-cee7c6e8dbf8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1086&q=80"
-						class="d-block w-100" alt="...">
-					<div class="carousel-caption ">
-						<h5>Get help, When you need it</h5>
-						<p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-					</div>
-				</div>
-				<div class="carousel-item">
-					<img
-						src="https://images.unsplash.com/photo-1586726972122-f20f59d4bbb2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"
-						class="d-block w-100" alt="...">
-					<div class="carousel-caption">
-						<h5>First time user? Here is the guide for YOU!</h5>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-					</div>
-				</div>
+
+	<div class="container">
+		<div class="row writeForm">
+			<div class="col-md-3 order-1 order-md-1 align-items-center">
+				<img class="mr-3"
+					src="https://cdn.pixabay.com/photo/2013/10/28/19/23/cat-201969_960_720.jpg"
+					alt="profileImage">
 			</div>
-			<a class="carousel-control-prev" href="#carouselCaptions"
-				role="button" data-slide="prev"> <span
-				class="carousel-control-prev-icon" aria-hidden="true"></span> <span
-				class="sr-only">Previous</span>
-			</a> <a class="carousel-control-next" href="#carouselCaptions"
-				role="button" data-slide="next"> <span
-				class="carousel-control-next-icon" aria-hidden="true"></span> <span
-				class="sr-only">Next</span>
-			</a>
+			<div class="col-md-9 order-2 order-md-2">
+				<div class="media-body">
+					<div class="row">
+						<div class="col-md-6">
+							<h4>{name}Doja Cat</h4>
+						</div>
+						<div class="col-md-6">{gender}</div>
+					</div>
+					<div class="col-12">{phone}</div>
+					<div class="col-12">{ucomment}</div>
+					<form class="helper-write-form" action="helperWrite.do">
+						<div class="row">
+							<div class="col-md-6">
+								<input id="date-result-start" hidden></input><input
+									id="date-result-end" hidden></input> <input type="text"
+									id="datepicker" class="form-control form-control-sm"
+									placeholder="Select available date">
+							</div>
+							<div class="col-md-6">
+								<select class="custom-select" name="language">
+									<option selected>Choose your language</option>
+									<option value="1">english</option>
+									<option value="2">chinese</option>
+									<option value="3">japanese</option>
+								</select>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">
+								<select class="custom-select" name="rplace">
+									<option selected>Choose your area</option>
+									<option value="1">One</option>
+									<option value="2">Two</option>
+									<option value="3">Three</option>
+								</select>
+							</div>
+							<div class="col-md-6">
+
+								<div class="btn-group btn-group-toggle" data-toggle="buttons">
+									<label class="btn btn-secondary"> <input
+										type="checkbox" autocomplete="off"> moving
+									</label> <label class="btn btn-secondary"> <input
+										type="checkbox" autocomplete="off"> hospital
+									</label> <label class="btn btn-secondary"> <input
+										type="checkbox" autocomplete="off"> immi
+									</label>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="detailReview">Additional Infomation</label>
+							<textarea name="rcomment" class="form-control" rows="3"></textarea>
+						</div>
+						<button type="submit" class="btn btn-primary helper-button-main">Submit!</button>
+					</form>
+				</div>
+
+			</div>
+
 		</div>
 	</div>
-
-	<!--DS JS-->
-	<section class="container">
-		<div class="row align-items-center">
-			<div class="col-lg-6 ds-data1"></div>
-			<div class="col-lg-6 ds-data2"></div>
-		</div>
-	</section>
-
-	<!--RANKING-->
-	<section class="container">
-		<div class="row align-items-center">
-			<div class="col-md-4">
-				<div class="card border-light">
-					<div class=" card-header">See Best Helpers!</div>
-					<div class="card-body">
-						<p class="card-text">
-							<ul>
-							<li>1 누구누구</li>
-							<li>2 누구누구</li>
-							<li>3 누구누구</li>
-							<li>4 누구누구</li>
-							<li>5 누구누구</li>
-						</ul>
-						</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-4">
-				<div class="card border-light">
-					<div class=" card-header">See Most participated Helpers!</div>
-					<div class="card-body">
-						<p class="card-text">
-						
-						<ul>
-							<li>1 누구누구</li>
-							<li>2 누구누구</li>
-							<li>3 누구누구</li>
-							<li>4 누구누구</li>
-							<li>5 누구누구</li>
-						</ul>
-						</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-4">
-				<div class="card border-light">
-					<div class=" card-header">Someone needs a lot of help!</div>
-					<div class="card-body">
-						<p class="card-text">
-						
-						<ul>
-							<li>1 누구누구</li>
-							<li>2 누구누구</li>
-							<li>3 누구누구</li>
-							<li>4 누구누구</li>
-							<li>5 누구누구</li>
-						</ul>
-						</p>
-					</div>
-				</div>
-			</div>
-		</div>
-
-	</section>
-
-
 
 
 
@@ -207,19 +161,21 @@
 								class="form-check-label" for="logInCheck">Keep me logged
 								in </label> <a class="help-password" href="#">forgot your password?</a>
 						</div>
-						<button type="submit" class="btn btn-primary">Login</button>
+						<button type="submit" class="btn btn-primary helper-button-main">Login</button>
 					</form>
 					<hr>
 					<h5>OR</h5>
 					<div class="sns-login">
-						<a class="btn btn-primary " href="#"><i class="fab fa-google"></i>
-							Continue with Google</a>
+						<a class="btn btn-primary helper-button-main " href="#"><i
+							class="fab fa-google"></i> Continue with Google </a>
 
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+
+
 
 	<!--SIGNUP-->
 	<div class="modal fade" id="signupModal" tabindex="-1" role="dialog"
@@ -265,13 +221,13 @@
 								<option value="2">Male</option>
 							</select>
 						</div>
-						<button type="submit" class="btn btn-primary">Signup</button>
+						<button type="submit" class="btn btn-primary helper-button-main">Signup</button>
 					</form>
 					<hr>
 					<h5>OR</h5>
 					<div class="sns-login">
-						<a class="btn btn-primary " href="#"><i class="fab fa-google"></i>
-							Continue with Google</a>
+						<a class="btn btn-primary helper-button-main " href="#"><i
+							class="fab fa-google"></i> Continue with Google</a>
 
 					</div>
 
@@ -279,9 +235,6 @@
 			</div>
 		</div>
 	</div>
-
-
-
 
 	<!--본문끝-->
 	<!--FOOTER START-->
@@ -301,8 +254,8 @@
 				<div class="col-sm">
 					<h5>서비스</h5>
 					<ul>
-						<li><a class="footer-link" href="summary.do">서비스 개요</a></li>
-						<li><a class="footer-link" href="faq.do">FAQ</a></li>
+						<li><a class="footer-link" href="#">서비스 개요</a></li>
+						<li><a class="footer-link" href="#">FAQ</a></li>
 						<li><a class="footer-link" href="#">고객센터</a></li>
 					</ul>
 				</div>
@@ -317,6 +270,8 @@
 
 		</section>
 	</div>
+
+
 
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -360,6 +315,6 @@
 				moreText.style.display = "inline";
 			}
 		}
-	</script></
-						body>
+	</script>
+</body>
 </html>
