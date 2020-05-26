@@ -12,6 +12,9 @@ public class HelperDAOImpl {
 	private Connection conn = null;
 	private PreparedStatement stmt = null;
 	private ResultSet rs = null;
-	
+
+	//SQL 명령어 
+	private final String HELPER_GET = "SELECT * FROM helper WHERE rno=?";
+	private final String HELPER_INSERT = "INSERT INTO helper(sta, end, rplace,moving,hospital,immigration,lno) VALUES()";
 
 }

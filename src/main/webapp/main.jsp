@@ -36,7 +36,7 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navLinks">
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item"><a href="login.do" class="nav-link">HELPER</a>
+				<li class="nav-item"><a href="writeForm.do" class="nav-link">HELPER_REGTMP</a>
 				</li>
 				<li class="nav-item"><a href="login.do" class="nav-link">HELPEE</a>
 				</li>
@@ -64,8 +64,7 @@
 			<div class="container text-center jt-text">
 				<h1 class="display-4">K:LPER</h1>
 				<p class="lead">We are here When you need help!</p>
-				<button type="button" class="btn btn-primary">Searching for
-					HELPER</button>
+				<button type="button" class="btn btn-primary" href="writeForm.do">HELPER_REGTMP</button>
 				<button type="button" class="btn btn-primary">Searching for
 					HELPEE</button>
 			</div>
