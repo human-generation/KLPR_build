@@ -20,7 +20,7 @@ public class UserDAOImpl implements UserDAO {
 
 	// SQL 명령어
 	private final String USER_GET = "SELECT * FROM user WHERE email=? AND pw=?";
-	private final String USER_INSERT = "INSERT INTO user(email, pw, name, gender, money, phone, ucomment) VALUES(?, ?, ?, ?, 0, ?, ?)";
+	private final String USER_INSERT = "INSERT INTO user(email, pw, name, gender, money, phone) VALUES(?, ?, ?, ?, 0, ?)";
 
 	@Override
 	public UserVO getUser(UserVO vo) {
@@ -42,7 +42,6 @@ public class UserDAOImpl implements UserDAO {
 				user.setGender(rs.getInt("gender"));
 				user.setMoney(rs.getInt("money"));
 				user.setPhone(rs.getString("phone"));
-				user.setUcomment(rs.getString("ucomment"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -63,7 +62,6 @@ public class UserDAOImpl implements UserDAO {
 			stmt.setString(3, vo.getName());
 			stmt.setInt(4, vo.getGender());
 			stmt.setString(5, vo.getPhone());
-			stmt.setString(6, vo.getUcomment());
 			stmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();

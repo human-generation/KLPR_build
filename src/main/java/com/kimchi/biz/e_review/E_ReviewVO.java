@@ -1,11 +1,12 @@
 package com.kimchi.biz.e_review;
 
 public class E_ReviewVO {
-	private int e_vno;
-	private int eno;
-	private int rno;
-	private String ecomment;
-	private int escore;
+	// 헬퍼가 헬피에게 쓰는 리뷰 = 헬피가 받는 리뷰
+	private int e_vno;	// 헬피가 받는 리뷰 번호
+	private int eno;	// 헬피 번호
+	private int rno;	// 리뷰 쓴 헬퍼 번호
+	private String ecomment;	// 헬피에게 쓴 코멘트
+	private int escore;		// 헬피에게 준 평점
 
 	public int getE_vno() {
 		return e_vno;
