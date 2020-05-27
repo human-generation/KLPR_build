@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.kimchi.biz.user.UserVO;
 import com.kimchi.biz.user.impl.UserDAOImpl;
+import com.kimchi.biz.user.impl.UserServiceImpl;
 
 @Controller
 public class UserController {
@@ -26,14 +27,15 @@ public class UserController {
 		if (vo.getEmail() == null || vo.getEmail() == "") {
 			throw new IllegalArgumentException("이메일 반드시 입력해야 됩니다.");
 		}
-
+		System.out.println(vo.toString());
 		UserVO user = userDAO.getUser(vo);
+		System.out.println(user.toString());
 		if (user != null) {
 			session.setAttribute("userNumber", user.getUno());
 			session.setAttribute("userName", user.getName());
 			session.setAttribute("userMoney", user.getMoney());
 			System.out.println(user.getName());
-			return "main.jsp";
+			return "main.do";
 		} else {
 			return "main.do";
 		}

@@ -4,10 +4,12 @@ import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import com.kimchi.biz.e_review.E_ReviewDAO;
 import com.kimchi.biz.e_review.E_ReviewVO;
 
+@Repository("e_reviewDAO")
 public class E_ReviewDAOMybatisTemplate implements E_ReviewDAO {
 
 	@Autowired
