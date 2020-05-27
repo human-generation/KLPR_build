@@ -8,6 +8,16 @@ button {
     border: 0;
 }
 
+#image_container{
+    width: 10em;
+    height: 10em;
+    border-radius: 50%;
+    border: 1px solid lightgray;
+    overflow: hidden;
+}
+
+
+
 
 /* navBar */
 
@@ -93,13 +103,55 @@ button {
     margin: 0.2rem;
 }
 
+.helpeeBoard{
+    margin-top: 2em;
+}
+
+.helpeePost{
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    margin: 0.2rem;
+}
+
+.writeForm{
+    margin-top: 5em;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    padding: 1em;
+}
+
 .mr-3{
     width: 10em;
     height: 10em;
     border-radius: 50%;
 }
 
+
+.mobile-write-btn{
+    border-radius: 50%;
+    position: fixed;
+    left: 85%;
+    top: 93%;
+    z-index: 4;
+
+
+}
+
+
 /*read more*/
 #more {
     display: none;
+}
+
+
+
+/*myPage*/
+
+
+.myPageBoard{
+    margin-top: 5rem;
+}
+
+.myPageJt{
+    padding-top: 5rem;
 }

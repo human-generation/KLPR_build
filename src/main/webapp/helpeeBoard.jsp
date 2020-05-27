@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,17 +37,10 @@
 				<li class="nav-item"><a href="" class="nav-link">HELPEE</a></li>
 			</ul>
 			<ul class="navbar-nav ml-auto">
-				<c:if test="${empty sessionScope.userName}">
-					<li class="nav-item"><a class="nav-link" data-toggle="modal"
-						data-target="#loginModal">Login</a></li>
-					<li class="nav-item"><a class="nav-link " data-toggle="modal"
-						data-target="#signupModal">Signup</a></li>
-				</c:if>
-				<c:if test="${!empty sessionScope.userName}">
-					${sessionScope.userName}님&nbsp;
-					<li class="nav-item"><a class="nav-link" href="myPage.do">MyPage</a></li>
-					<li class="nav-item"><a class="nav-link" href="logout.do">Logout</a></li>
-				</c:if>
+				<li class="nav-item"><a class="nav-link" data-toggle="modal"
+					data-target="#loginModal">Login</a></li>
+				<li class="nav-item"><a class="nav-link " data-toggle="modal"
+					data-target="#signupModal">Signup</a></li>
 			</ul>
 		</div>
 	</nav>
@@ -57,90 +49,142 @@
 	<!-- 본문 -->
 
 
+	<div class="jumbotron jumbotron-fluid">
+		<div class="container">
+			<h1 class="display-4">I need your help!</h1>
+			<p class="lead">Lorem ipsum dolor sit, amet consectetur
+				adipisicing elit. Qui perferendis dignissimos aliquam. Eaque,
+				inventore.</p>
+
+			<div class="container">
+				<div class="row float-right">
+					<div class="dropdown">
+						<button
+							class="btn btn-sm btn-secondary helpee-button dropdown-toggle"
+							type="button" id="dropdownAddr" data-toggle="dropdown"
+							aria-haspopup="true" aria-expanded="false">I'm near..</button>
+						<div class="dropdown-menu" aria-labelledby="dropdownAddr">
+							<button class="dropdown-item" type="button">지역구가</button>
+							<button class="dropdown-item" type="button">들어갑니다</button>
+							<button class="dropdown-item" type="button">수정예정</button>
+						</div>
+					</div>
+					<div class="btn-group" role="group" aria-label="SortBtn">
+						<button type="button"
+							class="btn btn-secondary helpee-button btn-sm">최신순</button>
+						<button type="button"
+							class="btn btn-secondary helpee-button btn-sm">평점순</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
 
-
-	<div class="container myPageBoard">
+	<div class="container helpeeBoard">
 		<div class="row">
 			<div class="col-md-2 order-1 order-md-1">
 				<div class="btn-group-vertical d-none d-md-block">
-					<button type="button" class="btn btn-secondary helper-button">My
-						page</button>
-					<button type="button" class="btn btn-secondary helper-button">요청내역</button>
-					<button type="button" class="btn btn-secondary helper-button">진행중내역</button>
-					<button type="button" class="btn btn-secondary helper-button">이전내역</button>
-					<button type="button" class="btn btn-secondary helper-button">나의정보수정</button>
+					<button type="button" class="btn btn-secondary helpee-button">All</button>
+					<button type="button" class="btn btn-secondary helpee-button">이사</button>
+					<button type="button" class="btn btn-secondary helpee-button">병원</button>
+					<button type="button" class="btn btn-secondary helpee-button">출입국</button>
 				</div>
 				<div class="btn-group d-md-none">
-					<button type="button" class="btn btn-secondary helper-button">My
-						page</button>
-					<button type="button" class="btn btn-secondary helper-button">요청내역</button>
-					<button type="button" class="btn btn-secondary helper-button">진행중내역</button>
-					<button type="button" class="btn btn-secondary helper-button">이전내역</button>
-					<button type="button" class="btn btn-secondary helper-button">나의정보수정</button>
+					<button type="button" class="btn btn-secondary helpee-button">All</button>
+					<button type="button" class="btn btn-secondary helpee-button">이사</button>
+					<button type="button" class="btn btn-secondary helpee-button">병원</button>
+					<button type="button" class="btn btn-secondary helpee-button">출입국</button>
 				</div>
+
+
+
+				<button type="button"
+					class="btn btn-primary helpee-button-main d-none d-md-block">Pleas
+					help me!</button>
+
+				<button type="button"
+					class="btn btn-primary helpee-button-main mobile-write-btn d-md-none">
+					<i class="fas fa-plus"></i>
+				</button>
+
 			</div>
 
 			<div class="col-md-10 order-2 order-md-2">
-				<div class="jumbotron myPageJt">
-					<div class="container">
-						<h1 class="display-4">My Wallet</h1>
-						<p class="lead">Lorem ipsum dolor sit, amet consectetur
-							adipisicing elit. Qui perferendis dignissimos aliquam. Eaque,
-							inventore.</p>
+				<div class="row media helpeePost">
+					<div class="col-md-3 order-1 order-md-1 align-items-center">
+						<img class="mr-3"
+							src="https://cdn.pixabay.com/photo/2013/10/28/19/23/cat-201969_960_720.jpg"
+							alt="profileImage">
+					</div>
+					<div class="col-md-9 order-2 order-md-2">
+						<div class="media-body">
+							<a href="#" class="badge badge-primary helpee-button-main">이사</a>
+							<a href="#" class="badge badge-primary helpee-button-main">병원</a>
+							<div class="row">
+								<div class="col-md-6 order-2 order-md-1">
+									<h4>Doja Cat</h4>
+								</div>
+								<div class="col-md-6 order-1 order-md-2">
+									<h5>{⭐️⭐️⭐️⭐️⭐️}</h5>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-6 order-2 order-sm-1">
+									<div class="lang">Language {language}</div>
+									<div class="reviewNum">Total usage {rv_no}</div>
 
-						<div class="row float-right">
-							<button type="button"
-								class="btn btn-secondary helper-button btn-lg">마일리지 충전</button>
+								</div>
+								<div class="col-sm-6 order-1 order-sm-2">
+									<div class="avDate">Available date {sta - end}</div>
+									<div class="area">
+										Placed in <i class="fas fa-map-marker-alt"></i>{rplace}
+									</div>
+								</div>
+							</div>
+							<div>
+								{자기소개} hi I'm a cute cat. I'm useless other than being cute.
+								<div id="dots"></div>
+								<div id="more">
+									<div class="boardReview">
+										<ul class="list-group">
+											<li class="list-group-item">리뷰가 들어갈 예정?</li>
+											<li class="list-group-item">시간을 잘안지켜요</li>
+											<li class="list-group-item">예의가 없어요</li>
+											<li class="list-group-item">말을 못해요</li>
+											<li class="list-group-item">잠만 자요</li>
+										</ul>
+									</div>
+									<button type="button"
+										class="btn btn-primary helpee-button-main">연락하기</button>
+								</div>
 
-							<button type="button"
-								class="btn btn-secondary helper-button btn-lg">100,000$</button>
+							</div>
+
+							<button onclick="readMoreFunction()" id="myBtn">
+								<i class="fas fa-angle-down"></i>
+							</button>
 						</div>
 
 					</div>
 				</div>
-				<div class="row">
-					<div class="col-md-6 col-lg-3">
-						<div class="card">
-							<div class="card-body">
-								<h5 class="card-title">신청중</h5>
-								<p class="card-text">승인을 기다리고 있는 거래</p>
-								<a href="#" class="btn btn-primary btn-sm helper-button-main">{mstate
-									0}</a><a href="#" class="btn btn-primary btn-sm helpee-button-main">{mstate
-									1}</a>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-6 col-lg-3">
-						<div class="card">
-							<div class="card-body">
-								<h5 class="card-title">결제대기</h5>
-								<p class="card-text">결제를 기다리고 있는 거래</p>
-								<a href="#" class="btn btn-primary btn-sm helpee-button-main">거래{mstate
-									2}</a>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-6 col-lg-3">
-						<div class="card">
-							<div class="card-body">
-								<h5 class="card-title">결제완료</h5>
-								<p class="card-text">결제완료 서비스대기중</p>
-								<a href="#" class="btn btn-primary btn-sm helpee-button-main">거래
-									{mstate3}</a>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-6 col-lg-3">
-						<div class="card">
-							<div class="card-body">
-								<h5 class="card-title">거래완료</h5>
-								<p class="card-text">리뷰작성대기중</p>
-								<a href="#" class="btn btn-primary btn-sm helpee-button-main">리뷰작성후
-									거래완료{mstate4, 5}</a>
-							</div>
-						</div>
-					</div>
+				<!--PAGING -->
+				<div class="row justify-content-center">
+					<nav aria-label="Page navigation">
+						<ul class="pagination">
+							<li class="page-item"><a class="page-link" href="#"
+								aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+									<span class="sr-only">Previous</span>
+							</a></li>
+							<li class="page-item"><a class="page-link" href="#">1</a></li>
+							<li class="page-item"><a class="page-link" href="#">2</a></li>
+							<li class="page-item"><a class="page-link" href="#">3</a></li>
+							<li class="page-item"><a class="page-link" href="#"
+								aria-label="Next"> <span aria-hidden="true">&raquo;</span> <span
+									class="sr-only">Next</span>
+							</a></li>
+						</ul>
+					</nav>
 				</div>
 			</div>
 		</div>
@@ -175,12 +219,12 @@
 								class="form-check-label" for="logInCheck">Keep me logged
 								in </label> <a class="help-password" href="#">forgot your password?</a>
 						</div>
-						<button type="submit" class="btn btn-primary helper-button-main">Login</button>
+						<button type="submit" class="btn btn-primary helpee-button-main">Login</button>
 					</form>
 					<hr>
 					<h5>OR</h5>
 					<div class="sns-login">
-						<a class="btn btn-primary helper-button-main " href="#"><i
+						<a class="btn btn-primary helpee-button-main " href="#"><i
 							class="fab fa-google"></i> Continue with Google </a>
 
 					</div>
@@ -236,12 +280,12 @@
 								<option value="2">Male</option>
 							</select>
 						</div>
-						<button type="submit" class="btn btn-primary helper-button-main">Signup</button>
+						<button type="submit" class="btn btn-primary helpee-button-main">Signup</button>
 					</form>
 					<hr>
 					<h5>OR</h5>
 					<div class="sns-login">
-						<a class="btn btn-primary helper-button-main " href="#"><i
+						<a class="btn btn-primary helpee-button-main " href="#"><i
 							class="fab fa-google"></i> Continue with Google</a>
 
 					</div>

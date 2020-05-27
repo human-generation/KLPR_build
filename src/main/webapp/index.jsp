@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
@@ -20,11 +21,12 @@
 	crossorigin="anonymous"></script>
 
 <!-- custom css-->
-<link rel="stylesheet" href="index.css">
 
+<link rel="stylesheet" href="index.css">
 <title>K:LPER | Get help in Korea</title>
 </head>
 <body>
+
 	<nav id="mainNavbar"
 		class="navbar navbar-expand-md navbar-dark py-1 fixed-top">
 		<a href="#" class="navbar-brand">K:LPER</a>
@@ -34,8 +36,10 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navLinks">
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item"><a href="" class="nav-link">HELPER</a></li>
-				<li class="nav-item"><a href="" class="nav-link">HELPEE</a></li>
+				<li class="nav-item"><a href="helperBoard.jsp" class="nav-link">HELPER</a>
+				</li>
+				<li class="nav-item"><a href="helpeeBoard.jsp" class="nav-link">HELPEE</a>
+				</li>
 			</ul>
 			<ul class="navbar-nav ml-auto">
 				<c:if test="${empty sessionScope.userName}">
@@ -55,99 +59,123 @@
 
 	<!-- HEADER END -->
 	<!-- 본문 -->
+	<div class="container-fluid">
+		<div class="jumbotron jumbotron-fluid">
+			<div class="container text-center jt-text">
+				<h1 class="display-4">K:LPER</h1>
+				<p class="lead">We are here When you need help!</p>
+				<button type="button" class="btn btn-primary">Searching for
+					HELPER</button>
+				<button type="button" class="btn btn-primary">Searching for
+					HELPEE</button>
+			</div>
+		</div>
 
 
-
-
-
-	<div class="container myPageBoard">
-		<div class="row">
-			<div class="col-md-2 order-1 order-md-1">
-				<div class="btn-group-vertical d-none d-md-block">
-					<button type="button" class="btn btn-secondary helper-button">My
-						page</button>
-					<button type="button" class="btn btn-secondary helper-button">요청내역</button>
-					<button type="button" class="btn btn-secondary helper-button">진행중내역</button>
-					<button type="button" class="btn btn-secondary helper-button">이전내역</button>
-					<button type="button" class="btn btn-secondary helper-button">나의정보수정</button>
+		<div id="carouselCaptions" class="carousel slide" data-ride="carousel">
+			<ol class="carousel-indicators">
+				<li data-target="#carouselCaptions" data-slide-to="0" class="active"></li>
+				<li data-target="#carouselCaptions" data-slide-to="1"></li>
+			</ol>
+			<div class="carousel-inner">
+				<div class="carousel-item active">
+					<img
+						src="https://images.unsplash.com/photo-1589828994425-cee7c6e8dbf8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1086&q=80"
+						class="d-block w-100" alt="...">
+					<div class="carousel-caption ">
+						<h5>Get help, When you need it</h5>
+						<p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+					</div>
 				</div>
-				<div class="btn-group d-md-none">
-					<button type="button" class="btn btn-secondary helper-button">My
-						page</button>
-					<button type="button" class="btn btn-secondary helper-button">요청내역</button>
-					<button type="button" class="btn btn-secondary helper-button">진행중내역</button>
-					<button type="button" class="btn btn-secondary helper-button">이전내역</button>
-					<button type="button" class="btn btn-secondary helper-button">나의정보수정</button>
+				<div class="carousel-item">
+					<img
+						src="https://images.unsplash.com/photo-1586726972122-f20f59d4bbb2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"
+						class="d-block w-100" alt="...">
+					<div class="carousel-caption">
+						<h5>First time user? Here is the guide for YOU!</h5>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+					</div>
 				</div>
 			</div>
+			<a class="carousel-control-prev" href="#carouselCaptions"
+				role="button" data-slide="prev"> <span
+				class="carousel-control-prev-icon" aria-hidden="true"></span> <span
+				class="sr-only">Previous</span>
+			</a> <a class="carousel-control-next" href="#carouselCaptions"
+				role="button" data-slide="next"> <span
+				class="carousel-control-next-icon" aria-hidden="true"></span> <span
+				class="sr-only">Next</span>
+			</a>
+		</div>
+	</div>
 
-			<div class="col-md-10 order-2 order-md-2">
-				<div class="jumbotron myPageJt">
-					<div class="container">
-						<h1 class="display-4">My Wallet</h1>
-						<p class="lead">Lorem ipsum dolor sit, amet consectetur
-							adipisicing elit. Qui perferendis dignissimos aliquam. Eaque,
-							inventore.</p>
+	<!--DS JS-->
+	<section class="container">
+		<div class="row align-items-center">
+			<div class="col-lg-6 ds-data1"></div>
+			<div class="col-lg-6 ds-data2"></div>
+		</div>
+	</section>
 
-						<div class="row float-right">
-							<button type="button"
-								class="btn btn-secondary helper-button btn-lg">마일리지 충전</button>
-
-							<button type="button"
-								class="btn btn-secondary helper-button btn-lg">100,000$</button>
-						</div>
-
+	<!--RANKING-->
+	<section class="container">
+		<div class="row align-items-center">
+			<div class="col-md-4">
+				<div class="card border-light">
+					<div class=" card-header">See Best Helpers!</div>
+					<div class="card-body">
+						<p class="card-text">
+						<ul>
+							<li>1 누구누구</li>
+							<li>2 누구누구</li>
+							<li>3 누구누구</li>
+							<li>4 누구누구</li>
+							<li>5 누구누구</li>
+						</ul>
+						</p>
 					</div>
 				</div>
-				<div class="row">
-					<div class="col-md-6 col-lg-3">
-						<div class="card">
-							<div class="card-body">
-								<h5 class="card-title">신청중</h5>
-								<p class="card-text">승인을 기다리고 있는 거래</p>
-								<a href="#" class="btn btn-primary btn-sm helper-button-main">{mstate
-									0}</a><a href="#" class="btn btn-primary btn-sm helpee-button-main">{mstate
-									1}</a>
-							</div>
-						</div>
+			</div>
+			<div class="col-md-4">
+				<div class="card border-light">
+					<div class=" card-header">See Most participated Helpers!</div>
+					<div class="card-body">
+						<p class="card-text">
+						<ul>
+							<li>1 누구누구</li>
+							<li>2 누구누구</li>
+							<li>3 누구누구</li>
+							<li>4 누구누구</li>
+							<li>5 누구누구</li>
+						</ul>
+						</p>
 					</div>
-					<div class="col-md-6 col-lg-3">
-						<div class="card">
-							<div class="card-body">
-								<h5 class="card-title">결제대기</h5>
-								<p class="card-text">결제를 기다리고 있는 거래</p>
-								<a href="#" class="btn btn-primary btn-sm helpee-button-main">거래{mstate
-									2}</a>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-6 col-lg-3">
-						<div class="card">
-							<div class="card-body">
-								<h5 class="card-title">결제완료</h5>
-								<p class="card-text">결제완료 서비스대기중</p>
-								<a href="#" class="btn btn-primary btn-sm helpee-button-main">거래
-									{mstate3}</a>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-6 col-lg-3">
-						<div class="card">
-							<div class="card-body">
-								<h5 class="card-title">거래완료</h5>
-								<p class="card-text">리뷰작성대기중</p>
-								<a href="#" class="btn btn-primary btn-sm helpee-button-main">리뷰작성후
-									거래완료{mstate4, 5}</a>
-							</div>
-						</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="card border-light">
+					<div class=" card-header">Someone needs a lot of help!</div>
+					<div class="card-body">
+						<p class="card-text">
+						<ul>
+							<li>1 누구누구</li>
+							<li>2 누구누구</li>
+							<li>3 누구누구</li>
+							<li>4 누구누구</li>
+							<li>5 누구누구</li>
+						</ul>
+						</p>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
+
+	</section>
+
 
 	<!--AUTH MODAL-->
 	<!--LOGIN-->
+
 	<div class="modal fade" id="loginModal" tabindex="-1" role="dialog"
 		aria-labelledby="loginModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
@@ -175,22 +203,19 @@
 								class="form-check-label" for="logInCheck">Keep me logged
 								in </label> <a class="help-password" href="#">forgot your password?</a>
 						</div>
-						<button type="submit" class="btn btn-primary helper-button-main">Login</button>
+						<button type="submit" class="btn btn-primary">Login</button>
 					</form>
 					<hr>
 					<h5>OR</h5>
 					<div class="sns-login">
-						<a class="btn btn-primary helper-button-main " href="#"><i
-							class="fab fa-google"></i> Continue with Google </a>
+						<a class="btn btn-primary " href="#"><i class="fab fa-google"></i>
+							Continue with Google</a>
 
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-
-
-
 
 	<!--SIGNUP-->
 	<div class="modal fade" id="signupModal" tabindex="-1" role="dialog"
@@ -236,13 +261,13 @@
 								<option value="2">Male</option>
 							</select>
 						</div>
-						<button type="submit" class="btn btn-primary helper-button-main">Signup</button>
+						<button type="submit" class="btn btn-primary">Signup</button>
 					</form>
 					<hr>
 					<h5>OR</h5>
 					<div class="sns-login">
-						<a class="btn btn-primary helper-button-main " href="#"><i
-							class="fab fa-google"></i> Continue with Google</a>
+						<a class="btn btn-primary " href="#"><i class="fab fa-google"></i>
+							Continue with Google</a>
 
 					</div>
 
@@ -250,6 +275,9 @@
 			</div>
 		</div>
 	</div>
+
+
+
 
 	<!--본문끝-->
 	<!--FOOTER START-->
@@ -285,8 +313,6 @@
 
 		</section>
 	</div>
-
-
 
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->

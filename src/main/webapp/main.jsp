@@ -36,8 +36,9 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navLinks">
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item"><a href="login.do" class="nav-link">HELPER</a>
+				<li class="nav-item"><a href="helperBoard.jsp" class="nav-link">HELPER</a>
 				</li>
+
 				<li class="nav-item"><a href="getHelpeeList.do" class="nav-link">HELPEE</a>
 				</li>
 			</ul>
@@ -49,7 +50,7 @@
 						data-target="#signupModal">Signup</a></li>
 				</c:if>
 				<c:if test="${!empty sessionScope.userName}">
-					${sessionScope.userName}님&nbsp;
+					${sessionScope.userNumber}님&nbsp;
 					<li class="nav-item"><a class="nav-link" href="myPage.do">MyPage</a></li>
 					<li class="nav-item"><a class="nav-link" href="logout.do">Logout</a></li>
 				</c:if>
@@ -125,7 +126,7 @@
 					<div class=" card-header">See Best Helpers!</div>
 					<div class="card-body">
 						<p class="card-text">
-						<ul>
+							<ul>
 							<li>1 누구누구</li>
 							<li>2 누구누구</li>
 							<li>3 누구누구</li>
@@ -141,6 +142,7 @@
 					<div class=" card-header">See Most participated Helpers!</div>
 					<div class="card-body">
 						<p class="card-text">
+						
 						<ul>
 							<li>1 누구누구</li>
 							<li>2 누구누구</li>
@@ -157,6 +159,7 @@
 					<div class=" card-header">Someone needs a lot of help!</div>
 					<div class="card-body">
 						<p class="card-text">
+						
 						<ul>
 							<li>1 누구누구</li>
 							<li>2 누구누구</li>
@@ -359,5 +362,5 @@
 			}
 		}
 	</script>
-</body>
+	</body>
 </html>

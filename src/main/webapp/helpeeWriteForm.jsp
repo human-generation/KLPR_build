@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
@@ -34,8 +35,10 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navLinks">
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item"><a href="" class="nav-link">HELPER</a></li>
-				<li class="nav-item"><a href="" class="nav-link">HELPEE</a></li>
+				<li class="nav-item"><a href="helperBoard.jsp" class="nav-link">HELPER</a>
+				</li>
+				<li class="nav-item"><a href="helpeeBoard.jsp" class="nav-link">HELPEE</a>
+				</li>
 			</ul>
 			<ul class="navbar-nav ml-auto">
 				<c:if test="${empty sessionScope.userName}">
@@ -58,93 +61,75 @@
 
 
 
+	<div class="container">
+		<div class="row writeForm">
+			<div class="col-md-3 order-1 order-md-1 align-items-center">
+				<img class="mr-3"
+					src="https://cdn.pixabay.com/photo/2013/10/28/19/23/cat-201969_960_720.jpg"
+					alt="profileImage">
+			</div>
+			<div class="col-md-9 order-2 order-md-2">
+				<div class="media-body">
+					<div class="row">
+						<div class="col-md-6">
+							<h4>{name}Doja Cat</h4>
+						</div>
+						<div class="col-md-6">{gender}</div>
+					</div>
+					<div class="col-12">{phone}</div>
+					<div class="col-12">{ucomment}</div>
+					<form class="helper-write-form" action="helperWrite.do">
+						<div class="row">
+							<div class="col-md-6">
+								<input id="date-result" hidden></input> <input type="text"
+									id="datepicker" class="form-control form-control-sm"
+									placeholder="Select available date">
+							</div>
+							<div class="col-md-6">
+								<select class="custom-select" name="language">
+									<option selected>Choose your language</option>
+									<option value="1">english</option>
+									<option value="2">chinese</option>
+									<option value="3">japanese</option>
+								</select>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">
+								<select class="custom-select" name="rplace">
+									<option selected>Choose your area</option>
+									<option value="1">One</option>
+									<option value="2">Two</option>
+									<option value="3">Three</option>
+								</select>
+							</div>
+							<div class="col-md-6">
 
+								<div class="btn-group btn-group-toggle" data-toggle="buttons">
+									<label class="btn btn-secondary"> <input
+										type="checkbox" autocomplete="off"> moving
+									</label> <label class="btn btn-secondary"> <input
+										type="checkbox" autocomplete="off"> hospital
+									</label> <label class="btn btn-secondary"> <input
+										type="checkbox" autocomplete="off"> immi
+									</label>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="detailReview">Additional Infomation</label>
+							<textarea name="rcomment" class="form-control" rows="3"></textarea>
+						</div>
+						<button type="submit" class="btn btn-primary helper-button-main">Submit!</button>
+					</form>
+				</div>
 
-	<div class="container myPageBoard">
-		<div class="row">
-			<div class="col-md-2 order-1 order-md-1">
-				<div class="btn-group-vertical d-none d-md-block">
-					<button type="button" class="btn btn-secondary helper-button">My
-						page</button>
-					<button type="button" class="btn btn-secondary helper-button">요청내역</button>
-					<button type="button" class="btn btn-secondary helper-button">진행중내역</button>
-					<button type="button" class="btn btn-secondary helper-button">이전내역</button>
-					<button type="button" class="btn btn-secondary helper-button">나의정보수정</button>
-				</div>
-				<div class="btn-group d-md-none">
-					<button type="button" class="btn btn-secondary helper-button">My
-						page</button>
-					<button type="button" class="btn btn-secondary helper-button">요청내역</button>
-					<button type="button" class="btn btn-secondary helper-button">진행중내역</button>
-					<button type="button" class="btn btn-secondary helper-button">이전내역</button>
-					<button type="button" class="btn btn-secondary helper-button">나의정보수정</button>
-				</div>
 			</div>
 
-			<div class="col-md-10 order-2 order-md-2">
-				<div class="jumbotron myPageJt">
-					<div class="container">
-						<h1 class="display-4">My Wallet</h1>
-						<p class="lead">Lorem ipsum dolor sit, amet consectetur
-							adipisicing elit. Qui perferendis dignissimos aliquam. Eaque,
-							inventore.</p>
-
-						<div class="row float-right">
-							<button type="button"
-								class="btn btn-secondary helper-button btn-lg">마일리지 충전</button>
-
-							<button type="button"
-								class="btn btn-secondary helper-button btn-lg">100,000$</button>
-						</div>
-
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-6 col-lg-3">
-						<div class="card">
-							<div class="card-body">
-								<h5 class="card-title">신청중</h5>
-								<p class="card-text">승인을 기다리고 있는 거래</p>
-								<a href="#" class="btn btn-primary btn-sm helper-button-main">{mstate
-									0}</a><a href="#" class="btn btn-primary btn-sm helpee-button-main">{mstate
-									1}</a>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-6 col-lg-3">
-						<div class="card">
-							<div class="card-body">
-								<h5 class="card-title">결제대기</h5>
-								<p class="card-text">결제를 기다리고 있는 거래</p>
-								<a href="#" class="btn btn-primary btn-sm helpee-button-main">거래{mstate
-									2}</a>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-6 col-lg-3">
-						<div class="card">
-							<div class="card-body">
-								<h5 class="card-title">결제완료</h5>
-								<p class="card-text">결제완료 서비스대기중</p>
-								<a href="#" class="btn btn-primary btn-sm helpee-button-main">거래
-									{mstate3}</a>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-6 col-lg-3">
-						<div class="card">
-							<div class="card-body">
-								<h5 class="card-title">거래완료</h5>
-								<p class="card-text">리뷰작성대기중</p>
-								<a href="#" class="btn btn-primary btn-sm helpee-button-main">리뷰작성후
-									거래완료{mstate4, 5}</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
 		</div>
 	</div>
+
+
 
 	<!--AUTH MODAL-->
 	<!--LOGIN-->
@@ -188,7 +173,6 @@
 			</div>
 		</div>
 	</div>
-
 
 
 
@@ -269,8 +253,8 @@
 				<div class="col-sm">
 					<h5>서비스</h5>
 					<ul>
-						<li><a class="footer-link" href="summary.do">서비스 개요</a></li>
-						<li><a class="footer-link" href="faq.do">FAQ</a></li>
+						<li><a class="footer-link" href="#">서비스 개요</a></li>
+						<li><a class="footer-link" href="#">FAQ</a></li>
 						<li><a class="footer-link" href="#">고객센터</a></li>
 					</ul>
 				</div>

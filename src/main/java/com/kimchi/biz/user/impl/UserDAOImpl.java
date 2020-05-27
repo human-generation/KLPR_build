@@ -36,6 +36,7 @@ public class UserDAOImpl implements UserDAO {
 			rs = stmt.executeQuery();
 			if (rs.next()) {
 				user = new UserVO();
+				user.setUno(rs.getInt("uno"));
 				user.setEmail(rs.getString("email"));
 				user.setPw(rs.getString("pw"));
 				user.setName(rs.getString("name"));
@@ -62,7 +63,6 @@ public class UserDAOImpl implements UserDAO {
 			stmt.setString(3, vo.getName());
 			stmt.setInt(4, vo.getGender());
 			stmt.setString(5, vo.getPhone());
-			stmt.setString(6, vo.getUcomment());
 			stmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
