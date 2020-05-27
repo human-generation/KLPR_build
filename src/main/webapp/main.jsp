@@ -50,7 +50,7 @@
 						data-target="#signupModal">Signup</a></li>
 				</c:if>
 				<c:if test="${!empty sessionScope.userName}">
-					${sessionScope.userNumber}님&nbsp;
+					${sessionScope.userName}님&nbsp;
 					<li class="nav-item"><a class="nav-link" href="myPage.do">MyPage</a></li>
 					<li class="nav-item"><a class="nav-link" href="logout.do">Logout</a></li>
 				</c:if>
