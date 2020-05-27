@@ -119,13 +119,13 @@
                     </div>
                     <div class="col-md-9 order-2 order-md-2">
                         <div class="media-body">
-                        	<c:if test="${not empty helpee.moving}">
+                        	<c:if test="${helpee.moving==1}">
                             <a href="#" class="badge badge-primary helpee-button-main">이사</a>
                             </c:if>
-                            <c:if test="${not empty helpee.hospital}">
+                            <c:if test="${helpee.hospital==1}">
                             <a href="#" class="badge badge-primary helpee-button-main">병원</a>
                             </c:if>
-                            <c:if test="${not empty helpee.immigration}">
+                            <c:if test="${helpee.immigration==1}">
                             <a href="#" class="badge badge-primary helpee-button-main">출입국</a>
                             </c:if>
                             
@@ -156,7 +156,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div>{자기소개} hi I'm a cute cat. I'm useless other than being cute.
+                            <div>${helpee.e_intro}
                                 <div id="dots"></div>
                                 <div id="more">
                                     <div class="boardReview">

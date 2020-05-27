@@ -1,7 +1,5 @@
 package com.kimchi.biz.helpee;
 
-import java.util.Date;
-
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -11,12 +9,13 @@ public class HelpeeVO {
 	@XmlAttribute
 	private int eno;
 	private int uno;
-	private Date edate;
+	private String edate;
 	private int eplace;
 	private int moving;
 	private int hospital;
 	private int immigration;
 	private int lno;
+	private String e_intro;
 	
 	public int getEno() {
 		return eno;
@@ -30,10 +29,10 @@ public class HelpeeVO {
 	public void setUno(int uno) {
 		this.uno = uno;
 	}
-	public Date getEdate() {
+	public String getEdate() {
 		return edate;
 	}
-	public void setEdate(Date edate) {
+	public void setEdate(String edate) {
 		this.edate = edate;
 	}
 	public int getEplace() {
@@ -66,10 +65,20 @@ public class HelpeeVO {
 	public void setLno(int lno) {
 		this.lno = lno;
 	}
+	
+	public String getE_intro() {
+		return e_intro;
+	}
+	public void setE_intro(String e_intro) {
+		this.e_intro = e_intro;
+	}
 	@Override
 	public String toString() {
 		return "HelpeeVO [eno=" + eno + ", uno=" + uno + ", edate=" + edate + ", eplace=" + eplace + ", moving="
-				+ moving + ", hospital=" + hospital + ", immigration=" + immigration + ", lno=" + lno + "]";
+				+ moving + ", hospital=" + hospital + ", immigration=" + immigration + ", lno=" + lno + ", e_intro="
+				+ e_intro + "]";
 	}
+	
+	
 	
 }
