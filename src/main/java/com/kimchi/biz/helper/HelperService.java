@@ -1,7 +1,8 @@
 package com.kimchi.biz.helper;
 
 public interface HelperService {
-	public HelperVO getHelper(HelperVO vo);
-	
-	public void insertHelper(HelperVO vo);
+	HelperVO getHelper(HelperVO vo);
+	void insertHelper(HelperVO vo);
+	void updateHelper(HelperVO vo);
+	void deleteHelper(HelperVO vo);
 }

@@ -13,6 +13,7 @@ public class HelperVO {
 	private int immigration;
 	private int lno;
 	private String r_intro;
+	
 	public int getRno() {
 		return rno;
 	}

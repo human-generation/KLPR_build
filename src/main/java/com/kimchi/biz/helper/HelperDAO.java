@@ -1,9 +1,11 @@
 package com.kimchi.biz.helper;
 
 public interface HelperDAO {
-	// 헬퍼 존재 여부를 알려줌 
-	public HelperVO getHelper(HelperVO vo);
+	 
+	public HelperVO getHelper(HelperVO vo);	// 상세 헬퍼 글 보기 
+	public void insertHelper(HelperVO vo); // 헬퍼 글 등록
+	public void updateHelper(HelperVO vo); // 헬퍼 글 수정 
+	public void deleteHelper(HelperVO vo); // 헬퍼 글 삭제
 	
-	// 헬퍼 등록
-	public void insertHelper(HelperVO vo); 
+	
 }
