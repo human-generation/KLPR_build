@@ -2,7 +2,7 @@
 <!DOCTYPE configuration
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
-<configuration>
+  <configuration>
 	<!-- Properties 파일 설정(DB 연결 정보) -->
 	<!-- 
 	<properties resource="db.properties" />
@@ -10,25 +10,17 @@
 	 
 	<!-- Alias 설정(이름이 기니까 별명을 줘서 짧게 쓰자 -->
 	<typeAliases>
-		<typeAlias type="com.springstudy.biz.board.BoardVO" alias="board"></typeAlias>
+		<typeAlias type="com.kimchi.biz.helpee.HelpeeVO" alias="helpee"></typeAlias>
+		<typeAlias type="com.kimchi.biz.helpee.HelpeeListVO" alias="helpeeList"></typeAlias>
+		<typeAlias type="com.kimchi.biz.seoul.SeoulVO" alias="seoul"></typeAlias>
+		<typeAlias type="com.kimchi.biz.language.LanguageVO" alias="language"></typeAlias>
 	</typeAliases>
 	
-	<!-- 
-	<environments default="development">
-		<environment id="development">
-			<transactionManager type="JDBC" />
-			<dataSource type="POOLED">
-				<property name="driver" value="${jdbc.driverClassName}" />
-				<property name="url" value="${jdbc.url}" />
-				<property name="username" value="${jdbc.username}" />
-				<property name="password" value="${jdbc.password}" />
-			</dataSource>
-		</environment>
-	</environments>
-	 -->
-	
 	<mappers>
-		<mapper resource="mappings/board-mapping.xml" />
+		<mapper resource="mappings/helpee-mapping.xml" />
+		<mapper resource="mappings/seoul-mapping.xml" />
+		<mapper resource="mappings/language-mapping.xml" />
 	</mappers>
+	
 </configuration>
 

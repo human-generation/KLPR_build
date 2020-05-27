@@ -38,7 +38,7 @@
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item"><a href="login.do" class="nav-link">HELPER</a>
 				</li>
-				<li class="nav-item"><a href="login.do" class="nav-link">HELPEE</a>
+				<li class="nav-item"><a href="getHelpeeList.do" class="nav-link">HELPEE</a>
 				</li>
 			</ul>
 			<ul class="navbar-nav ml-auto">
