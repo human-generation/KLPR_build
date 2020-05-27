@@ -1,17 +1,15 @@
 package com.kimchi.biz.matching;
 
-import java.util.Date;
-
 public class MatchingVO {
-	private int mno; 		// 매칭번호
-	private int seno; 		// 요청하는 사람
-	private int rcno; 		// 요청받는 사람
-	private int rno;		// 헬퍼 번호
-	private int eno; 		// 헬피 번호
-	private Date mdate; 	// 매칭 날짜
-	private int mplace; 	// 매칭 지역
-	private int mservice; 	// 서비스 종류
-	private int mstate; 	// 서비스 진행도
+	private int mno; // 매칭번호
+	private int seno; // 요청하는 사람
+	private int rcno; // 요청받는 사람
+	private int rno; // 헬퍼 번호
+	private int eno; // 헬피 번호
+	private String mdate; // 매칭 날짜
+	private int mplace; // 매칭 지역
+	private int mservice; // 서비스 종류
+	private int mstate; // 서비스 진행도
 
 	public int getMno() {
 		return mno;
@@ -53,11 +51,11 @@ public class MatchingVO {
 		this.eno = eno;
 	}
 
-	public Date getMdate() {
+	public String getMdate() {
 		return mdate;
 	}
 
-	public void setMdate(Date mdate) {
+	public void setMdate(String mdate) {
 		this.mdate = mdate;
 	}
 

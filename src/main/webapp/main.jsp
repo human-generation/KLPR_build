@@ -40,6 +40,8 @@
 				</li>
 				<li class="nav-item"><a href="helpeeBoard.do" class="nav-link">HELPEE</a>
 				</li>
+				<li class="nav-item"><a href="matchInsert.do" class="nav-link">매치인서트시험</a>
+				</li>
 			</ul>
 			<ul class="navbar-nav ml-auto">
 				<c:if test="${empty sessionScope.userName}">
