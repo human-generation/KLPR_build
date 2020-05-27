@@ -13,6 +13,7 @@ public class HelperVO {
 	private int rscore;	// 리뷰 점수
 	private String name;// 이름
 	private String ucomment;	// 자기소개
+	
 	public Date getSta() {
 		return sta;
 	}

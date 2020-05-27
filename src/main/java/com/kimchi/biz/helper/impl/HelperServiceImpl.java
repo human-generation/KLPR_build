@@ -21,21 +21,8 @@ public class HelperServiceImpl implements HelperService {
 	}
 
 	@Override
-	public List<HelperVO> getMoving(HelperVO vo) {
-		// TODO Auto-generated method stub
-		return null;
+	public HelperVO getHelper(HelperVO vo) {
+		return helperDAO.getHelper(vo);
 	}
-
-	@Override
-	public List<HelperVO> getHospital(HelperVO vo) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<HelperVO> getImmigration(HelperVO vo) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+	
 }
