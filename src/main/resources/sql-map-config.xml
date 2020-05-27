@@ -9,17 +9,19 @@
 	<!-- Alias 설정(이름이 기니까 별명을 줘서 짧게 쓰자 -->
 	<typeAliases>
 		<typeAlias type="com.kimchi.biz.helpee.HelpeeVO" alias="helpee"></typeAlias>
-		<typeAlias type="com.kimchi.biz.helpee.HelpeeListVO" alias="helpeeList"></typeAlias>
+<!-- 	<typeAlias type="com.kimchi.biz.helpee.HelpeeListVO" alias="helpeeList"></typeAlias>
 		<typeAlias type="com.kimchi.biz.seoul.SeoulVO" alias="seoul"></typeAlias>
 		<typeAlias type="com.kimchi.biz.language.LanguageVO" alias="language"></typeAlias>
 		<typeAlias type="com.kimchi.biz.e_review.E_ReviewVO" alias="e_review"></typeAlias>
+		 -->	
 	</typeAliases>
 	
 	<mappers>
 		<mapper resource="mappings/helpee-mapping.xml" />
-		<mapper resource="mappings/seoul-mapping.xml" />
+<!--  	<mapper resource="mappings/seoul-mapping.xml" />
 		<mapper resource="mappings/language-mapping.xml" />
 		<mapper resource="mappings/e_review-mapping.xml" />
+		-->	
 	</mappers>
 	
 </configuration>

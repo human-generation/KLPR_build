@@ -43,6 +43,7 @@
 				</li>
 			</ul>
 			<ul class="navbar-nav ml-auto">
+			
 				<c:if test="${empty sessionScope.userName}">
 					<li class="nav-item"><a class="nav-link" data-toggle="modal"
 						data-target="#loginModal">Login</a></li>

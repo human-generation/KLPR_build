@@ -25,7 +25,7 @@
 	</select>
 
 		
-	<select id="getHelpeeList" resultType="helpeeList">
+	<select id="getHelpeeList" resultType="helpee">
 		SELECT * FROM helpee
 		ORDER BY eno DESC
 	</select>
