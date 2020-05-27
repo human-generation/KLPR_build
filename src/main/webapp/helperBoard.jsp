@@ -2,8 +2,17 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page import="com.kimchi.biz.helper.HelperVO" %>
+<%@ page import="com.kimchi.biz.user.UserVO" %>
+<%@ page import="com.kimchi.biz.r_review.R_reviewVO" %>
+
+<%
+	HelperVO helper = (HelperVO)session.getAttribute("helper");
+	UserVO user = (UserVO)session.getAttribute("user");
+	R_reviewVO r_review = (R_reviewVO)session.getAttribute("user");
+%>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -122,10 +131,10 @@
                             <a href="#" class="badge badge-primary helper-button-main">병원</a>
                             <div class="row">
                                 <div class="col-md-6 order-2 order-md-1">
-                                    <h4>Doja Cat</h4>
+                                    <h4><%=user.getName() %></h4>
                                 </div>
                                 <div class="col-md-6 order-1 order-md-2">
-                                    <h5>{⭐️⭐️⭐️⭐️⭐️}</h5>
+                                    <h5><%=r_review.getRscore() %></h5>
                                 </div>
                             </div>
                             <div class="row">

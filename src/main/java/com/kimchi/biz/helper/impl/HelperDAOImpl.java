@@ -21,12 +21,13 @@ public class HelperDAOImpl implements HelperDAO {
 	private ResultSet rs = null;
 
 	// SQL 명령어
-	private final String HELPER_LIST = "SELECT u.name, u.comment, r.rscore, h.sta, h.end, "
-			+ "h.rplace, h.moving, h.hospital, h.immigration, h.lno FROM helper AS h "
-			+ "JOIN r_review AS r JOIN user AS u ORDER BY r.rno DESC";
-	private final String MOVING_LIST = "SELECT u.name, u.comment, r.rscore, h.sta, h.end, "
-			+ "h.rplace, h.moving, h.hospital, h.immigration, h.lno FROM helper AS h "
-			+ "JOIN r_review AS r JOIN user AS u WHERE moving=1 ORDER BY r.rno DESC";
+	private final String HELPER_LIST = "SELECT * FROM helper JOIN r_review "
+			+ "JOIN user ORDER BY helper.rno DESC";
+//	private final String HELPER_LIST = "SELECT u.name, u.comment, r.rscore, h.sta, h.end, "
+//			+ "h.rplace, h.moving, h.hospital, h.immigration, h.lno FROM helper AS h "
+//			+ "JOIN r_review AS r JOIN user AS u ORDER BY r.rno DESC";
+//	private final String MOVING_LIST = "SELECT * FROM helper AS h "
+//			+ "JOIN r_review AS r JOIN user AS u WHERE moving=1 ORDER BY r.rno DESC";
 
 	@Override
 	public List<HelperVO> getHelperList(HelperVO vo) {	// 모든 헬퍼 리스트 보여주기
