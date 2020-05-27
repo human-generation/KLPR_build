@@ -36,6 +36,7 @@ public class UserController {
 		UserVO user = userDAO.getUser(vo);
 		if (user != null) {
 			session.setAttribute("userName", user.getName());
+			session.setAttribute("userUno", user.getUno());
 			System.out.println(user.getName());
 //			return "getMain.do";
 			return "main.jsp";

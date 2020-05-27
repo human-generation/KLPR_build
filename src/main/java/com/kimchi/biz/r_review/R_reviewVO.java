@@ -1,5 +1,9 @@
 package com.kimchi.biz.r_review;
 
+/**
+ * @author ahn
+ *
+ */
 public class R_reviewVO {
 
 	private int r_vno;
@@ -7,7 +11,8 @@ public class R_reviewVO {
 	private int eno;
 	private String rcomment;
 	private int rscore;
-	
+	private int uno;
+
 	
 	public int getR_vno() {
 		return r_vno;
@@ -39,8 +44,18 @@ public class R_reviewVO {
 	public void setRscore(int rscore) {
 		this.rscore = rscore;
 	}
-
 	
 	
+	public int getUno() {
+		return uno;
+	}
+	public void setUno(int uno) {
+		this.uno = uno;
+	}
+	@Override
+	public String toString() {
+		return "R_reviewVO [r_vno=" + r_vno + ", rno=" + rno + ", eno=" + eno + ", rcomment=" + rcomment + ", rscore="
+				+ rscore + "]";
+	}	
 	
 }

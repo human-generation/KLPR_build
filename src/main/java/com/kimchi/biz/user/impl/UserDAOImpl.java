@@ -12,7 +12,7 @@ import com.kimchi.biz.user.UserVO;
 
 @Repository("userDAO")
 public class UserDAOImpl implements UserDAO {
-	//test
+	
 	// JDBC 관련 변수들
 	private Connection conn = null;
 	private PreparedStatement stmt = null;
@@ -42,7 +42,8 @@ public class UserDAOImpl implements UserDAO {
 				user.setGender(rs.getInt("gender"));
 				user.setMoney(rs.getInt("money"));
 				user.setPhone(rs.getString("phone"));
-				user.setUcomment(rs.getString("ucomment"));
+				user.setUno(rs.getInt("uno"));
+				//user.setUcomment(rs.getString("ucomment"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
