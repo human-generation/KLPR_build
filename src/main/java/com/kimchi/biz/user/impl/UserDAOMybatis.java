@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import com.kimchi.biz.user.UserVO;
 
-@Repository
+//@Repository
 public class UserDAOMybatis extends SqlSessionDaoSupport {
 //	@Autowired
 //	public void setSqlSessionFactory(SqlSessionFactory sqlSessionFactory) {

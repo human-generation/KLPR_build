@@ -19,7 +19,7 @@
 		PHONE, UCOMMENT)
 		VALUES((SELECT NVL(max(uno), 0)+1 FROM user),
 		#{email}, #{pw}, #{name}, #{gender},
-		0, #{phone}, #{ucomment})
+		0, #{phone})
 	</insert>
 
 	<update id="updateUser">

@@ -17,4 +17,8 @@ public interface UserDAO {
 	// 회원을 가입시킨다
 	public void insertUser(UserVO vo);
 
+	public void updateUserMoney(UserVO vo, int pay);
+	
+	public void updateUser(UserVO vo);
+
 }
