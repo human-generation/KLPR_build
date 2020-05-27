@@ -1,17 +1,18 @@
 package com.kimchi.biz.helper;
 
-import java.util.Date;
 
 public class HelperVO {
 	private int rno;
 	private int uno;
-	private Date sta;
-	private Date end;
+	
+	private String sta;
+	private String end;
 	private int rplace;
 	private int moving;
 	private int hospital;
 	private int immigration;
 	private int lno;
+	private String r_intro;
 	public int getRno() {
 		return rno;
 	}
@@ -24,16 +25,16 @@ public class HelperVO {
 	public void setUno(int uno) {
 		this.uno = uno;
 	}
-	public Date getSta() {
+	public String getSta() {
 		return sta;
 	}
-	public void setSta(Date sta) {
+	public void setSta(String sta) {
 		this.sta = sta;
 	}
-	public Date getEnd() {
+	public String getEnd() {
 		return end;
 	}
-	public void setEnd(Date end) {
+	public void setEnd(String end) {
 		this.end = end;
 	}
 	public int getRplace() {
@@ -66,13 +67,21 @@ public class HelperVO {
 	public void setLno(int lno) {
 		this.lno = lno;
 	}
+	public String getR_intro() {
+		return r_intro;
+	}
+	public void setR_intro(String r_intro) {
+		this.r_intro = r_intro;
+	}
 	
 	@Override
 	public String toString() {
 		return "HelperVO [rno=" + rno + ", uno=" + uno + ", sta=" + sta + ", end=" + end + ", rplace=" + rplace
 				+ ", moving=" + moving + ", hospital=" + hospital + ", immigration=" + immigration + ", lno=" + lno
-				+ "]";
+				+ ", r_intro=" + r_intro + "]";
+	}
+
+	
 	}
 	
-	
-}
+

@@ -6,6 +6,7 @@ public class LanguageVO {
 	public int getLno() {
 		return lno;
 	}
+	
 	public void setLno(int lno) {
 		this.lno = lno;
 	}

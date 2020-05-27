@@ -1,5 +1,7 @@
 package com.kimchi.biz.helper.impl;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.kimchi.biz.helper.HelperDAO;
@@ -10,6 +12,9 @@ public class HelperServiceImpl  implements HelperService{
 
 	@Autowired
 	private HelperDAO helperDAO;
+	
+	@Autowired
+	HttpSession httpSession;
 
 	@Override
 	public HelperVO getHelper(HelperVO vo) {
