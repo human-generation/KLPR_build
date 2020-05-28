@@ -153,7 +153,7 @@
                                         Available date ${helper.sta} ~ ${helper.end}
                                     </div>
                                     <div class="area">
-                                        Placed in <i class="fas fa-map-marker-alt"></i>{rplace}
+                                        Placed in <i class="fas fa-map-marker-alt"></i>${helper.rplace}
                                     </div>
                                 </div>
                             </div>

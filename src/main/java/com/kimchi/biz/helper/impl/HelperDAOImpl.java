@@ -21,7 +21,7 @@ public class HelperDAOImpl implements HelperDAO {
 	private ResultSet rs = null;
 
 	// SQL 명령어 
-	private final String HELPERLIST_GET = "SELECT sta, end, moving, hospital, immigration, lno, r_intro FROM helper";
+	private final String HELPERLIST_GET = "SELECT sta, end, rplace, moving, hospital, immigration, lno, r_intro FROM helper";
 //	private final String HELPER_LIST = "SELECT u.name, u.comment, r.rscore, h.sta, h.end, "
 //			+ "h.rplace, h.moving, h.hospital, h.immigration, h.lno FROM helper AS h "
 //			+ "JOIN r_review AS r JOIN user AS u ORDER BY r.rno DESC";
@@ -39,10 +39,12 @@ public class HelperDAOImpl implements HelperDAO {
 				HelperVO helper = new HelperVO();
 				helper.setSta(rs.getDate("sta"));
 				helper.setEnd(rs.getDate("end"));
+				helper.setRplace(rs.getInt("rplace"));
 				helper.setMoving(rs.getInt("moving"));
 				helper.setHospital(rs.getInt("hospital"));
 				helper.setImmigration(rs.getInt("immigration"));
 				helper.setLno(rs.getInt("lno"));
+				helper.setR_intro(rs.getString("r_intro"));
 				helperList.add(helper);
 			}
 			System.out.println("확인시발: " + helperList.toString());
