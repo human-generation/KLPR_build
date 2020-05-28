@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.kimchi.biz.common.JDBCUtil;
 import com.kimchi.biz.helper.HelperDAO;
+import com.kimchi.biz.helper.HelperListVO;
 import com.kimchi.biz.helper.HelperVO;
 
 @Repository("HelperDAO")
@@ -21,29 +22,29 @@ public class HelperDAOImpl implements HelperDAO {
 	private ResultSet rs = null;
 
 	// SQL 명령어 
-	private final String HELPERLIST_GET = "SELECT sta, end, rplace, moving, hospital, immigration, lno, r_intro FROM helper";
-//	private final String HELPER_LIST = "SELECT u.name, u.comment, r.rscore, h.sta, h.end, "
-//			+ "h.rplace, h.moving, h.hospital, h.immigration, h.lno FROM helper AS h "
-//			+ "JOIN r_review AS r JOIN user AS u ORDER BY r.rno DESC";
+	private final String HELPERLIST_GET = "SELECT u.name, l.language, h.sta, h.end, h.rplace, h.moving, h.hospital, h.immigration, h.r_intro"
+			+ " FROM helper AS h JOIN user AS u ON h.uno=u.uno JOIN language AS l ON h.lno=l.lno";
 
 	@Override
-	public List<HelperVO> getHelperList(HelperVO vo) { // 모든 헬퍼 리스트 보여주기
+	public List<HelperListVO> getHelperList(HelperListVO vo) { // 모든 헬퍼 리스트 보여주기
 		System.out.println("===> JDBC로 getHelperList() 기능 처리");
 		
-		List<HelperVO> helperList = new ArrayList<HelperVO>();
+		List<HelperListVO> helperList = new ArrayList<HelperListVO>();
 		try {
 			conn = JDBCUtil.getConnection();
 			stmt = conn.prepareStatement(HELPERLIST_GET);
 			rs = stmt.executeQuery();
 			while (rs.next()) {
-				HelperVO helper = new HelperVO();
+				HelperListVO helper = new HelperListVO();
+				helper.setName(rs.getString("name"));
+				helper.setLanguage(rs.getString("language"));
+				
 				helper.setSta(rs.getDate("sta"));
 				helper.setEnd(rs.getDate("end"));
 				helper.setRplace(rs.getInt("rplace"));
 				helper.setMoving(rs.getInt("moving"));
 				helper.setHospital(rs.getInt("hospital"));
 				helper.setImmigration(rs.getInt("immigration"));
-				helper.setLno(rs.getInt("lno"));
 				helper.setR_intro(rs.getString("r_intro"));
 				helperList.add(helper);
 			}

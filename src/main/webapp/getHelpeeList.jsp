@@ -33,10 +33,10 @@
         <div class="collapse navbar-collapse" id="navLinks">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a href="" class="nav-link">HELPER</a>
+                    <a href="getHelperList.do" class="nav-link">HELPER</a>
                 </li>
                 <li class="nav-item">
-                    <a href="" class="nav-link">HELPEE</a>
+                    <a href="getHelpeeList.do" class="nav-link">HELPEE</a>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">

@@ -4,6 +4,6 @@ import java.util.List;
 
 public interface HelperDAO {
 	public HelperVO getHelper(HelperVO vo);
-	public List<HelperVO> getHelperList(HelperVO vo);
+	public List<HelperListVO> getHelperList(HelperListVO vo);
 
 }
