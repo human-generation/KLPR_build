@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.kimchi.biz.common.JDBCUtil;
 import com.kimchi.biz.helper.HelperDAO;
-import com.kimchi.biz.helper.HelperListVO;
+import com.kimchi.biz.helper.HelperVO;
 import com.kimchi.biz.helper.HelperVO;
 
 @Repository("HelperDAO")
@@ -26,16 +26,16 @@ public class HelperDAOImpl implements HelperDAO {
 			+ " FROM helper AS h JOIN user AS u ON h.uno=u.uno JOIN language AS l ON h.lno=l.lno";
 
 	@Override
-	public List<HelperListVO> getHelperList(HelperListVO vo) { // 모든 헬퍼 리스트 보여주기
+	public List<HelperVO> getHelperList(HelperVO vo) { // 모든 헬퍼 리스트 보여주기
 		System.out.println("===> JDBC로 getHelperList() 기능 처리");
 		
-		List<HelperListVO> helperList = new ArrayList<HelperListVO>();
+		List<HelperVO> helperList = new ArrayList<HelperVO>();
 		try {
 			conn = JDBCUtil.getConnection();
 			stmt = conn.prepareStatement(HELPERLIST_GET);
 			rs = stmt.executeQuery();
 			while (rs.next()) {
-				HelperListVO helper = new HelperListVO();
+				HelperVO helper = new HelperVO();
 				helper.setName(rs.getString("name"));
 				helper.setLanguage(rs.getString("language"));
 				
