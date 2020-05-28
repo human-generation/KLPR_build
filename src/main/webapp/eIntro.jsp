@@ -5,50 +5,47 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- Required meta tags -->
-<meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	 <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<!-- Bootstrap CSS -->
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-	integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
-	crossorigin="anonymous">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
-<!-- fontawsome css-->
-<script src="https://kit.fontawesome.com/8b4a01720d.js"
-	crossorigin="anonymous"></script>
+    <!-- fontawsome css-->
+    <script src="https://kit.fontawesome.com/8b4a01720d.js" crossorigin="anonymous"></script>
 
-<!-- custom css-->
+    <!-- custom css-->
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="lightpick.css">
 
-<link rel="stylesheet" href="index.css">
-<title>K:LPER | Get help in Korea</title>
+    <title>K:LPER | Get help in Korea</title>
 </head>
 
 <body>
 
-<nav id="mainNavbar" class="navbar navbar-expand-md navbar-dark py-1 fixed-top">
-	<a href="main.do" class="navbar-brand">K:LPER</a>
-	<button class="navbar-toggler" data-toggle="collapse" data-target="#navLinks" aria-label="Toggle navigation">
+    <nav id="mainNavbar" class="navbar navbar-expand-md navbar-dark py-1 fixed-top">
+        <a href="main.do" class="navbar-brand">K:LPER</a>
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#navLinks" aria-label="Toggle navigation">
             <i class="fas fa-align-right"></i>
-    </button>
-	<div class="collapse navbar-collapse" id="navLinks">
+        </button>
+        <div class="collapse navbar-collapse" id="navLinks">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a href="faq.do" class="navbar-brand">HELPER</a>
+                    <a href="" class="nav-link">HELPER</a>
                 </li>
                 <li class="nav-item">
-                    <a href="eIntro.do" class="navbar-brand">HELPEE</a>
+                    <a href="" class="nav-link">HELPEE</a>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
             	<c:if test="${empty sessionScope.userName}">
 	                <li class="nav-item">
-	                    <a class="nav-link" data-toggle="modal" data-target="#loginModal">Login</a>
+	                    <a class="nav-link" data-toggle="modal" data-target="#loginModal">LOGIN</a>
 	                </li>
 	                <li class="nav-item">
-	                    <a class="nav-link " data-toggle="modal" data-target="#signupModal">Signup</a>
+	                    <a class="nav-link " data-toggle="modal" data-target="#signupModal">SIGNUP</a>
 	                </li>
      			</c:if>
      			<c:if test="${!empty sessionScope.userName}">
@@ -65,122 +62,83 @@
 				</c:if>
             </ul>
         </div>
-	
-</nav>
-	<!-- HEADER END -->
+    </nav>
+
+    <!-- HEADER END -->
+    
+    
     <!-- 본문 -->
-    <div class="container-fluid">
-        <div class="jumbotron jumbotron-fluid">
-            <div class="container text-center jt-text">
-                <h1 class="display-4">K:LPER</h1>
-                <p class="lead">We are here When you need help!
-                </p>
-                <button type="button" class="btn btn-primary">Searching for HELPER</button>
-                <button type="button" class="btn btn-primary">Searching for HELPEE</button>
+    <div class="container">
+        <div class="row writeForm">
+            <div class="col-md-3 order-1 order-md-1 align-items-center">
+                <img class="mr-3" src="https://cdn.pixabay.com/photo/2013/10/28/19/23/cat-201969_960_720.jpg"
+                    alt="profileImage">
             </div>
-        </div>
-        
-        <div id="carouselCaptions" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-                <li data-target="#carouselCaptions" data-slide-to="0" class="active"></li>
-                <li data-target="#carouselCaptions" data-slide-to="1"></li>
-            </ol>
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="https://images.unsplash.com/photo-1589828994425-cee7c6e8dbf8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1086&q=80"
-                        class="d-block w-100" alt="...">
-                    <div class="carousel-caption ">
-                        <h5>Get help, When you need it</h5>
-                        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+            <div class="col-md-9 order-2 order-md-2">
+                <div class="media-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4>{name}Doja Cat</h4>
+                        </div>
+                        <div class="col-md-6">
+                            {gender}
+                        </div>
                     </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="https://images.unsplash.com/photo-1586726972122-f20f59d4bbb2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"
-                        class="d-block w-100" alt="...">
-                    <div class="carousel-caption">
-                        <h5>First time user? Here is the guide for YOU!</h5>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <div class="col-12">
+                        {phone}
                     </div>
+                    <form class="helper-write-form" action="eIntro.do"> <!-- submit버튼을 누르면 다시 페이지 이동하도록  -->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input id="date-result" hidden></input>
+                                <input type="text" id="datepicker" class="form-control form-control-sm"
+                                    placeholder="Select available date">
+                            </div>
+                            <div class="col-md-6">
+                                <select class="custom-select" name="lno"> <!-- name = "lno" -VO명이랑 똑같아야함-->
+                                    <option selected>Choose your language</option>
+                                    <option value="1">English</option>
+                                    <option value="2">Germany</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <select class="custom-select" name="eplace">
+                                    <option selected>Choose your area</option>
+                                    <option value="1">One</option>
+                                    <option value="2">Two</option>
+                                    <option value="3">Three</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                    <label class="btn btn-secondary">
+                                        <input type="checkbox" autocomplete="off" class="service" name="moving"> moving
+                                    </label>
+                                    <label class="btn btn-secondary">
+                                        <input type="checkbox" autocomplete="off" class="service" name="hospital"> hospital
+                                    </label>
+                                    <label class="btn btn-secondary">
+                                        <input type="checkbox" autocomplete="off" class="service" name="immigration"> immi
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="detailReview">Additional Infomation</label>
+                            <textarea name="rcomment" class="form-control" rows="3"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary helper-button-main">Submit!</button>
+                    </form>
                 </div>
+
             </div>
-            <a class="carousel-control-prev" href="#carouselCaptions" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselCaptions" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
+
         </div>
     </div>
 
-    <!--DS JS-->
-    <section class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-6 ds-data1">
 
-            </div>
-            <div class="col-lg-6 ds-data2">
-
-            </div>
-        </div>
-    </section>
-
-    <!--RANKING-->
-    <section class="container">
-        <div class="row align-items-center">
-            <div class="col-md-4">
-                <div class="card border-light">
-                    <div class=" card-header">See Best Helpers! </div>
-                    <div class="card-body">
-                        <p class="card-text">
-                        <ul>
-                            <li>1 누구누구</li>
-                            <li>2 누구누구</li>
-                            <li>3 누구누구</li>
-                            <li>4 누구누구</li>
-                            <li>5 누구누구</li>
-                        </ul>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card border-light">
-                    <div class=" card-header">See Most participated Helpers! </div>
-                    <div class="card-body">
-                        <p class="card-text">
-                        <ul>
-                            <li>1 누구누구</li>
-                            <li>2 누구누구</li>
-                            <li>3 누구누구</li>
-                            <li>4 누구누구</li>
-                            <li>5 누구누구</li>
-                        </ul>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card border-light">
-                    <div class=" card-header">Someone needs a lot of help!</div>
-                    <div class="card-body">
-                        <p class="card-text">
-						<ul>
-                            <li>1 누구누구</li>
-                            <li>2 누구누구</li>
-                            <li>3 누구누구</li>
-                            <li>4 누구누구</li>
-                            <li>5 누구누구</li>
-                        </ul>                        
-                        </p>
-                    </div>
-                </div>                                                                                               
-            </div>
-        </div>
-
-    </section>
-    
     <!--AUTH MODAL-->
     <!--LOGIN-->
     <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel"
@@ -195,7 +153,7 @@
                 </div>
 
                 <div class="modal-body">
-                    <form class="login-form" action="login.do" method="post">
+                    <form class="login-form" action="login.do">
                         <div class="form-group">
                             <label for="inputEmail">Email address</label>
                             <input name="email" type="email" class="form-control" required>
@@ -209,18 +167,23 @@
                             <label class="form-check-label" for="logInCheck">Keep me logged in </label>
                             <a class="help-password" href="#">forgot your password?</a>
                         </div>
-                        <button type="submit" class="btn btn-primary">Login</button>
+                        <button type="submit" class="btn btn-primary helper-button-main">Login</button>
                     </form>
                     <hr>
                     <h5>OR</h5>
                     <div class="sns-login">
-                        <a class="btn btn-primary " href="#"><i class="fab fa-google"></i> Continue with Google</a>
+                        <a class="btn btn-primary helper-button-main " href="#"><i class="fab fa-google"></i>
+                            Continue with
+                            Google
+                        </a>
 
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+
 
     <!--SIGNUP-->
     <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModalLabel"
@@ -235,7 +198,7 @@
                 </div>
 
                 <div class="modal-body">
-                    <form class="signup-form" action="join.do">
+                    <form class="signup-form" action="singup.do">
                         <div class="form-group">
                             <label for="signupEmail">Email address</label>
                             <input name="email" type="email" class="form-control" required>
@@ -265,12 +228,14 @@
                                 <option value="2">Male</option>
                             </select>
                         </div>
-                        <button type="submit" class="btn btn-primary">Signup</button>
+                        <button type="submit" class="btn btn-primary helper-button-main">Signup</button>
                     </form>
                     <hr>
                     <h5>OR</h5>
                     <div class="sns-login">
-                        <a class="btn btn-primary " href="#"><i class="fab fa-google"></i> Continue with Google</a>
+                        <a class="btn btn-primary helper-button-main " href="#"><i class="fab fa-google"></i> Continue
+                            with
+                            Google</a>
 
                     </div>
 
@@ -278,7 +243,7 @@
             </div>
         </div>
     </div>
-    
+
     <!--본문끝-->
     <!--FOOTER START-->
 
@@ -288,8 +253,10 @@
                 <div class="col-sm">
                     <h5>내 계정</h5>
                     <ul>
-                        <li><a class="footer-link" data-toggle="modal" data-target="#loginModal">로그인</a></li>
-                        <li><a class="footer-link" data-toggle="modal" data-target="#signupModal">회원가입</a></li>
+                        <li><a class="footer-link" data-toggle="modal" data-target="#loginModal">로그인</a>
+                        </li>
+                        <li><a class="footer-link" data-toggle="modal" data-target="#signupModal">회원가입</a>
+                        </li>
                     </ul>
                 </div>
                 <div class="col-sm">
@@ -312,6 +279,8 @@
         </section>
     </div>
 
+
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
@@ -323,6 +292,9 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
         crossorigin="anonymous"></script>
+    <!-- Moment Js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+    <script src="https://unpkg.com/lightpick@latest/lightpick.js"></script>
 
     <!-- custom js 추후 분리할것임-->
     <script>
@@ -353,8 +325,28 @@
             }
         }
 
+		// calendar
+        var picker = new Lightpick({
+            field: document.getElementById('datepicker'),
+            singleDate: true,
+            selectForward: true,
+            onSelect: function (start, end) {
+                var str = '';
+                str += start ? start.format('DD-MM-YYYY') + '' : '';
+                document.getElementById('date-result').innerHTML = str;
+                document.getElementById('date-result').value = str;
 
+            }
+        });
+		
+		// service 선택(이사, 병원, 출입국사무소)
+		$(function(){
+			$('.service').click(function({
+				
+			});			
+		});
     </script>
-	
+
+
 </body>
 </html>

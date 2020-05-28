@@ -19,16 +19,16 @@ public class UserController {
 		vo.setEmail("arav@gmail.com");
 		vo.setPw("arav1234");
 		// Command 객체를 request에 저장해준다
-		// ${user.id}
+		// ${user.id}0429
 		// ${user.password}
 		// 이렇게 login.jsp에서 사용가능하다.
-		return "login.jsp";
+		return "main.do";
 	}
 
 	@RequestMapping(value = "/login.do", method = RequestMethod.POST)
 	public String login(UserVO vo, UserDAOImpl userDAO, HttpSession session) {
 		System.out.println("로그인 인증 처리");
-
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
 		if (vo.getEmail() == null || vo.getEmail() == "") {
 			throw new IllegalArgumentException("이메일 반드시 입력해야 됩니다.");
 		}
@@ -36,11 +36,12 @@ public class UserController {
 		UserVO user = userDAO.getUser(vo);
 		if (user != null) {
 			session.setAttribute("userName", user.getName());
-			System.out.println(user.getName());
-//			return "getMain.do";
-			return "main.jsp";
+			session.setAttribute("userNumber", user.getUno());
+			session.setAttribute("userMoney", user.getMoney());
+			System.out.println("name: " + user.getName() + "num: " + user.getUno() + "money: " + user.getMoney());
+			return "main.do";
 		} else {
-			return "login.jsp";
+			return "main.do";
 		}
 	}
 
@@ -57,7 +58,7 @@ public class UserController {
 		System.out.println(vo.toString());
 		if (vo.getEmail() == null) {
 			System.out.println("회원가입 화면으로 이동");
-			return "join.jsp";
+			return "main.do";
 		} else {
 			System.out.println("회원가입 됨. DB에 저장.");
 			// DB에 저장

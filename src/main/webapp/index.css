@@ -1,0 +1,157 @@
+ul {
+   list-style:none;
+   padding-left:0px;
+}
+
+button {
+    outline: none;
+    border: 0;
+}
+
+#image_container{
+    width: 10em;
+    height: 10em;
+    border-radius: 50%;
+    border: 1px solid lightgray;
+    overflow: hidden;
+}
+
+
+
+
+/* navBar */
+
+#mainNavbar {
+    font-size: 1.5rem;
+    font-weight: 100;    
+}
+
+#mainNavbar .nav-link {
+    color: white;
+}
+
+#mainNavbar .nav-link:hover {
+    color: black
+}
+
+#mainNavbar .navbar-brand {
+    color: black;
+    font-size: 1.5rem;
+}
+
+
+@media (max-width: 768px) {
+    #mainNavbar {
+        background-color:limegreen;
+    }
+}
+
+
+.navbar.scrolled {
+    background: limegreen;
+
+}
+
+.navbar-toggler:focus,
+.navbar-toggler:active,
+.fa-align-right:focus {
+    outline: none;
+    box-shadow: none;
+    border: 0;
+}
+
+
+
+
+
+/* main components */
+
+.jumbotron {
+    padding-top: 9rem;
+    align-items: center;
+    padding-bottom: 3rem;
+    margin: 0;
+}
+
+.container-fluid{
+    padding: 0;
+}
+
+.carousel-inner{
+    height: 300px;
+}
+
+.carousel-caption {
+    position: sticky;
+}
+
+.selUserStat{
+    margin: 10em auto;
+    padding: auto;
+}
+
+
+
+/*Board*/
+.helperBoard{
+    margin-top: 2em;
+}
+
+.helperPost{
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    margin: 0.2rem;
+}
+
+.helpeeBoard{
+    margin-top: 2em;
+}
+
+.helpeePost{
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    margin: 0.2rem;
+}
+
+.writeForm{
+    margin-top: 5em;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    padding: 1em;
+}
+
+.mr-3{
+    width: 10em;
+    height: 10em;
+    border-radius: 50%;
+}
+
+
+.mobile-write-btn{
+    border-radius: 50%;
+    position: fixed;
+    left: 85%;
+    top: 93%;
+    z-index: 4;
+
+
+}
+
+
+/*read more*/
+#more {
+    display: none;
+}
+
+
+
+/*myPage*/
+
+
+.myPageBoard{
+    margin-top: 5rem;
+}
+
+.myPageJt{
+    padding-top: 5rem;
+}
