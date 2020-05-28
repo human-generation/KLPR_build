@@ -3,6 +3,8 @@ package com.kimchi.biz.language;
 public class LanguageVO {
 	private int lno;
 	private String language;
+	
+	
 	public int getLno() {
 		return lno;
 	}

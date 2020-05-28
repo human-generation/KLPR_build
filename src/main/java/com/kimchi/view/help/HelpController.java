@@ -18,7 +18,7 @@ public class HelpController {
 	public String writeFormView(@ModelAttribute("helper") HelperVO vo) {
 		System.out.println("헬퍼-홍보 글 작성 페이지로 이동");
 		
-		return "writeForm.jsp";
+		return "helperWriteForm.jsp";
 	}
 	
 	@RequestMapping(value = "/writeForm.do", method = {RequestMethod.POST})

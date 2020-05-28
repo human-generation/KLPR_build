@@ -1,6 +1,9 @@
-<!doctype html>
-<html lang="en">
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!DOCTYPE html>
+<html>
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -19,9 +22,7 @@
 
     <title>K:LPER | Get help in Korea</title>
 </head>
-
 <body>
-
     <nav id="mainNavbar" class="navbar navbar-expand-md navbar-dark py-1 fixed-top">
         <a href="#" class="navbar-brand">K:LPER</a>
         <button class="navbar-toggler" data-toggle="collapse" data-target="#navLinks" aria-label="Toggle navigation">
@@ -37,12 +38,17 @@
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" data-toggle="modal" data-target="#loginModal">Login</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link " data-toggle="modal" data-target="#signupModal">Signup</a>
-                </li>
+				<c:if test="${empty sessionScope.userName}">
+					<li class="nav-item"><a class="nav-link" data-toggle="modal"
+						data-target="#loginModal">Login</a></li>
+					<li class="nav-item"><a class="nav-link " data-toggle="modal"
+						data-target="#signupModal">Signup</a></li>
+				</c:if>
+				<c:if test="${!empty sessionScope.userName}">
+					${sessionScope.userName}님&nbsp;
+					<li class="nav-item"><a class="nav-link" href="myPage.do">MyPage</a></li>
+					<li class="nav-item"><a class="nav-link" href="logout.do">Logout</a></li>
+				</c:if>
             </ul>
         </div>
     </nav>
@@ -62,31 +68,28 @@
                 <div class="media-body">
                     <div class="row">
                         <div class="col-md-6">
-                            <h4>{name}Doja Cat</h4>
+                            <h4>${sessionScope.userName}&nbsp;</h4>
                         </div>
                         <div class="col-md-6">
-                            {gender}
+                            ${sessionScope.userNumber}&nbsp;
                         </div>
                     </div>
                     <div class="col-12">
-                        {phone}
+                        ${sessionScope.userPhone}&nbsp;
                     </div>
-                    <div class="col-12">
-                        {ucomment}
-                    </div>
-                    <form class="helper-write-form" action="helperWrite.do">
+                    <form class="helper-write-form" action="writeForm.do" method="post">
                         <div class="row">
                             <div class="col-md-6">
-                                <input id="date-result-start" hidden></input><input id="date-result-end" hidden></input>
+                            	<input name="uno" type="hidden" value="${sessionScope.userNumber}"/>
+                                <input name="sta" type="hidden" id="date-result-start"></input><input name="end" type="hidden" id="date-result-end"></input>
                                 <input type="text" id="datepicker" class="form-control form-control-sm"
                                     placeholder="Select available date">
                             </div>
                             <div class="col-md-6">
-                                <select class="custom-select" name="language">
+                                <select class="custom-select" name="lno">
                                     <option selected>Choose your language</option>
-                                    <option value="1">english</option>
-                                    <option value="2">chinese</option>
-                                    <option value="3">japanese</option>
+                                    <option value="1">English</option>
+                                    <option value="2">German</option>
                                 </select>
                             </div>
                         </div>
@@ -100,23 +103,22 @@
                                 </select>
                             </div>
                             <div class="col-md-6">
-
                                 <div class="btn-group btn-group-toggle" data-toggle="buttons">
                                     <label class="btn btn-secondary">
-                                        <input type="checkbox" autocomplete="off"> moving
+                                        <input name="moving" class="service" type="checkbox" value="1" autocomplete="off"> moving
                                     </label>
                                     <label class="btn btn-secondary">
-                                        <input type="checkbox" autocomplete="off"> hospital
+                                        <input name="hospital" class="service" type="checkbox" value="1" autocomplete="off"> hospital
                                     </label>
                                     <label class="btn btn-secondary">
-                                        <input type="checkbox" autocomplete="off"> immi
+                                        <input name="immigration" class="service" type="checkbox" value="1" autocomplete="off"> immigration
                                     </label>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="detailReview">Additional Infomation</label>
-                            <textarea name="rcomment" class="form-control" rows="3"></textarea>
+                            <label for="detailReview">Additional Information</label>
+                            <textarea name="r_intro" class="form-control" rows="3"></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary helper-button-main">Submit!</button>
                     </form>
@@ -192,7 +194,7 @@
                 </div>
 
                 <div class="modal-body">
-                    <form class="signup-form" action="singup.do">
+                    <form class="signup-form" action="join.do">
                         <div class="form-group">
                             <label for="signupEmail">Email address</label>
                             <input name="email" type="email" class="form-control" required>
@@ -327,18 +329,27 @@
             onSelect: function (start, end) {
                 var str = '';
                 var str2 = '';
-                str += start ? start.format('DD-MM-YYYY') + '' : '';
-                str2 += end ? end.format('DD-MM-YYYY') : '...';
+                str += start ? start.format('YYYY-MM-DD') + '' : '';
+                str2 += end ? end.format('YYYY-MM-DD') : '...';
                 document.getElementById('date-result-start').innerHTML = str;
                 document.getElementById('date-result-start').value = str;
                 document.getElementById('date-result-end').innerHTML = str2;
                 document.getElementById('date-result-end').value = str2;
             }
         });
+        
+        //체크박스 선택시 value값 0->1변경
+		$('button').click(function(){
+			inputs = $('.service');
+			inputs.each(function(){
+				var value;
+				if($(this).attr('type') === 'checkbox'){
+					value = $(this).is(':checked')? 1:0;
+				}
+			});
+		});
+
 
     </script>
-
-
 </body>
-
 </html>

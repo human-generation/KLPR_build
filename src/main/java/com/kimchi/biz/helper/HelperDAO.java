@@ -8,4 +8,5 @@ public interface HelperDAO {
 	public void deleteHelper(HelperVO vo); // 헬퍼 글 삭제
 	
 	
+	
 }
