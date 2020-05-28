@@ -43,6 +43,10 @@ public class UserDAOImpl implements UserDAO {
 				user.setGender(rs.getInt("gender"));
 				user.setMoney(rs.getInt("money"));
 				user.setPhone(rs.getString("phone"));
+<<<<<<< HEAD
+=======
+
+>>>>>>> 74b822dc703c1800b7dce94dd4e154744a54eef4
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

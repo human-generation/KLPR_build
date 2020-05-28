@@ -16,13 +16,22 @@ public class UserController {
 	@RequestMapping(value = "/login.do", method = RequestMethod.GET)
 	public String loginView(@ModelAttribute("user") UserVO vo) {
 		System.out.println("로그인 화면으로 이동");
+<<<<<<< HEAD
+=======
+		vo.setEmail("arav@gmail.com");
+		vo.setPw("arav1234");
+		// Command 객체를 request에 저장해준다
+		// ${user.id}0429
+		// ${user.password}
+		// 이렇게 login.jsp에서 사용가능하다.
+>>>>>>> 74b822dc703c1800b7dce94dd4e154744a54eef4
 		return "main.do";
 	}
 
 	@RequestMapping(value = "/login.do", method = RequestMethod.POST)
 	public String login(UserVO vo, UserDAOImpl userDAO, HttpSession session) {
 		System.out.println("로그인 인증 처리");
-
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
 		if (vo.getEmail() == null || vo.getEmail() == "") {
 			throw new IllegalArgumentException("이메일 반드시 입력해야 됩니다.");
 		}
@@ -31,11 +40,16 @@ public class UserController {
 		if (user != null) {
 			session.setAttribute("userName", user.getName());
 			session.setAttribute("userNumber", user.getUno());
+<<<<<<< HEAD
 			session.setAttribute("userGender", user.getGender());
 			session.setAttribute("userPhone", user.getPhone());
 			session.setAttribute("userMoney", user.getMoney());
 			System.out.println("유저 이름: " + user.getName() + user.getUno() + user.getMoney());
 //			return "getMain.do";
+=======
+			session.setAttribute("userMoney", user.getMoney());
+			System.out.println("name: " + user.getName() + "num: " + user.getUno() + "money: " + user.getMoney());
+>>>>>>> 74b822dc703c1800b7dce94dd4e154744a54eef4
 			return "main.do";
 		} else {
 			return "main.do";
