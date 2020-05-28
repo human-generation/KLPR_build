@@ -2,30 +2,31 @@ package com.kimchi.view.helper;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import javax.servlet.http.HttpSession;
 
-import com.kimchi.biz.helper.HelperService;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
 import com.kimchi.biz.helper.HelperVO;
+import com.kimchi.biz.helper.impl.HelperDAOImpl;
 
 @Controller
-@SessionAttributes("helper")
+//@SessionAttributes("helper")
 public class HelperController {
 	
-	@Autowired
-	private HelperService helperService;
+//	@Autowired
+//	private HelperService helperService;
 	
 	// 헬퍼 목록
-	@RequestMapping("/getHelperList.do")
-	public String getBoardList(HelperVO vo, Model model) {
+	@RequestMapping(value = "/getHelperList.do", method = RequestMethod.GET)
+	public String getHelperList(@ModelAttribute("helper") HelperVO vo, HelperDAOImpl helperDAO, HttpSession session) {
 		System.out.println("헬퍼 목록 처리 웽");
 
-		List<HelperVO> helperList = helperService.getHelperList(vo);
-		model.addAttribute("helperList", helperList);
-		return "helperBoard.jsp";
+		List<HelperVO> helperList = helperDAO.getHelperList(vo);
+		session.setAttribute("helperList", helperList);
+		return "getHelperList.jsp";
 	}	
 
 }

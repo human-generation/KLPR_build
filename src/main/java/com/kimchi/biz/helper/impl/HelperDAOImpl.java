@@ -20,8 +20,8 @@ public class HelperDAOImpl implements HelperDAO {
 	private PreparedStatement stmt = null;
 	private ResultSet rs = null;
 
-	// SQL 명령어
-	private final String HELPER_LIST = "SELECT * FROM helper JOIN r_review " + "JOIN user ORDER BY helper.rno DESC";
+	// SQL 명령어 
+	private final String HELPERLIST_GET = "SELECT sta, end, moving, hospital, immigration, lno, r_intro FROM helper";
 //	private final String HELPER_LIST = "SELECT u.name, u.comment, r.rscore, h.sta, h.end, "
 //			+ "h.rplace, h.moving, h.hospital, h.immigration, h.lno FROM helper AS h "
 //			+ "JOIN r_review AS r JOIN user AS u ORDER BY r.rno DESC";
@@ -29,27 +29,23 @@ public class HelperDAOImpl implements HelperDAO {
 	@Override
 	public List<HelperVO> getHelperList(HelperVO vo) { // 모든 헬퍼 리스트 보여주기
 		System.out.println("===> JDBC로 getHelperList() 기능 처리");
-		System.out.println(vo.toString());
 		
 		List<HelperVO> helperList = new ArrayList<HelperVO>();
 		try {
 			conn = JDBCUtil.getConnection();
-			stmt = conn.prepareStatement(HELPER_LIST);
+			stmt = conn.prepareStatement(HELPERLIST_GET);
 			rs = stmt.executeQuery();
 			while (rs.next()) {
 				HelperVO helper = new HelperVO();
-				helper.setName(rs.getString("name"));
-				helper.setUcomment(rs.getString("ucomment"));
-				helper.setRscore(rs.getInt("rscore"));
 				helper.setSta(rs.getDate("sta"));
 				helper.setEnd(rs.getDate("end"));
-				helper.setRplace(rs.getInt("rplace"));
 				helper.setMoving(rs.getInt("moving"));
 				helper.setHospital(rs.getInt("hospital"));
 				helper.setImmigration(rs.getInt("immigration"));
 				helper.setLno(rs.getInt("lno"));
 				helperList.add(helper);
 			}
+			System.out.println("확인시발: " + helperList.toString());
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

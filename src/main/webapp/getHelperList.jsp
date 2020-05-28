@@ -2,16 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page import="com.kimchi.biz.helper.HelperVO" %>
-<%@ page import="com.kimchi.biz.user.UserVO" %>
-<%@ page import="com.kimchi.biz.r_review.R_reviewVO" %>
-
-<%
-	HelperVO helper = (HelperVO)session.getAttribute("helper");
-	UserVO user = (UserVO)session.getAttribute("user");
-	R_reviewVO r_review = (R_reviewVO)session.getAttribute("user");
-%>
-<!DOCTYPE html>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<!doctype html>
 <html>
 <head>
     <!-- Required meta tags -->
@@ -120,6 +112,7 @@
             </div>
 
             <div class="col-md-10 order-2 order-md-2">
+            	<c:forEach items="${helperList}" var="helper">
                 <div class="row media helperPost">
                     <div class="col-md-3 order-1 order-md-1 align-items-center">
                         <img class="mr-3" src="https://cdn.pixabay.com/photo/2013/10/28/19/23/cat-201969_960_720.jpg"
@@ -127,20 +120,28 @@
                     </div>
                     <div class="col-md-9 order-2 order-md-2">
                         <div class="media-body">
+                        	<c:if test="${helper.moving==1}">
                             <a href="#" class="badge badge-primary helper-button-main">이사</a>
+                            </c:if>
+                            <c:if test="${helper.hospital==1}">
                             <a href="#" class="badge badge-primary helper-button-main">병원</a>
+                            </c:if>
+                            <c:if test="${helper.immigration==1}">
+                            <a href="#" class="badge badge-primary helper-button-main">출입국</a>
+                            </c:if>
+                            
                             <div class="row">
                                 <div class="col-md-6 order-2 order-md-1">
-                                    <h4><%=user.getName() %></h4>
+                                    <h4>Doja Cat</h4>
                                 </div>
                                 <div class="col-md-6 order-1 order-md-2">
-                                    <h5><%=r_review.getRscore() %></h5>
+                                    <h5>{⭐️⭐️⭐️⭐️⭐️}</h5>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-6 order-2 order-sm-1">
                                     <div class="lang">
-                                        Language {language}
+                                        Language ${helper.lno}
                                     </div>
                                     <div class="reviewNum">
                                         Total usage {rv_no}
@@ -149,14 +150,14 @@
                                 </div>
                                 <div class="col-sm-6 order-1 order-sm-2">
                                     <div class="avDate">
-                                        Available date {sta - end}
+                                        Available date ${helper.sta} ~ ${helper.end}
                                     </div>
                                     <div class="area">
                                         Placed in <i class="fas fa-map-marker-alt"></i>{rplace}
                                     </div>
                                 </div>
                             </div>
-                            <div>{자기소개} hi I'm a cute cat. I'm useless other than being cute.
+                            <div>{자기소개} ${helper.r_intro}
                                 <div id="dots"></div>
                                 <div id="more">
                                     <div class="boardReview">
@@ -180,6 +181,7 @@
 
                     </div>
                 </div>
+                </c:forEach>
 
 
                 <!--PAGING -->
