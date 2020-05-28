@@ -13,7 +13,8 @@ import com.kimchi.biz.helpee.HelpeeDAO;
 import com.kimchi.biz.helpee.HelpeeVO;
 
 
-@Repository("helpeeDAO")
+//@Repository("helpeeDAO")
+@Repository
 public class HelpeeDAOImpl implements HelpeeDAO{
 	
 	// JDBC 관련 변수들

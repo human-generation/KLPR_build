@@ -27,6 +27,7 @@ public class HelpeeServiceImpl implements HelpeeService{
 	@Override
 	public List<HelpeeVO> getHelpeeList(HelpeeVO vo) {
 		System.out.println("HelpeeServiceImpl의 getHelpeeList() 실행...");
+		System.out.println("HelpeeDAO : " + helpeeDAO);
 		return helpeeDAO.getHelpeeList(vo);
 	}
 	
