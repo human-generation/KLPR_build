@@ -33,10 +33,10 @@
         <div class="collapse navbar-collapse" id="navLinks">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a href="" class="nav-link">HELPER</a>
+                    <a href="getHelperList.do" class="nav-link">HELPER</a>
                 </li>
                 <li class="nav-item">
-                    <a href="" class="nav-link">HELPEE</a>
+                    <a href="getHelpeeList.do" class="nav-link">HELPEE</a>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
@@ -132,7 +132,7 @@
                             
                             <div class="row">
                                 <div class="col-md-6 order-2 order-md-1">
-                                    <h4>Doja Cat</h4>
+                                    <h4>${helper.name}</h4>
                                 </div>
                                 <div class="col-md-6 order-1 order-md-2">
                                     <h5>{⭐️⭐️⭐️⭐️⭐️}</h5>
@@ -141,7 +141,7 @@
                             <div class="row">
                                 <div class="col-sm-6 order-2 order-sm-1">
                                     <div class="lang">
-                                        Language ${helper.lno}
+                                        Language ${helper.language}
                                     </div>
                                     <div class="reviewNum">
                                         Total usage {rv_no}
