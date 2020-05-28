@@ -24,7 +24,7 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public UserVO getUser(UserVO vo) {
-		System.out.println("------UserDAOImlp의-getUser() 기능 처리");
+		System.out.println("------UserDAOImpl의-getUser() 기능 처리");
 
 		UserVO user = null;
 		try {

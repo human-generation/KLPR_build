@@ -87,7 +87,7 @@
                     <div class="col-12">
                         {phone}
                     </div>
-                    <form class="helper-write-form" action="eIntro.do"> <!-- submit버튼을 누르면 다시 페이지 이동하도록  -->
+                    <form class="helper-write-form" action="eIntro.do" method="POST"> <!-- submit버튼을 누르면 다시 페이지 이동하도록  -->
                         <div class="row">
                             <div class="col-md-6">
                                 <input id="date-result" hidden></input>
@@ -114,13 +114,13 @@
                             <div class="col-md-6">
                                 <div class="btn-group btn-group-toggle" data-toggle="buttons">
                                     <label class="btn btn-secondary">
-                                        <input type="checkbox" autocomplete="off" class="service" name="moving"> moving
+                                        <input type="checkbox" autocomplete="off" class="service" name="moving" value="0"> moving
                                     </label>
                                     <label class="btn btn-secondary">
-                                        <input type="checkbox" autocomplete="off" class="service" name="hospital"> hospital
+                                        <input type="checkbox" autocomplete="off" class="service" name="hospital" value="0"> hospital
                                     </label>
                                     <label class="btn btn-secondary">
-                                        <input type="checkbox" autocomplete="off" class="service" name="immigration"> immi
+                                        <input type="checkbox" autocomplete="off" class="service" name="immigration" value="0"> immi
                                     </label>
                                 </div>
                             </div>
@@ -340,10 +340,13 @@
         });
 		
 		// service 선택(이사, 병원, 출입국사무소)
-		$(function(){
-			$('.service').click(function({
-				
-			});			
+		$('button').click(function(){
+			inputs = $('.service');
+			inputs.each(function(){
+				if($(this).attr('type') === 'checkbox'){
+					value = $(this).is('.checked') ? 1 : 0; 	
+				}				
+			});
 		});
     </script>
 

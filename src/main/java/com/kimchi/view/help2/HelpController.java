@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.kimchi.biz.helpee.HelpeePRVO;
+import com.kimchi.biz.helpee.impl.HelpeePRDAOImpl;
 
 
 /*
@@ -27,7 +28,8 @@ public class HelpController {
 	
 	// 입력 값을 DB에 저장 & 서버 요청
 	@RequestMapping(value = "/eIntro.do", method = RequestMethod.POST)
-	public String IntroPosting() {
+	public String IntroPosting(HelpeePRVO vo, HelpeePRDAOImpl eprDAO) {
+		eprDAO.insertEPR(vo);
 		
 		return "main.do";
 	}
