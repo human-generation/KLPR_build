@@ -11,7 +11,8 @@
 
 	<context:component-scan
 		base-package="com.kimchi.view"></context:component-scan>
-
+	<context:component-scan
+		base-package="com.kimchi.biz"></context:component-scan>
 	<!-- aop 애노테이션 자동 처리 -->
 	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
 
@@ -58,13 +59,15 @@
 	</aop:config>
 
 	<!-- MyBatis 사용을 위해서 등록 -->
+	<!-- 
 	<bean id="sessionFactory"
 		class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="configLocation"
 			value="classpath:sql-map-config.xml" />
 	</bean>
-
+ 	-->
+ 	
 	<!-- MyBatis 사용을 위해서 등록 -->
 	<bean id="sqlSession"
 		class="org.mybatis.spring.SqlSessionFactoryBean">

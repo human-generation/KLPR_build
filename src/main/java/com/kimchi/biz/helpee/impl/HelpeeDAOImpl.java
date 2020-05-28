@@ -25,6 +25,7 @@ public class HelpeeDAOImpl implements HelpeeDAO{
 	@Override
 	public List<HelpeeVO> getHelpeeList(HelpeeVO vo) {
 		System.out.println("===> MyBatis로 getHelpeeList() 기능 처리");
+		System.out.println("SqlSessionTemplate : " + mybatis);
 		return mybatis.selectList("HelpeeDAO.getHelpeeList", vo);
 	}
 
