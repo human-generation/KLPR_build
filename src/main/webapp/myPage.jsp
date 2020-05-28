@@ -75,14 +75,14 @@
             <div class="col-md-2 order-1 order-md-1">
                 <div class="btn-group-vertical d-none d-md-block">
                     <button type="button" class="btn btn-secondary helper-button" onclick="location.href='myPage.do'">My page</button>
-                    <button type="button" class="btn btn-secondary helper-button">요청내역</button>
+                    <button type="button" class="btn btn-secondary helper-button" onclick="location.href='incomingRequest.do'">요청내역</button>
                     <button type="button" class="btn btn-secondary helper-button">진행중내역</button>
                     <button type="button" class="btn btn-secondary helper-button">이전내역</button>
                     <button type="button" class="btn btn-secondary helper-button">나의정보수정</button>
                 </div>
                 <div class="btn-group d-md-none">
                     <button type="button" class="btn btn-secondary helper-button" onclick="location.href='myPage.do'">My page</button>
-                    <button type="button" class="btn btn-secondary helper-button">요청내역</button>
+                    <button type="button" class="btn btn-secondary helper-button" onclick="location.href='incomingRequest.do'">요청내역</button>
                     <button type="button" class="btn btn-secondary helper-button">진행중내역</button>
                     <button type="button" class="btn btn-secondary helper-button">이전내역</button>
                     <button type="button" class="btn btn-secondary helper-button">나의정보수정</button>
@@ -140,7 +140,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">거래완료</h5>
                                 <p class="card-text">리뷰작성대기중</p>
-                                <a href="#" class="btn btn-primary btn-sm helpee-button-main">${mstate4},${mstate5}</a>
+                                <a href="#" class="btn btn-primary btn-sm helpee-button-main">${mstate4}</a>
                             </div>
                         </div>
                     </div>
