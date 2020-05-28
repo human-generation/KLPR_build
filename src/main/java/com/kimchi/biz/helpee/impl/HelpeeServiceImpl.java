@@ -5,16 +5,21 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import com.kimchi.biz.helpee.HelpeeDAO;
 import com.kimchi.biz.helpee.HelpeeService;
 import com.kimchi.biz.helpee.HelpeeVO;
 
-@Service("helpeeService")
+@Component
 public class HelpeeServiceImpl implements HelpeeService{
-	@Autowired
+	
 	private HelpeeDAO helpeeDAO;
+	
+	@Autowired
+	void setHelpeeDao(HelpeeDAO helpeeDAO) {
+		this.helpeeDAO = helpeeDAO;
+	}
 	
 	@Autowired
 	HttpSession session;

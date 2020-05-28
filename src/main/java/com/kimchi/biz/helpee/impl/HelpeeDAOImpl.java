@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Component;
 
 import com.kimchi.biz.common.JDBCUtil;
 import com.kimchi.biz.helpee.HelpeeDAO;
@@ -14,7 +14,7 @@ import com.kimchi.biz.helpee.HelpeeVO;
 
 
 //@Repository("helpeeDAO")
-@Repository
+@Component
 public class HelpeeDAOImpl implements HelpeeDAO{
 	
 	// JDBC 관련 변수들

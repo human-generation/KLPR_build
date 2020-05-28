@@ -11,6 +11,8 @@
 
 	<context:component-scan
 		base-package="com.kimchi.view"></context:component-scan>
+	<context:component-scan
+		base-package="com.kimchi.biz"></context:component-scan>
 
 	<!-- aop 애노테이션 자동 처리 -->
 	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
