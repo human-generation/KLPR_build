@@ -28,7 +28,6 @@
 
 <body>
 
-<<<<<<< HEAD
 	<nav id="mainNavbar"
 		class="navbar navbar-expand-md navbar-dark py-1 fixed-top">
 		<a href="#" class="navbar-brand">K:LPER</a>
