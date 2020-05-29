@@ -6,11 +6,11 @@
 	#{title}은 parameter로 전달된 getTitle()메서드를 
 	호출한다.
  -->
-<mapper namespace="BoardDAO">
+<mapper namespace="HelpeeDAO">
 
 	<!-- 컬럼이름과 자바객체의 프로퍼티명이 다를 때는
 	     아래처럼 매핑 규칙을 정해줘야 한다 -->
-	<resultMap id="boardResult" type="board">
+	<resultMap id="boardResult" type="helpee">
 		<id property="seq" column="SEQ"/>
 		<result property="title" column="TITLE"/>
 		<result property="writer" column="WRITER"/>
@@ -18,7 +18,7 @@
 		<result property="regDate" column="REGDATE"/>
 		<result property="cnt" column="CNT"/>
 	</resultMap>
-
+	
 	<insert id="insertBoard" parameterType="board">
 		insert into board(SEQ, TITLE, WRITER, CONTENT)
 		values((select nvl(max(SEQ), 0)+1 from board),

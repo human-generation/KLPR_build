@@ -35,9 +35,15 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navLinks">
 			<ul class="navbar-nav mr-auto">
+<<<<<<< HEAD
+				<li class="nav-item"><a href="getHelperList.do" class="nav-link">HELPER</a>
+				</li>
+				<li class="nav-item"><a href="getHelpeeList.do" class="nav-link">HELPEE</a>
+=======
 				<li class="nav-item"><a href="helperWriteForm.do" class="nav-link">HELPER</a>
 				</li>
 				<li class="nav-item"><a href="helpeeWriteForm.do" class="nav-link">HELPEE</a>
+>>>>>>> 6778bb1ad86d5a0cec3043efbda5ced9d3eff51a
 				</li>
 			</ul>
 			<ul class="navbar-nav ml-auto">

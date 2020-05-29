@@ -1,10 +1,13 @@
 package com.kimchi.biz.helpee;
 
 
-//단일 데이터의 접근과 갱신만 처리
-//사용자의 요구에 맞게 가공하는 건 Service 단에서 해야 함
+import java.util.List;
 
 public interface HelpeeDAO {
-	
+	public HelpeeVO getHelpee(HelpeeVO vo);
+	public List<HelpeeVO> getHelpeeList(HelpeeVO vo);	
 	public void insertHelpee(HelpeeVO vo);
+	public void updateHelpee(HelpeeVO vo);
+	public void deleteHelpee(HelpeeVO vo);
 }
+

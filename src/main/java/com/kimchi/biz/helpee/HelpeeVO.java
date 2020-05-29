@@ -1,16 +1,18 @@
 package com.kimchi.biz.helpee;
 
+
+//@XmlAccessorType(XmlAccessType.FIELD)
 public class HelpeeVO {
+	//@XmlAttribute
 	private int eno;
 	private int uno;
-	private String edate;		// 가능 날짜
-	private int eplace;		// 헬피 지역
-	private int moving;		// 이사
-	private int hospital;	// 병원
-	private int immigration;// 출입국
-	private int lno;		// 언어
-	private String e_intro;  // 헬피 자기소개 (e_intro)
-	
+	private String edate;
+	private int eplace;
+	private int moving;
+	private int hospital;
+	private int immigration;
+	private int lno;
+	private String e_intro;
 	public int getEno() {
 		return eno;
 	}
@@ -72,6 +74,6 @@ public class HelpeeVO {
 				+ moving + ", hospital=" + hospital + ", immigration=" + immigration + ", lno=" + lno + ", e_intro="
 				+ e_intro + "]";
 	}
-	
-	
+
+
 }

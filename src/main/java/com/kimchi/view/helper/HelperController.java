@@ -1,5 +1,9 @@
 package com.kimchi.view.helper;
 
+<<<<<<< HEAD
+import java.util.List;
+=======
+>>>>>>> 6778bb1ad86d5a0cec3043efbda5ced9d3eff51a
 
 import javax.servlet.http.HttpSession;
 
@@ -9,6 +13,27 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.kimchi.biz.helper.HelperVO;
+<<<<<<< HEAD
+import com.kimchi.biz.helper.HelperVO;
+import com.kimchi.biz.helper.impl.HelperDAOImpl;
+
+@Controller
+//@SessionAttributes("helper")
+public class HelperController {
+	
+//	@Autowired
+//	private HelperService helperService;
+	
+	// 헬퍼 목록
+	@RequestMapping(value = "/getHelperList.do", method = RequestMethod.GET)
+	public String getHelperList(@ModelAttribute("helper") HelperVO vo, HelperDAOImpl helperDAO, HttpSession session) {
+		System.out.println("헬퍼 목록 처리 웽");
+
+		List<HelperVO> helperList = helperDAO.getHelperList(vo);
+		session.setAttribute("helperList", helperList);
+		return "getHelperList.jsp";
+	}	
+=======
 import com.kimchi.biz.helper.impl.HelperDAOImpl;
 
 @Controller
@@ -33,5 +58,6 @@ public class HelperController {
 	
 	
 	
+>>>>>>> 6778bb1ad86d5a0cec3043efbda5ced9d3eff51a
 
 }
