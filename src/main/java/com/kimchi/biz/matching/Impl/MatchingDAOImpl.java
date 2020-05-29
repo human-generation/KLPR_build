@@ -3,6 +3,7 @@ package com.kimchi.biz.matching.Impl;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,6 +34,9 @@ public class MatchingDAOImpl implements MatchingDAO {
 
 	private final String S_YOUR_NAME = "SELECT name FROM user WHERE uno=(SELECT seno FROM matching WHERE mno=?)";
 	private final String R_YOUR_NAME = "SELECT name FROM user WHERE uno=(SELECT rcno FROM matching WHERE mno=?)";
+	
+	private final String UPDATE_PAID="UPDATE matching SET mstate=3 where mno=?";
+	private final String UPDATE_ENDED="UPDATE matching SET mstate=5 where mno=?";
 
 	@Override
 	public List<MatchingVOExtra> getMatchingList(UserVO vo, int state) { // state에 따라 리스트 리턴해주는 함수
@@ -145,4 +149,23 @@ public class MatchingDAOImpl implements MatchingDAO {
 		return null;
 	}
 	
+	public void updateState(MatchingVOExtra mvo) {
+			try {
+				if(mvo.getMstate()==2) {
+					stmt2=conn.prepareStatement(UPDATE_PAID);
+					stmt2.setInt(1, mvo.getMno());
+					rs2=stmt2.executeQuery();
+				}
+				else if(mvo.getMstate()==4) {
+					stmt2=conn.prepareStatement(UPDATE_ENDED);
+					stmt2.setInt(1, mvo.getMno());
+					rs2=stmt2.executeQuery();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			finally{
+				JDBCUtil.close(rs2, stmt2, conn);
+			}
+	}
 }

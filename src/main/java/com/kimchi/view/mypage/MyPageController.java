@@ -49,4 +49,10 @@ public class MyPageController {
 		System.out.println(vo.toString());
 		return "myPage.do";
 	}
+	
+	@RequestMapping(value="/updateState.do", method= {RequestMethod.POST})
+	public String updateState(MatchingVOExtra mvo, MatchingDAOImpl matchingDAO) {//폴리모피즘되는지확인
+		matchingDAO.updateState(mvo);
+		return "myPage.do";
+	}
 }

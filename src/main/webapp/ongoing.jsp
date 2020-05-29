@@ -29,7 +29,7 @@
 					<td>${matching_w.mplace }</td>
 				</c:forEach>
 			</tr>
-			<tr>
+			<tr>  
 				<th>결제완료</th>
 				<c:forEach items="${PaidList}" var="matching_p">
 					<td>${matching_p.receiverName }</td>
