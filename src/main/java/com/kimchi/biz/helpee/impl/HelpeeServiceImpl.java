@@ -15,14 +15,12 @@ import com.kimchi.biz.helpee.HelpeeVO;
 public class HelpeeServiceImpl implements HelpeeService{
 	@Autowired
 	private HelpeeDAO helpeeDAO;
-
+	
 	@Autowired
 	HttpSession session;
 
-	
 	@Override
 	public HelpeeVO getHelpee(HelpeeVO vo) {
-		System.out.println("HelpeeServiceImpl의 getHelpee() 실행...");
 		return helpeeDAO.getHelpee(vo);
 	}
 
@@ -32,9 +30,5 @@ public class HelpeeServiceImpl implements HelpeeService{
 		return helpeeDAO.getHelpeeList(vo);
 	}
 	
-	@Override
-	public void insertHelpee(HelpeeVO vo) {
-		helpeeDAO.insertHelpee(vo);
-	}
 	
 }

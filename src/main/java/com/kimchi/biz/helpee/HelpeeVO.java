@@ -1,9 +1,12 @@
 package com.kimchi.biz.helpee;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
 
-//@XmlAccessorType(XmlAccessType.FIELD)
+@XmlAccessorType(XmlAccessType.FIELD)
 public class HelpeeVO {
-	//@XmlAttribute
+	@XmlAttribute
 	private int eno;
 	private int uno;
 	private String edate;
@@ -13,6 +16,7 @@ public class HelpeeVO {
 	private int immigration;
 	private int lno;
 	private String e_intro;
+	
 	public int getEno() {
 		return eno;
 	}
@@ -61,19 +65,18 @@ public class HelpeeVO {
 	public void setLno(int lno) {
 		this.lno = lno;
 	}
+	
 	public String getE_intro() {
 		return e_intro;
 	}
 	public void setE_intro(String e_intro) {
 		this.e_intro = e_intro;
 	}
-	
 	@Override
 	public String toString() {
 		return "HelpeeVO [eno=" + eno + ", uno=" + uno + ", edate=" + edate + ", eplace=" + eplace + ", moving="
 				+ moving + ", hospital=" + hospital + ", immigration=" + immigration + ", lno=" + lno + ", e_intro="
 				+ e_intro + "]";
 	}
-
-
+	
 }

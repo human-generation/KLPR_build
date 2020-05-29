@@ -1,5 +1,7 @@
 package com.kimchi.view.helpee;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -18,23 +20,16 @@ import com.kimchi.biz.helpee.impl.HelpeeDAOImpl;
  * */
 
 @Controller
+//@SessionAttributes("helpee")
 public class HelpeeController {
 	
-	// 서버에 ~.do를 띄우기 요청
-	@RequestMapping(value = "/helpeeWriteForm.do", method = RequestMethod.GET) //eIntro.do에서 helpeeWriteForm.do로 변경
-	public String helpeeFormView(@ModelAttribute("helpee") HelpeeVO vo) {
-		System.out.println("헬피-요청 글 작성 페이지로 이동 ");
+	@RequestMapping(value = "/getHelpeeList.do", method = RequestMethod.GET)
+	public String getHelpeeList(@ModelAttribute("helpee") HelpeeVO vo, HelpeeDAOImpl helpeeDAO, HttpSession session) {
+		System.out.println("헬피 홍보글 목록으로 이동");
 		
-		return "helpeeWriteForm.jsp";
-	}
-	
-	// 입력 값을 DB에 저장 & 서버 요청
-	@RequestMapping(value = "/helpeeWriteForm.do", method = RequestMethod.POST)	//eIntro.do에서 helpeeWriteForm.do로 변경
-	public String helpeeForm(HelpeeVO vo, HelpeeDAOImpl helpeeDAO, HttpSession session ) {
-		System.out.println("헬피-요청 글 작성 submit. DB에 저장.");
-		
-		helpeeDAO.insertHelpee(vo);
-		
-		return "main.do";
+		List<HelpeeVO> helpeeList = helpeeDAO.getHelpeeList(vo);
+		session.setAttribute("helpeeList", helpeeList);
+		System.out.println(helpeeList.toString());
+		return "getHelpeeList.jsp";
 	}
 }

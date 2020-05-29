@@ -1,5 +1,7 @@
 package com.kimchi.biz.language;
 
-public interface LanguageService {
+import java.util.List;
 
+public interface LanguageService {
+	public List<LanguageVO> getLanguageList(LanguageVO vo);
 }
