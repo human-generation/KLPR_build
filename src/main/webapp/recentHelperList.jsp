@@ -112,7 +112,7 @@
 
             <div class="col-md-10 order-2 order-md-2">
 
-            	<c:forEach items="${helperList}" var="helper">
+            	<c:forEach items="${recentList}" var="helper">
                 <div class="row media helperPost">
                     <div class="col-md-3 order-1 order-md-1 align-items-center">
                         <img class="mr-3" src="https://cdn.pixabay.com/photo/2013/10/28/19/23/cat-201969_960_720.jpg"
