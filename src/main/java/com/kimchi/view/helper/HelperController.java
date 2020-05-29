@@ -24,9 +24,21 @@ public class HelperController {
 	public String getHelperList(@ModelAttribute("helper") HelperVO vo, HelperDAOImpl helperDAO, HttpSession session) {
 		System.out.println("헬퍼 목록 처리 웽");
 
-		List<HelperVO> helperList = helperDAO.getHelperList(vo);
+		helperDAO.deleteHelper(vo);	// 날짜지난 홍보글부터 삭제
+		
+		List<HelperVO> helperList = helperDAO.getHelperList(vo); // 홍보글 리스트 불러오기
 		session.setAttribute("helperList", helperList);
 		return "getHelperList.jsp";
-	}	
-
+	}
+	
+	// 최신순
+	@RequestMapping(value = "/recentHelperList.do", method = RequestMethod.GET)
+	public String recentHelperList(@ModelAttribute("helper") HelperVO vo, HelperDAOImpl helperDAO, HttpSession session) {
+		System.out.println("최신순 헬퍼 목록 처리 띠용 되나요?");
+		
+		List<HelperVO> recentList = helperDAO.recentHelperList(vo); // 홍보글 목록 최신순으로 불러오기
+		session.setAttribute("recentList", recentList);
+		return "recentHelperList.jsp";
+	}
+	
 }
