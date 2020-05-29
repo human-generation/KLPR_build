@@ -9,7 +9,7 @@ import com.kimchi.biz.seoul.SeoulDAO;
 import com.kimchi.biz.seoul.SeoulService;
 import com.kimchi.biz.seoul.SeoulVO;
 
-@Service("helpeeService")
+@Service("SeoulService")
 public class SeoulServiceimpl implements SeoulService{
 	
 	@Autowired
