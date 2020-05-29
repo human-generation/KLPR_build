@@ -30,6 +30,16 @@ public class MyPageController {
 		return "incomingRequest.jsp"; 
 	}
 	
+	@RequestMapping(value="/ongoing.do", method= {RequestMethod.GET,RequestMethod.POST})
+	public String getBoardList(HttpSession session, Model model, MatchingDAOImpl matchingDAO) {
+		UserVO vo=(UserVO)session.getAttribute("loginUser");
+		System.out.println(vo.toString());
+		model.addAttribute("WaitingList", matchingDAO.getMatchingList(vo,2));
+		model.addAttribute("PaidList", matchingDAO.getMatchingList(vo,3));
+		model.addAttribute("EndedList", matchingDAO.getMatchingList(vo,4));
+		return "ongoing.jsp"; 
+	}
+	
 	@RequestMapping(value="/payment.do", method= {RequestMethod.POST} )
 	public String payment(UserDAOImpl userDAO, HttpSession session, @RequestParam("pay")int pay) {
 		UserVO vo=(UserVO)session.getAttribute("loginUser");

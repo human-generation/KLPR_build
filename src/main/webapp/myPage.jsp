@@ -76,14 +76,14 @@
                 <div class="btn-group-vertical d-none d-md-block">
                     <button type="button" class="btn btn-secondary helper-button" onclick="location.href='myPage.do'">My page</button>
                     <button type="button" class="btn btn-secondary helper-button" onclick="location.href='incomingRequest.do'">요청내역</button>
-                    <button type="button" class="btn btn-secondary helper-button">진행중내역</button>
+                    <button type="button" class="btn btn-secondary helper-button" onclick="location.href='ongoing.do'">진행중내역</button>
                     <button type="button" class="btn btn-secondary helper-button">이전내역</button>
                     <button type="button" class="btn btn-secondary helper-button">나의정보수정</button>
                 </div>
                 <div class="btn-group d-md-none">
                     <button type="button" class="btn btn-secondary helper-button" onclick="location.href='myPage.do'">My page</button>
                     <button type="button" class="btn btn-secondary helper-button" onclick="location.href='incomingRequest.do'">요청내역</button>
-                    <button type="button" class="btn btn-secondary helper-button">진행중내역</button>
+                    <button type="button" class="btn btn-secondary helper-button" onclick="location.href='ongoing.do'">진행중내역</button>
                     <button type="button" class="btn btn-secondary helper-button">이전내역</button>
                     <button type="button" class="btn btn-secondary helper-button">나의정보수정</button>
                 </div>
@@ -112,7 +112,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">신청중</h5>
                                 <p class="card-text">승인을 기다리고 있는 거래</p>
-                                <a href="#" class="btn btn-primary btn-sm helper-button-main">${mstate0}</a><a href="#"
+                                <a href="incomingRequest.do" class="btn btn-primary btn-sm helper-button-main">${mstate0}</a><a href="#"
                                     class="btn btn-primary btn-sm helpee-button-main">${mstate1}</a>
                             </div>
                         </div>
