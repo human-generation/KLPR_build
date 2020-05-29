@@ -3,42 +3,37 @@ package com.kimchi.biz.helper.impl;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-<<<<<<< HEAD
 import java.util.ArrayList;
 import java.util.List;
-=======
 import java.util.Date;
->>>>>>> 6778bb1ad86d5a0cec3043efbda5ced9d3eff51a
 
 import org.springframework.stereotype.Repository;
 
 import com.kimchi.biz.common.JDBCUtil;
 import com.kimchi.biz.helper.HelperDAO;
 import com.kimchi.biz.helper.HelperVO;
-<<<<<<< HEAD
+import com.kimchi.biz.language.LanguageVO;
+import com.kimchi.biz.user.UserVO;
 import com.kimchi.biz.helper.HelperVO;
-
-@Repository("HelperDAO")
-public class HelperDAOImpl implements HelperDAO {
-
-	// JDBC 관련 변수들
-=======
 
 @Repository("helperDAO")
 public class HelperDAOImpl implements HelperDAO{
+
 	//JDBC 관련 변수
->>>>>>> 6778bb1ad86d5a0cec3043efbda5ced9d3eff51a
 	private Connection conn = null;
 	private PreparedStatement stmt = null;
 	private ResultSet rs = null;
 
-<<<<<<< HEAD
 	// SQL 명령어 
 	private final String HELPERLIST_GET = "SELECT u.name, l.language, h.sta, h.end, h.rplace, h.moving, h.hospital, h.immigration, h.r_intro"
 			+ " FROM helper AS h JOIN user AS u ON h.uno=u.uno JOIN language AS l ON h.lno=l.lno";
-
+	private final String HELPER_GET = "SELECT * FROM helper WHERE rno=?";
+	private final String HELPER_INSERT = "INSERT INTO helper(uno, sta, end, rplace, moving, hospital, immigration, lno, r_intro) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+	private final String HELPER_UPDATE = "UPDATE helper SET sta=?, end=?, rplace=?, moving=?, hospital=?, immigration=?, r_intro=? WHERE rno=?";
+	private final String HELPER_DELETE = "DELETE FROM helper WHERE rno=?";
+	
 	@Override
-	public List<HelperVO> getHelperList(HelperVO vo) { // 모든 헬퍼 리스트 보여주기
+	public List<HelperVO> getHelperList(HelperVO vo, UserVO uvo, LanguageVO lvo) { // 모든 헬퍼 리스트 보여주기
 		System.out.println("===> JDBC로 getHelperList() 기능 처리");
 		
 		List<HelperVO> helperList = new ArrayList<HelperVO>();
@@ -51,14 +46,13 @@ public class HelperDAOImpl implements HelperDAO{
 				helper.setName(rs.getString("name"));
 				helper.setLanguage(rs.getString("language"));
 				
-				helper.setSta(rs.getDate("sta"));
-				helper.setEnd(rs.getDate("end"));
-=======
-	//SQL 명령어 
-	private final String HELPER_GET = "SELECT * FROM helper WHERE rno=?";
-	private final String HELPER_INSERT = "INSERT INTO helper(uno, sta, end, rplace, moving, hospital, immigration, lno, r_intro) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
-	private final String HELPER_UPDATE = "UPDATE helper SET sta=?, end=?, rplace=?, moving=?, hospital=?, immigration=?, r_intro=? WHERE rno=?";
-	private final String HELPER_DELETE = "DELETE FROM helper WHERE rno=?";
+				helper.setSta(rs.getString("sta"));
+				helper.setEnd(rs.getString("end"));
+				helperList.add(helper);
+			}
+		}
+	}
+
 	
 	@Override
 	public HelperVO getHelper(HelperVO vo) {
@@ -73,14 +67,12 @@ public class HelperDAOImpl implements HelperDAO{
 				helper = new HelperVO();
 				helper.setSta(rs.getString("sta"));
 				helper.setEnd(rs.getString("end"));
->>>>>>> 6778bb1ad86d5a0cec3043efbda5ced9d3eff51a
 				helper.setRplace(rs.getInt("rplace"));
 				helper.setMoving(rs.getInt("moving"));
 				helper.setHospital(rs.getInt("hospital"));
 				helper.setImmigration(rs.getInt("immigration"));
-<<<<<<< HEAD
 				helper.setR_intro(rs.getString("r_intro"));
-				helperList.add(helper);
+
 			}
 			System.out.println("확인시발: " + helperList.toString());
 		} catch (Exception e) {
@@ -171,6 +163,12 @@ public class HelperDAOImpl implements HelperDAO{
 		}finally {
 			JDBCUtil.close(stmt, conn);
 		}
+	}
+
+
+	@Override
+	public List<HelperVO> getHelperList(HelperVO vo) {
+		// TODO Auto-generated method stub
+		return null;
 	}	
->>>>>>> 6778bb1ad86d5a0cec3043efbda5ced9d3eff51a
 }

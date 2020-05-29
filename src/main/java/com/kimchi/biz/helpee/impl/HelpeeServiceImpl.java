@@ -1,10 +1,7 @@
 package com.kimchi.biz.helpee.impl;
 
-<<<<<<< HEAD
 import java.util.List;
 
-=======
->>>>>>> 6778bb1ad86d5a0cec3043efbda5ced9d3eff51a
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,21 +12,17 @@ import com.kimchi.biz.helpee.HelpeeService;
 import com.kimchi.biz.helpee.HelpeeVO;
 
 @Service("helpeeService")
-<<<<<<< HEAD
 public class HelpeeServiceImpl implements HelpeeService{
-=======
-public class HelpeeServiceImpl implements HelpeeService {
-
->>>>>>> 6778bb1ad86d5a0cec3043efbda5ced9d3eff51a
 	@Autowired
 	private HelpeeDAO helpeeDAO;
-	
+
 	@Autowired
-<<<<<<< HEAD
 	HttpSession session;
 
+	
 	@Override
 	public HelpeeVO getHelpee(HelpeeVO vo) {
+		System.out.println("HelpeeServiceImpl의 getHelpee() 실행...");
 		return helpeeDAO.getHelpee(vo);
 	}
 
@@ -39,14 +32,9 @@ public class HelpeeServiceImpl implements HelpeeService {
 		return helpeeDAO.getHelpeeList(vo);
 	}
 	
-	
-=======
-	HttpSession httpSession;
-
 	@Override
 	public void insertHelpee(HelpeeVO vo) {
 		helpeeDAO.insertHelpee(vo);
 	}
 	
->>>>>>> 6778bb1ad86d5a0cec3043efbda5ced9d3eff51a
 }

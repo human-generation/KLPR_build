@@ -2,12 +2,9 @@ package com.kimchi.biz.helpee.impl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-<<<<<<< HEAD
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
-=======
->>>>>>> 6778bb1ad86d5a0cec3043efbda5ced9d3eff51a
 
 import org.springframework.stereotype.Repository;
 
@@ -15,7 +12,6 @@ import com.kimchi.biz.common.JDBCUtil;
 import com.kimchi.biz.helpee.HelpeeDAO;
 import com.kimchi.biz.helpee.HelpeeVO;
 
-<<<<<<< HEAD
 
 @Repository("helpeeDAO")
 public class HelpeeDAOImpl implements HelpeeDAO{
@@ -25,15 +21,13 @@ public class HelpeeDAOImpl implements HelpeeDAO{
 		private PreparedStatement stmt = null;
 		private ResultSet rs = null;
 
-		// SQL 명령어
+	// SQL 명령어
 		private final String HELPEELIST_GET = "SELECT edate,eplace,moving,hospital,immigration,lno,e_intro FROM helpee ORDER BY eno";
+		private final String HELPEE_GET="";
+		private final String HELPEE_INSERT = "INSERT INTO helpee (uno, edate, eplace, moving, hospital, immigration, lno, e_intro) VALUES(?,?,?,?,?,?,?,?)";
+		private final String HELPER_UPDATE = "";
+		private final String HELPER_DELETE = "";
 	
-	@Override
-	public HelpeeVO getHelpee(HelpeeVO vo) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	@Override
 	public List<HelpeeVO> getHelpeeList(HelpeeVO vo) {
 		System.out.println("------HelpeeDAOImpl의-getHelpeeList() 기능 처리");
@@ -63,16 +57,12 @@ public class HelpeeDAOImpl implements HelpeeDAO{
 		return helpeeList;
 	}
 	
+	@Override
+	public HelpeeVO getHelpee(HelpeeVO vo) {
+		
 	
-
-=======
-@Repository("helpeeDAO")
-public class HelpeeDAOImpl implements HelpeeDAO {
-	
-	private Connection conn = null;
-	private PreparedStatement stmt = null;
-	
-	private final String HELPEE_INSERT = "INSERT INTO helpee (uno, edate, eplace, moving, hospital, immigration, lno, e_intro) VALUES(?,?,?,?,?,?,?,?)";
+		return null;
+	}
 	
 	@Override
 	public void insertHelpee(HelpeeVO vo) {
@@ -95,5 +85,14 @@ public class HelpeeDAOImpl implements HelpeeDAO {
 			JDBCUtil.close(stmt, conn);
 		}
 	}
->>>>>>> 6778bb1ad86d5a0cec3043efbda5ced9d3eff51a
+	
+	@Override
+	public void updateHelpee(HelpeeVO vo) {
+		
+	}
+
+	@Override
+	public void deleteHelpee(HelpeeVO vo) {
+		
+	}
 }
