@@ -1,9 +1,5 @@
 Manifest-Version: 1.0
-<<<<<<< HEAD
 Built-By: Yen
-=======
-Built-By: Naco
->>>>>>> fcb3cef0ce235cf2225f228605c57db8335cec57
 Build-Jdk: 1.8.0_231
 Created-By: Maven Integration for Eclipse
 
