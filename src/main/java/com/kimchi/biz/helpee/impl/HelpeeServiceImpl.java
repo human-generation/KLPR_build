@@ -18,6 +18,11 @@ public class HelpeeServiceImpl implements HelpeeService{
 	
 	@Autowired
 	HttpSession session;
+	
+	@Override
+	public void insertHelpee(HelpeeVO vo) {
+		helpeeDAO.insertHelpee(vo);
+	}
 
 	@Override
 	public HelpeeVO getHelpee(HelpeeVO vo) {

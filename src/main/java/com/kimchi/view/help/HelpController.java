@@ -16,7 +16,7 @@ import com.kimchi.biz.helpee.impl.HelpeeDAOImpl;
 //@SessionAttributes("helpee")
 public class HelpController {
 	
-	@RequestMapping(value = "/getHelpeeList.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/getHelpeeList.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public String getHelpeeList(@ModelAttribute("helpee") HelpeeVO vo, HelpeeDAOImpl helpeeDAO, HttpSession session) {
 		System.out.println("헬피 홍보글 목록으로 이동");
 		

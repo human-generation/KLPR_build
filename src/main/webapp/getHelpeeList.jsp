@@ -82,7 +82,7 @@
         </div>
     </div>
 
-
+	
     <div class="container helpeeBoard">
         <div class="row">
             <div class="col-md-2 order-1 order-md-1">
@@ -101,7 +101,8 @@
 
 
 
-                <button type="button" class="btn btn-primary helpee-button-main d-none d-md-block">Pleas help me!
+                <button type="button" onclick = "location.href = 'helpeeWriteForm.do' "
+                	class="btn btn-primary helpee-button-main d-none d-md-block">Pleas help me!
                 </button>
 
                 <button type="button" class="btn btn-primary helpee-button-main mobile-write-btn d-md-none">
