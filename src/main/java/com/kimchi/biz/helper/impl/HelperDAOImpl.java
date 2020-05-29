@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import com.kimchi.biz.common.JDBCUtil;
 import com.kimchi.biz.helper.HelperDAO;
 import com.kimchi.biz.helper.HelperVO;
+import com.kimchi.biz.user.UserVO;
 import com.kimchi.biz.helper.HelperVO;
 
 @Repository("HelperDAO")
@@ -22,22 +23,27 @@ public class HelperDAOImpl implements HelperDAO {
 	private ResultSet rs = null;
 
 	// SQL 명령어 
-	private final String HELPERLIST_GET = "SELECT u.name, l.language, h.sta, h.end, h.rplace, h.moving, h.hospital, h.immigration, h.r_intro"
-			+ " FROM helper AS h JOIN user AS u ON h.uno=u.uno JOIN language AS l ON h.lno=l.lno";
+	private final String HELPERLIST_GET = "SELECT u.name, h.sta, h.end, h.rplace, h.moving, h.hospital, h.immigration, h.r_intro"
+			+ " FROM helper AS h JOIN user AS u ON h.uno=u.uno";
 
 	@Override
 	public List<HelperVO> getHelperList(HelperVO vo) { // 모든 헬퍼 리스트 보여주기
 		System.out.println("===> JDBC로 getHelperList() 기능 처리");
 		
 		List<HelperVO> helperList = new ArrayList<HelperVO>();
+		
 		try {
 			conn = JDBCUtil.getConnection();
 			stmt = conn.prepareStatement(HELPERLIST_GET);
 			rs = stmt.executeQuery();
 			while (rs.next()) {
 				HelperVO helper = new HelperVO();
-				helper.setName(rs.getString("name"));
-				helper.setLanguage(rs.getString("language"));
+//				helper.setName(rs.getString("name"));
+//				helper.setLanguage(rs.getString("language"));
+				
+				UserVO user = new UserVO();
+				user.setName(rs.getString("name"));
+				helper.setUserVO(user);
 				
 				helper.setSta(rs.getDate("sta"));
 				helper.setEnd(rs.getDate("end"));

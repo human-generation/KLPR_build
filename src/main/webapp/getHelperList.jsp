@@ -132,7 +132,7 @@
                             
                             <div class="row">
                                 <div class="col-md-6 order-2 order-md-1">
-                                    <h4>${helper.name}</h4>
+                                    <h4>${helper.userVO.name}</h4>
                                 </div>
                                 <div class="col-md-6 order-1 order-md-2">
                                     <h5>{⭐️⭐️⭐️⭐️⭐️}</h5>
@@ -141,7 +141,7 @@
                             <div class="row">
                                 <div class="col-sm-6 order-2 order-sm-1">
                                     <div class="lang">
-                                        Language ${helper.language}
+                                        Language 랭귀지 연결해야돼 ㅅㅂ
                                     </div>
                                     <div class="reviewNum">
                                         Total usage {rv_no}
