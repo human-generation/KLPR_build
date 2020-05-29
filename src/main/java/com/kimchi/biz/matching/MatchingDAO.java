@@ -1,5 +1,6 @@
 package com.kimchi.biz.matching;
 
+import java.sql.Connection;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;

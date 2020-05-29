@@ -20,7 +20,33 @@ public class JDBCUtil {
 		}
 		return null;
 	}
-
+	
+	public static void close(ResultSet rs, PreparedStatement stmt) {
+		if (stmt != null) {
+			try {
+				if (!stmt.isClosed()) {
+					stmt.close();
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				stmt = null;
+			}
+		}
+		if (rs != null) {
+			try {
+				if (!rs.isClosed()) {
+					rs.close();
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				rs = null;
+			}
+		}
+	}
+	
+	
 	public static void close(PreparedStatement stmt, Connection conn) {
 		if (stmt != null) {
 			try {

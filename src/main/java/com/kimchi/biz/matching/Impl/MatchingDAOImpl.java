@@ -8,14 +8,17 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.stereotype.Repository;
+
 import com.kimchi.biz.common.JDBCUtil;
 import com.kimchi.biz.matching.MatchingDAO;
 import com.kimchi.biz.matching.MatchingVOExtra;
 import com.kimchi.biz.user.UserVO;
 
+@Repository("matchingDAO")
 public class MatchingDAOImpl implements MatchingDAO {
 	// JDBC 관련 변수들
-	private Connection conn = null;
+	private Connection conn=null;
 	private PreparedStatement stmt = null;
 	private PreparedStatement stmt2=null;
 	private ResultSet rs = null;
@@ -30,7 +33,7 @@ public class MatchingDAOImpl implements MatchingDAO {
 
 	private final String S_YOUR_NAME = "SELECT name FROM user WHERE uno=(SELECT seno FROM matching WHERE mno=?)";
 	private final String R_YOUR_NAME = "SELECT name FROM user WHERE uno=(SELECT rcno FROM matching WHERE mno=?)";
-	
+
 	@Override
 	public List<MatchingVOExtra> getMatchingList(UserVO vo, int state) { // state에 따라 리스트 리턴해주는 함수
 		List<MatchingVOExtra> matchingList = new ArrayList<MatchingVOExtra>();
@@ -41,7 +44,6 @@ public class MatchingDAOImpl implements MatchingDAO {
 			case 0:
 				stmt = conn.prepareStatement(SENDED_MATCHING_GET);
 				stmt.setInt(1, vo.getUno());
-				
 				break;
 			case 1:
 				stmt = conn.prepareStatement(RECEIVED_MATCHING_GET);
@@ -111,7 +113,6 @@ public class MatchingDAOImpl implements MatchingDAO {
 	public String senderName(int mno) {
 		try {
 			conn = JDBCUtil.getConnection();
-			System.out.println(conn.toString());
 			stmt2 = conn.prepareStatement(S_YOUR_NAME);
 			stmt2.setInt(1, mno);
 			rs2 = stmt2.executeQuery();
@@ -129,7 +130,7 @@ public class MatchingDAOImpl implements MatchingDAO {
 	public String receiverName(int mno) {
 		try {
 			conn = JDBCUtil.getConnection();
-			System.out.println(conn.toString());
+//			System.out.println(conn.toString());
 			stmt2 = conn.prepareStatement(R_YOUR_NAME);
 			stmt2.setInt(1, mno);
 			rs2 = stmt2.executeQuery();
