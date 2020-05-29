@@ -2,6 +2,7 @@ package com.kimchi.biz.helpee.impl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 import org.springframework.stereotype.Repository;
 
@@ -14,6 +15,7 @@ public class HelpeeDAOImpl implements HelpeeDAO {
 	
 	private Connection conn = null;
 	private PreparedStatement stmt = null;
+	private ResultSet rs = null;
 	
 	private final String HELPEE_INSERT = "INSERT INTO helpee (uno, edate, eplace, moving, hospital, immigration, lno, e_intro) VALUES(?,?,?,?,?,?,?,?)";
 	

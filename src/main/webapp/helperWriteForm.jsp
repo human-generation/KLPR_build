@@ -76,7 +76,7 @@
                     <div class="col-12">
                         ${sessionScope.userPhone}&nbsp;
                     </div>
-                    <form class="helper-write-form" action="helperWriteForm.do" method="post">
+                    <form autocomplete="off" class="helper-write-form" action="helperWriteForm.do" method="post">
                         <div class="row">
                             <div class="col-md-6">
                             	<input name="uno" type="hidden" value="${sessionScope.userNumber}"/>
