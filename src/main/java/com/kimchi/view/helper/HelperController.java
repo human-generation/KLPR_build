@@ -36,9 +36,10 @@ public class HelperController {
 	public String recentHelperList(@ModelAttribute("helper") HelperVO vo, HelperDAOImpl helperDAO, HttpSession session) {
 		System.out.println("최신순 헬퍼 목록 처리 띠용 되나요?");
 		
-		List<HelperVO> recentList = helperDAO.recentHelperList(vo); // 홍보글 목록 최신순으로 불러오기
-		session.setAttribute("recentList", recentList);
-		return "recentHelperList.jsp";
+		List<HelperVO> helperList = helperDAO.recentHelperList(vo); // 홍보글 목록 최신순으로 불러오기
+		session.setAttribute("helperList", helperList);
+//		return "recentHelperList.jsp";
+		return "getHelperList.jsp";
 	}
 	
 }

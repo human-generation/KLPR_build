@@ -12,7 +12,6 @@ import com.kimchi.biz.common.JDBCUtil;
 import com.kimchi.biz.helper.HelperDAO;
 import com.kimchi.biz.helper.HelperVO;
 import com.kimchi.biz.user.UserVO;
-import com.kimchi.biz.helper.HelperVO;
 
 @Repository("HelperDAO")
 public class HelperDAOImpl implements HelperDAO {
@@ -25,7 +24,7 @@ public class HelperDAOImpl implements HelperDAO {
 	// SQL 명령어
 	private final String HELPERLIST_GET = "SELECT u.name, h.sta, h.end, h.rplace, h.moving, h.hospital, h.immigration, h.r_intro"
 			+ " FROM helper AS h JOIN user AS u ON h.uno=u.uno";
-	private final String HELPER_DELETE = "DELETE FROM helper WHERE end = DATE_ADD(CURDATE(),INTERVAL -1 DAY)";
+	private final String HELPER_DELETE = "DELETE FROM helper WHERE end < CURDATE()";
 	private final String HELPERLIST_RECENTLY = "SELECT u.name, h.sta, h.end, h.rplace, h.moving, h.hospital, h.immigration, h.r_intro"
 			+ " FROM helper AS h JOIN user AS u ON h.uno=u.uno ORDER BY h.rno DESC";
 
@@ -41,8 +40,6 @@ public class HelperDAOImpl implements HelperDAO {
 			rs = stmt.executeQuery();
 			while (rs.next()) {
 				HelperVO helper = new HelperVO();
-//				helper.setName(rs.getString("name"));
-//				helper.setLanguage(rs.getString("language"));
 
 				UserVO user = new UserVO();
 				user.setName(rs.getString("name"));
