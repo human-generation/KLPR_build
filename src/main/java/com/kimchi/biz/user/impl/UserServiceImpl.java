@@ -9,6 +9,7 @@ import com.kimchi.biz.user.UserVO;
 
 @Service("userService")
 public class UserServiceImpl implements UserService {
+
 	@Autowired
 	private UserDAO userDAO;
 
