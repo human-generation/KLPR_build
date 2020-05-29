@@ -22,9 +22,7 @@
 
     <title>K:LPER | Get help in Korea</title>
 </head>
-
 <body>
-
     <nav id="mainNavbar" class="navbar navbar-expand-md navbar-dark py-1 fixed-top">
         <a href="main.do" class="navbar-brand">K:LPER</a>
         <button class="navbar-toggler" data-toggle="collapse" data-target="#navLinks" aria-label="Toggle navigation">
@@ -33,10 +31,10 @@
         <div class="collapse navbar-collapse" id="navLinks">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a href="" class="nav-link">HELPER</a>
+                    <a href="helperWriteForm.do" class="nav-link">HELPER</a>
                 </li>
                 <li class="nav-item">
-                    <a href="" class="nav-link">HELPEE</a>
+                    <a href="helpeeWriteForm.do" class="nav-link">HELPEE</a>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
@@ -63,10 +61,7 @@
             </ul>
         </div>
     </nav>
-
     <!-- HEADER END -->
-    
-    
     <!-- 본문 -->
     <div class="container">
         <div class="row writeForm">
@@ -78,19 +73,20 @@
                 <div class="media-body">
                     <div class="row">
                         <div class="col-md-6">
-                            <h4>{name}Doja Cat</h4>
+                            <h4>${sessionScope.userName}&nbsp;</h4>
                         </div>
                         <div class="col-md-6">
-                            {gender}
+                            ${sessionScope.userNumber}&nbsp;
                         </div>
                     </div>
                     <div class="col-12">
-                        {phone}
+                        ${sessionScope.userPhone}&nbsp;
                     </div>
-                    <form class="helper-write-form" action="eIntro.do"> <!-- submit버튼을 누르면 다시 페이지 이동하도록  -->
+                    <form class="helper-write-form" action="helpeeWriteForm.do" method="post"> <!-- submit버튼을 누르면 다시 페이지 이동하도록  -->
                         <div class="row">
                             <div class="col-md-6">
-                                <input id="date-result" hidden></input>
+                            	<input name="uno" type="hidden" value="${sessionScope.userNumber}"/>
+                                <input name="edate" id="date-result" type="hidden"></input>
                                 <input type="text" id="datepicker" class="form-control form-control-sm"
                                     placeholder="Select available date">
                             </div>
@@ -114,20 +110,20 @@
                             <div class="col-md-6">
                                 <div class="btn-group btn-group-toggle" data-toggle="buttons">
                                     <label class="btn btn-secondary">
-                                        <input type="checkbox" autocomplete="off" class="service" name="moving"> moving
+                                        <input name="moving" type="checkbox" class="service" value="1" autocomplete="off"> moving
                                     </label>
                                     <label class="btn btn-secondary">
-                                        <input type="checkbox" autocomplete="off" class="service" name="hospital"> hospital
+                                        <input name="hospital" type="checkbox" class="service" value="1" autocomplete="off"> hospital
                                     </label>
                                     <label class="btn btn-secondary">
-                                        <input type="checkbox" autocomplete="off" class="service" name="immigration"> immi
+                                        <input name="immigration" type="checkbox" class="service" value="1" autocomplete="off"> immigration
                                     </label>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="detailReview">Additional Infomation</label>
-                            <textarea name="rcomment" class="form-control" rows="3"></textarea>
+                            <label for="detailReview">Additional Information</label>
+                            <textarea name="e_intro" class="form-control" rows="3"></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary helper-button-main">Submit!</button>
                     </form>
@@ -137,8 +133,6 @@
 
         </div>
     </div>
-
-
     <!--AUTH MODAL-->
     <!--LOGIN-->
     <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel"
@@ -198,7 +192,7 @@
                 </div>
 
                 <div class="modal-body">
-                    <form class="signup-form" action="singup.do">
+                    <form class="signup-form" action="join.do">
                         <div class="form-group">
                             <label for="signupEmail">Email address</label>
                             <input name="email" type="email" class="form-control" required>
@@ -330,9 +324,9 @@
             field: document.getElementById('datepicker'),
             singleDate: true,
             selectForward: true,
-            onSelect: function (start, end) {
+            onSelect: function (start) {
                 var str = '';
-                str += start ? start.format('DD-MM-YYYY') + '' : '';
+                str += start ? start.format('YYYY-MM-DD') + '' : '';
                 document.getElementById('date-result').innerHTML = str;
                 document.getElementById('date-result').value = str;
 
@@ -340,13 +334,15 @@
         });
 		
 		// service 선택(이사, 병원, 출입국사무소)
-		$(function(){
-			$('.service').click(function({
-				
-			});			
+		$('button').click(function(){
+			inputs = $('.service');
+			inputs.each(function(){
+				var value;
+				if($(this).attr('type') === 'checkbox'){
+					value = $(this).is(':checked')? 1:0;
+				}
+			});
 		});
     </script>
-
-
 </body>
 </html>

@@ -16,12 +16,7 @@ public class UserController {
 	@RequestMapping(value = "/login.do", method = RequestMethod.GET)
 	public String loginView(@ModelAttribute("user") UserVO vo) {
 		System.out.println("로그인 화면으로 이동");
-		vo.setEmail("arav@gmail.com");
-		vo.setPw("arav1234");
-		// Command 객체를 request에 저장해준다
-		// ${user.id}0429
-		// ${user.password}
-		// 이렇게 login.jsp에서 사용가능하다.
+
 		return "main.do";
 	}
 
@@ -37,12 +32,10 @@ public class UserController {
 		if (user != null) {
 			session.setAttribute("userName", user.getName());
 			session.setAttribute("userNumber", user.getUno());
-
 			session.setAttribute("userGender", user.getGender());
 			session.setAttribute("userPhone", user.getPhone());
 			session.setAttribute("userMoney", user.getMoney());
 			System.out.println("유저 이름: " + user.getName() + user.getUno() + user.getMoney());
-//			return "getMain.do";
 			session.setAttribute("userMoney", user.getMoney());
 			System.out.println("name: " + user.getName() + "num: " + user.getUno() + "money: " + user.getMoney());
 			return "main.do";

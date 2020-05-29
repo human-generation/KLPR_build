@@ -4,7 +4,6 @@ package com.kimchi.biz.helper;
 public class HelperVO {
 	private int rno;
 	private int uno;
-	
 	private String sta;
 	private String end;
 	private int rplace;

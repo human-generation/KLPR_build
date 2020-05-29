@@ -31,10 +31,10 @@
         <div class="collapse navbar-collapse" id="navLinks">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a href="" class="nav-link">HELPER</a>
+                    <a href="helperWriteForm.do" class="nav-link">HELPER</a>
                 </li>
                 <li class="nav-item">
-                    <a href="" class="nav-link">HELPEE</a>
+                    <a href="helpeeWriteForm.do" class="nav-link">HELPEE</a>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
@@ -46,8 +46,9 @@
 				</c:if>
 				<c:if test="${!empty sessionScope.userName}">
 					${sessionScope.userName}님&nbsp;
-					<li class="nav-item"><a class="nav-link" href="myPage.do">MyPage</a></li>
-					<li class="nav-item"><a class="nav-link" href="logout.do">Logout</a></li>
+					<li class="nav-item"><a class="nav-link" data-toggle="modal"  href="myPage.do">MyPage</a></li>
+					<li class="nav-item"><a class="nav-link" data-toggle="modal" href="alert.do">Alert</a>
+					<li class="nav-item"><a class="nav-link" data-toggle="modal"  href="logout.do">Logout</a></li>
 				</c:if>
             </ul>
         </div>
@@ -55,8 +56,6 @@
 
     <!-- HEADER END -->
     <!-- 본문 -->
-
-
 
     <div class="container">
         <div class="row writeForm">
@@ -77,7 +76,7 @@
                     <div class="col-12">
                         ${sessionScope.userPhone}&nbsp;
                     </div>
-                    <form class="helper-write-form" action="writeForm.do" method="post">
+                    <form class="helper-write-form" action="helperWriteForm.do" method="post">
                         <div class="row">
                             <div class="col-md-6">
                             	<input name="uno" type="hidden" value="${sessionScope.userNumber}"/>
@@ -348,8 +347,7 @@
 				}
 			});
 		});
-
-
+        
     </script>
 </body>
 </html>

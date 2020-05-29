@@ -1,14 +1,28 @@
 package com.kimchi.biz.helpee;
 
-public class HelpeePRVO {
+public class HelpeeVO {
+	private int eno;
+	private int uno;
 	private String edate;		// 가능 날짜
 	private int eplace;		// 헬피 지역
 	private int moving;		// 이사
 	private int hospital;	// 병원
 	private int immigration;// 출입국
 	private int lno;		// 언어
-	private String eIntro;  // 헬피 자기소개 (e_intro)
+	private String e_intro;  // 헬피 자기소개 (e_intro)
 	
+	public int getEno() {
+		return eno;
+	}
+	public void setEno(int eno) {
+		this.eno = eno;
+	}
+	public int getUno() {
+		return uno;
+	}
+	public void setUno(int uno) {
+		this.uno = uno;
+	}
 	public String getEdate() {
 		return edate;
 	}
@@ -45,18 +59,19 @@ public class HelpeePRVO {
 	public void setLno(int lno) {
 		this.lno = lno;
 	}
-	public String getEIntro() {
-		return eIntro;
+	public String getE_intro() {
+		return e_intro;
 	}
-	public void setEIntro(String eIntro) {
-		this.eIntro = eIntro;
+	public void setE_intro(String e_intro) {
+		this.e_intro = e_intro;
 	}
 	
 	@Override
 	public String toString() {
-		return "HelpeePRVO [uno=" + ", edate=" + edate + ", eplace=" + eplace + ", moving=" + moving
-				+ ", hospital=" + hospital + ", immigration=" + immigration + ", lno=" + lno + ", eIntro=" + eIntro
-				+ "]";
+		return "HelpeeVO [eno=" + eno + ", uno=" + uno + ", edate=" + edate + ", eplace=" + eplace + ", moving="
+				+ moving + ", hospital=" + hospital + ", immigration=" + immigration + ", lno=" + lno + ", e_intro="
+				+ e_intro + "]";
 	}
+	
 	
 }

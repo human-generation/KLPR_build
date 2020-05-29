@@ -114,11 +114,5 @@ public class HelperDAOImpl implements HelperDAO{
 		}finally {
 			JDBCUtil.close(stmt, conn);
 		}
-	}
-	
-
-	
-	
-
-	
+	}	
 }

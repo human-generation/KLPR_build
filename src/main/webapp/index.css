@@ -1,169 +1,134 @@
 ul {
-   list-style:none;
-   padding-left:0px;
+	list-style: none;
+	padding-left: 0px;
 }
 
 button {
-    outline: none;
-    border: 0;
+	outline: none;
+	border: 0;
 }
 
-<<<<<<< HEAD
-=======
-#image_container{
-    width: 10em;
-    height: 10em;
-    border-radius: 50%;
-    border: 1px solid lightgray;
-    overflow: hidden;
+#image_container {
+	width: 10em;
+	height: 10em;
+	border-radius: 50%;
+	border: 1px solid lightgray;
+	overflow: hidden;
 }
-
-
-
->>>>>>> 74b822dc703c1800b7dce94dd4e154744a54eef4
 
 /* navBar */
-
 #mainNavbar {
-    font-size: 1.5rem;
-    font-weight: 100;    
+	font-size: 1.5rem;
+	font-weight: 100;
 }
 
 #mainNavbar .nav-link {
-    color: white;
+	color: white;
 }
 
 #mainNavbar .nav-link:hover {
-    color: black
+	color: black
 }
 
 #mainNavbar .navbar-brand {
-    color: black;
-    font-size: 1.5rem;
+	color: black;
+	font-size: 1.5rem;
 }
 
-
-@media (max-width: 768px) {
-    #mainNavbar {
-        background-color:limegreen;
-    }
+@media ( max-width : 768px) {
+	#mainNavbar {
+		background-color: limegreen;
+	}
 }
-
 
 .navbar.scrolled {
-    background: limegreen;
-
+	background: limegreen;
 }
 
-.navbar-toggler:focus,
-.navbar-toggler:active,
-.fa-align-right:focus {
-    outline: none;
-    box-shadow: none;
-    border: 0;
+.navbar-toggler:focus, .navbar-toggler:active, .fa-align-right:focus {
+	outline: none;
+	box-shadow: none;
+	border: 0;
 }
-
-
-
-
 
 /* main components */
-
 .jumbotron {
-    padding-top: 9rem;
-    align-items: center;
-    padding-bottom: 3rem;
-    margin: 0;
+	padding-top: 9rem;
+	align-items: center;
+	padding-bottom: 3rem;
+	margin: 0;
 }
 
-.container-fluid{
-    padding: 0;
+.container-fluid {
+	padding: 0;
 }
 
-.carousel-inner{
-    height: 300px;
+.carousel-inner {
+	height: 300px;
 }
 
 .carousel-caption {
-    position: sticky;
+	position: sticky;
 }
 
-.selUserStat{
-    margin: 10em auto;
-    padding: auto;
+.selUserStat {
+	margin: 10em auto;
+	padding: auto;
 }
-
-
 
 /*Board*/
-.helperBoard{
-    margin-top: 2em;
+.helperBoard {
+	margin-top: 2em;
 }
 
-.helperPost{
-    border: 1px solid lightgray;
-    border-radius: 5px;
-    margin: 0.2rem;
+.helperPost {
+	border: 1px solid lightgray;
+	border-radius: 5px;
+	margin: 0.2rem;
 }
 
-<<<<<<< HEAD
-=======
-.helpeeBoard{
-    margin-top: 2em;
+.helpeeBoard {
+	margin-top: 2em;
 }
 
-.helpeePost{
-    border: 1px solid lightgray;
-    border-radius: 5px;
-    margin: 0.2rem;
+.helpeePost {
+	border: 1px solid lightgray;
+	border-radius: 5px;
+	margin: 0.2rem;
 }
 
-.writeForm{
-    margin-top: 5em;
-    border: 1px solid lightgray;
-    border-radius: 5px;
-    padding: 1em;
+.writeForm {
+	margin-top: 5em;
+	border: 1px solid lightgray;
+	border-radius: 5px;
+	padding: 1em;
 }
 
->>>>>>> 74b822dc703c1800b7dce94dd4e154744a54eef4
-.mr-3{
-    width: 10em;
-    height: 10em;
-    border-radius: 50%;
+.mr-3 {
+	width: 10em;
+	height: 10em;
+	border-radius: 50%;
 }
-
-<<<<<<< HEAD
-/*read more*/
-#more {
-    display: none;
-=======
-
-.mobile-write-btn{
-    border-radius: 50%;
-    position: fixed;
-    left: 85%;
-    top: 93%;
-    z-index: 4;
-
-
-}
-
 
 /*read more*/
 #more {
-    display: none;
+	display: none; . mobile-write-btn { border-radius : 50%;
+	position: fixed;
+	left: 85%;
+	top: 93%;
+	z-index: 4;
 }
 
-
+/*read more*/
+#more {
+	display: none;
+}
 
 /*myPage*/
-
-
-.myPageBoard{
-    margin-top: 5rem;
+.myPageBoard {
+	margin-top: 5rem;
 }
 
-.myPageJt{
-    padding-top: 5rem;
->>>>>>> 74b822dc703c1800b7dce94dd4e154744a54eef4
+.myPageJt {
+	padding-top: 5rem;
 }
