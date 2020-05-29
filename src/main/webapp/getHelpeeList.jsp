@@ -40,13 +40,18 @@
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" data-toggle="modal" data-target="#loginModal">Login</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link " data-toggle="modal" data-target="#signupModal">Signup</a>
-                </li>
-            </ul>
+				<c:if test="${empty sessionScope.userName}">
+					<li class="nav-item"><a class="nav-link" data-toggle="modal"
+						data-target="#loginModal">Login</a></li>
+					<li class="nav-item"><a class="nav-link " data-toggle="modal"
+						data-target="#signupModal">Signup</a></li>
+				</c:if>
+				<c:if test="${!empty sessionScope.userName}">
+					${sessionScope.userName}님&nbsp;
+					<li class="nav-item"><a class="nav-link" href="myPage.do">MyPage</a></li>
+					<li class="nav-item"><a class="nav-link" href="logout.do">Logout</a></li>
+				</c:if>
+			</ul>
         </div>
     </nav>
 

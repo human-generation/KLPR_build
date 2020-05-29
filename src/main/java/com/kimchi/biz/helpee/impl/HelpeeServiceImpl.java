@@ -11,7 +11,7 @@ import com.kimchi.biz.helpee.HelpeeDAO;
 import com.kimchi.biz.helpee.HelpeeService;
 import com.kimchi.biz.helpee.HelpeeVO;
 
-@Service("helpeeService")
+@Service("HelpeeService")
 public class HelpeeServiceImpl implements HelpeeService{
 	@Autowired
 	private HelpeeDAO helpeeDAO;

@@ -41,6 +41,7 @@
 				<li class="nav-item"><a href="getHelpeeList.do" class="nav-link">HELPEE</a>
 				</li>
 			</ul>
+			
 			<ul class="navbar-nav ml-auto">
 				<c:if test="${empty sessionScope.userName}">
 					<li class="nav-item"><a class="nav-link" data-toggle="modal"
