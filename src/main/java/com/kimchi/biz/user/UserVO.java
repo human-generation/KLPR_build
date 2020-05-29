@@ -8,7 +8,6 @@ public class UserVO {
 	private int gender;
 	private int money;
 	private String phone;
-	private String ucomment;
 
 	public int getUno() {
 		return uno;
@@ -66,18 +65,13 @@ public class UserVO {
 		this.phone = phone;
 	}
 
-	public String getUcomment() {
-		return ucomment;
-	}
-
-	public void setUcomment(String ucomment) {
-		this.ucomment = ucomment;
-	}
-
 	@Override
 	public String toString() {
 		return "UserVO [uno=" + uno + ", email=" + email + ", pw=" + pw + ", name=" + name + ", gender=" + gender
-				+ ", money=" + money + ", phone=" + phone + ", ucomment=" + ucomment + "]";
+				+ ", money=" + money + ", phone=" + phone + "]";
 	}
+
+
+
 
 }

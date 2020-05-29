@@ -29,4 +29,5 @@ public class PagesController {
 		System.out.println("알람 드롭다운 이동");
 		return "alert.jsp";
 	}
+	
 }
