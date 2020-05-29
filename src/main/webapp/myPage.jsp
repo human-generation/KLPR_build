@@ -19,8 +19,14 @@
 	<a href="alert.do">알람</a>&nbsp;
 	<a href="logout.do">로그아웃</a>&nbsp;
 </c:if>
+
+
+
 </head>
 <body>
+
+
+
 	<center>마이 페이지 화면 입니다.</center>
 </body>
 </html>

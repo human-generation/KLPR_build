@@ -2,9 +2,15 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+<%@ page import="java.io.PrintWriter" %>
+
+
 <!DOCTYPE html>
 <html>
 <head>
+<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+
 <!-- Required meta tags -->
 <meta charset="utf-8">
 <meta name="viewport"
@@ -126,12 +132,10 @@
 					<div class=" card-header">See Best Helpers!</div>
 					<div class="card-body">
 						<p class="card-text">
-						<ul>
-							<li>1 누구누구</li>
-							<li>2 누구누구</li>
-							<li>3 누구누구</li>
-							<li>4 누구누구</li>
-							<li>5 누구누구</li>
+						<ul>						
+						<c:forEach var="list" items="${RScoreTop5}">
+							<li>${list.name}</li>
+						</c:forEach>
 						</ul>
 						</p>
 					</div>
@@ -143,11 +147,9 @@
 					<div class="card-body">
 						<p class="card-text">
 						<ul>
-							<li>1 누구누구</li>
-							<li>2 누구누구</li>
-							<li>3 누구누구</li>
-							<li>4 누구누구</li>
-							<li>5 누구누구</li>
+						<c:forEach var="list" items="${RTop5}">
+							<li>${list.name}</li>
+						</c:forEach>	
 						</ul>
 						</p>
 					</div>
@@ -159,11 +161,9 @@
 					<div class="card-body">
 						<p class="card-text">
 						<ul>
-							<li>1 누구누구</li>
-							<li>2 누구누구</li>
-							<li>3 누구누구</li>
-							<li>4 누구누구</li>
-							<li>5 누구누구</li>
+						<c:forEach var="list" items="${ETop5}">
+							<li>${list.name}</li>							
+						</c:forEach>	
 						</ul>
 						</p>
 					</div>
