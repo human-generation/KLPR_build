@@ -18,7 +18,15 @@
 				<c:forEach items="${ReceivedRequestList}" var="matching_r">
 					<td>${matching_r.senderName }</td>
 					<td>거래내역</td>
-					<td>${matching_r.mservice }</td>
+					<c:if test="${matching_r.mservice ==1}">
+						<td>-이사</td>
+					</c:if>
+					<c:if test="${matching_r.mservice ==2}">
+						<td>-병원</td>
+					</c:if>
+					<c:if test="${matching_r.mservice ==3}">
+						<td>-관공서</td>
+					</c:if>
 					<td>${matching_r.mplace }</td>
 				</c:forEach>
 			</tr>
@@ -28,7 +36,15 @@
 
 					<td>${matching_s.receiverName }</td>
 					<td>거래내역</td>
-					<td>${matching_s.mservice }</td>
+					<c:if test="${matching_s.mservice ==1}">
+						<td>-이사</td>
+					</c:if>
+					<c:if test="${matching_s.mservice ==2}">
+						<td>-병원</td>
+					</c:if>
+					<c:if test="${matching_s.mservice ==3}">
+						<td>-관공서</td>
+					</c:if>
 					<td>${matching_s.mplace }</td>
 
 				</c:forEach>

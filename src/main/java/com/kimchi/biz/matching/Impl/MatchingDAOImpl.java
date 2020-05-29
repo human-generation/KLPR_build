@@ -144,4 +144,14 @@ public class MatchingDAOImpl implements MatchingDAO {
 		}
 		return null;
 	}
+	
+	public String getWork(int mplace) {
+		String work=null;
+		switch(mplace) {
+			case 1: work="이사"; break;
+			case 2: work="병원"; break;
+			case 3: work="출입국"; break;
+	}
+		return work;
+	}
 }
