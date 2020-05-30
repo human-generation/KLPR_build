@@ -82,7 +82,7 @@
                     <div class="col-12">
                         ${sessionScope.userPhone}&nbsp;
                     </div>
-                    <form autocomplete="off" class="helper-write-form" action="getHelpeeList.do" method="post"> <!-- submit버튼을 누르면 다시 페이지 이동하도록  -->
+                    <form autocomplete="off" class="helper-write-form" action="helpeeWriteForm.do" method="post"> <!-- submit버튼을 누르면 다시 페이지 이동하도록  -->
                         <div class="row">
                             <div class="col-md-6">
                             	<input name="uno" type="hidden" value="${sessionScope.userNumber}"/>

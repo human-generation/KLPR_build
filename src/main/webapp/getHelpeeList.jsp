@@ -30,22 +30,36 @@
         <button class="navbar-toggler" data-toggle="collapse" data-target="#navLinks" aria-label="Toggle navigation">
             <i class="fas fa-align-right"></i>
         </button>
-        <div class="collapse navbar-collapse" id="navLinks">
+         <div class="collapse navbar-collapse" id="navLinks">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a href="getHelperList.do" class="nav-link">HELPER</a>
+                    <a href="helperWriteForm.do" class="nav-link">HELPER</a>
                 </li>
                 <li class="nav-item">
-                    <a href="getHelpeeList.do" class="nav-link">HELPEE</a>
+                    <a href="helpeeWriteForm.do" class="nav-link">HELPEE</a>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" data-toggle="modal" data-target="#loginModal">Login</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link " data-toggle="modal" data-target="#signupModal">Signup</a>
-                </li>
+            	<c:if test="${empty sessionScope.userName}">
+	                <li class="nav-item">
+	                    <a class="nav-link" data-toggle="modal" data-target="#loginModal">LOGIN</a>
+	                </li>
+	                <li class="nav-item">
+	                    <a class="nav-link " data-toggle="modal" data-target="#signupModal">SIGNUP</a>
+	                </li>
+     			</c:if>
+     			<c:if test="${!empty sessionScope.userName}">
+     				<li class="nav-item">
+    					${sessionScope.userName}님&nbsp;
+            			<a class="nav-link" data-toggle="modal" href="myPage.do">MYPAGE</a>
+            		</li>
+            		<li class="nav-item">
+						<a class="nav-link" data-toggle="modal" href="alert.do">ALERT</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" data-toggle="modal" href="logout.do">LOGOUT</a>
+					</li>
+				</c:if>
             </ul>
         </div>
     </nav>
