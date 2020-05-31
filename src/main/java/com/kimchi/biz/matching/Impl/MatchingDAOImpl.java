@@ -88,7 +88,6 @@ public class MatchingDAOImpl implements MatchingDAO {
 				mvo.setSenderName(senderName(mvo.getMno()));
 				mvo.setReceiverName(receiverName(mvo.getMno()));
 				matchingList.add(mvo);
-				System.out.println(mvo.toString());
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -150,6 +149,7 @@ public class MatchingDAOImpl implements MatchingDAO {
 	}
 	
 	public void updateState(MatchingVOExtra mvo) {
+			conn=JDBCUtil.getConnection();
 			try {
 				if(mvo.getMstate()==2) {
 					stmt2=conn.prepareStatement(UPDATE_PAID);

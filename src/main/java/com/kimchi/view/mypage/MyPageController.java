@@ -40,7 +40,7 @@ public class MyPageController {
 		return "ongoing.jsp"; 
 	}
 	
-	@RequestMapping(value="/payment.do", method= {RequestMethod.POST} )
+	@RequestMapping(value="/payment.do", method= {RequestMethod.POST,RequestMethod.GET} )
 	public String payment(UserDAOImpl userDAO, HttpSession session, @RequestParam("pay")int pay) {
 		UserVO vo=(UserVO)session.getAttribute("loginUser");
 		System.out.println(vo.toString()+"pay="+pay);
@@ -50,8 +50,9 @@ public class MyPageController {
 		return "myPage.do";
 	}
 	
-	@RequestMapping(value="/updateState.do", method= {RequestMethod.POST})
-	public String updateState(MatchingVOExtra mvo, MatchingDAOImpl matchingDAO) {//폴리모피즘되는지확인
+	@RequestMapping(value="/updateState.do", method= {RequestMethod.POST,RequestMethod.GET})
+	public String updatingState(MatchingVOExtra mvo, MatchingDAOImpl matchingDAO) {
+		System.out.println(mvo.toString());
 		matchingDAO.updateState(mvo);
 		return "myPage.do";
 	}

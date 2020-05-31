@@ -85,7 +85,7 @@
 						<div class="col-md-6">
 							<div class="card">
 								<h4 class="card-header">결제 대기</h4>
-								<c:forEach items="${WatingList}" var="matching_w">
+								<c:forEach items="${WaitingList}" var="matching_w">
 									<div class="card-body">
 										<div class="card">
 											<h6 class="card-header">${matching_w.senderName }</h6>
@@ -115,7 +115,7 @@
 												</div>
 												</p>
 												<a href="#" class="btn btn-primary">상태 {요청받음 mstate 0}</a> <a
-													href="#" class="btn btn-primary">자세히보기</a>
+													href="updateState.do" class="btn btn-primary">결제하기</a>
 											</div>
 										</div>
 									</div>
@@ -155,7 +155,7 @@
 												</div>
 												</p>
 												<a href="#" class="btn btn-primary">상태 {수락대기중 mstate 1}</a> <a
-													href="#" class="btn btn-primary">자세히보기</a>
+													href="#" class="btn btn-primary">대화하기(미구현)</a>
 											</div>
 										</div>
 									</div>
@@ -195,7 +195,7 @@
 												</div>
 												</p>
 												<a href="#" class="btn btn-primary">상태 {수락대기중 mstate 1}</a> <a
-													href="#" class="btn btn-primary">자세히보기</a>
+													href="updateState.do" class="btn btn-primary">리뷰작성후 거래완료</a>
 											</div>
 										</div>
 									</div>
