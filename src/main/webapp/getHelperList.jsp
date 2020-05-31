@@ -77,7 +77,6 @@
                     <div class="btn-group" role="group" aria-label="SortBtn">
                         <button type="button" onclick="location.href='recentHelperList.do'" class="btn btn-secondary helper-button btn-sm">
                         	최신순
-                        	<!--<c:set var="url" value="${recentList}" scope="session"/>-->
                         </button>
                         <button type="button" class="btn btn-secondary helper-button btn-sm">평점순</button>
                     </div>
@@ -111,17 +110,7 @@
                 </button>
 
             </div>
-
             <div class="col-md-10 order-2 order-md-2">
-            	<!--<c:choose>
-            		<c:when test="${url eq 'recentList'}">
-            			<c:set var="url" value="${recentList}"/>
-            		</c:when>
-    				<c:otherwise>
-        				<c:set var="url" value="${helperList}"/>
-    				</c:otherwise>
-            	</c:choose>-->
-         	
             	<c:forEach items="${helperList}" var="helper">
                 <div class="row media helperPost">
                     <div class="col-md-3 order-1 order-md-1 align-items-center">

@@ -27,8 +27,15 @@ public class HelperServiceImpl implements HelperService {
 	}
 
 	@Override
-	public HelperVO getHelper(HelperVO vo) {
-		return helperDAO.getHelper(vo);
+	public void deleteHelper(HelperVO vo) {
+		System.out.println("HelperServiceImpl의 deleteHelper() 실행...");
+		helperDAO.deleteHelper(vo);
+	}
+
+	@Override
+	public List<HelperVO> recentHelperList(HelperVO vo) {
+		System.out.println("HelperServiceImpl의 recentHelperList() 실행...");
+		return helperDAO.recentHelperList(vo);
 	}
 	
 }
