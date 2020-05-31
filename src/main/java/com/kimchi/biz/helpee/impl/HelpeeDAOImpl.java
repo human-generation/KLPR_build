@@ -12,18 +12,17 @@ import com.kimchi.biz.common.JDBCUtil;
 import com.kimchi.biz.helpee.HelpeeDAO;
 import com.kimchi.biz.helpee.HelpeeVO;
 
-
 @Repository("helpeeDAO")
-public class HelpeeDAOImpl implements HelpeeDAO{
-	
-	// JDBC 관련 변수들
-		private Connection conn = null;
-		private PreparedStatement stmt = null;
-		private ResultSet rs = null;
+public class HelpeeDAOImpl implements HelpeeDAO {
 
-		// SQL 명령어
-		private final String HELPEELIST_GET = "SELECT edate,eplace,moving,hospital,immigration,lno,e_intro FROM helpee ORDER BY eno";
-	
+	// JDBC 관련 변수들
+	private Connection conn = null;
+	private PreparedStatement stmt = null;
+	private ResultSet rs = null;
+
+	// SQL 명령어
+	private final String HELPEELIST_GET = "SELECT edate,eplace,moving,hospital,immigration,lno,e_intro FROM helpee ORDER BY eno";
+
 	@Override
 	public HelpeeVO getHelpee(HelpeeVO vo) {
 		// TODO Auto-generated method stub
@@ -33,15 +32,15 @@ public class HelpeeDAOImpl implements HelpeeDAO{
 	@Override
 	public List<HelpeeVO> getHelpeeList(HelpeeVO vo) {
 		System.out.println("------HelpeeDAOImpl의-getHelpeeList() 기능 처리");
-		
+
 		List<HelpeeVO> helpeeList = new ArrayList<HelpeeVO>();
-		
+
 		try {
 			conn = JDBCUtil.getConnection();
 			System.out.println(conn.toString());
 			stmt = conn.prepareStatement(HELPEELIST_GET);
 			rs = stmt.executeQuery();
-			while(rs.next()) {
+			while (rs.next()) {
 				HelpeeVO helpee = new HelpeeVO();
 				helpee.setEdate(rs.getString("edate"));
 				helpee.setEplace(rs.getInt("eplace"));
@@ -58,7 +57,5 @@ public class HelpeeDAOImpl implements HelpeeDAO{
 		}
 		return helpeeList;
 	}
-	
-	
 
 }
