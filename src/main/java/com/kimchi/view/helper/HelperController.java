@@ -39,14 +39,14 @@ public class HelperController {
 	}
 	
 	// 날짜지난 홍보글 삭제하기
-	@RequestMapping(value = "/getHelperList.do", method = RequestMethod.POST)
-	public String deleteHelper(@ModelAttribute("helper") HelperVO vo) {
-		System.out.println("날짜지난글 지움 리스트 모델때매 분리됐는데 작동하는지 봐바요");
-		
-		helperService.deleteHelper(vo);
-		
-		return "getHelperList.jsp";
-	}
+//	@RequestMapping(value = "/getHelperList.do", method = RequestMethod.POST)
+//	public String deleteHelper(@ModelAttribute("helper") HelperVO vo) {
+//		System.out.println("날짜지난글 지움 리스트 모델때매 분리됐는데 작동하는지 봐바요");
+//		
+//		helperService.deleteHelper(vo);
+//		
+//		return "getHelperList.jsp";
+//	}
 	
 	// 최신순 정렬
 	@RequestMapping(value = "/recentHelperList.do", method = RequestMethod.GET)

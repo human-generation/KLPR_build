@@ -38,6 +38,9 @@ public class HelperDAOImpl implements HelperDAO {
 			conn = JDBCUtil.getConnection();
 			stmt = conn.prepareStatement(HELPERLIST_GET);
 			rs = stmt.executeQuery();
+			
+			deleteHelper(vo);
+			
 			while (rs.next()) {
 				HelperVO helper = new HelperVO();
 
