@@ -86,62 +86,86 @@
 			</div>
 
 			<div class="col-md-10 order-2 order-md-2">
-				<div class="jumbotron myPageJt">
-					<div class="container">
-						<h1 class="display-4">My Wallet</h1>
-						<p class="lead">Lorem ipsum dolor sit, amet consectetur
-							adipisicing elit. Qui perferendis dignissimos aliquam. Eaque,
-							inventore.</p>
-
-						<div class="row float-right">
-							<button type="button"
-								class="btn btn-secondary helper-button btn-lg">마일리지 충전</button>
-
-							<button type="button"
-								class="btn btn-secondary helper-button btn-lg">100,000$</button>
-						</div>
-
-					</div>
-				</div>
 				<div class="row">
-					<div class="col-md-6 col-lg-3">
+					<div class="col-lg-4">
 						<div class="card">
+							<h4 class="card-header">결제대기</h4>
 							<div class="card-body">
-								<h5 class="card-title">신청중</h5>
-								<p class="card-text">승인을 기다리고 있는 거래</p>
-								<a href="#" class="btn btn-primary btn-sm helper-button-main">{mstate
-									0}</a><a href="#" class="btn btn-primary btn-sm helpee-button-main">{mstate
-									1}</a>
+								<div class="card">
+									<h6 class="card-header">거래자명</h6>
+									<div class="card-body">
+
+										<img class="mr-3"
+											src="https://cdn.pixabay.com/photo/2013/10/28/19/23/cat-201969_960_720.jpg"
+											alt="profileImage">
+										<p class="card-text">
+											<a href="#" class="badge badge-primary helpee-button-main">이사</a>
+											<a href="#" class="badge badge-primary helpee-button-main">병원</a>
+										<div class="lang">Language {language}</div>
+										<div class="reviewNum">Total usage {rv_no}</div>
+										<div class="avDate">Available date {sta - end}</div>
+										<div class="area">
+											Placed in <i class="fas fa-map-marker-alt"></i>{rplace}
+										</div>
+										</p>
+										<a href="#" class="btn btn-primary">결제하기</a>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
-					<div class="col-md-6 col-lg-3">
+					<div class="col-lg-4">
 						<div class="card">
+							<h4 class="card-header">결제완료</h4>
 							<div class="card-body">
-								<h5 class="card-title">결제대기</h5>
-								<p class="card-text">결제를 기다리고 있는 거래</p>
-								<a href="#" class="btn btn-primary btn-sm helpee-button-main">거래{mstate
-									2}</a>
+								<div class="card">
+									<h6 class="card-header">거래자명</h6>
+									<div class="card-body">
+
+										<img class="mr-3"
+											src="https://cdn.pixabay.com/photo/2013/10/28/19/23/cat-201969_960_720.jpg"
+											alt="profileImage">
+										<p class="card-text">
+											<a href="#" class="badge badge-primary helpee-button-main">이사</a>
+											<a href="#" class="badge badge-primary helpee-button-main">병원</a>
+										<div class="lang">Language {language}</div>
+										<div class="reviewNum">Total usage {rv_no}</div>
+										<div class="avDate">Available date {sta - end}</div>
+										<div class="area">
+											Placed in <i class="fas fa-map-marker-alt"></i>{rplace}
+										</div>
+										</p>
+										<a href="#" class="btn btn-primary">대화하기</a>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
-					<div class="col-md-6 col-lg-3">
+					<div class="col-lg-4">
 						<div class="card">
+							<h4 class="card-header">거래완료</h4>
 							<div class="card-body">
-								<h5 class="card-title">결제완료</h5>
-								<p class="card-text">결제완료 서비스대기중</p>
-								<a href="#" class="btn btn-primary btn-sm helpee-button-main">거래
-									{mstate3}</a>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-6 col-lg-3">
-						<div class="card">
-							<div class="card-body">
-								<h5 class="card-title">거래완료</h5>
-								<p class="card-text">리뷰작성대기중</p>
-								<a href="#" class="btn btn-primary btn-sm helpee-button-main">리뷰작성후
-									거래완료{mstate4, 5}</a>
+								<div class="card">
+									<h6 class="card-header">거래자명</h6>
+									<div class="card-body">
+
+										<img class="mr-3"
+											src="https://cdn.pixabay.com/photo/2013/10/28/19/23/cat-201969_960_720.jpg"
+											alt="profileImage">
+										<p class="card-text">
+											<a href="#" class="badge badge-primary helpee-button-main">이사</a>
+											<a href="#" class="badge badge-primary helpee-button-main">병원</a>
+										<div class="lang">Language {language}</div>
+										<div class="reviewNum">Total usage {rv_no}</div>
+										<div class="avDate">Available date {sta - end}</div>
+										<div class="area">
+											Placed in <i class="fas fa-map-marker-alt"></i>{rplace}
+										</div>
+										</p>
+										<a href="#" class="btn btn-primary" data-toggle="modal"
+											data-target="#reviewModal">리뷰작성후 거래완료</a>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -150,7 +174,71 @@
 		</div>
 	</div>
 
+
+
+
+
+	<!-- Additional Review Modal-->
+	<div class="modal fade" id="reviewModal" tabindex="-1" role="dialog"
+		aria-labelledby="reviewModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="modalLabel">Reivew</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+
+				<div class="modal-body">
+					<form class="review-form" action="insertE_Review.do" method="POST">
+						<div class="row">
+							<div class="col-5">
+								<img class="mr-3"
+									src="https://cdn.pixabay.com/photo/2013/10/28/19/23/cat-201969_960_720.jpg"
+									alt="profileImage">
+							</div>
+							<div class="col-7">
+								<div class="media-body">
+									<a href="#" class="badge badge-primary helpee-button-main">이사</a>
+									<a href="#" class="badge badge-primary helpee-button-main">병원</a>
+									<h4>Doja Cat</h4>
+									<div class="btn">{mdate}</div>
+								</div>
+
+							</div>
+						</div>
+						<input type="hidden" name="rno" class="form-control"
+							value="${sessionScope.userNumber}" />
+						<div class="form-group">
+							<label for="reviewScore">평점남기기</label> <select name="escore"
+								class="form-control" required>
+								<option value="5">5</option>
+								<option value="4">4</option>
+								<option value="3">3</option>
+								<option value="2">2</option>
+								<option value="1">1</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<label for="detailReview">Review your match</label>
+							<textarea name="ecomment" class="form-control" rows="3"></textarea>
+						</div>
+
+						<button type="submit" class="btn btn-primary helper-button-main">Submit
+							your review!</button>
+					</form>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
 	<!--AUTH MODAL-->
+
 	<!--LOGIN-->
 	<div class="modal fade" id="loginModal" tabindex="-1" role="dialog"
 		aria-labelledby="loginModalLabel" aria-hidden="true">
@@ -165,7 +253,7 @@
 				</div>
 
 				<div class="modal-body">
-					<form class="login-form" action="login.do" method="post">
+					<form class="login-form" action="login.do">
 						<div class="form-group">
 							<label for="inputEmail">Email address</label> <input name="email"
 								type="email" class="form-control" required>
@@ -196,6 +284,7 @@
 
 
 
+
 	<!--SIGNUP-->
 	<div class="modal fade" id="signupModal" tabindex="-1" role="dialog"
 		aria-labelledby="signupModalLabel" aria-hidden="true">
@@ -210,7 +299,7 @@
 				</div>
 
 				<div class="modal-body">
-					<form class="signup-form" action="join.do" method="post">
+					<form class="signup-form" action="singup.do">
 						<div class="form-group">
 							<label for="signupEmail">Email address</label> <input
 								name="email" type="email" class="form-control" required>

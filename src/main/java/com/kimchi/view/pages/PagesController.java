@@ -18,10 +18,16 @@ public class PagesController {
 		return "faq.jsp";
 	}
 
-	@RequestMapping(value = "/myPage.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/myPage.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public String myPageView() {
 		System.out.println("마이페이지로 이동");
 		return "myPage.jsp";
+	}
+
+	@RequestMapping(value = "/myPageDetailProcess.do", method = { RequestMethod.GET, RequestMethod.POST })
+	public String myPageDetailProcessView() {
+		System.out.println("마이페이지 진행중내역으로 이동");
+		return "MyPageDetailProcess.jsp";
 	}
 
 	@RequestMapping(value = "/alert.do", method = RequestMethod.GET)

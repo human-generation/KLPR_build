@@ -34,6 +34,7 @@ public class UserController {
 		UserVO user = userService.getUser(vo);
 		if (user != null) {
 			session.setAttribute("userName", user.getName());
+			session.setAttribute("userNumber", user.getUno());
 			System.out.println(user.getName());
 //			return "getMain.do";
 			return "main.do";
