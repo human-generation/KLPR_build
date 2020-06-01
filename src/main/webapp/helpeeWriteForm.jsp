@@ -1,15 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ page import="java.util.List" %>
-<%@ page import="com.kimchi.biz.user.UserVO" %>
-<%@ page import="com.kimchi.biz.helper.HelperVO" %>
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
-    <!-- Required meta tags -->
+<meta charset="UTF-8"><%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -22,212 +23,116 @@
 
     <!-- custom css-->
     <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="lightpick.css">
 
     <title>K:LPER | Get help in Korea</title>
 </head>
-
 <body>
-
     <nav id="mainNavbar" class="navbar navbar-expand-md navbar-dark py-1 fixed-top">
-        <a href="#" class="navbar-brand">K:LPER</a>
+        <a href="main.do" class="navbar-brand">K:LPER</a>
         <button class="navbar-toggler" data-toggle="collapse" data-target="#navLinks" aria-label="Toggle navigation">
             <i class="fas fa-align-right"></i>
         </button>
         <div class="collapse navbar-collapse" id="navLinks">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a href="getHelperList.do" class="nav-link">HELPER</a>
+                    <a href="helperWriteForm.do" class="nav-link">HELPER</a>
                 </li>
                 <li class="nav-item">
-                    <a href="getHelpeeList.do" class="nav-link">HELPEE</a>
+                    <a href="helpeeWriteForm.do" class="nav-link">HELPEE</a>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
-				<c:if test="${empty sessionScope.userName}">
-					<li class="nav-item"><a class="nav-link" data-toggle="modal"
-						data-target="#loginModal">Login</a></li>
-					<li class="nav-item"><a class="nav-link " data-toggle="modal"
-						data-target="#signupModal">Signup</a></li>
-				</c:if>
-				<c:if test="${!empty sessionScope.userName}">
-					${sessionScope.userName}님&nbsp;
+            	<c:if test="${empty sessionScope.userName}">
+	                <li class="nav-item">
+	                    <a class="nav-link" data-toggle="modal" data-target="#loginModal">LOGIN</a>
+	                </li>
+	                <li class="nav-item">
+	                    <a class="nav-link " data-toggle="modal" data-target="#signupModal">SIGNUP</a>
+	                </li>
+     			</c:if>
+     			<c:if test="${!empty sessionScope.userName}">
+    					${sessionScope.userName}님&nbsp;
 					<li class="nav-item"><a class="nav-link" href="myPage.do">MyPage</a></li>
-					<li class="nav-item"><a class="nav-link" href="alert.do">Alert</a>
+					<li class="nav-item"><a class="nav-link" href="alert.do">Alert</a></li>
 					<li class="nav-item"><a class="nav-link" href="logout.do">Logout</a></li>
 				</c:if>
             </ul>
         </div>
     </nav>
-
     <!-- HEADER END -->
     <!-- 본문 -->
-
-
-    <div class="jumbotron jumbotron-fluid">
-        <div class="container">
-            <h1 class="display-4">I can help you!</h1>
-            <p class="lead">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Qui perferendis dignissimos
-                aliquam. Eaque, inventore.</p>
-
-            <div class="container">
-                <div class="row float-right">
-                    <div class="dropdown">
-                        <button class="btn btn-sm btn-secondary helper-button dropdown-toggle" type="button"
-                            id="dropdownAddr" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            I'm near..
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownAddr">
-                            <button class="dropdown-item" type="button">지역구가</button>
-                            <button class="dropdown-item" type="button">들어갑니다</button>
-                            <button class="dropdown-item" type="button">수정예정</button>
+    <div class="container">
+        <div class="row writeForm">
+            <div class="col-md-3 order-1 order-md-1 align-items-center">
+                <img class="mr-3" src="https://cdn.pixabay.com/photo/2013/10/28/19/23/cat-201969_960_720.jpg"
+                    alt="profileImage">
+            </div>
+            <div class="col-md-9 order-2 order-md-2">
+                <div class="media-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4>${sessionScope.userName}&nbsp;</h4>
+                        </div>
+                        <div class="col-md-6">
+                            ${sessionScope.userNumber}&nbsp;
                         </div>
                     </div>
-                    <div class="btn-group" role="group" aria-label="SortBtn">
-                        <button type="button" class="btn btn-secondary helper-button btn-sm">최신순</button>
-                        <button type="button" class="btn btn-secondary helper-button btn-sm">평점순</button>
+                    <div class="col-12">
+                        ${sessionScope.userPhone}&nbsp;
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="container helperBoard">
-        <div class="row">
-            <div class="col-md-2 order-1 order-md-1">
-                <div class="btn-group-vertical d-none d-md-block">
-                    <button type="button" class="btn btn-secondary helper-button">All</button>
-                    <button type="button" class="btn btn-secondary helper-button">이사</button>
-                    <button type="button" class="btn btn-secondary helper-button">병원</button>
-                    <button type="button" class="btn btn-secondary helper-button">출입국</button>
-                </div>
-                <div class="btn-group d-md-none">
-                    <button type="button" class="btn btn-secondary helper-button">All</button>
-                    <button type="button" class="btn btn-secondary helper-button">이사</button>
-                    <button type="button" class="btn btn-secondary helper-button">병원</button>
-                    <button type="button" class="btn btn-secondary helper-button">출입국</button>
-                </div>
-
-                <button type="button" class="btn btn-primary helpee-button-main d-none d-md-block" onclick="location.href='helperWriteForm.do'">Please help me!
-                </button>
-
-                <button type="button" class="btn btn-primary helpee-button-main mobile-write-btn d-md-none" onclick="location.href='helperWriteForm.do'">
-                    <i class="fas fa-plus"></i>
-                </button>
-            </div>
-
-            <div class="col-md-10 order-2 order-md-2">
-            	<c:forEach items="${helperList}" var="helper">
-                <div class="row media helperPost">
-                    <div class="col-md-3 order-1 order-md-1 align-items-center">
-                        <img class="mr-3" src="https://cdn.pixabay.com/photo/2013/10/28/19/23/cat-201969_960_720.jpg"
-                            alt="profileImage">
-                    </div>
-                    <div class="col-md-9 order-2 order-md-2">
-                        <div class="media-body">
-                        	<c:if test="${helper.moving==1}">
-                            <a href="#" class="badge badge-primary helper-button-main">이사</a>
-                            </c:if>
-                            <c:if test="${helper.hospital==1}">
-                            <a href="#" class="badge badge-primary helper-button-main">병원</a>
-                            </c:if>
-                            <c:if test="${helper.immigration==1}">
-                            <a href="#" class="badge badge-primary helper-button-main">출입국</a>
-                            </c:if>
-                            
-                            <div class="row">
-                                <div class="col-md-6 order-2 order-md-1">
-                                 	<c:forEach items="${userList}" var="user"> 
-                                		<c:if test="${helper.uno == user.uno}">
-                                    		<h4>Name DOJACAT ${user.name}</h4>
-                                    	</c:if>
-                                    </c:forEach>
-                                </div>
-                                <div class="col-md-6 order-1 order-md-2">
-                                    <h5>{⭐️⭐️⭐️⭐️⭐️}</h5>
-                                </div>
+                    <form class="helper-write-form" action="helpeeWriteForm.do" method="post"> <!-- submit버튼을 누르면 다시 페이지 이동하도록  -->
+                        <div class="row">
+                            <div class="col-md-6">
+                            	<input name="uno" type="hidden" value="${sessionScope.userNumber}"/>
+                                <input name="edate" id="date-result" type="hidden"></input>
+                                <input type="text" id="datepicker" class="form-control form-control-sm"
+                                    placeholder="Select available date" autocomplete="off">
                             </div>
-                            <div class="row">
-                                <div class="col-sm-6 order-2 order-sm-1">
-                                    <div class="lang">
-                                 	<c:forEach items="${languageList}" var="language"> 
-                                		<c:if test="${language.lno == helper.lno}">
-                                    		${language.language}
-                                    	</c:if>
+                            <div class="col-md-6">
+                                <select class="custom-select" name="lno"> 
+                                    <option selected>Choose your language</option>
+                               		<c:forEach items="${languageList}" var="language">
+                                    <option value="${language.lno}">${language.language}</option>
                                     </c:forEach>
-                                    </div>
-                                    <div class="reviewNum">
-                                        Total usage {rv_no}
-                                    </div>
-
-                                </div>
-                                <div class="col-sm-6 order-1 order-sm-2">
-                                    <div class="avDate">
-                                        Available date ${helper.sta} ~ ${helper.end}
-                                    </div>
-                                    <div class="area">
-                                    <c:forEach items="${seoulList}" var="seoul">
-                                    	<c:if test="${seoul.dno == helper.rplace}">
-                                        Placed in <i class="fas fa-map-marker-alt"></i> ${seoul.district}
-                                    	</c:if>
-                                    </c:forEach>
-                                    </div>
-                                </div>
+                                </select>
                             </div>
-                            <div>About Me ${helper.r_intro}
-                                <div id="dots"></div>
-                                <div id="more">
-                                    <div class="boardReview">
-                                        <ul class="list-group">
-                                            <li class="list-group-item">리뷰가 들어갈 예정?</li>
-                                            <li class="list-group-item">시간을 잘안지켜요</li>
-                                            <li class="list-group-item">예의가 없어요</li>
-                                            <li class="list-group-item">말을 못해요</li>
-                                            <li class="list-group-item">잠만 자요</li>
-                                        </ul>
-                                    </div>
-                                    <button type="button" class="btn btn-primary helper-button-main">연락하기</button>
-                                </div>
-
-                            </div>
-
-                            <button onclick="readMoreFunction()" id="myBtn">
-                                <i class="fas fa-angle-down"></i>
-                            </button>
                         </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <select class="custom-select" name="eplace">
+                                    <option selected>Choose your area</option>
+                                    <option value="1">One</option>
+                                    <option value="2">Two</option>
+                                    <option value="3">Three</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                    <label class="btn btn-secondary">
+                                        <input name="moving" type="checkbox" class="service" value="1" autocomplete="off"> moving
+                                    </label>
+                                    <label class="btn btn-secondary">
+                                        <input name="hospital" type="checkbox" class="service" value="1" autocomplete="off"> hospital
+                                    </label>
+                                    <label class="btn btn-secondary">
+                                        <input name="immigration" type="checkbox" class="service" value="1" autocomplete="off"> immigration
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="detailReview">Additional Information</label>
+                            <textarea name="e_intro" class="form-control" rows="3"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary helper-button-main">Submit!</button>
+                    </form>
+                </div>
 
-                    </div>
-                </div>
-                </c:forEach>
-                
-                <!--PAGING -->
-                <div class="row justify-content-center">
-                    <nav aria-label="Page navigation">
-                        <ul class="pagination">
-                            <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Previous">
-                                    <span aria-hidden="true">&laquo;</span>
-                                    <span class="sr-only">Previous</span>
-                                </a>
-                            </li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Next">
-                                    <span aria-hidden="true">&raquo;</span>
-                                    <span class="sr-only">Next</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
             </div>
+
         </div>
     </div>
-
-
-
     <!--AUTH MODAL-->
     <!--LOGIN-->
     <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel"
@@ -381,6 +286,9 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
         crossorigin="anonymous"></script>
+    <!-- Moment Js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+    <script src="https://unpkg.com/lightpick@latest/lightpick.js"></script>
 
     <!-- custom js 추후 분리할것임-->
     <script>
@@ -410,6 +318,37 @@
                 moreText.style.display = "inline";
             }
         }
+
+		// calendar
+        var picker = new Lightpick({
+            field: document.getElementById('datepicker'),
+            singleDate: true,
+            selectForward: true,
+            onSelect: function (start) {
+                var str = '';
+                str += start ? start.format('YYYY-MM-DD') + '' : '';
+                document.getElementById('date-result').innerHTML = str;
+                document.getElementById('date-result').value = str;
+
+            }
+        });
+		
+		// service 선택(이사, 병원, 출입국사무소)
+		$('button').click(function(){
+			inputs = $('.service');
+			inputs.each(function(){
+				var value;
+				if($(this).attr('type') === 'checkbox'){
+					value = $(this).is(':checked')? 1:0;
+				}
+			});
+		});
     </script>
+</body>
+</html>
+<title>Insert title here</title>
+</head>
+<body>
+
 </body>
 </html>
