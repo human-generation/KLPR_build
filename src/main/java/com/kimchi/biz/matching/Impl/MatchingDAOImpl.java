@@ -27,7 +27,8 @@ public class MatchingDAOImpl implements MatchingDAO {
 
 	private final String SENDED_MATCHING_GET = "SELECT * FROM matching WHERE seno=?";
 	private final String RECEIVED_MATCHING_GET = "SELECT * FROM matching WHERE rcno=?";
-	private final String WAITING_MATCHING_GET = "SELECT * FROM matching WHERE (rcno=? AND mstate=2) OR (seno=? AND mstate=2)";
+	private final String WAITING_MATCHING_GET_R = "SELECT * FROM matching WHERE (seno=? AND mstate=2)";
+	private final String WAITING_MATCHING_GET_S="SELECT * FROM matching WHERE (rcno=? AND mstate=2)";
 	private final String PAID_MATCHING_GET = "SELECT * FROM matching WHERE (rcno=? AND mstate=3) OR (seno=? AND mstate=3)";
 	private final String ENDED_MATCHING_GET = "SELECT * FROM matching WHERE (rcno=? AND mstate=4) OR (seno=? AND mstate=4)";
 	private final String DENIED_MATCHING_GET = "SELECT * FROM matching WHERE (rcno=? AND mstate=5) OR (seno=? AND mstate=5)";
@@ -147,6 +148,7 @@ public class MatchingDAOImpl implements MatchingDAO {
 		}
 		return null;
 	}
+	
 	
 	public void updateState(MatchingVOExtra mvo) {
 			conn=JDBCUtil.getConnection();

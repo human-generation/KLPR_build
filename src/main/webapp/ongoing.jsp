@@ -79,132 +79,140 @@
 				</div>
 			</div>
 
-			<form action="ongoing.do" method="POST">
-				<div class="col-md-10 order-2 order-md-2">
-					<div class="row">
-						<div class="col-md-6">
-							<div class="card">
-								<h4 class="card-header">결제 대기</h4>
-								<c:forEach items="${WaitingList}" var="matching_w">
-									<div class="card-body">
-										<div class="card">
-											<h6 class="card-header">${matching_w.senderName }</h6>
-											<div class="card-body">
-
-												<img class="profile-img-box"
-													src="https://cdn.pixabay.com/photo/2013/10/28/19/23/cat-201969_960_720.jpg"
-													alt="profileImage">
-												<p class="card-text">
-													<c:if test="${matching_w.mservice ==1}">
-														<td><a href="#"
-															class="badge badge-primary helper-button-main">이사</a></td>
-													</c:if>
-													<c:if test="${matching_w.mservice ==2}">
-														<td><a href="#"
-															class="badge badge-primary helper-button-main">병원</a></td>
-													</c:if>
-													<c:if test="${matching_w.mservice ==3}">
-														<td><a href="#"
-															class="badge badge-primary helper-button-main">관공서</a></td>
-													</c:if>
-												<div class="lang">Language {language}</div>
-												<div class="reviewNum">Total usage {rv_no}</div>
-												<div class="avDate">Available date {sta - end}</div>
-												<div class="area">
-													Placed in <i class="fas fa-map-marker-alt">${matching_w.mplace }</i>{rplace}
-												</div>
-												</p>
-												<a href="#" class="btn btn-primary">상태 {요청받음 mstate 0}</a> <a
-													href="updateState.do" class="btn btn-primary">결제하기</a>
+			<div class="col-md-10 order-2 order-md-2">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="card">
+							<h4 class="card-header">결제 대기</h4>
+							<form action="updateState.do" method="POST">
+							<c:forEach items="${WaitingList}" var="matching_w">
+								<div class="card-body">
+									<div class="card">
+										<c:choose>
+										<c:when test="${matching_w.rcno } eq ${loginUser.uno }">
+										<h6 class="card-header">${matching_w.senderName }</h6></c:when>
+										<c:when test="${matching_w.sno } eq ${loginUser.uno }">
+										<h6 class="card-header">${matching_w.receiverName }</h6></c:when>
+										</c:choose>
+										<div class="card-body">
+											
+											<img class="profile-img-box"
+												src="https://cdn.pixabay.com/photo/2013/10/28/19/23/cat-201969_960_720.jpg"
+												alt="profileImage">
+											<p class="card-text">
+												<c:if test="${matching_w.mservice ==1}">
+													<td><a href="#"
+														class="badge badge-primary helper-button-main">이사</a></td>
+												</c:if>
+												<c:if test="${matching_w.mservice ==2}">
+													<td><a href="#"
+														class="badge badge-primary helper-button-main">병원</a></td>
+												</c:if>
+												<c:if test="${matching_w.mservice ==3}">
+													<td><a href="#"
+														class="badge badge-primary helper-button-main">관공서</a></td>
+												</c:if>
+											<div class="lang">Language {language}</div>
+											<div class="reviewNum">Total usage {rv_no}</div>
+											<div class="avDate">Available date {sta - end}</div>
+											<div class="area">
+												Placed in <i class="fas fa-map-marker-alt">${matching_w.mplace }</i>{rplace}
 											</div>
+											</p>
+											<a href="#" class="btn btn-primary">상태 {요청받음 mstate 0}</a>
+											<!-- 이아래문장을 폼으로감싸서 submit하기 -->		
+											<c:if test="">
+												<button type="submit" class="btn btn-primary" value="${matching_w.rcno}">결제하기</button>
+											</c:if>
 										</div>
 									</div>
-								</c:forEach>
-							</div>
+								</div>
+							</c:forEach>
+							</form>
 						</div>
-						<div class="col-md-6">
-							<div class="card">
-								<h4 class="card-header">결제 완료</h4>
-								<c:forEach items="${PaidList}" var="matching_p">
-									<div class="card-body">
-										<div class="card">
-											<h6 class="card-header">${matching_p.senderName }</h6>
-											<div class="card-body">
+					</div>
+					<div class="col-md-6">
+						<div class="card">
+							<h4 class="card-header">결제 완료</h4>
+							<c:forEach items="${PaidList}" var="matching_p">
+								<div class="card-body">
+									<div class="card">
+										<h6 class="card-header">${matching_p.senderName }</h6>
+										<div class="card-body">
 
-												<img class="profile-img-box"
-													src="https://cdn.pixabay.com/photo/2013/10/28/19/23/cat-201969_960_720.jpg"
-													alt="profileImage">
-												<p class="card-text">
-													<c:if test="${matching_p.mservice ==1}">
-														<td><a href="#"
-															class="badge badge-primary helper-button-main">이사</a></td>
-													</c:if>
-													<c:if test="${matching_p.mservice ==2}">
-														<td><a href="#"
-															class="badge badge-primary helper-button-main">병원</a></td>
-													</c:if>
-													<c:if test="${matching_p.mservice ==3}">
-														<td><a href="#"
-															class="badge badge-primary helper-button-main">관공서</a></td>
-													</c:if>
-												<div class="lang">Language {language}</div>
-												<div class="reviewNum">Total usage {rv_no}</div>
-												<div class="avDate">Available date {sta - end}</div>
-												<div class="area">
-													Placed in <i class="fas fa-map-marker-alt">${matching_p.mplace }</i>{rplace}
-												</div>
-												</p>
-												<a href="#" class="btn btn-primary">상태 {수락대기중 mstate 1}</a> <a
-													href="#" class="btn btn-primary">대화하기(미구현)</a>
+											<img class="profile-img-box"
+												src="https://cdn.pixabay.com/photo/2013/10/28/19/23/cat-201969_960_720.jpg"
+												alt="profileImage">
+											<p class="card-text">
+												<c:if test="${matching_p.mservice ==1}">
+													<td><a href="#"
+														class="badge badge-primary helper-button-main">이사</a></td>
+												</c:if>
+												<c:if test="${matching_p.mservice ==2}">
+													<td><a href="#"
+														class="badge badge-primary helper-button-main">병원</a></td>
+												</c:if>
+												<c:if test="${matching_p.mservice ==3}">
+													<td><a href="#"
+														class="badge badge-primary helper-button-main">관공서</a></td>
+												</c:if>
+											<div class="lang">Language {language}</div>
+											<div class="reviewNum">Total usage {rv_no}</div>
+											<div class="avDate">Available date {sta - end}</div>
+											<div class="area">
+												Placed in <i class="fas fa-map-marker-alt">${matching_p.mplace }</i>{rplace}
 											</div>
+											</p>
+											<a href="#" class="btn btn-primary">상태 {수락대기중 mstate 1}</a> <a
+												href="#" class="btn btn-primary">대화하기(미구현)</a>
 										</div>
 									</div>
-								</c:forEach>
-							</div>
+								</div>
+							</c:forEach>
 						</div>
-						<div class="col-md-6">
-							<div class="card">
-								<h4 class="card-header">거래완료</h4>
-								<c:forEach items="${EndedList}" var="matching_e">
-									<div class="card-body">
-										<div class="card">
-											<h6 class="card-header">${matching_e.senderName }</h6>
-											<div class="card-body">
+					</div>
+					<div class="col-md-6">
+						<div class="card">
+							<h4 class="card-header">거래완료</h4>
+							<c:forEach items="${EndedList}" var="matching_e">
+								<div class="card-body">
+									<div class="card">
+										<h6 class="card-header">${matching_e.senderName }</h6>
+										<div class="card-body">
 
-												<img class="profile-img-box"
-													src="https://cdn.pixabay.com/photo/2013/10/28/19/23/cat-201969_960_720.jpg"
-													alt="profileImage">
-												<p class="card-text">
-													<c:if test="${matching_e.mservice ==1}">
-														<td><a href="#"
-															class="badge badge-primary helper-button-main">이사</a></td>
-													</c:if>
-													<c:if test="${matching_e.mservice ==2}">
-														<td><a href="#"
-															class="badge badge-primary helper-button-main">병원</a></td>
-													</c:if>
-													<c:if test="${matching_e.mservice ==3}">
-														<td><a href="#"
-															class="badge badge-primary helper-button-main">관공서</a></td>
-													</c:if>
-												<div class="lang">Language {language}</div>
-												<div class="reviewNum">Total usage {rv_no}</div>
-												<div class="avDate">Available date {sta - end}</div>
-												<div class="area">
-													Placed in <i class="fas fa-map-marker-alt">${matching_e.mplace }</i>{rplace}
-												</div>
-												</p>
-												<a href="#" class="btn btn-primary">상태 {수락대기중 mstate 1}</a> <a
-													href="updateState.do" class="btn btn-primary">리뷰작성후 거래완료</a>
+											<img class="profile-img-box"
+												src="https://cdn.pixabay.com/photo/2013/10/28/19/23/cat-201969_960_720.jpg"
+												alt="profileImage">
+											<p class="card-text">
+												<c:if test="${matching_e.mservice ==1}">
+													<td><a href="#"
+														class="badge badge-primary helper-button-main">이사</a></td>
+												</c:if>
+												<c:if test="${matching_e.mservice ==2}">
+													<td><a href="#"
+														class="badge badge-primary helper-button-main">병원</a></td>
+												</c:if>
+												<c:if test="${matching_e.mservice ==3}">
+													<td><a href="#"
+														class="badge badge-primary helper-button-main">관공서</a></td>
+												</c:if>
+											<div class="lang">Language {language}</div>
+											<div class="reviewNum">Total usage {rv_no}</div>
+											<div class="avDate">Available date {sta - end}</div>
+											<div class="area">
+												Placed in <i class="fas fa-map-marker-alt">${matching_e.mplace }</i>{rplace}
 											</div>
+											</p>
+											<a href="#" class="btn btn-primary">상태 {수락대기중 mstate 1}</a> <a
+												href="updateState.do" class="btn btn-primary">리뷰작성후 거래완료</a>
 										</div>
 									</div>
-								</c:forEach>
-							</div>
+								</div>
+							</c:forEach>
 						</div>
 					</div>
 				</div>
-				</form>
+			</div>
 		</div>
 	</div>
 

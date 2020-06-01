@@ -19,4 +19,10 @@ public class MatchingServiceImpl implements MatchingService {
 		return matchingDAO.getMatchingList(vo, state);	
 	}
 
+	@Override
+	public void updateState(MatchingVOExtra mvo) {
+		matchingDAO.updateState(mvo);
+		
+	}
+
 }
