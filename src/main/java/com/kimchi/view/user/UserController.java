@@ -19,6 +19,8 @@ public class UserController {
 
 	@RequestMapping(value = "/login.do", method = RequestMethod.GET)
 	public String loginView(@ModelAttribute("user") UserVO vo) {
+		vo.setEmail("arav@gmail.com");
+		vo.setPw("1234");
 		System.out.println("로그인 화면으로 이동");
 		return "main.do";
 	}
