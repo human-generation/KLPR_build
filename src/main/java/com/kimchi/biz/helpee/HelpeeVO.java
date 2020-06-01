@@ -1,12 +1,6 @@
 package com.kimchi.biz.helpee;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-
-@XmlAccessorType(XmlAccessType.FIELD)
 public class HelpeeVO {
-	@XmlAttribute
 	private int eno;
 	private int uno;
 	private String edate;

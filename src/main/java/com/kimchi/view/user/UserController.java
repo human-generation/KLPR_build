@@ -12,7 +12,7 @@ import com.kimchi.biz.user.impl.UserDAOImpl;
 
 @Controller
 public class UserController {
-
+	
 	@RequestMapping(value = "/login.do", method = RequestMethod.GET)
 	public String loginView(@ModelAttribute("user") UserVO vo) {
 		System.out.println("로그인 화면으로 이동");
@@ -29,9 +29,10 @@ public class UserController {
 
 		UserVO user = userDAO.getUser(vo);
 		if (user != null) {
+			
+			session.setAttribute("userNumber", user.getUno());
 			session.setAttribute("userName", user.getName());
 			System.out.println(user.getName());
-//			return "getMain.do";
 			return "main.do";
 		} else {
 			return "main.do";

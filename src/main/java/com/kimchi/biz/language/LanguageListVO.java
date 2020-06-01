@@ -7,11 +7,8 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement(name="languageList")
-@XmlAccessorType(XmlAccessType.FIELD)
 public class LanguageListVO {
 	
-	@XmlElement(name="language")
 	private List<LanguageVO> languageList;
 
 	public List<LanguageVO> getLanguageList() {

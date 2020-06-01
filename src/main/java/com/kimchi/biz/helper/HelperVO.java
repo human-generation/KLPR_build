@@ -2,6 +2,8 @@ package com.kimchi.biz.helper;
 
 import java.sql.Date;
 
+import com.kimchi.biz.user.UserVO;
+
 
 public class HelperVO {
 	private int rno;	// 헬퍼 번호
@@ -15,15 +17,20 @@ public class HelperVO {
 	private int lno;	// 언어 번호
 	private String r_intro;	// 자기소개
 	
+	private UserVO userVO;
 	
 //	private String name;	// 유저이름
 //	private String language;// 언어
-	
-	
+
+	public UserVO getUserVO() {
+		return userVO;
+	}
+	public void setUserVO(UserVO userVO) {
+		this.userVO = userVO;
+	}
 	public int getRno() {
 		return rno;
 	}
-
 	public void setRno(int rno) {
 		this.rno = rno;
 	}
@@ -86,7 +93,7 @@ public class HelperVO {
 	public String toString() {
 		return "HelperVO [rno=" + rno + ", uno=" + uno + ", sta=" + sta + ", end=" + end + ", rplace=" + rplace
 				+ ", moving=" + moving + ", hospital=" + hospital + ", immigration=" + immigration + ", lno=" + lno
-				+ ", r_intro=" + r_intro + "]";
+				+ ", r_intro=" + r_intro + ", userVO=" + userVO + "]";
 	}
 	
 }

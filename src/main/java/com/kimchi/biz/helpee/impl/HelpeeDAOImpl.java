@@ -16,13 +16,13 @@ import com.kimchi.biz.helpee.HelpeeVO;
 @Repository("helpeeDAO")
 public class HelpeeDAOImpl implements HelpeeDAO{
 	
-	// JDBC 관련 변수들
+		// JDBC 관련 변수들
 		private Connection conn = null;
 		private PreparedStatement stmt = null;
 		private ResultSet rs = null;
 
 		// SQL 명령어
-		private final String HELPEELIST_GET = "SELECT edate,eplace,moving,hospital,immigration,lno,e_intro FROM helpee ORDER BY eno";
+		private final String HELPEELIST_GET = "SELECT eno, uno, edate, eplace, moving, hospital, immigration, lno, e_intro FROM helpee ORDER BY eno";
 	
 	@Override
 	public HelpeeVO getHelpee(HelpeeVO vo) {
@@ -43,11 +43,15 @@ public class HelpeeDAOImpl implements HelpeeDAO{
 			rs = stmt.executeQuery();
 			while(rs.next()) {
 				HelpeeVO helpee = new HelpeeVO();
+				
+				helpee.setEno(rs.getInt("eno"));
+				helpee.setUno(rs.getInt("uno"));
 				helpee.setEdate(rs.getString("edate"));
 				helpee.setEplace(rs.getInt("eplace"));
 				helpee.setMoving(rs.getInt("moving"));
 				helpee.setHospital(rs.getInt("hospital"));
 				helpee.setImmigration(rs.getInt("immigration"));
+				helpee.setLno(rs.getInt("lno"));
 				helpee.setE_intro(rs.getString("e_intro"));
 				helpeeList.add(helpee);
 			}
