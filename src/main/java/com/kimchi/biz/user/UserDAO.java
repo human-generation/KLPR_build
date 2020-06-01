@@ -17,4 +17,10 @@ public interface UserDAO {
 	// 회원을 가입시킨다
 	public void insertUser(UserVO vo);
 
+	// 회원의 돈 충전(소희)
+	public void updateUserMoney(UserVO vo, int pay);
+
+	// 회원 정보 수정(소희)
+	public void updateUser(UserVO vo);
+
 }

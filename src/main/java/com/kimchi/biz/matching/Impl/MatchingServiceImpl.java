@@ -9,7 +9,7 @@ import com.kimchi.biz.matching.MatchingDAO;
 import com.kimchi.biz.matching.MatchingService;
 import com.kimchi.biz.matching.MatchingVO;
 
-@Service("matchingService")
+//@Service("matchingService")
 public class MatchingServiceImpl implements MatchingService {
 
 	@Autowired

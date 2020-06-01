@@ -2,8 +2,11 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE html>
-<html>
+<%@ page session="true"%>
+
+<!doctype html>
+<html lang="en">
+
 <head>
 <!-- Required meta tags -->
 <meta charset="utf-8">
@@ -25,6 +28,7 @@
 
 <title>K:LPER | Get help in Korea</title>
 </head>
+
 <body>
 	<nav id="mainNavbar"
 		class="navbar navbar-expand-md navbar-dark py-1 fixed-top">
@@ -35,23 +39,14 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navLinks">
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item"><a href="getHelperList.do"
-					class="nav-link">HELPER</a></li>
-				<li class="nav-item"><a href="getHelpeeList.do"
-					class="nav-link">HELPEE</a></li>
+				<li class="nav-item"><a href="" class="nav-link">HELPER</a></li>
+				<li class="nav-item"><a href="" class="nav-link">HELPEE</a></li>
 			</ul>
 			<ul class="navbar-nav ml-auto">
-				<c:if test="${empty sessionScope.userName}">
-					<li class="nav-item"><a class="nav-link" data-toggle="modal"
-						data-target="#loginModal">Login</a></li>
-					<li class="nav-item"><a class="nav-link " data-toggle="modal"
-						data-target="#signupModal">Signup</a></li>
-				</c:if>
-				<c:if test="${!empty sessionScope.userName}">
-					${sessionScope.userName}님&nbsp;
-					<li class="nav-item"><a class="nav-link" href="myPage.do">MyPage</a></li>
-					<li class="nav-item"><a class="nav-link" href="logout.do">Logout</a></li>
-				</c:if>
+				<li class="nav-item"><a class="nav-link" data-toggle="modal"
+					data-target="#loginModal">Login</a></li>
+				<li class="nav-item"><a class="nav-link " data-toggle="modal"
+					data-target="#signupModal">Signup</a></li>
 			</ul>
 		</div>
 	</nav>
@@ -66,81 +61,160 @@
 	<div class="container myPageBoard">
 		<div class="row">
 			<div class="col-md-2 order-1 order-md-1">
-				 <div class="btn-group-vertical d-none d-md-block">
-                    <button type="button" class="btn btn-secondary helper-button" onclick="location.href='myPage.do'">My page</button>
-                    <button type="button" class="btn btn-secondary helper-button" onclick="location.href='incomingRequest.do'">요청내역</button>
-                    <button type="button" class="btn btn-secondary helper-button" onclick="location.href='myPageDetailProcess.do'">진행중내역</button>
-                    <button type="button" class="btn btn-secondary helper-button">이전내역</button>
-                    <button type="button" class="btn btn-secondary helper-button">나의정보수정</button>
-                </div>
-				 <div class="btn-group d-md-none">
-                    <button type="button" class="btn btn-secondary helper-button" onclick="location.href='myPage.do'">My page</button>
-                    <button type="button" class="btn btn-secondary helper-button" onclick="location.href='incomingRequest.do'">요청내역</button>
-                    <button type="button" class="btn btn-secondary helper-button" onclick="location.href='myPageDetailProcess.do'">진행중내역</button>
-                    <button type="button" class="btn btn-secondary helper-button">이전내역</button>
-                    <button type="button" class="btn btn-secondary helper-button">나의정보수정</button>
-                </div>
+				<div class="btn-group-vertical d-none d-md-block">
+					<button type="button" class="btn btn-secondary helper-button">My
+						page</button>
+					<button type="button" class="btn btn-secondary helper-button">요청내역</button>
+					<button type="button" class="btn btn-secondary helper-button">진행중내역</button>
+					<button type="button" class="btn btn-secondary helper-button">이전내역</button>
+					<button type="button" class="btn btn-secondary helper-button">나의정보수정</button>
+				</div>
+				<div class="btn-group d-md-none">
+					<button type="button" class="btn btn-secondary helper-button">My
+						page</button>
+					<button type="button" class="btn btn-secondary helper-button">요청내역</button>
+					<button type="button" class="btn btn-secondary helper-button">진행중내역</button>
+					<button type="button" class="btn btn-secondary helper-button">이전내역</button>
+					<button type="button" class="btn btn-secondary helper-button">나의정보수정</button>
+				</div>
 			</div>
 
-			 <div class="col-md-10 order-2 order-md-2">
-                <div class="jumbotron myPageJt">
-                    <div class="container">
-                        <h1 class="display-4">My Wallet</h1>
-                        <p class="lead">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Qui perferendis
-                            dignissimos
-                            aliquam. Eaque, inventore.
-                        </p>
-
-                        <div class="row float-right">
-                            <button type="button" class="btn btn-secondary helper-button btn-lg" onclick="location.href='payment.do'">마일리지 충전</button>
-
-                            <button type="button" class="btn btn-secondary helper-button btn-lg">${sessionScope.userMoney }$</button>
-                        </div>
-
-                    </div>
-                </div>
+			<div class="col-md-10 order-2 order-md-2">
 				<div class="row">
-                    <div class="col-md-6 col-lg-3">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">신청중</h5>
-                                <p class="card-text">승인을 기다리고 있는 거래</p>
-                                <a href="incomingRequest.do" class="btn btn-primary btn-sm helper-button-main">${mstate0}</a><a href="#"
-                                    class="btn btn-primary btn-sm helpee-button-main">${mstate1}</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-3">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">결제대기</h5>
-                                <p class="card-text">결제를 기다리고 있는 거래</p>
-                                <a href="#" class="btn btn-primary btn-sm helpee-button-main">${mstate2}</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-3">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">결제완료</h5>
-                                <p class="card-text">결제완료 서비스대기중</p>
-                                <a href="#" class="btn btn-primary btn-sm helpee-button-main">${mstate3}</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-3">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">거래완료</h5>
-                                <p class="card-text">리뷰작성대기중</p>
-                                <a href="#" class="btn btn-primary btn-sm helpee-button-main">${mstate4}</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+					<div class="col-md-6">
+						<div class="card">
+							<h4 class="card-header">결제 대기</h4>
+							<form action="updateState.do" method="POST">
+							<c:forEach items="${WaitingList}" var="matching_w">
+								<div class="card-body">
+									<div class="card">
+										<c:choose>
+										<c:when test="${matching_w.rcno } eq ${loginUser.uno }">
+										<h6 class="card-header">${matching_w.senderName }</h6></c:when>
+										<c:when test="${matching_w.sno } eq ${loginUser.uno }">
+										<h6 class="card-header">${matching_w.receiverName }</h6></c:when>
+										</c:choose>
+										<div class="card-body">
+											
+											<img class="profile-img-box"
+												src="https://cdn.pixabay.com/photo/2013/10/28/19/23/cat-201969_960_720.jpg"
+												alt="profileImage">
+											<p class="card-text">
+												<c:if test="${matching_w.mservice ==1}">
+													<td><a href="#"
+														class="badge badge-primary helper-button-main">이사</a></td>
+												</c:if>
+												<c:if test="${matching_w.mservice ==2}">
+													<td><a href="#"
+														class="badge badge-primary helper-button-main">병원</a></td>
+												</c:if>
+												<c:if test="${matching_w.mservice ==3}">
+													<td><a href="#"
+														class="badge badge-primary helper-button-main">관공서</a></td>
+												</c:if>
+											<div class="lang">Language {language}</div>
+											<div class="reviewNum">Total usage {rv_no}</div>
+											<div class="avDate">Available date {sta - end}</div>
+											<div class="area">
+												Placed in <i class="fas fa-map-marker-alt">${matching_w.mplace }</i>{rplace}
+											</div>
+											</p>
+											<a href="#" class="btn btn-primary">상태 {요청받음 mstate 0}</a>
+											<!-- 이아래문장을 폼으로감싸서 submit하기 -->		
+											<c:if test="">
+												<button type="submit" class="btn btn-primary" value="${matching_w.rcno}">결제하기</button>
+											</c:if>
+										</div>
+									</div>
+								</div>
+							</c:forEach>
+							</form>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="card">
+							<h4 class="card-header">결제 완료</h4>
+							<c:forEach items="${PaidList}" var="matching_p">
+								<div class="card-body">
+									<div class="card">
+										<h6 class="card-header">${matching_p.senderName }</h6>
+										<div class="card-body">
+
+											<img class="profile-img-box"
+												src="https://cdn.pixabay.com/photo/2013/10/28/19/23/cat-201969_960_720.jpg"
+												alt="profileImage">
+											<p class="card-text">
+												<c:if test="${matching_p.mservice ==1}">
+													<td><a href="#"
+														class="badge badge-primary helper-button-main">이사</a></td>
+												</c:if>
+												<c:if test="${matching_p.mservice ==2}">
+													<td><a href="#"
+														class="badge badge-primary helper-button-main">병원</a></td>
+												</c:if>
+												<c:if test="${matching_p.mservice ==3}">
+													<td><a href="#"
+														class="badge badge-primary helper-button-main">관공서</a></td>
+												</c:if>
+											<div class="lang">Language {language}</div>
+											<div class="reviewNum">Total usage {rv_no}</div>
+											<div class="avDate">Available date {sta - end}</div>
+											<div class="area">
+												Placed in <i class="fas fa-map-marker-alt">${matching_p.mplace }</i>{rplace}
+											</div>
+											</p>
+											<a href="#" class="btn btn-primary">상태 {수락대기중 mstate 1}</a> <a
+												href="#" class="btn btn-primary">대화하기(미구현)</a>
+										</div>
+									</div>
+								</div>
+							</c:forEach>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="card">
+							<h4 class="card-header">거래완료</h4>
+							<c:forEach items="${EndedList}" var="matching_e">
+								<div class="card-body">
+									<div class="card">
+										<h6 class="card-header">${matching_e.senderName }</h6>
+										<div class="card-body">
+
+											<img class="profile-img-box"
+												src="https://cdn.pixabay.com/photo/2013/10/28/19/23/cat-201969_960_720.jpg"
+												alt="profileImage">
+											<p class="card-text">
+												<c:if test="${matching_e.mservice ==1}">
+													<td><a href="#"
+														class="badge badge-primary helper-button-main">이사</a></td>
+												</c:if>
+												<c:if test="${matching_e.mservice ==2}">
+													<td><a href="#"
+														class="badge badge-primary helper-button-main">병원</a></td>
+												</c:if>
+												<c:if test="${matching_e.mservice ==3}">
+													<td><a href="#"
+														class="badge badge-primary helper-button-main">관공서</a></td>
+												</c:if>
+											<div class="lang">Language {language}</div>
+											<div class="reviewNum">Total usage {rv_no}</div>
+											<div class="avDate">Available date {sta - end}</div>
+											<div class="area">
+												Placed in <i class="fas fa-map-marker-alt">${matching_e.mplace }</i>{rplace}
+											</div>
+											</p>
+											<a href="#" class="btn btn-primary">상태 {수락대기중 mstate 1}</a> <a
+												href="updateState.do" class="btn btn-primary">리뷰작성후 거래완료</a>
+										</div>
+									</div>
+								</div>
+							</c:forEach>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<!--AUTH MODAL-->
 	<!--LOGIN-->
@@ -157,7 +231,7 @@
 				</div>
 
 				<div class="modal-body">
-					<form class="login-form" action="login.do" method="post">
+					<form class="login-form" action="login.do">
 						<div class="form-group">
 							<label for="inputEmail">Email address</label> <input name="email"
 								type="email" class="form-control" required>
@@ -202,7 +276,7 @@
 				</div>
 
 				<div class="modal-body">
-					<form class="signup-form" action="join.do" method="post">
+					<form class="signup-form" action="singup.do">
 						<div class="form-group">
 							<label for="signupEmail">Email address</label> <input
 								name="email" type="email" class="form-control" required>
@@ -327,5 +401,8 @@
 			}
 		}
 	</script>
+
+
 </body>
+
 </html>

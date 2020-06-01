@@ -21,6 +21,8 @@ public class UserDAOImpl implements UserDAO {
 	// SQL 명령어
 	private final String USER_GET = "SELECT * FROM user WHERE email=? AND pw=?";
 	private final String USER_INSERT = "INSERT INTO user(email, pw, name, gender, money, phone) VALUES(?, ?, ?, ?, 0, ?)";
+	private final String UPDATE_USER_MONEY = "UPDATE user SET money=? WHERE UNO=?";
+	private final String UPDATE_USER = "UPDATE user SET name=?, WHERE UNO=?";
 
 	@Override
 	public UserVO getUser(UserVO vo) {
@@ -65,6 +67,40 @@ public class UserDAOImpl implements UserDAO {
 			stmt.setString(5, vo.getPhone());
 			stmt.setString(6, vo.getUcomment());
 			stmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(stmt, conn);
+		}
+	}
+
+	@Override
+	public void updateUserMoney(UserVO vo, int pay) {
+		System.out.println("------UserDAOImpl의-updateUserMoney() 기능 처리");
+		try {
+			conn = JDBCUtil.getConnection();
+			stmt = conn.prepareStatement(UPDATE_USER_MONEY);
+			stmt.setInt(1, vo.getMoney() + pay);
+			stmt.setInt(2, vo.getUno());
+			stmt.executeUpdate();
+			getUser(vo);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(stmt, conn);
+		}
+	}
+
+	@Override
+	public void updateUser(UserVO vo) {
+		System.out.println("------UserDAOImpl의-updateUser() 기능 처리");
+		try {
+			conn = JDBCUtil.getConnection();
+			stmt = conn.prepareStatement(UPDATE_USER);
+			stmt.setInt(1, vo.getMoney());
+			stmt.setInt(2, vo.getUno());
+			stmt.executeUpdate();
+			getUser(vo);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

@@ -12,7 +12,7 @@ import com.kimchi.biz.common.JDBCUtil;
 import com.kimchi.biz.matching.MatchingDAO;
 import com.kimchi.biz.matching.MatchingVO;
 
-@Repository("matchingDAO")
+//@Repository("matchingDAO")
 public class MatchingDAOImpl implements MatchingDAO {
 
 	// JDBC 관련 변수
