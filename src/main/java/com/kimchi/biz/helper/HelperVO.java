@@ -2,6 +2,7 @@ package com.kimchi.biz.helper;
 
 import java.sql.Date;
 
+import com.kimchi.biz.language.LanguageVO;
 import com.kimchi.biz.user.UserVO;
 
 
@@ -16,14 +17,18 @@ public class HelperVO {
 	private int immigration;// 출입국
 	private int lno;	// 언어 번호
 	private String r_intro;	// 자기소개
+	
 	private UserVO userVO;
+	private LanguageVO languageVO;
 	
-	
-	
-//	private String name;	// 유저이름
-//	private String language;// 언어
-	
-	
+	public LanguageVO getLanguageVO() {
+		return languageVO;
+	}
+
+	public void setLanguageVO(LanguageVO languageVO) {
+		this.languageVO = languageVO;
+	}
+
 	public UserVO getUserVO() {
 		return userVO;
 	}

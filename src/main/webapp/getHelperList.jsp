@@ -140,7 +140,7 @@
                             <div class="row">
                                 <div class="col-sm-6 order-2 order-sm-1">
                                     <div class="lang">
-                                        Language 랭귀지 연결해야돼 ㅅㅂ
+                                        Language ${helper.languageVO.language}
                                     </div>
                                     <div class="reviewNum">
                                         Total usage {rv_no}

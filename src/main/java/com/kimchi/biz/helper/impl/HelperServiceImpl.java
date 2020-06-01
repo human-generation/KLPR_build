@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.kimchi.biz.helper.HelperDAO;
 import com.kimchi.biz.helper.HelperService;
 import com.kimchi.biz.helper.HelperVO;
+import com.kimchi.biz.user.UserVO;
 
 @Service("HelperService")
 public class HelperServiceImpl implements HelperService {

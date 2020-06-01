@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import com.kimchi.biz.common.JDBCUtil;
 import com.kimchi.biz.helper.HelperDAO;
 import com.kimchi.biz.helper.HelperVO;
+import com.kimchi.biz.language.LanguageVO;
 import com.kimchi.biz.user.UserVO;
 
 @Repository("HelperDAO")
@@ -22,11 +23,11 @@ public class HelperDAOImpl implements HelperDAO {
 	private ResultSet rs = null;
 
 	// SQL 명령어
-	private final String HELPERLIST_GET = "SELECT u.name, h.sta, h.end, h.rplace, h.moving, h.hospital, h.immigration, h.r_intro"
-			+ " FROM helper AS h JOIN user AS u ON h.uno=u.uno";
+	private final String HELPERLIST_GET = "SELECT u.name, h.sta, h.end, h.rplace, h.moving, h.hospital, h.immigration, l.language, h.r_intro"
+			+ " FROM helper AS h JOIN user AS u ON h.uno=u.uno JOIN language AS l ON h.lno=l.lno";
 	private final String HELPER_DELETE = "DELETE FROM helper WHERE end < CURDATE()";
-	private final String HELPERLIST_RECENTLY = "SELECT u.name, h.sta, h.end, h.rplace, h.moving, h.hospital, h.immigration, h.r_intro"
-			+ " FROM helper AS h JOIN user AS u ON h.uno=u.uno ORDER BY h.rno DESC";
+	private final String HELPERLIST_RECENTLY = "SELECT u.name, h.sta, h.end, h.rplace, h.moving, h.hospital, h.immigration, l.language, h.r_intro"
+			+ " FROM helper AS h JOIN user AS u ON h.uno=u.uno JOIN language AS l ON h.lno=l.lno ORDER BY h.rno DESC";
 
 	@Override
 	public List<HelperVO> getHelperList(HelperVO vo) { // 모든 헬퍼 리스트 보여주기
@@ -47,6 +48,10 @@ public class HelperDAOImpl implements HelperDAO {
 				UserVO user = new UserVO();
 				user.setName(rs.getString("name"));
 				helper.setUserVO(user);
+				
+				LanguageVO language = new LanguageVO();
+				language.setLanguage(rs.getString("language"));
+				helper.setLanguageVO(language);
 
 				helper.setSta(rs.getDate("sta"));
 				helper.setEnd(rs.getDate("end"));
@@ -96,6 +101,10 @@ public class HelperDAOImpl implements HelperDAO {
 				UserVO user = new UserVO();
 				user.setName(rs.getString("name"));
 				helper.setUserVO(user);
+				
+				LanguageVO language = new LanguageVO();
+				language.setLanguage(rs.getString("language"));
+				helper.setLanguageVO(language);
 
 				helper.setSta(rs.getDate("sta"));
 				helper.setEnd(rs.getDate("end"));
