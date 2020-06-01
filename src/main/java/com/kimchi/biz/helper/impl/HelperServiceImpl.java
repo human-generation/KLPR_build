@@ -38,5 +38,17 @@ public class HelperServiceImpl implements HelperService {
 		System.out.println("HelperServiceImpl의 recentHelperList() 실행...");
 		return helperDAO.recentHelperList(vo);
 	}
+
+	@Override
+	public List<HelperVO> scoreHelperList(HelperVO vo) {
+		System.out.println("HelperServiceImpl의 scoreHelperList() 실행...");
+		return helperDAO.scoreHelperList(vo);
+	}
 	
+	@Override
+	public HelperVO getHelper(HelperVO vo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
