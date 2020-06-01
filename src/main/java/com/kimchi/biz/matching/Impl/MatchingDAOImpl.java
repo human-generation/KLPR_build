@@ -27,6 +27,7 @@ public class MatchingDAOImpl implements MatchingDAO {
 
 	private final String SENDED_MATCHING_GET = "SELECT * FROM matching WHERE seno=?";
 	private final String RECEIVED_MATCHING_GET = "SELECT * FROM matching WHERE rcno=?";
+	private final String WAITING_MATCHING_GET = "SELECT * FROM matching WHERE (seno=? AND mstate=2) OR (rcno=? AND mstate=2)";
 	private final String WAITING_MATCHING_GET_R = "SELECT * FROM matching WHERE (seno=? AND mstate=2)";
 	private final String WAITING_MATCHING_GET_S="SELECT * FROM matching WHERE (rcno=? AND mstate=2)";
 	private final String PAID_MATCHING_GET = "SELECT * FROM matching WHERE (rcno=? AND mstate=3) OR (seno=? AND mstate=3)";
