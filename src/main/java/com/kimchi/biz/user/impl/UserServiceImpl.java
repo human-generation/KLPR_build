@@ -23,4 +23,16 @@ public class UserServiceImpl implements UserService {
 		userDAO.insertUser(vo);
 	}
 
+	@Override
+	public void updateUserMoney(UserVO vo, int pay) {
+		userDAO.updateUserMoney(vo, pay);
+
+	}
+
+	@Override
+	public void updateUser(UserVO vo) {
+		userDAO.updateUser(vo);
+
+	}
+
 }

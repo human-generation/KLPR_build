@@ -28,7 +28,7 @@
 <body>
 	<nav id="mainNavbar"
 		class="navbar navbar-expand-md navbar-dark py-1 fixed-top">
-		<a href="#" class="navbar-brand">K:LPER</a>
+		<a href="main.do" class="navbar-brand">K:LPER</a>
 		<button class="navbar-toggler" data-toggle="collapse"
 			data-target="#navLinks" aria-label="Toggle navigation">
 			<i class="fas fa-align-right"></i>
@@ -66,81 +66,90 @@
 	<div class="container myPageBoard">
 		<div class="row">
 			<div class="col-md-2 order-1 order-md-1">
-				 <div class="btn-group-vertical d-none d-md-block">
-                    <button type="button" class="btn btn-secondary helper-button" onclick="location.href='myPage.do'">My page</button>
-                    <button type="button" class="btn btn-secondary helper-button" onclick="location.href='incomingRequest.do'">요청내역</button>
-                    <button type="button" class="btn btn-secondary helper-button" onclick="location.href='myPageDetailProcess.do'">진행중내역</button>
-                    <button type="button" class="btn btn-secondary helper-button">이전내역</button>
-                    <button type="button" class="btn btn-secondary helper-button">나의정보수정</button>
-                </div>
-				 <div class="btn-group d-md-none">
-                    <button type="button" class="btn btn-secondary helper-button" onclick="location.href='myPage.do'">My page</button>
-                    <button type="button" class="btn btn-secondary helper-button" onclick="location.href='incomingRequest.do'">요청내역</button>
-                    <button type="button" class="btn btn-secondary helper-button" onclick="location.href='myPageDetailProcess.do'">진행중내역</button>
-                    <button type="button" class="btn btn-secondary helper-button">이전내역</button>
-                    <button type="button" class="btn btn-secondary helper-button">나의정보수정</button>
-                </div>
+				<div class="btn-group-vertical d-none d-md-block">
+					<button type="button" class="btn btn-secondary helper-button"
+						onclick="location.href='myPage.do'">My page</button>
+					<button type="button" class="btn btn-secondary helper-button"
+						onclick="location.href='incomingRequest.do'">요청내역</button>
+					<button type="button" class="btn btn-secondary helper-button"
+						onclick="location.href='myPageDetailProcess.do'">진행중내역</button>
+					<button type="button" class="btn btn-secondary helper-button">이전내역</button>
+					<button type="button" class="btn btn-secondary helper-button">나의정보수정</button>
+				</div>
+				<div class="btn-group d-md-none">
+					<button type="button" class="btn btn-secondary helper-button"
+						onclick="location.href='myPage.do'">My page</button>
+					<button type="button" class="btn btn-secondary helper-button"
+						onclick="location.href='incomingRequest.do'">요청내역</button>
+					<button type="button" class="btn btn-secondary helper-button"
+						onclick="location.href='myPageDetailProcess.do'">진행중내역</button>
+					<button type="button" class="btn btn-secondary helper-button">이전내역</button>
+					<button type="button" class="btn btn-secondary helper-button">나의정보수정</button>
+				</div>
 			</div>
 
-			 <div class="col-md-10 order-2 order-md-2">
-                <div class="jumbotron myPageJt">
-                    <div class="container">
-                        <h1 class="display-4">My Wallet</h1>
-                        <p class="lead">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Qui perferendis
-                            dignissimos
-                            aliquam. Eaque, inventore.
-                        </p>
+			<div class="col-md-10 order-2 order-md-2">
+				<div class="jumbotron myPageJt">
+					<div class="container">
+						<h1 class="display-4">My Wallet</h1>
+						<p class="lead">Lorem ipsum dolor sit, amet consectetur
+							adipisicing elit. Qui perferendis dignissimos aliquam. Eaque,
+							inventore.</p>
 
-                        <div class="row float-right">
-                            <button type="button" class="btn btn-secondary helper-button btn-lg" onclick="location.href='payment.do'">마일리지 충전</button>
+						<div class="row float-right">
+							<button type="button"
+								class="btn btn-secondary helper-button btn-lg"
+								onclick="location.href='payment.do'">마일리지 충전</button>
 
-                            <button type="button" class="btn btn-secondary helper-button btn-lg">${sessionScope.userMoney }$</button>
-                        </div>
+							<button type="button"
+								class="btn btn-secondary helper-button btn-lg">${userMoney }$</button>
+						</div>
 
-                    </div>
-                </div>
+					</div>
+				</div>
 				<div class="row">
-                    <div class="col-md-6 col-lg-3">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">신청중</h5>
-                                <p class="card-text">승인을 기다리고 있는 거래</p>
-                                <a href="incomingRequest.do" class="btn btn-primary btn-sm helper-button-main">${mstate0}</a><a href="#"
-                                    class="btn btn-primary btn-sm helpee-button-main">${mstate1}</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-3">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">결제대기</h5>
-                                <p class="card-text">결제를 기다리고 있는 거래</p>
-                                <a href="#" class="btn btn-primary btn-sm helpee-button-main">${mstate2}</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-3">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">결제완료</h5>
-                                <p class="card-text">결제완료 서비스대기중</p>
-                                <a href="#" class="btn btn-primary btn-sm helpee-button-main">${mstate3}</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-3">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">거래완료</h5>
-                                <p class="card-text">리뷰작성대기중</p>
-                                <a href="#" class="btn btn-primary btn-sm helpee-button-main">${mstate4}</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+					<div class="col-md-6 col-lg-3">
+						<div class="card">
+							<div class="card-body">
+								<h5 class="card-title">신청중</h5>
+								<p class="card-text">승인을 기다리고 있는 거래</p>
+								<a href="incomingRequest.do"
+									class="btn btn-primary btn-sm helper-button-main">${mstate0}</a><a
+									href="#" class="btn btn-primary btn-sm helpee-button-main">${mstate1}</a>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6 col-lg-3">
+						<div class="card">
+							<div class="card-body">
+								<h5 class="card-title">결제대기</h5>
+								<p class="card-text">결제를 기다리고 있는 거래</p>
+								<a href="#" class="btn btn-primary btn-sm helpee-button-main">${mstate2}</a>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6 col-lg-3">
+						<div class="card">
+							<div class="card-body">
+								<h5 class="card-title">결제완료</h5>
+								<p class="card-text">결제완료 서비스대기중</p>
+								<a href="#" class="btn btn-primary btn-sm helpee-button-main">${mstate3}</a>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6 col-lg-3">
+						<div class="card">
+							<div class="card-body">
+								<h5 class="card-title">거래완료</h5>
+								<p class="card-text">리뷰작성대기중</p>
+								<a href="#" class="btn btn-primary btn-sm helpee-button-main">${mstate4}</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<!--AUTH MODAL-->
 	<!--LOGIN-->

@@ -29,7 +29,7 @@
 
 	<nav id="mainNavbar"
 		class="navbar navbar-expand-md navbar-dark py-1 fixed-top">
-		<a href="#" class="navbar-brand">K:LPER</a>
+		<a href="main.do" class="navbar-brand">K:LPER</a>
 		<button class="navbar-toggler" data-toggle="collapse"
 			data-target="#navLinks" aria-label="Toggle navigation">
 			<i class="fas fa-align-right"></i>

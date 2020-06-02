@@ -32,7 +32,7 @@
 <body>
 	<nav id="mainNavbar"
 		class="navbar navbar-expand-md navbar-dark py-1 fixed-top">
-		<a href="#" class="navbar-brand">K:LPER</a>
+		<a href="main.do" class="navbar-brand">K:LPER</a>
 		<button class="navbar-toggler" data-toggle="collapse"
 			data-target="#navLinks" aria-label="Toggle navigation">
 			<i class="fas fa-align-right"></i>
@@ -62,18 +62,22 @@
 		<div class="row">
 			<div class="col-md-2 order-1 order-md-1">
 				<div class="btn-group-vertical d-none d-md-block">
-					<button type="button" class="btn btn-secondary helper-button">My
-						page</button>
-					<button type="button" class="btn btn-secondary helper-button">요청내역</button>
-					<button type="button" class="btn btn-secondary helper-button">진행중내역</button>
+					<button type="button" class="btn btn-secondary helper-button"
+						onclick="location.href='myPage.do'">My page</button>
+					<button type="button" class="btn btn-secondary helper-button"
+						onclick="location.href='incomingRequest.do'">요청내역</button>
+					<button type="button" class="btn btn-secondary helper-button"
+						onclick="location.href='myPageDetailProcess.do'">진행중내역</button>
 					<button type="button" class="btn btn-secondary helper-button">이전내역</button>
 					<button type="button" class="btn btn-secondary helper-button">나의정보수정</button>
 				</div>
 				<div class="btn-group d-md-none">
-					<button type="button" class="btn btn-secondary helper-button">My
-						page</button>
-					<button type="button" class="btn btn-secondary helper-button">요청내역</button>
-					<button type="button" class="btn btn-secondary helper-button">진행중내역</button>
+					<button type="button" class="btn btn-secondary helper-button"
+						onclick="location.href='myPage.do'">My page</button>
+					<button type="button" class="btn btn-secondary helper-button"
+						onclick="location.href='incomingRequest.do'">요청내역</button>
+					<button type="button" class="btn btn-secondary helper-button"
+						onclick="location.href='myPageDetailProcess.do'">진행중내역</button>
 					<button type="button" class="btn btn-secondary helper-button">이전내역</button>
 					<button type="button" class="btn btn-secondary helper-button">나의정보수정</button>
 				</div>
@@ -154,8 +158,8 @@
 													Placed in <i class="fas fa-map-marker-alt">${matching_r.mplace }</i>{rplace}
 												</div>
 												</p>
-												<a href="#" class="btn btn-primary">상태 {수락대기중 mstate 1}</a> <a
-													href="#" class="btn btn-primary">자세히보기</a>
+												<a href="#" class="btn btn-primary">상태 {수락대기중 mstate 1}</a>
+												<a href="#" class="btn btn-primary">자세히보기</a>
 											</div>
 										</div>
 									</div>
@@ -164,7 +168,7 @@
 						</div>
 					</div>
 				</div>
-				</form>
+			</form>
 		</div>
 	</div>
 

@@ -37,6 +37,7 @@ public class UserController {
 		if (user != null) {
 			session.setAttribute("userName", user.getName());
 			session.setAttribute("userNumber", user.getUno());
+			session.setAttribute("userMoney", user.getMoney());
 			session.setAttribute("loginUser", user);
 			System.out.println(user.getName());
 //			return "getMain.do";

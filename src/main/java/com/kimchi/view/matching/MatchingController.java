@@ -37,7 +37,7 @@ public class MatchingController {
 		model.addAttribute("WaitingList", matchingService.getMatchingList(vo, 2));
 		model.addAttribute("PaidList", matchingService.getMatchingList(vo, 3));
 		model.addAttribute("EndedList", matchingService.getMatchingList(vo, 4));
-		return "ongoing.jsp";
+		return "MyPageDetailProcess.jsp";
 	}
 
 	@RequestMapping(value = "/updateState.do", method = { RequestMethod.POST, RequestMethod.GET })

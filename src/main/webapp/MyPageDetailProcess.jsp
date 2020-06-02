@@ -28,7 +28,7 @@
 <body>
 	<nav id="mainNavbar"
 		class="navbar navbar-expand-md navbar-dark py-1 fixed-top">
-		<a href="#" class="navbar-brand">K:LPER</a>
+		<a href="main.do" class="navbar-brand">K:LPER</a>
 		<button class="navbar-toggler" data-toggle="collapse"
 			data-target="#navLinks" aria-label="Toggle navigation">
 			<i class="fas fa-align-right"></i>
@@ -66,20 +66,26 @@
 	<div class="container myPageBoard">
 		<div class="row">
 			<div class="col-md-2 order-1 order-md-1">
-				 <div class="btn-group-vertical d-none d-md-block">
-                    <button type="button" class="btn btn-secondary helper-button" onclick="location.href='myPage.do'">My page</button>
-                    <button type="button" class="btn btn-secondary helper-button" onclick="location.href='incomingRequest.do'">요청내역</button>
-                    <button type="button" class="btn btn-secondary helper-button" onclick="location.href='myPageDetailProcess.do'">진행중내역</button>
-                    <button type="button" class="btn btn-secondary helper-button">이전내역</button>
-                    <button type="button" class="btn btn-secondary helper-button">나의정보수정</button>
-                </div>
-				 <div class="btn-group d-md-none">
-                    <button type="button" class="btn btn-secondary helper-button" onclick="location.href='myPage.do'">My page</button>
-                    <button type="button" class="btn btn-secondary helper-button" onclick="location.href='incomingRequest.do'">요청내역</button>
-                    <button type="button" class="btn btn-secondary helper-button" onclick="location.href='myPageDetailProcess.do'">진행중내역</button>
-                    <button type="button" class="btn btn-secondary helper-button">이전내역</button>
-                    <button type="button" class="btn btn-secondary helper-button">나의정보수정</button>
-                </div>
+				<div class="btn-group-vertical d-none d-md-block">
+					<button type="button" class="btn btn-secondary helper-button"
+						onclick="location.href='myPage.do'">My page</button>
+					<button type="button" class="btn btn-secondary helper-button"
+						onclick="location.href='incomingRequest.do'">요청내역</button>
+					<button type="button" class="btn btn-secondary helper-button"
+						onclick="location.href='myPageDetailProcess.do'">진행중내역</button>
+					<button type="button" class="btn btn-secondary helper-button">이전내역</button>
+					<button type="button" class="btn btn-secondary helper-button">나의정보수정</button>
+				</div>
+				<div class="btn-group d-md-none">
+					<button type="button" class="btn btn-secondary helper-button"
+						onclick="location.href='myPage.do'">My page</button>
+					<button type="button" class="btn btn-secondary helper-button"
+						onclick="location.href='incomingRequest.do'">요청내역</button>
+					<button type="button" class="btn btn-secondary helper-button"
+						onclick="location.href='myPageDetailProcess.do'">진행중내역</button>
+					<button type="button" class="btn btn-secondary helper-button">이전내역</button>
+					<button type="button" class="btn btn-secondary helper-button">나의정보수정</button>
+				</div>
 			</div>
 
 			<div class="col-md-10 order-2 order-md-2">
@@ -95,7 +101,7 @@
 												<c:when test="${matching_w.rcno } eq ${loginUser.uno }">
 													<h6 class="card-header">${matching_w.senderName }</h6>
 												</c:when>
-												<c:when test="${matching_w.sno } eq ${loginUser.uno }">
+												<c:when test="${matching_w.seno } eq ${loginUser.uno }">
 													<h6 class="card-header">${matching_w.receiverName }</h6>
 												</c:when>
 											</c:choose>
@@ -117,29 +123,23 @@
 														<td><a href="#"
 															class="badge badge-primary helper-button-main">관공서</a></td>
 													</c:if>
-
-
-
-
-
-
-													<div class="lang">Language {language}</div>
-											<div class="reviewNum">Total usage {rv_no}</div>
-											<div class="avDate">Available date {sta - end}</div>
-											<div class="area">
-												Placed in <i class="fas fa-map-marker-alt">${matching_w.mplace }</i>{rplace}
-											</div>
-											</p>
-											<a href="#" class="btn btn-primary">상태 {요청받음 mstate 0}</a>
-											<!-- 이아래문장을 폼으로감싸서 submit하기 -->		
-											<c:if test="">
-												<button type="submit" class="btn btn-primary"
+												<div class="lang">Language {language}</div>
+												<div class="reviewNum">Total usage {rv_no}</div>
+												<div class="avDate">Available date {sta - end}</div>
+												<div class="area">
+													Placed in <i class="fas fa-map-marker-alt">${matching_w.mplace }</i>{rplace}
+												</div>
+												</p>
+												<a href="#" class="btn btn-primary">상태 {요청받음 mstate 0}</a>
+												<!-- 이아래문장을 폼으로감싸서 submit하기 -->
+												<c:if test="">
+													<button type="submit" class="btn btn-primary"
 														value="${matching_w.rcno}">결제하기</button>
-											</c:if>
+												</c:if>
+											</div>
 										</div>
 									</div>
-								</div>
-							</c:forEach>
+								</c:forEach>
 							</form>
 						</div>
 					</div>
@@ -168,7 +168,6 @@
 													<td><a href="#"
 														class="badge badge-primary helper-button-main">관공서</a></td>
 												</c:if>
-											
 											<div class="lang">Language {language}</div>
 											<div class="reviewNum">Total usage {rv_no}</div>
 											<div class="avDate">Available date {sta - end}</div>
@@ -209,7 +208,6 @@
 													<td><a href="#"
 														class="badge badge-primary helper-button-main">관공서</a></td>
 												</c:if>
-											
 											<div class="lang">Language {language}</div>
 											<div class="reviewNum">Total usage {rv_no}</div>
 											<div class="avDate">Available date {sta - end}</div>
@@ -229,67 +227,66 @@
 			</div>
 		</div>
 	</div>
-	<!-- Additional Review Modal--><di v class="modal fade" id="reviewModal" tabindex="-1" role="dialog"
+	<!-- Additional Review Modal-->
+	<di v class="modal fade" id="reviewModal" tabindex="-1" role="dialog"
 		aria-labelledby="reviewModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="modalLabel">Reivew</h5>
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="modalLabel">Reivew</h5>
+				<button type="button" class="close" data-dismiss="modal"
+					aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
 
-				<div class="modal-body">
-					<form class="review-form" action="insertE_Review.do" method="POST">
-						<div class="row">
-							<div class="col-5">
-								<img class="mr-3"
-									src="https://cdn.pixabay.com/photo/2013/10/28/19/23/cat-201969_960_720.jpg"
-									alt="profileImage">
+			<div class="modal-body">
+				<form class="review-form" action="insertE_Review.do" method="POST">
+					<div class="row">
+						<div class="col-5">
+							<img class="mr-3"
+								src="https://cdn.pixabay.com/photo/2013/10/28/19/23/cat-201969_960_720.jpg"
+								alt="profileImage">
+						</div>
+						<div class="col-7">
+							<div class="media-body">
+								<a href="#" class="badge badge-primary helpee-button-main">이사</a>
+								<a href="#" class="badge badge-primary helpee-button-main">병원</a>
+								<h4>Doja Cat</h4>
+								<div class="btn">{mdate}</div>
 							</div>
-							<div class="col-7">
-								<div class="media-body">
-									<a href="#" class="badge badge-primary helpee-button-main">이사</a>
-									<a href="#" class="badge badge-primary helpee-button-main">병원</a>
-									<h4>Doja Cat</h4>
-									<div class="btn">{mdate}</div>
-								</div>
 
-							</div>
 						</div>
-						<input type="hidden" name="rno" class="form-control"
-							value="${sessionScope.userNumber}" />
-						<div class="form-group">
-							<label for="reviewScore">평점남기기</label> <select name="escore"
-								class="form-control" required>
-								<option value="5">5</option>
-								<option value="4">4</option>
-								<option value="3">3</option>
-								<option value="2">2</option>
-								<option value="1">1</option>
-							</select>
-						</div>
-						<div class="form-group">
-							<label for="detailReview">Review your match</label>
-							<textarea name="ecomment" class="form-control" rows="3"></textarea>
-						</div>
+					</div>
+					<input type="hidden" name="rno" class="form-control"
+						value="${sessionScope.userNumber}" />
+					<div class="form-group">
+						<label for="reviewScore">평점남기기</label> <select name="escore"
+							class="form-control" required>
+							<option value="5">5</option>
+							<option value="4">4</option>
+							<option value="3">3</option>
+							<option value="2">2</option>
+							<option value="1">1</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="detailReview">Review your match</label>
+						<textarea name="ecomment" class="form-control" rows="3"></textarea>
+					</div>
 
-						<button type="submit" class="btn btn-primary helper-button-main">Submit
-							your review!</button>
-					</form>
+					<button type="submit" class="btn btn-primary helper-button-main">Submit
+						your review!</button>
+				</form>
 
-				</div>
 			</div>
 		</div>
+	</div>
 	</div>
 
 
 
-	<!--AUTH MODAL-->
-
-	<!--LOGIN-->
+	<!--AUTH MODAL--> <!--LOGIN-->
 	<div class="modal fade" id="loginModal" tabindex="-1" role="dialog"
 		aria-labelledby="loginModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
@@ -394,8 +391,7 @@
 		</div>
 	</div>
 
-	<!--본문끝-->
-	<!--FOOTER START-->
+	<!--본문끝--> <!--FOOTER START-->
 
 	<div class="container">
 		<section class="footer">
@@ -431,48 +427,42 @@
 
 
 
-	<!-- Optional JavaScript -->
-	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<!-- Optional JavaScript --> <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
 		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-		crossorigin="anonymous"></script>
-	<script
+		crossorigin="anonymous"></script> <script
 		src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
 		integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-		crossorigin="anonymous"></script>
-	<script
+		crossorigin="anonymous"></script> <script
 		src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
 		integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
-		crossorigin="anonymous"></script>
+		crossorigin="anonymous"></script> <!-- custom js 추후 분리할것임--> <script>
+			// navbar 
+			$(function() {
+				$(document).scroll(
+						function() {
+							var $nav = $("#mainNavbar");
+							$nav.toggleClass("scrolled",
+									$(this).scrollTop() > $nav.height());
+						});
+			});
 
-	<!-- custom js 추후 분리할것임-->
-	<script>
-		// navbar 
-		$(function() {
-			$(document).scroll(
-					function() {
-						var $nav = $("#mainNavbar");
-						$nav.toggleClass("scrolled", $(this).scrollTop() > $nav
-								.height());
-					});
-		});
+			// dropdown
+			function readMoreFunction() {
+				var dots = document.getElementById("dots");
+				var moreText = document.getElementById("more");
+				var btnText = document.getElementById("myBtn");
 
-		// dropdown
-		function readMoreFunction() {
-			var dots = document.getElementById("dots");
-			var moreText = document.getElementById("more");
-			var btnText = document.getElementById("myBtn");
-
-			if (dots.style.display === "none") {
-				dots.style.display = "inline";
-				btnText.innerHTML = '<i class="fas fa-angle-down"></i>';
-				moreText.style.display = "none";
-			} else {
-				dots.style.display = "none";
-				btnText.innerHTML = '<i class="fas fa-angle-up"></i>';
-				moreText.style.display = "inline";
+				if (dots.style.display === "none") {
+					dots.style.display = "inline";
+					btnText.innerHTML = '<i class="fas fa-angle-down"></i>';
+					moreText.style.display = "none";
+				} else {
+					dots.style.display = "none";
+					btnText.innerHTML = '<i class="fas fa-angle-up"></i>';
+					moreText.style.display = "inline";
+				}
 			}
-		}
-	</script>
+		</script>
 </body>
 </html>

@@ -7,9 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.stereotype.Repository;
+import org.springframework.ui.Model;
 
 import com.kimchi.biz.common.JDBCUtil;
 import com.kimchi.biz.matching.MatchingExtraDAO;
@@ -100,19 +99,19 @@ public class MatchingExtraDAOImpl implements MatchingExtraDAO {
 	}
 
 	@Override
-	public void setMatchingState(UserVO vo, HttpSession session) {
+	public void setMatchingState(UserVO vo, Model model) {
 		List<MatchingVOExtra> list = getMatchingList(vo, 0);
-		session.setAttribute("mstate0", list.size());
+		model.addAttribute("mstate0", list.size());
 		list = getMatchingList(vo, 1);
-		session.setAttribute("mstate1", list.size());
+		model.addAttribute("mstate1", list.size());
 		list = getMatchingList(vo, 2);
-		session.setAttribute("mstate2", list.size());
+		model.addAttribute("mstate2", list.size());
 		list = getMatchingList(vo, 3);
-		session.setAttribute("mstate3", list.size());
+		model.addAttribute("mstate3", list.size());
 		list = getMatchingList(vo, 4);
-		session.setAttribute("mstate4", list.size());
+		model.addAttribute("mstate4", list.size());
 		list = getMatchingList(vo, 5);
-		session.setAttribute("mstate5", list.size());
+		model.addAttribute("mstate5", list.size());
 	}
 
 	public String senderName(int mno) {
