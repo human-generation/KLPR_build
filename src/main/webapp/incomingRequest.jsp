@@ -115,7 +115,7 @@
 												<div class="reviewNum">Total usage {rv_no}</div>
 												<div class="avDate">Available date {sta - end}</div>
 												<div class="area">
-													Placed in <i class="fas fa-map-marker-alt">${matching_s.mplace }</i>{rplace}
+													Placed in <i class="fas fa-map-marker-alt">${matching_s.mplaceName }</i>{rplace}
 												</div>
 												</p>
 												<a href="#" class="btn btn-primary">상태 {요청받음 mstate 0}</a> <a
@@ -155,7 +155,7 @@
 												<div class="reviewNum">Total usage {rv_no}</div>
 												<div class="avDate">Available date {sta - end}</div>
 												<div class="area">
-													Placed in <i class="fas fa-map-marker-alt">${matching_r.mplace }</i>{rplace}
+													Placed in <i class="fas fa-map-marker-alt">${matching_r.mplaceName }</i>{rplace}
 												</div>
 												</p>
 												<a href="#" class="btn btn-primary">상태 {수락대기중 mstate 1}</a>

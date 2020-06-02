@@ -2,10 +2,9 @@ package com.kimchi.biz.matching.Impl;
 
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import com.kimchi.biz.matching.MatchingExtraDAO;
 import com.kimchi.biz.matching.MatchingExtraService;
@@ -28,8 +27,8 @@ public class MatchingExtraServiceImpl implements MatchingExtraService {
 	}
 
 	@Override
-	public void setMatchingState(UserVO vo, HttpSession session) {
-		matchingDAO.setMatchingState(vo, session);
+	public void setMatchingState(UserVO vo, Model model) {
+		matchingDAO.setMatchingState(vo, model);
 	}
 
 }

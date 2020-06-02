@@ -93,7 +93,6 @@
 					<div class="col-md-6">
 						<div class="card">
 							<h4 class="card-header">결제 대기</h4>
-							<form action="updateState.do" method="POST">
 								<c:forEach items="${WaitingList}" var="matching_w">
 									<div class="card-body">
 										<div class="card">
@@ -127,20 +126,23 @@
 												<div class="reviewNum">Total usage {rv_no}</div>
 												<div class="avDate">Available date {sta - end}</div>
 												<div class="area">
-													Placed in <i class="fas fa-map-marker-alt">${matching_w.mplace }</i>{rplace}
+													Placed in <i class="fas fa-map-marker-alt">${matching_w.mplaceName }</i>{rplace}
 												</div>
 												</p>
 												<a href="#" class="btn btn-primary">상태 {요청받음 mstate 0}</a>
 												<!-- 이아래문장을 폼으로감싸서 submit하기 -->
-												<c:if test="">
-													<button type="submit" class="btn btn-primary"
-														value="${matching_w.rcno}">결제하기</button>
-												</c:if>
+												<form action="updateState.do" method="POST">
+													<c:if test="${loginUser.uno eq matching_w.eno }">
+														<input type="hidden" name="mstate"
+															value="${matching_w.mstate}">
+														<input type="hidden" name="mno" value="${matching_w.mno }">
+														<button type="submit" class="btn btn-primary">결제하기</button>
+													</c:if>
+												</form>
 											</div>
 										</div>
 									</div>
 								</c:forEach>
-							</form>
 						</div>
 					</div>
 					<div class="col-md-6">
@@ -172,7 +174,7 @@
 											<div class="reviewNum">Total usage {rv_no}</div>
 											<div class="avDate">Available date {sta - end}</div>
 											<div class="area">
-												Placed in <i class="fas fa-map-marker-alt">${matching_p.mplace }</i>{rplace}
+												Placed in <i class="fas fa-map-marker-alt">${matching_p.mplaceName }</i>{rplace}
 											</div>
 											</p>
 											<a href="#" class="btn btn-primary">상태 {수락대기중 mstate 1}</a> <a
@@ -212,7 +214,7 @@
 											<div class="reviewNum">Total usage {rv_no}</div>
 											<div class="avDate">Available date {sta - end}</div>
 											<div class="area">
-												Placed in <i class="fas fa-map-marker-alt">${matching_e.mplace }</i>{rplace}
+												Placed in <i class="fas fa-map-marker-alt">${matching_e.mplaceName }</i>{rplace}
 											</div>
 											</p>
 											<a href="#" class="btn btn-primary">상태 {수락대기중 mstate 1}</a> <a
