@@ -15,6 +15,8 @@ public interface HelperDAO {
 	public List<HelperVO> hospitalHelper(HelperVO vo);	// 병원 헬퍼 리스트
 	public List<HelperVO> immigrationHelper(HelperVO vo);	// 출입국 헬퍼 리스트
 	
+	public List<HelperVO> seoulHelperList(HelperVO vo);	// 헬퍼 리스트 지역별로
+	
 	public List<HelperVO> helper_avg(HelperVO vo);	// 평점 담는 리스트?ㅅㅂ
 
 }

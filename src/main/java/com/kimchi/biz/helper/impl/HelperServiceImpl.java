@@ -85,4 +85,10 @@ public class HelperServiceImpl implements HelperService {
 		return null;
 	}
 
+	@Override
+	public List<HelperVO> seoulHelperList(HelperVO vo) {
+		System.out.println("HelperServiceImpl의 seoulHelperList() 실행...");
+		return helperDAO.seoulHelperList(vo);
+	}
+
 }

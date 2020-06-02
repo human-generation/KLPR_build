@@ -43,7 +43,7 @@ public class HelperDAOImpl implements HelperDAO {
 	
 	private final String HELPER_SEOUL = "SELECT u.name, h.sta, h.end, s.district, h.moving, h.hospital, h.immigration, l.language, h.r_intro"
 			+ " FROM helper AS h JOIN user AS u ON h.uno=u.uno JOIN language AS l ON h.lno=l.lno JOIN seoul AS s ON s.dno=h.rplace"
-			+ " WHERE s.dno=?";
+			+ " WHERE h.rplace=?";
 	
 //	private final String HELPER_AVG = "SELECT TRUNCATE(AVG(rscore),1) AS avg FROM r_review GROUP BY rno ORDER BY avg DESC";
 	
@@ -315,6 +315,50 @@ public class HelperDAOImpl implements HelperDAO {
 				helper.setSta(rs.getDate("sta"));
 				helper.setEnd(rs.getDate("end"));
 //				helper.setRplace(rs.getInt("rplace"));
+				helper.setMoving(rs.getInt("moving"));
+				helper.setHospital(rs.getInt("hospital"));
+				helper.setImmigration(rs.getInt("immigration"));
+				helper.setR_intro(rs.getString("r_intro"));
+				helperList.add(helper);
+			}
+			System.out.println("확인시발: " + helperList.toString());
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(rs, stmt, conn);
+		}
+		return helperList;
+	}
+	
+	@Override
+	public List<HelperVO> seoulHelperList(HelperVO vo) {	// 서울리스트 구별
+		System.out.println("===> JDBC로 seoulHelperList() 기능 처리");
+
+		List<HelperVO> helperList = new ArrayList<HelperVO>();
+
+		try {
+			conn = JDBCUtil.getConnection();
+			stmt = conn.prepareStatement(HELPER_SEOUL);
+			stmt.setInt(1, vo.getRplace());
+			rs = stmt.executeQuery();
+
+			while (rs.next()) {
+				HelperVO helper = new HelperVO();
+
+				UserVO user = new UserVO();
+				user.setName(rs.getString("name"));
+				helper.setUserVO(user);
+
+				LanguageVO language = new LanguageVO();
+				language.setLanguage(rs.getString("language"));
+				helper.setLanguageVO(language);
+				
+				SeoulVO seoul = new SeoulVO();
+				seoul.setDistrict(rs.getString("district"));
+				helper.setSeoulVO(seoul);
+				
+				helper.setSta(rs.getDate("sta"));
+				helper.setEnd(rs.getDate("end"));
 				helper.setMoving(rs.getInt("moving"));
 				helper.setHospital(rs.getInt("hospital"));
 				helper.setImmigration(rs.getInt("immigration"));

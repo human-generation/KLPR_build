@@ -18,5 +18,7 @@ public interface HelperService {
 	public List<HelperVO> helper_avg(HelperVO vo);	// 평점 담는 리스트?ㅅㅂ
 	
 	public List<SeoulVO> getSeoulList(SeoulVO vo);	// 지역 리스트 받아오기
+	
+	public List<HelperVO> seoulHelperList(HelperVO vo);	// 헬퍼 리스트 지역별로
 
 }

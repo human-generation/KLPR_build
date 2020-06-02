@@ -20,15 +20,16 @@ public class HelperController {
 
 	// 헬퍼 목록
 	@RequestMapping(value = "/getHelperList.do", method = RequestMethod.GET)
-	public String getHelperList(@ModelAttribute("helper") HelperVO vo, @ModelAttribute("seoul") SeoulVO svo, Model model) {
+	public String getHelperList(@ModelAttribute("helper") HelperVO vo, @ModelAttribute("seoul") SeoulVO svo,
+			Model model) {
 		System.out.println("헬퍼 목록 처리 웽 모델썻지롱");
 
 		// 헬퍼 홍보글 리스트 모델에 담기
 		model.addAttribute("helperList", helperService.getHelperList(vo));
-		
+
 		// 서울 리스트 모델에 담기
 		model.addAttribute("seoulList", helperService.getSeoulList(svo));
-		
+
 //		List<SeoulVO> seoulList = helperService.getSeoulList(svo);
 //		model.addAttribute("seoulList", seoulList);
 //		System.out.println(seoulList.toString());
@@ -96,5 +97,14 @@ public class HelperController {
 		model.addAttribute("helperList", helperService.immigrationHelper(vo));
 		return "getHelperList.jsp";
 	}
-	
+
+	// 지역별 리스트
+	@RequestMapping(value = "/seoulHelperList.do", method = RequestMethod.GET)
+	public String seoulHelperList(@ModelAttribute("helper") HelperVO vo, Model model) {
+		System.out.println("지역별 헬퍼 목록 처리 모델로한거임");
+
+		model.addAttribute("helperList", helperService.seoulHelperList(vo));
+		return "getHelperList.jsp";
+	}
+
 }
