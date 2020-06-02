@@ -72,6 +72,7 @@
                         <c:forEach items="${seoulList}" var="seoul">
                             <button class="dropdown-item" onclick="location.href='seoulHelperList.do'" type="button">${seoul.district}</button>
                         </c:forEach>
+                        
                         </div>
                     </div>
                     <div class="btn-group" role="group" aria-label="SortBtn">

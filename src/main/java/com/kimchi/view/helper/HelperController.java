@@ -29,27 +29,8 @@ public class HelperController {
 
 		// 서울 리스트 모델에 담기
 		model.addAttribute("seoulList", helperService.getSeoulList(svo));
-
-//		List<SeoulVO> seoulList = helperService.getSeoulList(svo);
-//		model.addAttribute("seoulList", seoulList);
-//		System.out.println(seoulList.toString());
-
-//		helperDAO.deleteHelper(vo);	// 날짜지난 홍보글부터 삭제
-
-//		List<HelperVO> helperList = helperDAO.getHelperList(vo); // 홍보글 리스트 불러오기
-//		session.setAttribute("helperList", helperList);
 		return "getHelperList.jsp";
 	}
-
-	// 날짜지난 홍보글 삭제하기
-//	@RequestMapping(value = "/getHelperList.do", method = RequestMethod.POST)
-//	public String deleteHelper(@ModelAttribute("helper") HelperVO vo) {
-//		System.out.println("날짜지난글 지움 리스트 모델때매 분리됐는데 작동하는지 봐바요");
-//		
-//		helperService.deleteHelper(vo);
-//		
-//		return "getHelperList.jsp";
-//	}
 
 	// 최신순 정렬
 	@RequestMapping(value = "/recentHelperList.do", method = RequestMethod.GET)
@@ -57,8 +38,6 @@ public class HelperController {
 		System.out.println("최신순 헬퍼 목록 처리 모델로한거임");
 
 		model.addAttribute("helperList", helperService.recentHelperList(vo));
-//		List<HelperVO> helperList = helperDAO.recentHelperList(vo); // 홍보글 목록 최신순으로 불러오기
-//		session.setAttribute("helperList", helperList);
 		return "getHelperList.jsp";
 	}
 

@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 import com.kimchi.biz.helper.HelperDAO;
 import com.kimchi.biz.helper.HelperService;
 import com.kimchi.biz.helper.HelperVO;
+import com.kimchi.biz.r_review.R_ReviewDAO;
+import com.kimchi.biz.r_review.R_reviewVO;
 import com.kimchi.biz.seoul.SeoulDAO;
 import com.kimchi.biz.seoul.SeoulVO;
 
@@ -20,21 +22,31 @@ public class HelperServiceImpl implements HelperService {
 	private HelperDAO helperDAO;
 	
 	@Autowired
+	private R_ReviewDAO r_reviewDAO;
+	
+	@Autowired
 	private SeoulDAO seoulDAO;
 	
 	@Autowired
 	HttpSession session;
+	
+	@Override
+	public List<R_reviewVO> getR_ReviewCountList(R_reviewVO vo) {
+		System.out.println("HelperServiceImpl의 getR_ReviewCountList() 실행...");
+		return r_reviewDAO.getR_ReviewCountList(vo);
+	}
+
+	@Override
+	public List<R_reviewVO> getR_ReviewAvgList(R_reviewVO vo) {
+		System.out.println("HelperServiceImpl의 getR_ReviewAvgList() 실행...");
+		return r_reviewDAO.getR_ReviewAvgList(vo);
+	}
 
 	@Override
 	public List<HelperVO> getHelperList(HelperVO vo) {
 		System.out.println("HelperServiceImpl의 getHelperList() 실행...");
-		return helperDAO.getHelperList(vo);
-	}
-
-	@Override
-	public void deleteHelper(HelperVO vo) {
-		System.out.println("HelperServiceImpl의 deleteHelper() 실행...");
 		helperDAO.deleteHelper(vo);
+		return helperDAO.getHelperList(vo);
 	}
 
 	@Override

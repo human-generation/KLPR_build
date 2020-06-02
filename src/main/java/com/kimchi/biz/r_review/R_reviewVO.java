@@ -1,31 +1,24 @@
 package com.kimchi.biz.r_review;
 
 public class R_reviewVO {
-	private int rno;		 // 헬퍼번호
-	private int r_vno;		 // 머더라?
-	private int eno;		 // 헬피번호
-	private String rcomment; // 줄리뷰
-	private int rscore;		 // 점수
+	private int r_vno;		
+	private int rno;		
+	private int eno;		 
+	private String rcomment;
+	private double rscore;
+	private int count;
 	
-	private double avg;	// 평점
-	
-	public double getAvg() {
-		return avg;
+	public int getR_vno() {
+		return r_vno;
 	}
-	public void setAvg(double avg) {
-		this.avg = avg;
+	public void setR_vno(int r_vno) {
+		this.r_vno = r_vno;
 	}
 	public int getRno() {
 		return rno;
 	}
 	public void setRno(int rno) {
 		this.rno = rno;
-	}
-	public int getR_vno() {
-		return r_vno;
-	}
-	public void setR_vno(int r_vno) {
-		this.r_vno = r_vno;
 	}
 	public int getEno() {
 		return eno;
@@ -39,17 +32,24 @@ public class R_reviewVO {
 	public void setRcomment(String rcomment) {
 		this.rcomment = rcomment;
 	}
-	public int getRscore() {
+	public double getRscore() {
 		return rscore;
 	}
-	public void setRscore(int rscore) {
+	public void setRscore(double rscore) {
 		this.rscore = rscore;
+	}
+	
+	public int getCount() {
+		return count;
+	}
+	public void setCount(int count) {
+		this.count = count;
 	}
 	
 	@Override
 	public String toString() {
-		return "R_reviewVO [rno=" + rno + ", r_vno=" + r_vno + ", eno=" + eno + ", rcomment=" + rcomment + ", rscore="
-				+ rscore + "]";
+		return "R_reviewVO [r_vno=" + r_vno + ", rno=" + rno + ", eno=" + eno + ", rcomment=" + rcomment + ", rscore="
+				+ rscore + ", count=" + count + "]";
 	}
 	
 }
