@@ -134,10 +134,19 @@
                             <c:if test="${helpee.immigration==1}">
                             <a href="#" class="badge badge-primary helpee-button-main">출입국</a>
                             </c:if>
+                            	
+                            	<c:if test="${helpee.uno == sessionScope.userNumber}">
+								<input type="button" value="delete" onclick='location.href="helpeeDelete.do?eno=${helpee.eno}";'>
+								<input type="button" value="update" onclick='location.href="helpeeUpdate.do?eno=${helpee.eno}";'>
+								</c:if>
                             
                             <div class="row">
                                 <div class="col-md-6 order-2 order-md-1">
-                                    <h4>Name ${user.name}&nbsp; {username}</h4>
+                                	<c:forEach items="${userList }" var="user">
+                                		<c:if test="${helpee.uno == user.uno }">
+											<h4>Name ${user.name}</h4>                                		
+                                		</c:if>
+                                	</c:forEach>
                                 </div>
                                 <div class="col-md-6 order-1 order-md-2">
                                     <h5>{⭐️⭐️⭐️⭐️⭐️}</h5>
@@ -146,10 +155,14 @@
                             <div class="row">
                                 <div class="col-sm-6 order-2 order-sm-1">
                                     <div class="lang">
-                                        Language ${helper.lno}&nbsp; {language} ${language.language}&nbsp;
+                                     <c:forEach items="${languageList}" var="language"> 
+                                		<c:if test="${language.lno == helpee.lno}">
+                                    		${language.language}
+                                    	</c:if>
+                                    </c:forEach>
                                     </div>
                                     <div class="reviewNum">
-                                        Total usage 
+                                        Total usage {rv_no}
                                     </div>
 
                                 </div>
@@ -158,7 +171,11 @@
                                         Available date ${helpee.edate}
                                     </div>
                                     <div class="area">
-                                        Placed in <i class="fas fa-map-marker-alt"></i>${helpee.eplace}
+                                       	<c:forEach items="${seoulList}" var="seoul">
+                                    		<c:if test="${seoul.dno == helpee.eplace}">
+                                       	 	Placed in <i class="fas fa-map-marker-alt"></i> ${seoul.district}
+                                    		</c:if>
+                                    	</c:forEach>
                                     </div>
                                 </div>
                             </div>

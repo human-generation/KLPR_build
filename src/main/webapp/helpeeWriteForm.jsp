@@ -67,67 +67,67 @@
                 <div class="media-body">
                     <div class="row">
                         <div class="col-md-6">
-                            <h4>${sessionScope.userName}&nbsp;</h4>
+                            <h4>${sessionScope.userName}</h4>
                         </div>
-                        <div class="col-md-6">
-                            ${sessionScope.userNumber}&nbsp;
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        ${sessionScope.userPhone}&nbsp;
-                    </div>
-                    <form class="helper-write-form" action="helpeeWriteForm.do" method="post"> <!-- submit버튼을 누르면 다시 페이지 이동하도록  -->
-                        <div class="row">
-                            <div class="col-md-6">
-                            	<input name="uno" type="hidden" value="${sessionScope.userNumber}"/>
-                                <input name="edate" id="date-result" type="hidden"></input>
-                                <input type="text" id="datepicker" class="form-control form-control-sm"
-                                    placeholder="Select available date" autocomplete="off">
-                            </div>
-                            <div class="col-md-6">
-                                <select class="custom-select" name="lno"> 
-                                    <option selected>Choose your language</option>
-                               		<c:forEach items="${languageList}" var="language">
-                                    <option value="${language.lno}">${language.language}</option>
-                                    </c:forEach>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <select class="custom-select" name="eplace">
-                                    <option selected>Choose your area</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
-                                </select>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                                    <label class="btn btn-secondary">
-                                        <input name="moving" type="checkbox" class="service" value="1" autocomplete="off"> moving
-                                    </label>
-                                    <label class="btn btn-secondary">
-                                        <input name="hospital" type="checkbox" class="service" value="1" autocomplete="off"> hospital
-                                    </label>
-                                    <label class="btn btn-secondary">
-                                        <input name="immigration" type="checkbox" class="service" value="1" autocomplete="off"> immigration
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="detailReview">Additional Information</label>
-                            <textarea name="e_intro" class="form-control" rows="3"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary helper-button-main">Submit!</button>
-                    </form>
-                </div>
+                        <div class="col-md-6">Gender ${sessionScope.userGender}</div>
+					</div>
+					<div class="col-12">Phone No. ${sessionScope.userPhone}&nbsp;
+					</div>
+                    					<form class="helper-write-form" action="helpeeWriteForm.do"
+						method="post">
+						<div class="row">
+							<div class="col-md-6">
+								<input name="uno" type="hidden" value="${sessionScope.userNumber}"/> 
+								<input name="edate" type="hidden" id="date-result"/>
+								<input type="text" id="datepicker" class="form-control form-control-sm"
+									placeholder="Select available date" autocomplete="off">
+							</div>
+							<div class="col-md-6">
+								<select class="custom-select" name="lno">
+									<option selected>Choose your language</option>
+									<c:forEach items="${languageList}" var="language">
+										<option value="${language.lno}">${language.language}</option>
+									</c:forEach>
+								</select>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">
+								<select class="custom-select" name="eplace">
+									<option selected>Choose your area</option>
+									<c:forEach items="${seoulList}" var="seoul">
+										<option value="${seoul.dno}">${seoul.district}</option>
+									</c:forEach>
+								</select>
+							</div>
+							<div class="col-md-6">
+								<div class="btn-group btn-group-toggle" data-toggle="buttons">
+									<label class="btn btn-secondary"> <input name="moving"
+										class="service" type="checkbox" value="1" autocomplete="off">
+										moving
+									</label> <label class="btn btn-secondary"> <input
+										name="hospital" class="service" type="checkbox" value="1"
+										autocomplete="off"> hospital
+									</label> <label class="btn btn-secondary"> <input
+										name="immigration" class="service" type="checkbox" value="1"
+										autocomplete="off"> immigration
+									</label>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="detailReview">Additional Information</label>
+							<textarea name="e_intro" class="form-control" rows="3"></textarea>
+						</div>
+						<button type="submit" class="btn btn-primary helper-button-main">Submit!</button>
+					</form>
+				</div>
 
-            </div>
+			</div>
 
-        </div>
-    </div>
+		</div>
+	</div>
+	
     <!--AUTH MODAL-->
     <!--LOGIN-->
     <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel"
@@ -222,10 +222,7 @@
                     <hr>
                     <h5>OR</h5>
                     <div class="sns-login">
-                        <a class="btn btn-primary helper-button-main " href="#"><i class="fab fa-google"></i> Continue
-                            with
-                            Google</a>
-
+                        <a class="btn btn-primary helper-button-main " href="#"><i class="fab fa-google"></i> Continue with Google</a>
                     </div>
 
                 </div>

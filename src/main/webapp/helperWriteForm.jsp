@@ -135,10 +135,6 @@
 	</div>
 
 
-	</div>
-
-
-
 
 	<!--AUTH MODAL-->
 	<!--LOGIN-->
