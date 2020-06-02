@@ -14,6 +14,8 @@ import com.kimchi.biz.language.LanguageDAO;
 import com.kimchi.biz.language.LanguageVO;
 import com.kimchi.biz.seoul.SeoulDAO;
 import com.kimchi.biz.seoul.SeoulVO;
+import com.kimchi.biz.user.UserDAO;
+import com.kimchi.biz.user.UserVO;
 
 @Service("helpeeService")
 public class HelpeeServiceImpl implements HelpeeService{
@@ -27,7 +29,7 @@ public class HelpeeServiceImpl implements HelpeeService{
 	private SeoulDAO seoulDAO;
 	
 	@Autowired
-	HttpSession session;
+	private UserDAO userDAO;
 
 	@Override
 	public HelpeeVO getHelpee(HelpeeVO vo) {
@@ -53,19 +55,24 @@ public class HelpeeServiceImpl implements HelpeeService{
 	}
 
 	@Override
+	public List<LanguageVO> getLanguageList(LanguageVO vo) {
+		return languageDAO.getLanguageList(vo);
+	}	
+	
+	@Override
 	public void deleteHelpee(HelpeeVO vo) {
 		helpeeDAO.deleteHelpee(vo);
 	}
 
 	@Override
-	public List<LanguageVO> getLanaguageList(LanguageVO vo) {
-		return languageDAO.getLanguageList(vo);
+	public List<SeoulVO> getSeoulList(SeoulVO vo) {
+		return seoulDAO.getSeoulList(vo);
 	}
 
 	@Override
-	public List<SeoulVO> getSeoulList(SeoulVO vo) {
-		return seoulDAO.getSeoulList(vo);
-	}	
-	
+	public List<UserVO> getUserList(UserVO vo) {
+		return userDAO.getUserList(vo);
+	}
+
 	
 }

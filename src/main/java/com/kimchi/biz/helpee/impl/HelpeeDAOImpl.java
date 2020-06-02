@@ -69,6 +69,8 @@ public class HelpeeDAOImpl implements HelpeeDAO{
 			rs = stmt.executeQuery();
 			if(rs.next()) {
 				helpee = new HelpeeVO();
+				helpee.setUno(rs.getInt("uno"));
+				helpee.setEno(rs.getInt("eno"));
 				helpee.setEdate(rs.getString("edate"));
 				helpee.setEplace(rs.getInt("eplace"));
 				helpee.setMoving(rs.getInt("moving"));

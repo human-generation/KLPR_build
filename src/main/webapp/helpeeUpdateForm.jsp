@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
-	<!-- Required meta tags -->
+	 <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -47,10 +47,16 @@
 	                </li>
      			</c:if>
      			<c:if test="${!empty sessionScope.userName}">
+     				<li class="nav-item">
     					${sessionScope.userName}님&nbsp;
-					<li class="nav-item"><a class="nav-link" href="myPage.do">MyPage</a></li>
-					<li class="nav-item"><a class="nav-link" href="alert.do">Alert</a></li>
-					<li class="nav-item"><a class="nav-link" href="logout.do">Logout</a></li>
+            			<a class="nav-link" data-toggle="modal" href="myPage.do">MYPAGE</a>
+            		</li>
+            		<li class="nav-item">
+						<a class="nav-link" data-toggle="modal" href="alert.do">ALERT</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" data-toggle="modal" href="logout.do">LOGOUT</a>
+					</li>
 				</c:if>
             </ul>
         </div>
@@ -58,7 +64,7 @@
     <!-- HEADER END -->
     <!-- 본문 -->
     <div class="container">
-        <div class="row writeForm">
+        <div class="row writeForm" style="margin-top:100px;">
             <div class="col-md-3 order-1 order-md-1 align-items-center">
                 <img class="mr-3" src="https://cdn.pixabay.com/photo/2013/10/28/19/23/cat-201969_960_720.jpg"
                     alt="profileImage">
@@ -76,20 +82,19 @@
                     <div class="col-12">
                         ${sessionScope.userPhone}&nbsp;
                     </div>
-                    <form class="helper-write-form" action="helpeeWriteForm.do" method="post"> <!-- submit버튼을 누르면 다시 페이지 이동하도록  -->
+                    <form autocomplete="off" class="helper-write-form" action="helpeeWriteForm.do" method="post"> <!-- submit버튼을 누르면 다시 페이지 이동하도록  -->
                         <div class="row">
                             <div class="col-md-6">
                             	<input name="uno" type="hidden" value="${sessionScope.userNumber}"/>
                                 <input name="edate" id="date-result" type="hidden"></input>
                                 <input type="text" id="datepicker" class="form-control form-control-sm"
-                                    placeholder="Select available date" autocomplete="off">
+                                    placeholder="Select available date">
                             </div>
                             <div class="col-md-6">
-                                <select class="custom-select" name="lno"> 
+                                <select class="custom-select" name="lno"> <!-- name = "lno" -VO명이랑 똑같아야함-->
                                     <option selected>Choose your language</option>
-                               		<c:forEach items="${languageList}" var="language">
-                                    <option value="${language.lno}">${language.language}</option>
-                                    </c:forEach>
+                                    <option value="1">English</option>
+                                    <option value="2">Germany</option>
                                 </select>
                             </div>
                         </div>
@@ -105,13 +110,13 @@
                             <div class="col-md-6">
                                 <div class="btn-group btn-group-toggle" data-toggle="buttons">
                                     <label class="btn btn-secondary">
-                                        <input name="moving" type="checkbox" class="service" value="1" autocomplete="off"> moving
+                                        <input name="moving" type="checkbox" class="service" value="${sessionScope.moving }" autocomplete="off"> moving
                                     </label>
                                     <label class="btn btn-secondary">
-                                        <input name="hospital" type="checkbox" class="service" value="1" autocomplete="off"> hospital
+                                        <input name="hospital" type="checkbox" class="service" value="${sessionScope.hospital }" autocomplete="off"> hospital
                                     </label>
                                     <label class="btn btn-secondary">
-                                        <input name="immigration" type="checkbox" class="service" value="1" autocomplete="off"> immigration
+                                        <input name="immigration" type="checkbox" class="service" value="${sessionScope.immigration }" autocomplete="off"> immigration
                                     </label>
                                 </div>
                             </div>
@@ -120,7 +125,8 @@
                             <label for="detailReview">Additional Information</label>
                             <textarea name="e_intro" class="form-control" rows="3"></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary helper-button-main">Submit!</button>
+                        <a href='<c:url value='/board/boardUpdate?idx=${sessionScope.eno }'/>'>
+                        	<button type="submit" class="btn btn-primary helper-button-main">Update</button></a>
                     </form>
                 </div>
 
@@ -339,11 +345,5 @@
 			});
 		});
     </script>
-</body>
-</html>
-<title>Insert title here</title>
-</head>
-<body>
-
 </body>
 </html>
