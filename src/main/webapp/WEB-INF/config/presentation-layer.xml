@@ -9,8 +9,9 @@
 
 	<!-- 아래 모든 설정을 Annotation으로 변경한다. -->
 	<context:component-scan
-		base-package="com.kimchi.view">
-	</context:component-scan>
+		base-package="com.kimchi.view"/>
+	<context:component-scan
+		base-package="com.kimchi.biz"/>
 
 	<!-- jackson라이브러리에 포함된 HttpMessageConvert가 등록된다 -->
 	<mvc:annotation-driven></mvc:annotation-driven>

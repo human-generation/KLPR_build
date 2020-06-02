@@ -36,9 +36,9 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navLinks">
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item"><a href="login.do" class="nav-link">HELPER</a>
+				<li class="nav-item"><a href="getHelperList.do" class="nav-link">HELPER</a>
 				</li>
-				<li class="nav-item"><a href="login.do" class="nav-link">HELPEE</a>
+				<li class="nav-item"><a href="getHelpeeList.do" class="nav-link">HELPEE</a>
 				</li>
 			</ul>
 			<ul class="navbar-nav ml-auto">
@@ -51,6 +51,7 @@
 				<c:if test="${!empty sessionScope.userName}">
 					${sessionScope.userName}님&nbsp;
 					<li class="nav-item"><a class="nav-link" href="myPage.do">MyPage</a></li>
+					<li class="nav-item"><a class="nav-link" href="alert.do">Alert</a>
 					<li class="nav-item"><a class="nav-link" href="logout.do">Logout</a></li>
 				</c:if>
 			</ul>

@@ -3,6 +3,8 @@ package com.kimchi.biz.user.impl;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
@@ -19,8 +21,32 @@ public class UserDAOImpl implements UserDAO {
 	private ResultSet rs = null;
 
 	// SQL 명령어
+	private final String USERLIST_GET = "SELECT uno, name FROM user ORDER BY uno";
 	private final String USER_GET = "SELECT * FROM user WHERE email=? AND pw=?";
-	private final String USER_INSERT = "INSERT INTO user(email, pw, name, gender, money, phone, ucomment) VALUES(?, ?, ?, ?, 0, ?, ?)";
+	private final String USER_INSERT = "INSERT INTO user(email, pw, name, gender, money, phone) VALUES(?, ?, ?, ?, 0, ?)";
+	
+	@Override
+	public List<UserVO> getUserList(UserVO vo) {
+		System.out.println("===> JDBC로 getUserList() 기능 처리");
+		
+		List<UserVO> userList = new ArrayList<UserVO>();
+		try {
+			conn = JDBCUtil.getConnection();
+			stmt = conn.prepareStatement(USERLIST_GET);
+			rs = stmt.executeQuery();
+			while(rs.next()) {
+				UserVO user = new UserVO();
+				user.setUno(rs.getInt("uno"));
+				user.setName(rs.getString("name"));
+				userList.add(user);
+			}
+		}catch(Exception e) {
+			
+		}finally {
+			
+		}
+		return userList;
+	}
 
 	@Override
 	public UserVO getUser(UserVO vo) {
@@ -36,13 +62,13 @@ public class UserDAOImpl implements UserDAO {
 			rs = stmt.executeQuery();
 			if (rs.next()) {
 				user = new UserVO();
+				user.setUno(rs.getInt("uno"));
 				user.setEmail(rs.getString("email"));
 				user.setPw(rs.getString("pw"));
 				user.setName(rs.getString("name"));
 				user.setGender(rs.getInt("gender"));
 				user.setMoney(rs.getInt("money"));
 				user.setPhone(rs.getString("phone"));
-				user.setUcomment(rs.getString("ucomment"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -63,7 +89,6 @@ public class UserDAOImpl implements UserDAO {
 			stmt.setString(3, vo.getName());
 			stmt.setInt(4, vo.getGender());
 			stmt.setString(5, vo.getPhone());
-			stmt.setString(6, vo.getUcomment());
 			stmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
