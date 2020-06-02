@@ -31,6 +31,17 @@ public class HelpeeDAOImpl implements HelpeeDAO {
 	private final String HELPEELIST_RECENTLY = "SELECT u.uno, u.name, p.edate, s.district, p.moving, p.hospital, p.immigration, l.language, p.e_intro"
 			+ " FROM helpee AS p JOIN user AS u ON p.uno=u.uno JOIN language AS l ON p.lno=l.lno JOIN seoul AS s ON p.eplace=s.dno"
 			+ " ORDER BY p.eno DESC";
+	
+	private final String HELPEE_MOVE = "SELECT u.uno, u.name, p.edate, s.district, p.moving, p.hospital, p.immigration, l.language, p.e_intro"
+			+ " FROM helpee AS p JOIN user AS u ON p.uno=u.uno JOIN language AS l ON p.lno=l.lno JOIN seoul AS s ON p.eplace=s.dno WHERE p.moving=1";
+	private final String HELPEE_HOSP = "SELECT u.uno, u.name, p.edate, s.district, p.moving, p.hospital, p.immigration, l.language, p.e_intro"
+			+ " FROM helpee AS p JOIN user AS u ON p.uno=u.uno JOIN language AS l ON p.lno=l.lno JOIN seoul AS s ON p.eplace=s.dno WHERE p.hospital=1";
+	private final String HELPEE_IMMI = "SELECT u.uno, u.name, p.edate, s.district, p.moving, p.hospital, p.immigration, l.language, p.e_intro"
+			+ " FROM helpee AS p JOIN user AS u ON p.uno=u.uno JOIN language AS l ON p.lno=l.lno JOIN seoul AS s ON p.eplace=s.dno WHERE p.immigration";
+	
+	private final String HELPEE_SEOUL = "SELECT u.uno, u.name, p.edate, s.district, p.moving, p.hospital, p.immigration, l.language, p.e_intro"
+			+ " FROM helpee AS p JOIN user AS u ON p.uno=u.uno JOIN language AS l ON p.lno=l.lno JOIN seoul AS s ON p.eplace=s.dno"
+			+ " WHERE p.eplace=?";
 
 	@Override
 	public HelpeeVO getHelpee(HelpeeVO vo) {

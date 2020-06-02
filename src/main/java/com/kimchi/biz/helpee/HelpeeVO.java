@@ -22,29 +22,29 @@ public class HelpeeVO {
 	private E_ReviewVO e_reviewVO;
 	
 	
-	public E_ReviewVO getE_reviewVO() {
-		return e_reviewVO;
-	}
-	public void setE_reviewVO(E_ReviewVO e_reviewVO) {
-		this.e_reviewVO = e_reviewVO;
-	}
 	public SeoulVO getSeoulVO() {
 		return seoulVO;
 	}
 	public void setSeoulVO(SeoulVO seoulVO) {
 		this.seoulVO = seoulVO;
 	}
-	public UserVO getUserVO() {
-		return userVO;
+	public E_ReviewVO getE_reviewVO() {
+		return e_reviewVO;
 	}
-	public void setUserVO(UserVO userVO) {
-		this.userVO = userVO;
+	public void setE_reviewVO(E_ReviewVO e_reviewVO) {
+		this.e_reviewVO = e_reviewVO;
 	}
 	public LanguageVO getLanguageVO() {
 		return languageVO;
 	}
 	public void setLanguageVO(LanguageVO languageVO) {
 		this.languageVO = languageVO;
+	}
+	public UserVO getUserVO() {
+		return userVO;
+	}
+	public void setUserVO(UserVO userVO) {
+		this.userVO = userVO;
 	}
 	public int getEno() {
 		return eno;

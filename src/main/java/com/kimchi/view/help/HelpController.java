@@ -22,8 +22,8 @@ public class HelpController {
 	@RequestMapping(value = "/getHelpeeList.do", method = RequestMethod.GET)
 	public String getHelpeeList(@ModelAttribute("helpee") HelpeeVO hvo, E_ReviewVO evo, Model model) {
 		System.out.println("헬피 홍보글 목록으로 이동");
-		model.addAttribute("countList", helpeeService.getReviewCountList(evo));
-		model.addAttribute("avgList", helpeeService.getReviewAvgList(evo));
+		model.addAttribute("countList", helpeeService.getE_ReviewCountList(evo));
+		model.addAttribute("avgList", helpeeService.getE_ReviewAvgList(evo));
 		model.addAttribute("helpeeList", helpeeService.getHelpeeList(hvo));
 
 		return "getHelpeeList.jsp";
@@ -33,8 +33,8 @@ public class HelpController {
 	@RequestMapping(value = "/recentHelpeeList.do", method = RequestMethod.GET)
 	public String recentHelpeeList(@ModelAttribute("helpee") HelpeeVO hvo, E_ReviewVO evo, Model model) {
 		System.out.println("헬피 홍보글 최신순 목록으로 이동");
-		model.addAttribute("countList", helpeeService.getReviewCountList(evo));
-		model.addAttribute("avgList", helpeeService.getReviewAvgList(evo));
+		model.addAttribute("countList", helpeeService.getE_ReviewCountList(evo));
+		model.addAttribute("avgList", helpeeService.getE_ReviewAvgList(evo));
 		model.addAttribute("helpeeList", helpeeService.recentHelpeeList(hvo));
 		return "getHelpeeList.jsp";
 	}

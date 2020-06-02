@@ -11,7 +11,6 @@ import org.springframework.stereotype.Repository;
 import com.kimchi.biz.common.JDBCUtil;
 import com.kimchi.biz.e_review.E_ReviewDAO;
 import com.kimchi.biz.e_review.E_ReviewVO;
-import com.kimchi.biz.helpee.HelpeeVO;
 
 @Repository("E_ReviewDAO")
 public class E_ReviewDAOImpl implements E_ReviewDAO {
@@ -20,13 +19,13 @@ public class E_ReviewDAOImpl implements E_ReviewDAO {
 	private PreparedStatement stmt = null;
 	private ResultSet rs = null;
 
-	// SQL 명령어
-	private final String HELPEE_REVIEW_EVNO = "SELECT eno, truncate(AVG(escore), 1) AS avg FROM e_review GROUP BY eno ORDER BY count(e_vno) DESC";
-	private final String HELPEE_REVIEW_COUNT = "SELECT eno, count(e_vno) AS count FROM e_review GROUP BY eno ORDER BY count(e_vno) DESC";
+
+	private final String HELPEE_REVIEW_EVNO = "SELECT eno, truncate(AVG(escore), 1) AS avg FROM e_review GROUP BY eno ORDER BY avg";
+	private final String HELPEE_REVIEW_COUNT = "SELECT eno, count(e_vno) AS count FROM e_review GROUP BY eno ORDER BY count";
 
 	@Override
 	// 헬피 리뷰 개수 세기
-	public List<E_ReviewVO> getReviewCountList(E_ReviewVO vo) {
+	public List<E_ReviewVO> getE_ReviewCountList(E_ReviewVO vo) {
 		List<E_ReviewVO> countList = new ArrayList<E_ReviewVO>();
 
 		try {
@@ -53,7 +52,7 @@ public class E_ReviewDAOImpl implements E_ReviewDAO {
 
 	@Override
 	// 헬피 리뷰 평점 계산
-	public List<E_ReviewVO> getReviewAvgList(E_ReviewVO vo) {
+	public List<E_ReviewVO> getE_ReviewAvgList(E_ReviewVO vo) {
 		List<E_ReviewVO> avgList = new ArrayList<E_ReviewVO>();
 
 		try {
@@ -69,7 +68,7 @@ public class E_ReviewDAOImpl implements E_ReviewDAO {
 
 				avgList.add(e_reivew);
 			}
-			System.out.println("확인 뿨킹: " + avgList.toString());
+			System.out.println("E리뷰 확인 뿨킹: " + avgList.toString());
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
