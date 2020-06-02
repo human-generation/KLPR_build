@@ -82,6 +82,7 @@ public class MatchingDAOImpl implements MatchingDAO {
 				mvo.setMno(rs.getInt("mno"));
 				mvo.setSeno(rs.getInt("seno"));
 				mvo.setRcno(rs.getInt("rcno"));
+				mvo.setRno(rs.getInt("rno"));
 				mvo.setEno(rs.getInt("eno"));
 				mvo.setMdate(rs.getDate("mdate"));
 				mvo.setMplace(rs.getInt("mplace"));

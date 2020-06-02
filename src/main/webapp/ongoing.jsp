@@ -84,14 +84,14 @@
 					<div class="col-md-6">
 						<div class="card">
 							<h4 class="card-header">결제 대기</h4>
-							<form action="updateState.do" method="POST">
+
 							<c:forEach items="${WaitingList}" var="matching_w">
 								<div class="card-body">
 									<div class="card">
 										<c:choose>
-										<c:when test="${matching_w.rcno } eq ${loginUser.uno }">
+										<c:when test="${matching_w.rcno eq loginUser.uno }">
 										<h6 class="card-header">${matching_w.senderName }</h6></c:when>
-										<c:when test="${matching_w.sno } eq ${loginUser.uno }">
+										<c:when test="${matching_w.seno eq loginUser.uno }">
 										<h6 class="card-header">${matching_w.receiverName }</h6></c:when>
 										</c:choose>
 										<div class="card-body">
@@ -121,14 +121,18 @@
 											</p>
 											<a href="#" class="btn btn-primary">상태 {요청받음 mstate 0}</a>
 											<!-- 이아래문장을 폼으로감싸서 submit하기 -->		
-											<c:if test="">
+										<form action="updateState.do" method="POST">
+											<c:if test="${loginUser.uno eq matching_w.eno }">
+												<input type="hidden" value="${matching_w.mno}">
+												<input type="hidden" value="${matching_w.mstate}">
 												<button type="submit" class="btn btn-primary" value="${matching_w.rcno}">결제하기</button>
 											</c:if>
+										</form>
 										</div>
 									</div>
 								</div>
 							</c:forEach>
-							</form>
+
 						</div>
 					</div>
 					<div class="col-md-6">

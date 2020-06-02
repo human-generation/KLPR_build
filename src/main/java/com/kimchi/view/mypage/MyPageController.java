@@ -18,13 +18,13 @@ import com.kimchi.biz.user.impl.UserDAOImpl;
 @Controller
 public class MyPageController {
 
-	
-	@RequestMapping(value="/payment.do", method= {RequestMethod.POST,RequestMethod.GET} )
+	@RequestMapping(value="/payment.do", method= {RequestMethod.POST} )
 	public String payment(UserDAOImpl userDAO, HttpSession session, @RequestParam("pay")int pay) {
 		UserVO vo=(UserVO)session.getAttribute("loginUser");
 		System.out.println(vo.toString()+"pay="+pay);
 		System.out.println("충전완료");
 		userDAO.updateUserMoney(vo, pay);
+		session.setAttribute("loginUser", vo);
 		System.out.println(vo.toString());
 		return "myPage.do";
 	}

@@ -42,8 +42,10 @@ public class MatchingController {
 	
 	
 	@RequestMapping(value="/updateState.do", method= {RequestMethod.POST,RequestMethod.GET})
-	public String updatingState(MatchingVOExtra mvo, MatchingDAOImpl matchingDAO) {
+	public String updatingState(MatchingVOExtra mvo, int mno, int mstate, MatchingDAOImpl matchingDAO) {
 		System.out.println(mvo.toString());
+		mvo.setMno(mno);
+		mvo.setMstate(mstate);
 		matchingService.updateState(mvo);
 		return "myPage.do";
 	}
