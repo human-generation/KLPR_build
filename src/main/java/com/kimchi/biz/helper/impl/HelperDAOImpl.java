@@ -44,14 +44,6 @@ public class HelperDAOImpl implements HelperDAO {
 //	private final String HELPER_AVG = "SELECT TRUNCATE(AVG(rscore),1) FROM r_review GROUP BY rno";
 	
 	@Override
-	public List<HelperVO> helper_avg(HelperVO vo) {
-		System.out.println("===> JDBC로 헬퍼 평점 담아지나요?");
-		
-		List<HelperVO> helperList = new ArrayList<HelperVO>();
-		return helperList;
-	}
-
-	@Override
 	public List<HelperVO> getHelperList(HelperVO vo) { // 모든 헬퍼 리스트 보여주기
 		System.out.println("===> JDBC로 getHelperList() 기능 처리");
 
@@ -131,10 +123,14 @@ public class HelperDAOImpl implements HelperDAO {
 				LanguageVO language = new LanguageVO();
 				language.setLanguage(rs.getString("language"));
 				helper.setLanguageVO(language);
+				
+				SeoulVO seoul = new SeoulVO();
+				seoul.setDistrict(rs.getString("district"));
+				helper.setSeoulVO(seoul);
 
 				helper.setSta(rs.getDate("sta"));
 				helper.setEnd(rs.getDate("end"));
-				helper.setRplace(rs.getInt("rplace"));
+//				helper.setRplace(rs.getInt("rplace"));
 				helper.setMoving(rs.getInt("moving"));
 				helper.setHospital(rs.getInt("hospital"));
 				helper.setImmigration(rs.getInt("immigration"));
@@ -214,10 +210,14 @@ public class HelperDAOImpl implements HelperDAO {
 				LanguageVO language = new LanguageVO();
 				language.setLanguage(rs.getString("language"));
 				helper.setLanguageVO(language);
+				
+				SeoulVO seoul = new SeoulVO();
+				seoul.setDistrict(rs.getString("district"));
+				helper.setSeoulVO(seoul);
 
 				helper.setSta(rs.getDate("sta"));
 				helper.setEnd(rs.getDate("end"));
-				helper.setRplace(rs.getInt("rplace"));
+//				helper.setRplace(rs.getInt("rplace"));
 				helper.setMoving(rs.getInt("moving"));
 				helper.setHospital(rs.getInt("hospital"));
 				helper.setImmigration(rs.getInt("immigration"));
@@ -254,9 +254,13 @@ public class HelperDAOImpl implements HelperDAO {
 				language.setLanguage(rs.getString("language"));
 				helper.setLanguageVO(language);
 
+				SeoulVO seoul = new SeoulVO();
+				seoul.setDistrict(rs.getString("district"));
+				helper.setSeoulVO(seoul);
+				
 				helper.setSta(rs.getDate("sta"));
 				helper.setEnd(rs.getDate("end"));
-				helper.setRplace(rs.getInt("rplace"));
+//				helper.setRplace(rs.getInt("rplace"));
 				helper.setMoving(rs.getInt("moving"));
 				helper.setHospital(rs.getInt("hospital"));
 				helper.setImmigration(rs.getInt("immigration"));
@@ -293,9 +297,13 @@ public class HelperDAOImpl implements HelperDAO {
 				language.setLanguage(rs.getString("language"));
 				helper.setLanguageVO(language);
 				
+				SeoulVO seoul = new SeoulVO();
+				seoul.setDistrict(rs.getString("district"));
+				helper.setSeoulVO(seoul);
+				
 				helper.setSta(rs.getDate("sta"));
 				helper.setEnd(rs.getDate("end"));
-				helper.setRplace(rs.getInt("rplace"));
+//				helper.setRplace(rs.getInt("rplace"));
 				helper.setMoving(rs.getInt("moving"));
 				helper.setHospital(rs.getInt("hospital"));
 				helper.setImmigration(rs.getInt("immigration"));
@@ -311,6 +319,14 @@ public class HelperDAOImpl implements HelperDAO {
 		return helperList;
 	}
 
+	@Override
+	public List<HelperVO> helper_avg(HelperVO vo) {
+		System.out.println("===> JDBC로 헬퍼 평점 담아지나요?");
+		
+		List<HelperVO> helperList = new ArrayList<HelperVO>();
+		return helperList;
+	}
+	
 	@Override
 	public HelperVO getHelper(HelperVO vo) {
 		// TODO Auto-generated method stub
