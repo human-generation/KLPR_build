@@ -62,18 +62,16 @@
 		<div class="row">
 			<div class="col-md-2 order-1 order-md-1">
 				<div class="btn-group-vertical d-none d-md-block">
-					<button type="button" class="btn btn-secondary helper-button">My
-						page</button>
-					<button type="button" class="btn btn-secondary helper-button">요청내역</button>
-					<button type="button" class="btn btn-secondary helper-button">진행중내역</button>
+					<button type="button" class="btn btn-secondary helper-button" onclick="location.href='myPage.do'">My page</button>
+                    <button type="button" class="btn btn-secondary helper-button" onclick="location.href='incomingRequest.do'">요청내역</button>
+                    <button type="button" class="btn btn-secondary helper-button" onclick="location.href='ongoing.do'">진행중내역</button>
 					<button type="button" class="btn btn-secondary helper-button">이전내역</button>
 					<button type="button" class="btn btn-secondary helper-button">나의정보수정</button>
 				</div>
 				<div class="btn-group d-md-none">
-					<button type="button" class="btn btn-secondary helper-button">My
-						page</button>
-					<button type="button" class="btn btn-secondary helper-button">요청내역</button>
-					<button type="button" class="btn btn-secondary helper-button">진행중내역</button>
+					<button type="button" class="btn btn-secondary helper-button" onclick="location.href='myPage.do'">My page</button>
+                    <button type="button" class="btn btn-secondary helper-button" onclick="location.href='incomingRequest.do'">요청내역</button>
+                    <button type="button" class="btn btn-secondary helper-button" onclick="location.href='ongoing.do'">진행중내역</button>
 					<button type="button" class="btn btn-secondary helper-button">이전내역</button>
 					<button type="button" class="btn btn-secondary helper-button">나의정보수정</button>
 				</div>
@@ -111,7 +109,7 @@
 												<div class="reviewNum">Total usage {rv_no}</div>
 												<div class="avDate">Available date {sta - end}</div>
 												<div class="area">
-													Placed in <i class="fas fa-map-marker-alt">${matching_s.mplace }</i>{rplace}
+													Placed in <i class="fas fa-map-marker-alt">${matching_s.mplaceName }</i>{rplace}
 												</div>
 												</p>
 												<a href="#" class="btn btn-primary">상태 {요청받음 mstate 0}</a> <a
@@ -151,7 +149,7 @@
 												<div class="reviewNum">Total usage {rv_no}</div>
 												<div class="avDate">Available date {sta - end}</div>
 												<div class="area">
-													Placed in <i class="fas fa-map-marker-alt">${matching_r.mplace }</i>{rplace}
+													Placed in <i class="fas fa-map-marker-alt">${matching_r.mplaceName }</i>{rplace}
 												</div>
 												</p>
 												<a href="#" class="btn btn-primary">상태 {수락대기중 mstate 1}</a> <a

@@ -14,6 +14,7 @@ public class MatchingVOExtra {
 	private int mstate;
 	private String senderName;
 	private String receiverName;
+	private String mplaceName;
 	
 	public int getMno() {
 		return mno;
@@ -81,13 +82,17 @@ public class MatchingVOExtra {
 	public void setReceiverName(String receiverName) {
 		this.receiverName = receiverName;
 	}
+	public String getMplaceName() {
+		return mplaceName;
+	}
+	public void setMplaceName(String mplaceName) {
+		this.mplaceName = mplaceName;
+	}
 	@Override
 	public String toString() {
 		return "MatchingVOExtra [mno=" + mno + ", seno=" + seno + ", rcno=" + rcno + ", rno=" + rno + ", eno=" + eno
 				+ ", mdate=" + mdate + ", mplace=" + mplace + ", mservice=" + mservice + ", mstate=" + mstate
-				+ ", senderName=" + senderName + ", receiverName=" + receiverName + "]";
+				+ ", senderName=" + senderName + ", receiverName=" + receiverName + ", mplaceName=" + mplaceName + "]";
 	}
-	
-	
 }
 

@@ -90,6 +90,7 @@ public class MatchingDAOImpl implements MatchingDAO {
 				mvo.setMstate(rs.getInt("mstate"));
 				mvo.setSenderName(senderName(mvo.getMno()));
 				mvo.setReceiverName(receiverName(mvo.getMno()));
+				mvo.setMplaceName(convertPlace(mvo.getMplace()));
 				matchingList.add(mvo);
 			}
 		} catch (Exception e) {
@@ -171,5 +172,36 @@ public class MatchingDAOImpl implements MatchingDAO {
 			finally{
 				JDBCUtil.close(rs2, stmt2, conn);
 			}
+	}
+	
+	public String convertPlace(int mplace) { //실행시간 관점에서 하나 조회할때마다 join으로 db참고하는것보다 이게 더 빠르다는 판단,,,
+		switch(mplace){
+			case 1: return "Gangbuk-gu";
+			case 2: return "Gangdong-gu";
+			case 3: return "Gangname-gu";
+			case 4: return "Gangseo-gu";
+			case 5: return "Geumcheon-gu";
+			case 6: return "Guro-gu";
+			case 7: return "Gwanak-gu";
+			case 8: return "Gwangjin-gu";
+			case 9: return "Nowon-gu";
+			case 10: return "Dobong-gu";
+			case 11: return "Dongdaemun-gu";
+			case 12: return "Dongjak-gu";
+			case 13: return "Mapo-gu";
+			case 14: return "Seocho-gu";
+			case 15: return "Seodaemun-gu";
+			case 16: return "Seongbuk-gu";
+			case 17: return "Seongdong-gu";
+			case 18: return "Songpa-gu";
+			case 19: return "Yangcheon-gu";
+			case 20: return "Yeongdeungpo-gu";
+			case 21: return "Yongsan-gu";
+			case 22: return "Eunpyeong-gu";
+			case 23: return "Jongno-gu";
+			case 24: return "Jungnang-gu";
+			case 25: return "Jung-gu";
+			default: return "";
+		}
 	}
 }
