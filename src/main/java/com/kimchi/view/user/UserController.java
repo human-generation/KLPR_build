@@ -34,7 +34,6 @@ public class UserController {
 			session.setAttribute("userGender", user.getGender());
 			session.setAttribute("userPhone", user.getPhone());
 			session.setAttribute("userMoney", user.getMoney());
-			System.out.println("name: " + user.getName() + " uno: " + user.getUno() + " money: " + user.getMoney());
 			return "main.do";
 		} else {
 			return "main.do";
