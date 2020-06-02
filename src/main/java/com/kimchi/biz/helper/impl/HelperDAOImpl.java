@@ -25,23 +25,23 @@ public class HelperDAOImpl implements HelperDAO {
 	private ResultSet rs = null;
 
 	// SQL 명령어
-	private final String HELPERLIST_GET = "SELECT u.name, h.sta, h.end, s.district, h.moving, h.hospital, h.immigration, l.language, h.r_intro"
-			+ " FROM helper AS h JOIN user AS u ON h.uno=u.uno JOIN language AS l ON h.lno=l.lno JOIN seoul AS s ON s.dno=h.rplace";
+	private final String HELPERLIST_GET = "SELECT u.name, h.sta, h.end, s.district, TRUNCATE(AVG(r.rscore),1) AS avg, h.moving, h.hospital, h.immigration, l.language, h.r_intro"
+			+ " FROM helper AS h JOIN user AS u ON h.uno=u.uno JOIN language AS l ON h.lno=l.lno JOIN seoul AS s ON s.dno=h.rplace JOIN r_review AS r ON h.rno=r.rno GROUP BY r.rno";
 	private final String HELPER_DELETE = "DELETE FROM helper WHERE end < CURDATE()";
 	private final String HELPERLIST_RECENTLY = "SELECT u.name, h.sta, h.end, s.district, h.moving, h.hospital, h.immigration, l.language, h.r_intro"
 			+ " FROM helper AS h JOIN user AS u ON h.uno=u.uno JOIN language AS l ON h.lno=l.lno JOIN seoul AS s ON s.dno=h.rplace ORDER BY h.rno DESC";
-	private final String HELPERLIST_SCORE = "SELECT u.name, h.sta, h.end, s.district, h.moving, h.hospital, h.immigration, l.language, h.r_intro"
-			+ " FROM helper AS h JOIN user AS u ON h.uno=u.uno JOIN language AS l ON h.lno=l.lno"
-			+ " JOIN r_review ON h.rno=r_review.rno JOIN seoul AS s ON s.dno=h.rplace GROUP BY h.rno ORDER BY AVG(rscore) DESC";
+	private final String HELPERLIST_SCORE = "SELECT u.name, h.sta, h.end, s.district, TRUNCATE(AVG(r.rscore),1) AS avg, h.moving, h.hospital, h.immigration, l.language, h.r_intro"
+			+ " FROM helper AS h JOIN user AS u ON h.uno=u.uno JOIN language AS l ON h.lno=l.lno JOIN r_review AS r ON h.rno=r.rno"
+			+ " JOIN seoul AS s ON s.dno=h.rplace GROUP BY r.rno ORDER BY avg DESC";
 	
 	private final String HELPER_MOVE = "SELECT u.name, h.sta, h.end, s.district, h.moving, h.hospital, h.immigration, l.language, h.r_intro"
 			+ " FROM helper AS h JOIN user AS u ON h.uno=u.uno JOIN language AS l ON h.lno=l.lno JOIN seoul AS s ON s.dno=h.rplace WHERE h.moving=1";
 	private final String HELPER_HOSP = "SELECT u.name, h.sta, h.end, s.district, h.moving, h.hospital, h.immigration, l.language, h.r_intro"
 			+ " FROM helper AS h JOIN user AS u ON h.uno=u.uno JOIN language AS l ON h.lno=l.lno JOIN seoul AS s ON s.dno=h.rplace WHERE h.hospital=1";
-	private final String HELPER_IMMI = "SELECT u.name, h.sta, h.end, s.ditrict, h.moving, h.hospital, h.immigration, l.language, h.r_intro"
+	private final String HELPER_IMMI = "SELECT u.name, h.sta, h.end, s.district, h.moving, h.hospital, h.immigration, l.language, h.r_intro"
 			+ " FROM helper AS h JOIN user AS u ON h.uno=u.uno JOIN language AS l ON h.lno=l.lno JOIN seoul AS s ON s.dno=h.rplace WHERE h.immigration=1";
 	
-//	private final String HELPER_AVG = "SELECT TRUNCATE(AVG(rscore),1) FROM r_review GROUP BY rno";
+//	private final String HELPER_AVG = "SELECT TRUNCATE(AVG(rscore),1) AS avg FROM r_review GROUP BY rno ORDER BY avg DESC";
 	
 	@Override
 	public List<HelperVO> getHelperList(HelperVO vo) { // 모든 헬퍼 리스트 보여주기
@@ -70,6 +70,10 @@ public class HelperDAOImpl implements HelperDAO {
 				SeoulVO seoul = new SeoulVO();
 				seoul.setDistrict(rs.getString("district"));
 				helper.setSeoulVO(seoul);
+				
+				R_reviewVO r_review = new R_reviewVO();
+				r_review.setAvg(rs.getInt("avg"));
+				helper.setR_reviewVO(r_review);
 
 				helper.setSta(rs.getDate("sta"));
 				helper.setEnd(rs.getDate("end"));
@@ -167,14 +171,17 @@ public class HelperDAOImpl implements HelperDAO {
 				language.setLanguage(rs.getString("language"));
 				helper.setLanguageVO(language);
 				
-				R_reviewVO r_review = new R_reviewVO();
-				r_review.setRno(rs.getInt("rno"));
-				r_review.setRscore(rs.getInt("rscore"));
-				helper.setR_reviewVO(r_review);
+				SeoulVO seoul = new SeoulVO();
+				seoul.setDistrict(rs.getString("district"));
+				helper.setSeoulVO(seoul);
 
+				R_reviewVO r_review = new R_reviewVO();
+				r_review.setAvg(rs.getInt("avg"));
+				helper.setR_reviewVO(r_review);
+				
 				helper.setSta(rs.getDate("sta"));
 				helper.setEnd(rs.getDate("end"));
-				helper.setRplace(rs.getInt("rplace"));
+//				helper.setRplace(rs.getInt("rplace"));
 				helper.setMoving(rs.getInt("moving"));
 				helper.setHospital(rs.getInt("hospital"));
 				helper.setImmigration(rs.getInt("immigration"));

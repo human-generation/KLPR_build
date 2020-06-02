@@ -5,7 +5,16 @@ public class R_reviewVO {
 	private int r_vno;		 // 머더라?
 	private int eno;		 // 헬피번호
 	private String rcomment; // 줄리뷰
-	private int rscore;		 // 평점
+	private int rscore;		 // 점수
+	
+	private double avg;	// 평점
+	
+	public double getAvg() {
+		return avg;
+	}
+	public void setAvg(double avg) {
+		this.avg = avg;
+	}
 	public int getRno() {
 		return rno;
 	}

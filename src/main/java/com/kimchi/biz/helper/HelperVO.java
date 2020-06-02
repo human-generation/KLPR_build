@@ -24,7 +24,7 @@ public class HelperVO {
 	private LanguageVO languageVO;
 	private SeoulVO seoulVO;
 	private R_reviewVO r_reviewVO;
-	
+
 	public SeoulVO getSeoulVO() {
 		return seoulVO;
 	}

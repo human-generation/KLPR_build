@@ -136,7 +136,7 @@
                                     <h4>${helper.userVO.name}</h4>
                                 </div>
                                 <div class="col-md-6 order-1 order-md-2">
-                                    <h5>{⭐️⭐️⭐️⭐️⭐️}</h5>
+                                    <h5>${helper.r_reviewVO.avg}</h5>
                                 </div>
                             </div>
                             <div class="row">
