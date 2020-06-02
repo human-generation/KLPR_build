@@ -69,7 +69,7 @@
                             I'm near..
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownAddr">
-                            <button class="dropdown-item" type="button">지역구가</button>
+                            <button class="dropdown-item" type="button">지역구</button>
                             <!--  <button class="dropdown-item" type="button">들어갑니다</button>
                             <button class="dropdown-item" type="button">수정예정</button> -->
                         </div>
@@ -136,7 +136,7 @@
                                     <h4>${helper.userVO.name}</h4>
                                 </div>
                                 <div class="col-md-6 order-1 order-md-2">
-                                    <h5>${helper.r_reviewVO.avg}</h5>
+                                    <h5>{☆☆☆☆☆}</h5>
                                 </div>
                             </div>
                             <div class="row">

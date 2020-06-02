@@ -25,8 +25,8 @@ public class HelperDAOImpl implements HelperDAO {
 	private ResultSet rs = null;
 
 	// SQL 명령어
-	private final String HELPERLIST_GET = "SELECT u.name, h.sta, h.end, s.district, TRUNCATE(AVG(r.rscore),1) AS avg, h.moving, h.hospital, h.immigration, l.language, h.r_intro"
-			+ " FROM helper AS h JOIN user AS u ON h.uno=u.uno JOIN language AS l ON h.lno=l.lno JOIN seoul AS s ON s.dno=h.rplace JOIN r_review AS r ON h.rno=r.rno GROUP BY r.rno";
+	private final String HELPERLIST_GET = "SELECT u.name, h.sta, h.end, s.district, h.moving, h.hospital, h.immigration, l.language, h.r_intro"
+			+ " FROM helper AS h JOIN user AS u ON h.uno=u.uno JOIN language AS l ON h.lno=l.lno JOIN seoul AS s ON s.dno=h.rplace";
 	private final String HELPER_DELETE = "DELETE FROM helper WHERE end < CURDATE()";
 	private final String HELPERLIST_RECENTLY = "SELECT u.name, h.sta, h.end, s.district, h.moving, h.hospital, h.immigration, l.language, h.r_intro"
 			+ " FROM helper AS h JOIN user AS u ON h.uno=u.uno JOIN language AS l ON h.lno=l.lno JOIN seoul AS s ON s.dno=h.rplace ORDER BY h.rno DESC";
@@ -71,9 +71,9 @@ public class HelperDAOImpl implements HelperDAO {
 				seoul.setDistrict(rs.getString("district"));
 				helper.setSeoulVO(seoul);
 				
-				R_reviewVO r_review = new R_reviewVO();
-				r_review.setAvg(rs.getInt("avg"));
-				helper.setR_reviewVO(r_review);
+//				R_reviewVO r_review = new R_reviewVO();
+//				r_review.setAvg(rs.getDouble("avg"));
+//				helper.setR_reviewVO(r_review);
 
 				helper.setSta(rs.getDate("sta"));
 				helper.setEnd(rs.getDate("end"));
