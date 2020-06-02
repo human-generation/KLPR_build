@@ -4,6 +4,7 @@ import java.sql.Date;
 
 import com.kimchi.biz.language.LanguageVO;
 import com.kimchi.biz.r_review.R_reviewVO;
+import com.kimchi.biz.seoul.SeoulVO;
 import com.kimchi.biz.user.UserVO;
 
 
@@ -21,8 +22,17 @@ public class HelperVO {
 	
 	private UserVO userVO;
 	private LanguageVO languageVO;
+	private SeoulVO seoulVO;
 	private R_reviewVO r_reviewVO;
 	
+	public SeoulVO getSeoulVO() {
+		return seoulVO;
+	}
+
+	public void setSeoulVO(SeoulVO seoulVO) {
+		this.seoulVO = seoulVO;
+	}
+
 	public R_reviewVO getR_reviewVO() {
 		return r_reviewVO;
 	}

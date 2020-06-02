@@ -70,15 +70,17 @@
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownAddr">
                             <button class="dropdown-item" type="button">지역구가</button>
-                            <button class="dropdown-item" type="button">들어갑니다</button>
-                            <button class="dropdown-item" type="button">수정예정</button>
+                            <!--  <button class="dropdown-item" type="button">들어갑니다</button>
+                            <button class="dropdown-item" type="button">수정예정</button> -->
                         </div>
                     </div>
                     <div class="btn-group" role="group" aria-label="SortBtn">
                         <button type="button" onclick="location.href='recentHelperList.do'" class="btn btn-secondary helper-button btn-sm">
                         	최신순
                         </button>
-                        <button type="button" class="btn btn-secondary helper-button btn-sm">평점순</button>
+                        <button type="button" onclick="location.href='scoreHelperList.do'" class="btn btn-secondary helper-button btn-sm">
+                        	평점순
+                        </button>
                     </div>
                 </div>
             </div>
@@ -90,10 +92,10 @@
         <div class="row">
             <div class="col-md-2 order-1 order-md-1">
                 <div class="btn-group-vertical d-none d-md-block">
-                    <button type="button" class="btn btn-secondary helper-button">All</button>
-                    <button type="button" class="btn btn-secondary helper-button">이사</button>
-                    <button type="button" class="btn btn-secondary helper-button">병원</button>
-                    <button type="button" class="btn btn-secondary helper-button">출입국</button>
+                    <button type="button" onclick="location.href='getHelperList.do'" class="btn btn-secondary helper-button">All</button>
+                    <button type="button" onclick="location.href='moveHelper.do'" class="btn btn-secondary helper-button">이사</button>
+                    <button type="button" onclick="location.href='hospitalHelper.do'" class="btn btn-secondary helper-button">병원</button>
+                    <button type="button" onclick="location.href='immigrationHelper.do'" class="btn btn-secondary helper-button">출입국</button>
                 </div>
                 <div class="btn-group d-md-none">
                     <button type="button" class="btn btn-secondary helper-button">All</button>
@@ -152,7 +154,7 @@
                                         Available date ${helper.sta} ~ ${helper.end}
                                     </div>
                                     <div class="area">
-                                        Placed in <i class="fas fa-map-marker-alt"></i>${helper.rplace}
+                                        Placed in <i class="fas fa-map-marker-alt"></i>${helper.seoulVO.district}
                                     </div>
                                 </div>
                             </div>

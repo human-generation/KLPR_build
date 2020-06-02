@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.kimchi.biz.helper.HelperDAO;
 import com.kimchi.biz.helper.HelperService;
 import com.kimchi.biz.helper.HelperVO;
+import com.kimchi.biz.seoul.SeoulVO;
 import com.kimchi.biz.user.UserVO;
 
 @Service("HelperService")
@@ -45,6 +46,30 @@ public class HelperServiceImpl implements HelperService {
 		return helperDAO.scoreHelperList(vo);
 	}
 	
+	@Override
+	public List<HelperVO> moveHelper(HelperVO vo) {
+		System.out.println("HelperServiceImpl의 moveHelper() 실행...");
+		return helperDAO.moveHelper(vo);
+	}
+
+	@Override
+	public List<HelperVO> hospitalHelper(HelperVO vo) {
+		System.out.println("HelperServiceImpl의 hospitalHelper() 실행...");
+		return helperDAO.hospitalHelper(vo);
+	}
+
+	@Override
+	public List<HelperVO> immigrationHelper(HelperVO vo) {
+		System.out.println("HelperServiceImpl의 immigrationHelper() 실행...");
+		return helperDAO.immigrationHelper(vo);
+	}
+
+	@Override
+	public List<HelperVO> helper_avg(HelperVO vo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	@Override
 	public HelperVO getHelper(HelperVO vo) {
 		// TODO Auto-generated method stub
