@@ -10,14 +10,17 @@ import org.springframework.stereotype.Service;
 import com.kimchi.biz.helper.HelperDAO;
 import com.kimchi.biz.helper.HelperService;
 import com.kimchi.biz.helper.HelperVO;
+import com.kimchi.biz.seoul.SeoulDAO;
 import com.kimchi.biz.seoul.SeoulVO;
-import com.kimchi.biz.user.UserVO;
 
 @Service("HelperService")
 public class HelperServiceImpl implements HelperService {
 	
 	@Autowired
 	private HelperDAO helperDAO;
+	
+	@Autowired
+	private SeoulDAO seoulDAO;
 	
 	@Autowired
 	HttpSession session;
@@ -64,6 +67,12 @@ public class HelperServiceImpl implements HelperService {
 		return helperDAO.immigrationHelper(vo);
 	}
 
+	@Override
+	public List<SeoulVO> getSeoulList(SeoulVO vo) {
+		System.out.println("HelperServiceImpl의 getSeoulList() 실행...");
+		return seoulDAO.getSeoulList(vo);
+	}
+	
 	@Override
 	public List<HelperVO> helper_avg(HelperVO vo) {
 		// TODO Auto-generated method stub

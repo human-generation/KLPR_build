@@ -16,5 +16,7 @@ public interface HelperService {
 	public List<HelperVO> immigrationHelper(HelperVO vo);	// 출입국 헬퍼 리스트
 	
 	public List<HelperVO> helper_avg(HelperVO vo);	// 평점 담는 리스트?ㅅㅂ
+	
+	public List<SeoulVO> getSeoulList(SeoulVO vo);	// 지역 리스트 받아오기
 
 }

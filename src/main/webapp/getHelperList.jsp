@@ -69,9 +69,9 @@
                             I'm near..
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownAddr">
-                            <button class="dropdown-item" type="button">지역구</button>
-                            <!--  <button class="dropdown-item" type="button">들어갑니다</button>
-                            <button class="dropdown-item" type="button">수정예정</button> -->
+                        <c:forEach items="${seoulList}" var="seoul">
+                            <button class="dropdown-item" type="button">${seoul.district}</button>
+                        </c:forEach>
                         </div>
                     </div>
                     <div class="btn-group" role="group" aria-label="SortBtn">

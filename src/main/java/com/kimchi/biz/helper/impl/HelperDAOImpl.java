@@ -41,6 +41,10 @@ public class HelperDAOImpl implements HelperDAO {
 	private final String HELPER_IMMI = "SELECT u.name, h.sta, h.end, s.district, h.moving, h.hospital, h.immigration, l.language, h.r_intro"
 			+ " FROM helper AS h JOIN user AS u ON h.uno=u.uno JOIN language AS l ON h.lno=l.lno JOIN seoul AS s ON s.dno=h.rplace WHERE h.immigration=1";
 	
+	private final String HELPER_SEOUL = "SELECT u.name, h.sta, h.end, s.district, h.moving, h.hospital, h.immigration, l.language, h.r_intro"
+			+ " FROM helper AS h JOIN user AS u ON h.uno=u.uno JOIN language AS l ON h.lno=l.lno JOIN seoul AS s ON s.dno=h.rplace"
+			+ " WHERE s.dno=?";
+	
 //	private final String HELPER_AVG = "SELECT TRUNCATE(AVG(rscore),1) AS avg FROM r_review GROUP BY rno ORDER BY avg DESC";
 	
 	@Override
