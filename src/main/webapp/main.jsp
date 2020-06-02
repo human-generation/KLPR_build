@@ -134,7 +134,7 @@
 						<p class="card-text">
 						<ul>						
 						<c:forEach var="list" items="${RScoreTop5}">
-							<li>${list.name}</li>
+							<li>${list.ranking}위  ${list.name}</li>
 						</c:forEach>
 						</ul>
 						</p>
@@ -148,7 +148,7 @@
 						<p class="card-text">
 						<ul>
 						<c:forEach var="list" items="${RTop5}">
-							<li>${list.name}</li>
+							<li>${list.ranking}위  ${list.name}</li>
 						</c:forEach>	
 						</ul>
 						</p>
@@ -162,7 +162,7 @@
 						<p class="card-text">
 						<ul>
 						<c:forEach var="list" items="${ETop5}">
-							<li>${list.name}</li>							
+							<li>${list.ranking}위  ${list.name}</li>							
 						</c:forEach>	
 						</ul>
 						</p>

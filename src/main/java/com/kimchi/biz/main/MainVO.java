@@ -12,7 +12,8 @@ public class MainVO {
 	private int eno;
 	private int escore;
 	
-	private int n;
+	private int ranking;	//TOP5 순번 변수
+	private int n;			//TOP5 활동 수 count
 	
 	
 	
@@ -73,11 +74,12 @@ public class MainVO {
 		this.n = n;
 		return this;
 	}
-	
-	
-	
-	
-	
-	
-	
+	public int getRanking() {
+		return ranking;
+	}
+	public MainVO setRanking(int ranking) {
+		this.ranking = ranking;
+		return this;
+	}
+
 }

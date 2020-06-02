@@ -35,13 +35,15 @@ public class MainDAOImpl implements MainDAO {
 	private final String ESCORE_AVG="SELECT AVG(escore) FROM e_review"; 
 
 	//5)가장 평점이 높은 헬퍼 NAME, NUM top5 리스트 
-	private final String BEST_RTOP5 = "SELECT r.rno , u.name, AVG(r.rscore) AS rscore FROM r_review AS r JOIN user AS u ON r.rno = u.uno GROUP BY r.rno order by rscore DESC LIMIT 5";
+	
+	private final String BEST_RTOP5 = "SELECT @num:=@num+1 as ranking, rno, name, rscore FROM (select @num:=0) ranking, (SELECT r.rno , u.name, AVG(r.rscore) AS rscore FROM r_review AS r JOIN user AS u ON r.rno = u.uno GROUP BY r.rno LIMIT 5)A ORDER BY rscore DESC";	
+	//private final String BEST_RTOP5 = "SELECT @num:=@num+1 as ranking, r.rno , u.name, AVG(r.rscore) AS rscore FROM (select @num:=0) ranking, r_review AS r JOIN user AS u ON r.rno = u.uno GROUP BY r.rno order by AVG(r.rscore) DESC LIMIT 5";
 
 	//6)가장 많은 도움을 준 헬퍼 NAME, NUM top5 리스트 (matching table에서 ,mstate=4)
-	private final String GREATEST_RTOP5 = "SELECT u.uno, u.name, COUNT(*) AS n FROM user AS u JOIN matching AS m WHERE m.mstate=4 AND u.uno=m.rno GROUP BY u.uno LIMIT 5";
+	private final String GREATEST_RTOP5 = "SELECT @num:=@num+1 as ranking, u.uno, u.name, COUNT(*) AS n FROM (select @num:=0) ranking, user AS u JOIN matching AS m WHERE m.mstate=4 AND u.uno=m.rno GROUP BY u.uno LIMIT 5";
 	 
 	//7)가장 도움을 많이 받은 헬피 NAME, NUM top5 리스트 (matching table에서 ,mstate=4) 
-	private final String GREATEST_ETOP5="SELECT u.uno, u.name, COUNT(*) AS n FROM user AS u JOIN matching AS m WHERE m.mstate=4 AND u.uno=m.eno GROUP BY u.uno LIMIT 5";
+	private final String GREATEST_ETOP5="SELECT @num:=@num+1 as ranking, u.uno, u.name, COUNT(*) AS n FROM (select @num:=0) ranking, user AS u JOIN matching AS m WHERE m.mstate=4 AND u.uno=m.eno GROUP BY u.uno LIMIT 5";
 	
 	
 	@Override
@@ -121,6 +123,7 @@ public class MainDAOImpl implements MainDAO {
 	
 			while (rs.next()) {			
 				vo.add(new MainVO()
+				.setRanking(rs.getInt("ranking"))	//순위
 				.setRno(rs.getInt("rno"))			//헬퍼 번호 
 				.setName(rs.getString("name"))		//핼퍼 이름
 				.setRscore(rs.getInt("rscore")));	//헬퍼 평점				
@@ -146,6 +149,7 @@ public class MainDAOImpl implements MainDAO {
 			
 			while (rs.next()) {			
 				vo.add(new MainVO()
+				.setRanking(rs.getInt("ranking"))	//순위		
 				.setUno(rs.getInt("uno"))			//헬퍼 번호 
 				.setName(rs.getString("name"))		//핼퍼 이름
 				.setN(rs.getInt("n")));				//count				
@@ -171,6 +175,7 @@ public class MainDAOImpl implements MainDAO {
 			
 			while (rs.next()) {			
 				vo.add(new MainVO()
+				.setRanking(rs.getInt("ranking"))	//순위	
 				.setUno(rs.getInt("uno"))			//헬피 번호 
 				.setName(rs.getString("name"))		//핼피 이름
 				.setN(rs.getInt("n")));				//count				
