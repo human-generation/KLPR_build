@@ -28,8 +28,6 @@ public class MatchingDAOImpl implements MatchingDAO {
 	private final String SENDED_MATCHING_GET = "SELECT * FROM matching WHERE seno=?";
 	private final String RECEIVED_MATCHING_GET = "SELECT * FROM matching WHERE rcno=?";
 	private final String WAITING_MATCHING_GET = "SELECT * FROM matching WHERE (seno=? AND mstate=2) OR (rcno=? AND mstate=2)";
-	private final String WAITING_MATCHING_GET_R = "SELECT * FROM matching WHERE (seno=? AND mstate=2)";
-	private final String WAITING_MATCHING_GET_S="SELECT * FROM matching WHERE (rcno=? AND mstate=2)";
 	private final String PAID_MATCHING_GET = "SELECT * FROM matching WHERE (rcno=? AND mstate=3) OR (seno=? AND mstate=3)";
 	private final String ENDED_MATCHING_GET = "SELECT * FROM matching WHERE (rcno=? AND mstate=4) OR (seno=? AND mstate=4)";
 	private final String DENIED_MATCHING_GET = "SELECT * FROM matching WHERE (rcno=? AND mstate=5) OR (seno=? AND mstate=5)";
@@ -172,6 +170,16 @@ public class MatchingDAOImpl implements MatchingDAO {
 			finally{
 				JDBCUtil.close(rs2, stmt2, conn);
 			}
+	}
+	
+	public String convertLanguage(int language) {
+		switch(language) {
+		case 1: return "English";
+		case 2:	return "German";
+		case 3: return "French";
+		case 4:	return "Italian";
+		default: return "";
+		}
 	}
 	
 	public String convertPlace(int mplace) { //실행시간 관점에서 하나 조회할때마다 join으로 db참고하는것보다 이게 더 빠르다는 판단,,,
