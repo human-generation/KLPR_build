@@ -5,7 +5,7 @@ public class E_ReviewVO {
 	private int eno;
 	private int rno;
 	private String ecomment;
-	private int escore;
+	private double escore;
 	private int count;
 
 	public int getE_vno() {
@@ -40,11 +40,11 @@ public class E_ReviewVO {
 		this.ecomment = ecomment;
 	}
 
-	public int getEscore() {
+	public double getEscore() {
 		return escore;
 	}
 
-	public void setEscore(int escore) {
+	public void setEscore(double escore) {
 		this.escore = escore;
 	}
 

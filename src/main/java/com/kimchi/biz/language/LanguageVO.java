@@ -22,6 +22,10 @@ public class LanguageVO {
 	public void setLanguage(String language) {
 		this.language = language;
 	}
+	@Override
+	public String toString() {
+		return "LanguageVO [lno=" + lno + ", language=" + language + "]";
+	}
 	
 	
 }

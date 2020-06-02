@@ -25,13 +25,12 @@ public class HelpeeDAOImpl implements HelpeeDAO {
 	private ResultSet rs = null;
 
 	// SQL 명령어
-	private final String HELPEELIST_GET = "SELECT u.name, p.edate, s.district, p.moving, p.hospital, p.immigration, l.language, p.e_intro"
+	private final String HELPEELIST_GET = "SELECT u.uno, u.name, p.edate, s.district, p.moving, p.hospital, p.immigration, l.language, p.e_intro"
 			+ " FROM helpee AS p JOIN user AS u ON p.uno=u.uno JOIN language AS l ON p.lno=l.lno JOIN seoul AS s ON p.eplace=s.dno";
 	private final String HELPEE_DELETE = "DELETE FROM helpee WHERE edate < CURDATE()";
-	private final String HELPEELIST_RECENTLY = "SELECT u.name, p.edate, s.district, p.moving, p.hospital, p.immigration, l.language, p.e_intro"
+	private final String HELPEELIST_RECENTLY = "SELECT u.uno, u.name, p.edate, s.district, p.moving, p.hospital, p.immigration, l.language, p.e_intro"
 			+ " FROM helpee AS p JOIN user AS u ON p.uno=u.uno JOIN language AS l ON p.lno=l.lno JOIN seoul AS s ON p.eplace=s.dno"
 			+ " ORDER BY p.eno DESC";
-	private final String HELPEE_REVIEW_COUNT = "SELECT eno, count(e_vno) FROM e_review GROUP BY eno ORDER BY count(e_vno) DESC";
 
 	@Override
 	public HelpeeVO getHelpee(HelpeeVO vo) {
@@ -39,38 +38,6 @@ public class HelpeeDAOImpl implements HelpeeDAO {
 		return null;
 	}
 	
-	// 헬피 리뷰 개수 출력
-	public List<HelpeeVO> getReviewCountList(HelpeeVO vo) {
-		System.out.println("------HelpeeDAOImpl의-getReviewCountList() 기능 처리");
-
-		List<HelpeeVO> helpeeList = new ArrayList<HelpeeVO>();
-
-		try {
-			conn = JDBCUtil.getConnection();
-			stmt = conn.prepareStatement(HELPEE_REVIEW_COUNT);
-			rs = stmt.executeQuery();
-
-			while (rs.next()) {
-				HelpeeVO helpee = new HelpeeVO();
-
-				UserVO user = new UserVO();
-				user.setUno(rs.getInt("eno"));
-				helpee.setUserVO(user);
-
-				E_ReviewVO e_reivew = new E_ReviewVO();
-				e_reivew.setCount(rs.getInt("count(e_vno)"));
-				helpee.setE_reviewVO(e_reivew);
-
-				helpeeList.add(helpee);
-			}
-			System.out.println("확인 뿨킹: " + helpeeList.toString());
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			JDBCUtil.close(rs, stmt, conn);
-		}
-		return helpeeList;
-	}
 
 	@Override
 	// 모든 헬피 리스트 출력
@@ -88,6 +55,7 @@ public class HelpeeDAOImpl implements HelpeeDAO {
 				HelpeeVO helpee = new HelpeeVO();
 
 				UserVO user = new UserVO();
+				user.setUno(rs.getInt("uno"));
 				user.setName(rs.getString("name"));
 				helpee.setUserVO(user);
 
@@ -146,6 +114,7 @@ public class HelpeeDAOImpl implements HelpeeDAO {
 				HelpeeVO helpee = new HelpeeVO();
 
 				UserVO user = new UserVO();
+				user.setUno(rs.getInt("uno"));
 				user.setName(rs.getString("name"));
 				helpee.setUserVO(user);
 

@@ -23,5 +23,10 @@ public class SeoulVO {
 		this.district = district;
 	}
 	
+	@Override
+	public String toString() {
+		return "SeoulVO [dno=" + dno + ", district=" + district + "]";
+	}
+	
 	
 }
