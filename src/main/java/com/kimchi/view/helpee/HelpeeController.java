@@ -24,7 +24,7 @@ public class HelpeeController {
 	@Autowired
 	private HelpeeService helpeeService;
 
-	// 헬피 목록
+	// 헬퍼 목록
 	@RequestMapping(value = "/getHelpeeList.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public String getHelpeeList(@ModelAttribute("helpee") HelpeeVO vo, @ModelAttribute("language") LanguageVO lvo,
 			@ModelAttribute("seoul") SeoulVO svo, @ModelAttribute("user") UserVO uvo, Model model) {
@@ -47,7 +47,7 @@ public class HelpeeController {
 		return "getHelpeeList.jsp";
 	}
 
-	// 헬피 홍보 작성 폼
+	// 헬퍼 홍보 작성 폼
 	@RequestMapping(value = "/helpeeWriteForm.do", method = { RequestMethod.GET})
 	public String helpeeFormView(@ModelAttribute("helpee") HelperVO vo, @ModelAttribute("language") LanguageVO lvo,
 			@ModelAttribute("seoul") SeoulVO svo, Model model) {
@@ -64,7 +64,7 @@ public class HelpeeController {
 		return "helpeeWriteForm.jsp";
 	}
 
-	// 헬피 홍보 글 입력
+	// 헬퍼 홍보 글 입력
 	@RequestMapping(value = "/helpeeWriteForm.do", method = {RequestMethod.POST})
 	public String helpeeForm(@ModelAttribute("helpee") HelpeeVO vo, Model model) {
 		System.out.println("헬피-홍보 글 작성 submit. DB에 저장.");
@@ -76,7 +76,7 @@ public class HelpeeController {
 		return "getHelpeeList.do";
 	}
 	
-	// 헬피 홍보 글 삭제
+	// 헬퍼 홍보 글 삭제
 	@RequestMapping(value = "/helpeeDelete.do", method = RequestMethod.GET)
 	public String helpeeDelete(@ModelAttribute("helpee") HelpeeVO vo) {
 		System.out.println("헬피-홍보 글 삭제. DB에 저장.");

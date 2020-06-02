@@ -22,7 +22,7 @@ public class HelpeeDAOImpl implements HelpeeDAO{
 		private ResultSet rs = null;
 
 		// SQL 명령어
-		private final String HELPEELIST_GET = "SELECT * FROM helpee ORDER BY eno";
+		private final String HELPEELIST_GET = "SELECT edate,eplace,moving,hospital,immigration,lno,e_intro FROM helpee ORDER BY eno";
 		private final String HELPEE_GET = "SELECT * FROM helpee WHERE eno=?";
 		private final String HELPEE_INSERT = "INSERT INTO helpee (uno, edate, eplace, moving, hospital, immigration, lno, e_intro) VALUES(?,?,?,?,?,?,?,?)";
 		private final String HELPEE_UPDATE = "UPDATE helpee SET edate=?, eplace=?, moving=?, hospital=?, immigration=?, e_intro=? WHERE eno=?";
@@ -30,18 +30,17 @@ public class HelpeeDAOImpl implements HelpeeDAO{
 		
 	@Override
 	public List<HelpeeVO> getHelpeeList(HelpeeVO vo) {
-		System.out.println("===> JDBC로 getHelpeeList() 기능 처리");
+		System.out.println("------HelpeeDAOImpl의-getHelpeeList() 기능 처리");
 		
 		List<HelpeeVO> helpeeList = new ArrayList<HelpeeVO>();
 		
 		try {
 			conn = JDBCUtil.getConnection();
+			System.out.println(conn.toString());
 			stmt = conn.prepareStatement(HELPEELIST_GET);
 			rs = stmt.executeQuery();
 			while(rs.next()) {
 				HelpeeVO helpee = new HelpeeVO();
-				helpee.setUno(rs.getInt("uno"));
-				helpee.setEno(rs.getInt("eno"));
 				helpee.setEdate(rs.getString("edate"));
 				helpee.setEplace(rs.getInt("eplace"));
 				helpee.setMoving(rs.getInt("moving"));
@@ -51,7 +50,6 @@ public class HelpeeDAOImpl implements HelpeeDAO{
 				helpee.setE_intro(rs.getString("e_intro"));
 				helpeeList.add(helpee);
 			}
-			System.out.println("getHelpeeList 값 확인: " + helpeeList.toString());
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

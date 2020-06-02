@@ -73,68 +73,61 @@
                 <div class="media-body">
                     <div class="row">
                         <div class="col-md-6">
-                            <h4>${sessionScope.userName}</h4>
+                            <h4>${sessionScope.userName}&nbsp;</h4>
                         </div>
-                        <div class="col-md-6">Gender ${sessionScope.userGender}</div>
-					</div>
-					<div class="col-12">Phone No. ${sessionScope.userPhone}&nbsp;
-					</div>
-                    <form class="helper-write-form" action="helpeeUpdate.do"
-						method="post">
-						<div class="row">
-							<div class="col-md-6">
-								<input name="uno" type="hidden" value="${sessionScope.userNumber}">
-								<input name="eno" type="hidden" value="${helpee.eno}"> 
-								<input name="edate" type="hidden" id="date-result" value="${helpee.edate}">
-								<input type="text" id="datepicker" class="form-control form-control-sm" autocomplete="off" placeholder="${helpee.edate}">
-							</div>
-							<div class="col-md-6">
-								<select class="custom-select" disabled="disabled" name="lno" value="${helpee.lno}">
-									<option selected>Choose your language</option>
-									<c:forEach items="${languageList}" var="language">
-										<option value="${language.lno}"
-											<c:if test="${helpee.lno eq language.lno}">selected</c:if>>${language.language}</option>
-									</c:forEach>
-								</select>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-6">
-								<select class="custom-select" name="eplace" value="${helpee.eplace}">
-									<option selected>Choose your area</option>
-									<c:forEach items="${seoulList}" var="seoul">
-										<option value="${seoul.dno}"
-											<c:if test="${helpee.eplace eq seoul.dno}">selected</c:if>>${seoul.district}</option>
-									</c:forEach>
-								</select>
-							</div>
-							<div class="col-md-6">
-								<div class="btn-group btn-group-toggle" data-toggle="buttons">
-									<label class="btn btn-secondary"> <input name="moving"
-										class="service" type="checkbox" value="1"
-										<c:if test="${helpee.moving eq 1}">checked</c:if>>
-										moving
-									</label> <label class="btn btn-secondary"> <input
-										name="hospital" class="service" type="checkbox"
-										value="1"
-										<c:if test="${helpee.hospital eq 1}">checked</c:if>>
-										hospital
-									</label> <label class="btn btn-secondary"> <input
-										name="immigration" class="service" type="checkbox"
-										value="1"
-										<c:if test="${helpee.immigration eq 1}">checked</c:if>>
-										immigration
-									</label>
-								</div>
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="detailReview">Additional Information</label>
-							<textarea name="e_intro" class="form-control" rows="3"
-								value="${helpee.e_intro}">${helpee.e_intro}</textarea>
-						</div>
-						<button type="submit" class="btn btn-primary helper-button-main">Update!</button>
-					</form>
+                        <div class="col-md-6">
+                            ${sessionScope.userNumber}&nbsp;
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        ${sessionScope.userPhone}&nbsp;
+                    </div>
+                    <form autocomplete="off" class="helper-write-form" action="helpeeWriteForm.do" method="post"> <!-- submit버튼을 누르면 다시 페이지 이동하도록  -->
+                        <div class="row">
+                            <div class="col-md-6">
+                            	<input name="uno" type="hidden" value="${sessionScope.userNumber}"/>
+                                <input name="edate" id="date-result" type="hidden"></input>
+                                <input type="text" id="datepicker" class="form-control form-control-sm"
+                                    placeholder="Select available date">
+                            </div>
+                            <div class="col-md-6">
+                                <select class="custom-select" name="lno"> <!-- name = "lno" -VO명이랑 똑같아야함-->
+                                    <option selected>Choose your language</option>
+                                    <option value="1">English</option>
+                                    <option value="2">Germany</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <select class="custom-select" name="eplace">
+                                    <option selected>Choose your area</option>
+                                    <option value="1">One</option>
+                                    <option value="2">Two</option>
+                                    <option value="3">Three</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                    <label class="btn btn-secondary">
+                                        <input name="moving" type="checkbox" class="service" value="${sessionScope.moving }" autocomplete="off"> moving
+                                    </label>
+                                    <label class="btn btn-secondary">
+                                        <input name="hospital" type="checkbox" class="service" value="${sessionScope.hospital }" autocomplete="off"> hospital
+                                    </label>
+                                    <label class="btn btn-secondary">
+                                        <input name="immigration" type="checkbox" class="service" value="${sessionScope.immigration }" autocomplete="off"> immigration
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="detailReview">Additional Information</label>
+                            <textarea name="e_intro" class="form-control" rows="3"></textarea>
+                        </div>
+                        <a href='<c:url value='/board/boardUpdate?idx=${sessionScope.eno }'/>'>
+                        	<button type="submit" class="btn btn-primary helper-button-main">Update</button></a>
+                    </form>
                 </div>
 
             </div>
