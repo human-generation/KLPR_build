@@ -108,7 +108,4 @@ public class HelpeeVO {
 				+ moving + ", hospital=" + hospital + ", immigration=" + immigration + ", lno=" + lno + ", e_intro="
 				+ e_intro + ", userVO=" + userVO + ", languageVO=" + languageVO + ", seoulVO=" + seoulVO + "]";
 	}
-	
-	
-	
 }

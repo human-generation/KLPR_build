@@ -15,10 +15,10 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
     integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
-<!-- fontawsome css-->
+<!-- Fontawsome CSS -->
 <script src="https://kit.fontawesome.com/8b4a01720d.js" crossorigin="anonymous"></script>
 
-<!-- custom css-->
+<!-- Custom CSS -->
 <link rel="stylesheet" href="index.css">
 
 <title>K:LPER | Get help in Korea</title>
@@ -49,9 +49,16 @@
 				<c:if test="${!empty sessionScope.userName}">
 					${sessionScope.userName}님&nbsp;
 					<li class="nav-item"><a class="nav-link" href="myPage.do">MyPage</a></li>
+<<<<<<< HEAD
 					<li class="nav-item"><a class="nav-link" href="logout.do">Logout</a></li>
 				</c:if>
 			</ul>
+=======
+					<li class="nav-item"><a class="nav-link" href="alert.do">Alert</a>
+					<li class="nav-item"><a class="nav-link" href="logout.do">Logout</a></li>
+				</c:if>
+            </ul>
+>>>>>>> klpr/push_dpk_cstl
         </div>
     </nav>
 
@@ -106,10 +113,10 @@
 
 
 
-                <button type="button" class="btn btn-primary helpee-button-main d-none d-md-block">Pleas help me!
+                <button type="button" class="btn btn-primary helpee-button-main d-none d-md-block" onclick="location.href='helpeeWriteForm.do'">Pleas help me!
                 </button>
 
-                <button type="button" class="btn btn-primary helpee-button-main mobile-write-btn d-md-none">
+                <button type="button" class="btn btn-primary helpee-button-main mobile-write-btn d-md-none" onclick="location.href='helpeeWriteForm.do'">
                     <i class="fas fa-plus"></i>
                 </button>
 
@@ -136,7 +143,11 @@
                             
                             <div class="row">
                                 <div class="col-md-6 order-2 order-md-1">
+<<<<<<< HEAD
                                     <h4>${helpee.userVO.name}</h4>
+=======
+                                    <h4>Name ${user.name}&nbsp; {username}</h4>
+>>>>>>> klpr/push_dpk_cstl
                                 </div>
                                 <div class="col-md-6 order-1 order-md-2">
                                     <h5>{⭐️⭐️⭐️⭐️⭐️}</h5>
@@ -145,7 +156,11 @@
                             <div class="row">
                                 <div class="col-sm-6 order-2 order-sm-1">
                                     <div class="lang">
+<<<<<<< HEAD
                                         ${helpee.languageVO.language}
+=======
+                                        Language ${helper.lno}&nbsp; {language} ${language.language}&nbsp;
+>>>>>>> klpr/push_dpk_cstl
                                     </div>
                                     <div class="reviewNum">
                                         Total usage 
@@ -161,7 +176,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div>${helpee.e_intro}
+                            <div>About Me ${helpee.e_intro}
                                 <div id="dots"></div>
                                 <div id="more">
                                     <div class="boardReview">
@@ -397,10 +412,6 @@
                 moreText.style.display = "inline";
             }
         }
-
-
     </script>
-
-	
 </body>
 </html>

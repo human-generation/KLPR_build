@@ -49,9 +49,16 @@
 				<c:if test="${!empty sessionScope.userName}">
 					${sessionScope.userName}님&nbsp;
 					<li class="nav-item"><a class="nav-link" href="myPage.do">MyPage</a></li>
+<<<<<<< HEAD
 					<li class="nav-item"><a class="nav-link" href="logout.do">Logout</a></li>
 				</c:if>
 			</ul>
+=======
+					<li class="nav-item"><a class="nav-link" href="alert.do">Alert</a>
+					<li class="nav-item"><a class="nav-link" href="logout.do">Logout</a></li>
+				</c:if>
+            </ul>
+>>>>>>> klpr/push_dpk_cstl
         </div>
     </nav>
 
@@ -106,13 +113,16 @@
                     <button type="button" class="btn btn-secondary helper-button">출입국</button>
                 </div>
 
-                <button type="button" class="btn btn-primary helpee-button-main d-none d-md-block">Pleas help me!
+                <button type="button" class="btn btn-primary helpee-button-main d-none d-md-block" onclick="location.href='helperWriteForm.do'">Please help me!
                 </button>
 
-                <button type="button" class="btn btn-primary helpee-button-main mobile-write-btn d-md-none">
+                <button type="button" class="btn btn-primary helpee-button-main mobile-write-btn d-md-none" onclick="location.href='helperWriteForm.do'">
                     <i class="fas fa-plus"></i>
                 </button>
+<<<<<<< HEAD
 
+=======
+>>>>>>> klpr/push_dpk_cstl
             </div>
 
             <div class="col-md-10 order-2 order-md-2">
@@ -135,9 +145,24 @@
                             <a href="#" class="badge badge-primary helper-button-main">출입국</a>
                             </c:if>
                             
+
+                            	<c:if test="${helper.uno == sessionScope.userNumber}">
+								<input type="button" value="delete" onclick='location.href="helperDelete.do?rno=${helper.rno}";'>
+								<input type="button" value="update" onclick='location.href="helperUpdate.do?rno=${helper.rno}";'>
+								</c:if>
+
+                            
                             <div class="row">
                                 <div class="col-md-6 order-2 order-md-1">
+<<<<<<< HEAD
                                     <h4>${helper.userVO.name}</h4>
+=======
+                                 	<c:forEach items="${userList}" var="user"> 
+                                		<c:if test="${helper.uno == user.uno}">
+                                    		<h4>Name ${user.name}</h4>
+                                    	</c:if>
+                                    </c:forEach>
+>>>>>>> klpr/push_dpk_cstl
                                 </div>
                                 <div class="col-md-6 order-1 order-md-2">
                                     <h5>{⭐️⭐️⭐️⭐️⭐️}</h5>
@@ -146,7 +171,15 @@
                             <div class="row">
                                 <div class="col-sm-6 order-2 order-sm-1">
                                     <div class="lang">
+<<<<<<< HEAD
                                         Language 랭귀지 연결해야돼 ㅅㅂ
+=======
+                                 	<c:forEach items="${languageList}" var="language"> 
+                                		<c:if test="${language.lno == helper.lno}">
+                                    		${language.language}
+                                    	</c:if>
+                                    </c:forEach>
+>>>>>>> klpr/push_dpk_cstl
                                     </div>
                                     <div class="reviewNum">
                                         Total usage {rv_no}
@@ -158,11 +191,15 @@
                                         Available date ${helper.sta} ~ ${helper.end}
                                     </div>
                                     <div class="area">
-                                        Placed in <i class="fas fa-map-marker-alt"></i>${helper.rplace}
+                                    <c:forEach items="${seoulList}" var="seoul">
+                                    	<c:if test="${seoul.dno == helper.rplace}">
+                                        Placed in <i class="fas fa-map-marker-alt"></i> ${seoul.district}
+                                    	</c:if>
+                                    </c:forEach>
                                     </div>
                                 </div>
                             </div>
-                            <div>{자기소개} ${helper.r_intro}
+                            <div>About Me ${helper.r_intro}
                                 <div id="dots"></div>
                                 <div id="more">
                                     <div class="boardReview">
@@ -187,8 +224,7 @@
                     </div>
                 </div>
                 </c:forEach>
-
-
+                
                 <!--PAGING -->
                 <div class="row justify-content-center">
                     <nav aria-label="Page navigation">
@@ -276,7 +312,7 @@
                 </div>
 
                 <div class="modal-body">
-                    <form class="signup-form" action="singup.do">
+                    <form class="signup-form" action="join.do">
                         <div class="form-group">
                             <label for="signupEmail">Email address</label>
                             <input name="email" type="email" class="form-control" required>
@@ -399,11 +435,6 @@
                 moreText.style.display = "inline";
             }
         }
-
-
     </script>
-
-
 </body>
-
 </html>
