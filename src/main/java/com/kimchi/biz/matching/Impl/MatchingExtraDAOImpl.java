@@ -30,7 +30,7 @@ public class MatchingExtraDAOImpl implements MatchingExtraDAO {
 	private final String WAITING_MATCHING_GET_R = "SELECT * FROM matching WHERE (seno=? AND mstate=2)";
 	private final String WAITING_MATCHING_GET_S = "SELECT * FROM matching WHERE (rcno=? AND mstate=2)";
 	private final String PAID_MATCHING_GET = "SELECT * FROM matching WHERE (rcno=? AND mstate=3) OR (seno=? AND mstate=3)";
-	private final String ENDED_MATCHING_GET = "SELECT * FROM matching WHERE (rcno=? AND mstate=4) OR (seno=? AND mstate=4)";
+	private final String ENDED_MATCHING_GET = "SELECT * FROM matching WHERE (rcno=? AND mstate=3) OR (seno=? AND mstate=3)";
 	private final String DENIED_MATCHING_GET = "SELECT * FROM matching WHERE (rcno=? AND mstate=5) OR (seno=? AND mstate=5)";
 
 	private final String S_YOUR_NAME = "SELECT name FROM user WHERE uno=(SELECT seno FROM matching WHERE mno=?)";

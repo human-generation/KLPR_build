@@ -93,54 +93,56 @@
 					<div class="col-md-6">
 						<div class="card">
 							<h4 class="card-header">결제 대기</h4>
-							<form action="updateState.do" method="POST">
-								<c:forEach items="${WaitingList}" var="matching_w">
-									<div class="card-body">
-										<div class="card">
-											<c:choose>
-												<c:when test="${matching_w.rcno } eq ${loginUser.uno }">
-													<h6 class="card-header">${matching_w.senderName }</h6>
-												</c:when>
-												<c:when test="${matching_w.seno } eq ${loginUser.uno }">
-													<h6 class="card-header">${matching_w.receiverName }</h6>
-												</c:when>
-											</c:choose>
-											<div class="card-body">
+							<c:forEach items="${WaitingList}" var="matching_w">
+								<div class="card-body">
+									<div class="card">
+										<c:choose>
+											<c:when test="${matching_w.rcno } eq ${loginUser.uno }">
+												<h6 class="card-header">${matching_w.senderName }</h6>
+											</c:when>
+											<c:when test="${matching_w.seno } eq ${loginUser.uno }">
+												<h6 class="card-header">${matching_w.receiverName }</h6>
+											</c:when>
+										</c:choose>
+										<div class="card-body">
 
-												<img class="profile-img-box"
-													src="https://cdn.pixabay.com/photo/2013/10/28/19/23/cat-201969_960_720.jpg"
-													alt="profileImage">
-												<p class="card-text">
-													<c:if test="${matching_w.mservice ==1}">
-														<td><a href="#"
-															class="badge badge-primary helper-button-main">이사</a></td>
-													</c:if>
-													<c:if test="${matching_w.mservice ==2}">
-														<td><a href="#"
-															class="badge badge-primary helper-button-main">병원</a></td>
-													</c:if>
-													<c:if test="${matching_w.mservice ==3}">
-														<td><a href="#"
-															class="badge badge-primary helper-button-main">관공서</a></td>
-													</c:if>
-												<div class="lang">Language {language}</div>
-												<div class="reviewNum">Total usage {rv_no}</div>
-												<div class="avDate">Available date {sta - end}</div>
-												<div class="area">
-													Placed in <i class="fas fa-map-marker-alt">${matching_w.mplace }</i>{rplace}
-												</div>
-												</p>
-												<a href="#" class="btn btn-primary">상태 {요청받음 mstate 0}</a>
-												<!-- 이아래문장을 폼으로감싸서 submit하기 -->
-												<c:if test="">
-													<button type="submit" class="btn btn-primary"
-														value="${matching_w.rcno}">결제하기</button>
+											<img class="profile-img-box"
+												src="https://cdn.pixabay.com/photo/2013/10/28/19/23/cat-201969_960_720.jpg"
+												alt="profileImage">
+											<p class="card-text">
+												<c:if test="${matching_w.mservice ==1}">
+													<td><a href="#"
+														class="badge badge-primary helper-button-main">이사</a></td>
 												</c:if>
+												<c:if test="${matching_w.mservice ==2}">
+													<td><a href="#"
+														class="badge badge-primary helper-button-main">병원</a></td>
+												</c:if>
+												<c:if test="${matching_w.mservice ==3}">
+													<td><a href="#"
+														class="badge badge-primary helper-button-main">관공서</a></td>
+												</c:if>
+											<div class="lang">Language {language}</div>
+											<div class="reviewNum">Total usage {rv_no}</div>
+											<div class="avDate">Available date {sta - end}</div>
+											<div class="area">
+												Placed in <i class="fas fa-map-marker-alt">${matching_w.mplace }</i>{rplace}
 											</div>
+											</p>
+											<a href="#" class="btn btn-primary">상태 {요청받음 mstate 0}</a>
+											<!-- 이아래문장을 폼으로감싸서 submit하기 -->
+											<form action="updateState.do" method="POST">
+												<c:if test="${loginUser.uno eq matching_w.eno }">
+													<input type="hidden" name="mstate"
+														value="${matching_w.mstate}">
+													<input type="hidden" name="mno" value="${matching_w.mno }">
+													<button type="submit" class="btn btn-primary">결제하기</button>
+												</c:if>
+											</form>
 										</div>
 									</div>
-								</c:forEach>
-							</form>
+								</div>
+							</c:forEach>
 						</div>
 					</div>
 					<div class="col-md-6">
@@ -215,8 +217,19 @@
 												Placed in <i class="fas fa-map-marker-alt">${matching_e.mplace }</i>{rplace}
 											</div>
 											</p>
-											<a href="#" class="btn btn-primary">상태 {수락대기중 mstate 1}</a> <a
-												href="updateState.do" class="btn btn-primary">리뷰작성후 거래완료</a>
+											<a href="#" class="btn btn-primary">상태 {수락대기중 mstate 1}</a>
+											<c:choose>
+												<c:when test="${matching_e.eno == loginUser.uno }">
+													<a href="updateState.do" class="btn btn-primary"
+														data-toggle="modal" data-target="#reviewModalr"
+														href="r_review.do">리뷰작성후 거래완료</a>
+												</c:when>
+												<c:otherwise>
+													<a href="updateState.do" class="btn btn-primary"
+														data-toggle="modal" data-target="#reviewModale"
+														href="insertE_Review.do">리뷰작성후 거래완료</a>
+												</c:otherwise>
+											</c:choose>
 										</div>
 									</div>
 								</div>
@@ -228,65 +241,120 @@
 		</div>
 	</div>
 	<!-- Additional Review Modal-->
-	<di v class="modal fade" id="reviewModal" tabindex="-1" role="dialog"
+	<div class="modal fade" id="reviewModale" tabindex="-1" role="dialog"
 		aria-labelledby="reviewModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title" id="modalLabel">Reivew</h5>
-				<button type="button" class="close" data-dismiss="modal"
-					aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-			</div>
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="modalLabel">Reivew</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
 
-			<div class="modal-body">
-				<form class="review-form" action="insertE_Review.do" method="POST">
-					<div class="row">
-						<div class="col-5">
-							<img class="mr-3"
-								src="https://cdn.pixabay.com/photo/2013/10/28/19/23/cat-201969_960_720.jpg"
-								alt="profileImage">
-						</div>
-						<div class="col-7">
-							<div class="media-body">
-								<a href="#" class="badge badge-primary helpee-button-main">이사</a>
-								<a href="#" class="badge badge-primary helpee-button-main">병원</a>
-								<h4>Doja Cat</h4>
-								<div class="btn">{mdate}</div>
+				<div class="modal-body">
+					<form class="review-form" action="insertE_Review.do" method="POST">
+						<div class="row">
+							<div class="col-5">
+								<img class="mr-3"
+									src="https://cdn.pixabay.com/photo/2013/10/28/19/23/cat-201969_960_720.jpg"
+									alt="profileImage">
 							</div>
+							<div class="col-7">
+								<div class="media-body">
+									<a href="#" class="badge badge-primary helpee-button-main">이사</a>
+									<a href="#" class="badge badge-primary helpee-button-main">병원</a>
+									<h4>Doja Cat</h4>
+									<div class="btn">{mdate}</div>
+								</div>
 
+							</div>
 						</div>
-					</div>
-					<input type="hidden" name="rno" class="form-control"
-						value="${sessionScope.userNumber}" />
-					<div class="form-group">
-						<label for="reviewScore">평점남기기</label> <select name="escore"
-							class="form-control" required>
-							<option value="5">5</option>
-							<option value="4">4</option>
-							<option value="3">3</option>
-							<option value="2">2</option>
-							<option value="1">1</option>
-						</select>
-					</div>
-					<div class="form-group">
-						<label for="detailReview">Review your match</label>
-						<textarea name="ecomment" class="form-control" rows="3"></textarea>
-					</div>
+						<input type="hidden" name="rno" class="form-control"
+							value="${sessionScope.userNumber}" />
+						<div class="form-group">
+							<label for="reviewScore">평점남기기</label> <select name="escore"
+								class="form-control" required>
+								<option value="5">5</option>
+								<option value="4">4</option>
+								<option value="3">3</option>
+								<option value="2">2</option>
+								<option value="1">1</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<label for="detailReview">Review your match</label>
+							<textarea name="ecomment" class="form-control" rows="3"></textarea>
+						</div>
 
-					<button type="submit" class="btn btn-primary helper-button-main">Submit
-						your review!</button>
-				</form>
+						<button type="submit" class="btn btn-primary helper-button-main">Submit
+							your review!</button>
+					</form>
 
+				</div>
 			</div>
 		</div>
 	</div>
+
+	<div class="modal fade" id="reviewModalr" tabindex="-1" role="dialog"
+		aria-labelledby="reviewModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="modalLabel">Reivew</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+
+				<div class="modal-body">
+					<form class="review-form" action="r_review.do" method="POST">
+						<div class="row">
+							<div class="col-5">
+								<img class="mr-3"
+									src="https://cdn.pixabay.com/photo/2013/10/28/19/23/cat-201969_960_720.jpg"
+									alt="profileImage">
+							</div>
+							<div class="col-7">
+								<div class="media-body">
+									<a href="#" class="badge badge-primary helpee-button-main">이사</a>
+									<a href="#" class="badge badge-primary helpee-button-main">병원</a>
+									<h4>Doja Cat</h4>
+									<div class="btn">{mdate}</div>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="reviewScore">평점남기기</label> <select name="rscore"
+								class="form-control" required>
+								<option value="5">5</option>
+								<option value="4">4</option>
+								<option value="3">3</option>
+								<option value="2">2</option>
+								<option value="1">1</option>
+							</select>
+						</div>
+						<input type="hidden" name="uno" value="${sessionScope.userNumber}" />
+						<div class="form-group">
+							<label for="detailReview">Review your match</label>
+							<textarea name="rcomment" class="form-control" rows="3"></textarea>
+						</div>
+
+						<button type="submit" class="btn btn-primary helper-button-main">Submit
+							your review!</button>
+					</form>
+
+				</div>
+			</div>
+		</div>
 	</div>
 
 
 
-	<!--AUTH MODAL--> <!--LOGIN-->
+	<!--AUTH MODAL-->
+	<!--LOGIN-->
 	<div class="modal fade" id="loginModal" tabindex="-1" role="dialog"
 		aria-labelledby="loginModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
@@ -391,7 +459,8 @@
 		</div>
 	</div>
 
-	<!--본문끝--> <!--FOOTER START-->
+	<!--본문끝-->
+	<!--FOOTER START-->
 
 	<div class="container">
 		<section class="footer">
@@ -427,42 +496,47 @@
 
 
 
-	<!-- Optional JavaScript --> <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
 		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-		crossorigin="anonymous"></script> <script
+		crossorigin="anonymous"></script>
+	<script
 		src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
 		integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-		crossorigin="anonymous"></script> <script
+		crossorigin="anonymous"></script>
+	<script
 		src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
 		integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
-		crossorigin="anonymous"></script> <!-- custom js 추후 분리할것임--> <script>
-			// navbar 
-			$(function() {
-				$(document).scroll(
-						function() {
-							var $nav = $("#mainNavbar");
-							$nav.toggleClass("scrolled",
-									$(this).scrollTop() > $nav.height());
-						});
-			});
+		crossorigin="anonymous"></script>
+	<!-- custom js 추후 분리할것임-->
+	<script>
+		// navbar 
+		$(function() {
+			$(document).scroll(
+					function() {
+						var $nav = $("#mainNavbar");
+						$nav.toggleClass("scrolled", $(this).scrollTop() > $nav
+								.height());
+					});
+		});
 
-			// dropdown
-			function readMoreFunction() {
-				var dots = document.getElementById("dots");
-				var moreText = document.getElementById("more");
-				var btnText = document.getElementById("myBtn");
+		// dropdown
+		function readMoreFunction() {
+			var dots = document.getElementById("dots");
+			var moreText = document.getElementById("more");
+			var btnText = document.getElementById("myBtn");
 
-				if (dots.style.display === "none") {
-					dots.style.display = "inline";
-					btnText.innerHTML = '<i class="fas fa-angle-down"></i>';
-					moreText.style.display = "none";
-				} else {
-					dots.style.display = "none";
-					btnText.innerHTML = '<i class="fas fa-angle-up"></i>';
-					moreText.style.display = "inline";
-				}
+			if (dots.style.display === "none") {
+				dots.style.display = "inline";
+				btnText.innerHTML = '<i class="fas fa-angle-down"></i>';
+				moreText.style.display = "none";
+			} else {
+				dots.style.display = "none";
+				btnText.innerHTML = '<i class="fas fa-angle-up"></i>';
+				moreText.style.display = "inline";
 			}
-		</script>
+		}
+	</script>
 </body>
 </html>

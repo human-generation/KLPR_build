@@ -1,4 +1,4 @@
-package com.kimchi.biz.seoul.Impl;
+package com.kimchi.biz.seoul.impl;
 
 import java.util.List;
 

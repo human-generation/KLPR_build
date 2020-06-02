@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.ui.Model;
+
 import com.kimchi.biz.user.UserVO;
 
 public interface MatchingExtraService {
@@ -11,5 +13,5 @@ public interface MatchingExtraService {
 
 	public void updateState(MatchingVOExtra mvo);
 
-	public void setMatchingState(UserVO vo, HttpSession session);
+	public void setMatchingState(UserVO vo, Model model);
 }

@@ -126,12 +126,16 @@
 					<div class=" card-header">See Best Helpers!</div>
 					<div class="card-body">
 						<p class="card-text">
-						<ul>
-							<li>1 누구누구</li>
-							<li>2 누구누구</li>
-							<li>3 누구누구</li>
-							<li>4 누구누구</li>
-							<li>5 누구누구</li>
+
+
+
+
+
+
+							<ul>						
+						<c:forEach var="list" items="${RScoreTop5}">
+							<li>${list.ranking}위  ${list.name}</li>
+						</c:forEach>
 						</ul>
 						</p>
 					</div>
@@ -142,12 +146,11 @@
 					<div class=" card-header">See Most participated Helpers!</div>
 					<div class="card-body">
 						<p class="card-text">
+						
 						<ul>
-							<li>1 누구누구</li>
-							<li>2 누구누구</li>
-							<li>3 누구누구</li>
-							<li>4 누구누구</li>
-							<li>5 누구누구</li>
+						<c:forEach var="list" items="${RTop5}">
+							<li>${list.ranking}위  ${list.name}</li>
+						</c:forEach>	
 						</ul>
 						</p>
 					</div>
@@ -158,12 +161,11 @@
 					<div class=" card-header">Someone needs a lot of help!</div>
 					<div class="card-body">
 						<p class="card-text">
+						
 						<ul>
-							<li>1 누구누구</li>
-							<li>2 누구누구</li>
-							<li>3 누구누구</li>
-							<li>4 누구누구</li>
-							<li>5 누구누구</li>
+						<c:forEach var="list" items="${ETop5}">
+							<li>${list.ranking}위  ${list.name}</li>							
+						</c:forEach>	
 						</ul>
 						</p>
 					</div>
@@ -172,14 +174,10 @@
 		</div>
 
 	</section>
-
-
-
-
-
 	<!--AUTH MODAL-->
-	<!--LOGIN-->
-	<div class="modal fade" id="loginModal" tabindex="-1" role="dialog"
+							<!--LOGIN-->
+	
+						<div class="modal fade" id="loginModal" tabindex="-1" role="dialog"
 		aria-labelledby="loginModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">

@@ -27,7 +27,7 @@ public class MyPageController {
 		UserVO user = (UserVO) session.getAttribute("loginUser");
 		System.out.println(user.toString());
 		model.addAttribute("userMoney", user.getMoney());
-		matchingService.setMatchingState(user, session);
+		matchingService.setMatchingState(user, model);
 		return "myPage.jsp";
 	}
 
