@@ -63,7 +63,7 @@
                                 <option value="1">1</option>
                             </select>
                         </div>
-                        <input type="none" name="uno" value="${sessionScope.userUno}"/>
+                        <input type="hidden" name="uno" value="${sessionScope.userUno}"/>
                         <div class="form-group">
                             <label for="detailReview">Review your match</label>
                             <textarea name="rcomment" class="form-control" rows="3"></textarea>
