@@ -1,4 +1,4 @@
-package com.kimchi.view.help;
+package com.kimchi.view.helpee;
 
 import java.util.List;
 
@@ -8,13 +8,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.kimchi.biz.helpee.HelpeeVO;
 import com.kimchi.biz.helpee.impl.HelpeeDAOImpl;
 
 @Controller
-//@SessionAttributes("helpee")
-public class HelpController {
+@SessionAttributes("helpee")
+public class HelpeeController {
 	
 	@RequestMapping(value = "/getHelpeeList.do", method = RequestMethod.GET)
 	public String getHelpeeList(@ModelAttribute("helpee") HelpeeVO vo, HelpeeDAOImpl helpeeDAO, HttpSession session) {
@@ -22,7 +23,7 @@ public class HelpController {
 		
 		List<HelpeeVO> helpeeList = helpeeDAO.getHelpeeList(vo);
 		session.setAttribute("helpeeList", helpeeList);
-		System.out.println(helpeeList.toString());
+		
 		return "getHelpeeList.jsp";
 	}
 }

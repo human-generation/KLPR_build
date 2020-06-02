@@ -10,11 +10,21 @@ import org.springframework.stereotype.Service;
 import com.kimchi.biz.helpee.HelpeeDAO;
 import com.kimchi.biz.helpee.HelpeeService;
 import com.kimchi.biz.helpee.HelpeeVO;
+import com.kimchi.biz.language.LanguageDAO;
+import com.kimchi.biz.language.LanguageVO;
+import com.kimchi.biz.seoul.SeoulDAO;
+import com.kimchi.biz.seoul.SeoulVO;
 
 @Service("helpeeService")
 public class HelpeeServiceImpl implements HelpeeService{
 	@Autowired
 	private HelpeeDAO helpeeDAO;
+	
+	@Autowired
+	private LanguageDAO languageDAO;
+	
+	@Autowired
+	private SeoulDAO seoulDAO;
 	
 	@Autowired
 	HttpSession session;
@@ -29,6 +39,33 @@ public class HelpeeServiceImpl implements HelpeeService{
 		System.out.println("HelpeeServiceImpl의 getHelpeeList() 실행...");
 		return helpeeDAO.getHelpeeList(vo);
 	}
+	
+	@Override
+	public void insertHelpee(HelpeeVO vo) {
+		System.out.println("HelpeeServiceImpl의 insertHelpee() 실행...");
+		helpeeDAO.insertHelpee(vo);
+	}
+
+	@Override
+	public void updateHelpee(HelpeeVO vo) {
+		helpeeDAO.updateHelpee(vo);
+		
+	}
+
+	@Override
+	public void deleteHelpee(HelpeeVO vo) {
+		helpeeDAO.deleteHelpee(vo);
+	}
+
+	@Override
+	public List<LanguageVO> getLanaguageList(LanguageVO vo) {
+		return languageDAO.getLanguageList(vo);
+	}
+
+	@Override
+	public List<SeoulVO> getSeoulList(SeoulVO vo) {
+		return seoulDAO.getSeoulList(vo);
+	}	
 	
 	
 }

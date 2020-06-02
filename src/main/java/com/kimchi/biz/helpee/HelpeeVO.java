@@ -72,13 +72,11 @@ public class HelpeeVO {
 	public void setE_intro(String e_intro) {
 		this.e_intro = e_intro;
 	}
+	
 	@Override
 	public String toString() {
 		return "HelpeeVO [eno=" + eno + ", uno=" + uno + ", edate=" + edate + ", eplace=" + eplace + ", moving="
 				+ moving + ", hospital=" + hospital + ", immigration=" + immigration + ", lno=" + lno + ", e_intro="
 				+ e_intro + "]";
 	}
-	
-	
-	
 }

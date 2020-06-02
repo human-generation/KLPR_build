@@ -11,7 +11,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class SeoulListVO {
 	
-	@XmlElement(name="language")
+	@XmlElement(name="seoul")
 	private List<SeoulVO> seoulList;
 
 	public List<SeoulVO> getSeoulList() {

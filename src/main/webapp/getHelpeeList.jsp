@@ -15,10 +15,10 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
     integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
-<!-- fontawsome css-->
+<!-- Fontawsome CSS -->
 <script src="https://kit.fontawesome.com/8b4a01720d.js" crossorigin="anonymous"></script>
 
-<!-- custom css-->
+<!-- Custom CSS -->
 <link rel="stylesheet" href="index.css">
 
 <title>K:LPER | Get help in Korea</title>
@@ -40,12 +40,18 @@
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" data-toggle="modal" data-target="#loginModal">Login</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link " data-toggle="modal" data-target="#signupModal">Signup</a>
-                </li>
+				<c:if test="${empty sessionScope.userName}">
+					<li class="nav-item"><a class="nav-link" data-toggle="modal"
+						data-target="#loginModal">Login</a></li>
+					<li class="nav-item"><a class="nav-link " data-toggle="modal"
+						data-target="#signupModal">Signup</a></li>
+				</c:if>
+				<c:if test="${!empty sessionScope.userName}">
+					${sessionScope.userName}님&nbsp;
+					<li class="nav-item"><a class="nav-link" href="myPage.do">MyPage</a></li>
+					<li class="nav-item"><a class="nav-link" href="alert.do">Alert</a>
+					<li class="nav-item"><a class="nav-link" href="logout.do">Logout</a></li>
+				</c:if>
             </ul>
         </div>
     </nav>
@@ -101,10 +107,10 @@
 
 
 
-                <button type="button" class="btn btn-primary helpee-button-main d-none d-md-block">Pleas help me!
+                <button type="button" class="btn btn-primary helpee-button-main d-none d-md-block" onclick="location.href='helpeeWriteForm.do'">Pleas help me!
                 </button>
 
-                <button type="button" class="btn btn-primary helpee-button-main mobile-write-btn d-md-none">
+                <button type="button" class="btn btn-primary helpee-button-main mobile-write-btn d-md-none" onclick="location.href='helpeeWriteForm.do'">
                     <i class="fas fa-plus"></i>
                 </button>
 
@@ -131,7 +137,7 @@
                             
                             <div class="row">
                                 <div class="col-md-6 order-2 order-md-1">
-                                    <h4>Doja Cat</h4>
+                                    <h4>Name ${user.name}&nbsp; {username}</h4>
                                 </div>
                                 <div class="col-md-6 order-1 order-md-2">
                                     <h5>{⭐️⭐️⭐️⭐️⭐️}</h5>
@@ -140,7 +146,7 @@
                             <div class="row">
                                 <div class="col-sm-6 order-2 order-sm-1">
                                     <div class="lang">
-                                        Language ${helpee.lno}
+                                        Language ${helper.lno}&nbsp; {language} ${language.language}&nbsp;
                                     </div>
                                     <div class="reviewNum">
                                         Total usage 
@@ -156,7 +162,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div>${helpee.e_intro}
+                            <div>About Me ${helpee.e_intro}
                                 <div id="dots"></div>
                                 <div id="more">
                                     <div class="boardReview">
@@ -392,10 +398,6 @@
                 moreText.style.display = "inline";
             }
         }
-
-
     </script>
-
-	
 </body>
 </html>
