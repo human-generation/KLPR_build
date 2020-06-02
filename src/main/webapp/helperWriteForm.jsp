@@ -46,9 +46,9 @@
 				</c:if>
 				<c:if test="${!empty sessionScope.userName}">
 					${sessionScope.userName}님&nbsp;
-					<li class="nav-item"><a class="nav-link" data-toggle="modal"  href="myPage.do">MyPage</a></li>
-					<li class="nav-item"><a class="nav-link" data-toggle="modal" href="alert.do">Alert</a>
-					<li class="nav-item"><a class="nav-link" data-toggle="modal"  href="logout.do">Logout</a></li>
+					<li class="nav-item"><a class="nav-link" href="myPage.do">MyPage</a></li>
+					<li class="nav-item"><a class="nav-link" href="alert.do">Alert</a>
+					<li class="nav-item"><a class="nav-link" href="logout.do">Logout</a></li>
 				</c:if>
             </ul>
         </div>
@@ -82,7 +82,7 @@
                             	<input name="uno" type="hidden" value="${sessionScope.userNumber}"/>
                                 <input name="sta" type="hidden" id="date-result-start"></input><input name="end" type="hidden" id="date-result-end"></input>
                                 <input type="text" id="datepicker" class="form-control form-control-sm"
-                                    placeholder="Select available date">
+                                    placeholder="Select available date" autocomplete="off">
                             </div>
                             <div class="col-md-6">
                                 <select class="custom-select" name="lno">

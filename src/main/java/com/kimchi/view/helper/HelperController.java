@@ -3,6 +3,7 @@ package com.kimchi.view.helper;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,7 +14,7 @@ import com.kimchi.biz.helper.impl.HelperDAOImpl;
 
 @Controller
 public class HelperController {
-	
+		
 	@RequestMapping(value = "/helperWriteForm.do", method = {RequestMethod.GET})
 	public String helperFormView(@ModelAttribute("helper") HelperVO vo) {
 		System.out.println("헬퍼-홍보 글 작성 페이지로 이동");
@@ -27,7 +28,7 @@ public class HelperController {
 		
 		//DB에 저장
 		helperDAO.insertHelper(vo);
-		
+
 		return "main.do";
 	}
 	

@@ -3,7 +3,7 @@ package com.kimchi.biz.helpee;
 public class HelpeeVO {
 	private int eno;
 	private int uno;
-	private String edate;		// 가능 날짜
+	private String edate;	// 가능 날짜
 	private int eplace;		// 헬피 지역
 	private int moving;		// 이사
 	private int hospital;	// 병원
@@ -72,6 +72,4 @@ public class HelpeeVO {
 				+ moving + ", hospital=" + hospital + ", immigration=" + immigration + ", lno=" + lno + ", e_intro="
 				+ e_intro + "]";
 	}
-	
-	
 }

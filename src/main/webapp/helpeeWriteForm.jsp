@@ -47,16 +47,10 @@
 	                </li>
      			</c:if>
      			<c:if test="${!empty sessionScope.userName}">
-     				<li class="nav-item">
     					${sessionScope.userName}님&nbsp;
-            			<a class="nav-link" data-toggle="modal" href="myPage.do">MYPAGE</a>
-            		</li>
-            		<li class="nav-item">
-						<a class="nav-link" data-toggle="modal" href="alert.do">ALERT</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" data-toggle="modal" href="logout.do">LOGOUT</a>
-					</li>
+					<li class="nav-item"><a class="nav-link" href="myPage.do">MyPage</a></li>
+					<li class="nav-item"><a class="nav-link" href="alert.do">Alert</a></li>
+					<li class="nav-item"><a class="nav-link" href="logout.do">Logout</a></li>
 				</c:if>
             </ul>
         </div>
@@ -88,7 +82,7 @@
                             	<input name="uno" type="hidden" value="${sessionScope.userNumber}"/>
                                 <input name="edate" id="date-result" type="hidden"></input>
                                 <input type="text" id="datepicker" class="form-control form-control-sm"
-                                    placeholder="Select available date">
+                                    placeholder="Select available date" autocomplete="off">
                             </div>
                             <div class="col-md-6">
                                 <select class="custom-select" name="lno"> <!-- name = "lno" -VO명이랑 똑같아야함-->
