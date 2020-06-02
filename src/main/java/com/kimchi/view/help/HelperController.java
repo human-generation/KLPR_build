@@ -1,4 +1,4 @@
-package com.kimchi.view.helper;
+package com.kimchi.view.help;
 
 import java.util.List;
 

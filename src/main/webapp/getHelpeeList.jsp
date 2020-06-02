@@ -20,6 +20,7 @@
 
 <!-- custom css-->
 <link rel="stylesheet" href="index.css">
+<link rel="stylesheet" href="lightpick.css">
 
 <title>K:LPER | Get help in Korea</title>
 </head>
