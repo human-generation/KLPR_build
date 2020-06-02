@@ -40,20 +40,24 @@
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" data-toggle="modal" data-target="#loginModal">Login</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link " data-toggle="modal" data-target="#signupModal">Signup</a>
-                </li>
-            </ul>
+				<c:if test="${empty sessionScope.userName}">
+					<li class="nav-item"><a class="nav-link" data-toggle="modal"
+						data-target="#loginModal">Login</a></li>
+					<li class="nav-item"><a class="nav-link " data-toggle="modal"
+						data-target="#signupModal">Signup</a></li>
+				</c:if>
+				<c:if test="${!empty sessionScope.userName}">
+					${sessionScope.userName}님&nbsp;
+					<li class="nav-item"><a class="nav-link" href="myPage.do">MyPage</a></li>
+					<li class="nav-item"><a class="nav-link" href="logout.do">Logout</a></li>
+				</c:if>
+			</ul>
         </div>
     </nav>
 
     <!-- HEADER END -->
     <!-- 본문 -->
 
-	
 
     <div class="jumbotron jumbotron-fluid">
         <div class="container">
@@ -71,7 +75,7 @@
                         <div class="dropdown-menu" aria-labelledby="dropdownAddr">
                             <button class="dropdown-item" type="button">지역구가</button>
                             <button class="dropdown-item" type="button">들어갑니다</button>
-                            <button class="dropdown-item" type="button">수정예정</button>
+                            <button class="dropdown-item" type="button">수정예정</bu tton>
                         </div>
                     </div>
                     <div class="btn-group" role="group" aria-label="SortBtn">
@@ -110,7 +114,9 @@
                 </button>
 
             </div>
+
             <div class="col-md-10 order-2 order-md-2">
+
             	<c:forEach items="${helperList}" var="helper">
                 <div class="row media helperPost">
                     <div class="col-md-3 order-1 order-md-1 align-items-center">
@@ -140,7 +146,7 @@
                             <div class="row">
                                 <div class="col-sm-6 order-2 order-sm-1">
                                     <div class="lang">
-                                        Language ${helper.languageVO.language}
+                                        Language 랭귀지 연결해야돼 ㅅㅂ
                                     </div>
                                     <div class="reviewNum">
                                         Total usage {rv_no}

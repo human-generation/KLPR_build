@@ -3,7 +3,6 @@ package com.kimchi.biz.helper;
 import java.sql.Date;
 
 import com.kimchi.biz.language.LanguageVO;
-import com.kimchi.biz.r_review.R_reviewVO;
 import com.kimchi.biz.user.UserVO;
 
 
@@ -21,16 +20,7 @@ public class HelperVO {
 	
 	private UserVO userVO;
 	private LanguageVO languageVO;
-	private R_reviewVO r_reviewVO;
 	
-	public R_reviewVO getR_reviewVO() {
-		return r_reviewVO;
-	}
-
-	public void setR_reviewVO(R_reviewVO r_reviewVO) {
-		this.r_reviewVO = r_reviewVO;
-	}
-
 	public LanguageVO getLanguageVO() {
 		return languageVO;
 	}

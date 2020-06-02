@@ -20,15 +20,24 @@ public class HelpeeServiceImpl implements HelpeeService{
 	HttpSession session;
 
 	@Override
-	public HelpeeVO getHelpee(HelpeeVO vo) {
-		return helpeeDAO.getHelpee(vo);
+	public List<HelpeeVO> getHelpeeList(HelpeeVO vo) {
+		System.out.println("HelpeeServiceImpl의 getHelpeeList() 실행...");
+		helpeeDAO.deleteHelpee(vo);
+		return helpeeDAO.getHelpeeList(vo);
 	}
 
 	@Override
-	public List<HelpeeVO> getHelpeeList(HelpeeVO vo) {
-		System.out.println("HelpeeServiceImpl의 getHelpeeList() 실행...");
-		return helpeeDAO.getHelpeeList(vo);
+	public List<HelpeeVO> recentHelpeeList(HelpeeVO vo) {
+		System.out.println("HelpeeServiceImpl의 recentHelpeeList() 실행...");
+		return helpeeDAO.recentHelpeeList(vo);
 	}
+
+	@Override
+	public List<HelpeeVO> getReviewCountList(HelpeeVO vo) {
+		System.out.println("HelpeeServiceImpl의 getReviewCountList() 실행...");
+		return helpeeDAO.getReviewCountList(vo);
+	}
+	
 	
 	
 }

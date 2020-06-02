@@ -24,31 +24,20 @@ public class HelperServiceImpl implements HelperService {
 	@Override
 	public List<HelperVO> getHelperList(HelperVO vo) {
 		System.out.println("HelperServiceImpl의 getHelperList() 실행...");
+		helperDAO.deleteHelper(vo);
 		return helperDAO.getHelperList(vo);
 	}
 
-	@Override
-	public void deleteHelper(HelperVO vo) {
-		System.out.println("HelperServiceImpl의 deleteHelper() 실행...");
-		helperDAO.deleteHelper(vo);
-	}
+//	@Override
+//	public void deleteHelper(HelperVO vo) {
+//		System.out.println("HelperServiceImpl의 deleteHelper() 실행...");
+//		helperDAO.deleteHelper(vo);
+//	}
 
 	@Override
 	public List<HelperVO> recentHelperList(HelperVO vo) {
 		System.out.println("HelperServiceImpl의 recentHelperList() 실행...");
 		return helperDAO.recentHelperList(vo);
 	}
-
-	@Override
-	public List<HelperVO> scoreHelperList(HelperVO vo) {
-		System.out.println("HelperServiceImpl의 scoreHelperList() 실행...");
-		return helperDAO.scoreHelperList(vo);
-	}
 	
-	@Override
-	public HelperVO getHelper(HelperVO vo) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }

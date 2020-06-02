@@ -1,12 +1,11 @@
 package com.kimchi.biz.helpee;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
+import com.kimchi.biz.e_review.E_ReviewVO;
+import com.kimchi.biz.language.LanguageVO;
+import com.kimchi.biz.seoul.SeoulVO;
+import com.kimchi.biz.user.UserVO;
 
-@XmlAccessorType(XmlAccessType.FIELD)
 public class HelpeeVO {
-	@XmlAttribute
 	private int eno;
 	private int uno;
 	private String edate;
@@ -17,6 +16,36 @@ public class HelpeeVO {
 	private int lno;
 	private String e_intro;
 	
+	private UserVO userVO;
+	private LanguageVO languageVO;
+	private SeoulVO seoulVO;
+	private E_ReviewVO e_reviewVO;
+	
+	
+	public E_ReviewVO getE_reviewVO() {
+		return e_reviewVO;
+	}
+	public void setE_reviewVO(E_ReviewVO e_reviewVO) {
+		this.e_reviewVO = e_reviewVO;
+	}
+	public SeoulVO getSeoulVO() {
+		return seoulVO;
+	}
+	public void setSeoulVO(SeoulVO seoulVO) {
+		this.seoulVO = seoulVO;
+	}
+	public UserVO getUserVO() {
+		return userVO;
+	}
+	public void setUserVO(UserVO userVO) {
+		this.userVO = userVO;
+	}
+	public LanguageVO getLanguageVO() {
+		return languageVO;
+	}
+	public void setLanguageVO(LanguageVO languageVO) {
+		this.languageVO = languageVO;
+	}
 	public int getEno() {
 		return eno;
 	}
@@ -72,11 +101,12 @@ public class HelpeeVO {
 	public void setE_intro(String e_intro) {
 		this.e_intro = e_intro;
 	}
+	
 	@Override
 	public String toString() {
 		return "HelpeeVO [eno=" + eno + ", uno=" + uno + ", edate=" + edate + ", eplace=" + eplace + ", moving="
 				+ moving + ", hospital=" + hospital + ", immigration=" + immigration + ", lno=" + lno + ", e_intro="
-				+ e_intro + "]";
+				+ e_intro + ", userVO=" + userVO + ", languageVO=" + languageVO + ", seoulVO=" + seoulVO + "]";
 	}
 	
 	

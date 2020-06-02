@@ -2,29 +2,29 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" 
-		   prefix="fmt" %>
-<!DOCTYPE html>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<!doctype html>
 <html>
 <head>
-<!-- Required meta tags -->
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<!-- Bootstrap CSS -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
-<!-- fontawsome css-->
-<script src="https://kit.fontawesome.com/8b4a01720d.js" crossorigin="anonymous"></script>
+    <!-- fontawsome css-->
+    <script src="https://kit.fontawesome.com/8b4a01720d.js" crossorigin="anonymous"></script>
 
-<!-- custom css-->
-<link rel="stylesheet" href="index.css">
+    <!-- custom css-->
+    <link rel="stylesheet" href="index.css">
 
-<title>K:LPER | Get help in Korea</title>
+    <title>K:LPER | Get help in Korea</title>
 </head>
+
 <body>
-	
+
     <nav id="mainNavbar" class="navbar navbar-expand-md navbar-dark py-1 fixed-top">
         <a href="#" class="navbar-brand">K:LPER</a>
         <button class="navbar-toggler" data-toggle="collapse" data-target="#navLinks" aria-label="Toggle navigation">
@@ -40,18 +40,13 @@
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
-				<c:if test="${empty sessionScope.userName}">
-					<li class="nav-item"><a class="nav-link" data-toggle="modal"
-						data-target="#loginModal">Login</a></li>
-					<li class="nav-item"><a class="nav-link " data-toggle="modal"
-						data-target="#signupModal">Signup</a></li>
-				</c:if>
-				<c:if test="${!empty sessionScope.userName}">
-					${sessionScope.userName}님&nbsp;
-					<li class="nav-item"><a class="nav-link" href="myPage.do">MyPage</a></li>
-					<li class="nav-item"><a class="nav-link" href="logout.do">Logout</a></li>
-				</c:if>
-			</ul>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="modal" data-target="#loginModal">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " data-toggle="modal" data-target="#signupModal">Signup</a>
+                </li>
+            </ul>
         </div>
     </nav>
 
@@ -61,26 +56,28 @@
 
     <div class="jumbotron jumbotron-fluid">
         <div class="container">
-            <h1 class="display-4">I need your help!</h1>
+            <h1 class="display-4">I can help you!</h1>
             <p class="lead">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Qui perferendis dignissimos
                 aliquam. Eaque, inventore.</p>
 
             <div class="container">
                 <div class="row float-right">
                     <div class="dropdown">
-                        <button class="btn btn-sm btn-secondary helpee-button dropdown-toggle" type="button"
+                        <button class="btn btn-sm btn-secondary helper-button dropdown-toggle" type="button"
                             id="dropdownAddr" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             I'm near..
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownAddr">
                             <button class="dropdown-item" type="button">지역구가</button>
                             <button class="dropdown-item" type="button">들어갑니다</button>
-                            <button class="dropdown-item" type="button">수정예정</button>
+                            <button class="dropdown-item" type="button">수정예정</bu tton>
                         </div>
                     </div>
                     <div class="btn-group" role="group" aria-label="SortBtn">
-                        <button type="button" onclick="location.href='recentHelpeeList.do'" class="btn btn-secondary helpee-button btn-sm">최신순</button>
-                        <button type="button" class="btn btn-secondary helpee-button btn-sm">평점순</button>
+                        <button type="button" onclick="location.href='recentHelperList.do'" class="btn btn-secondary helper-button btn-sm">
+                        	최신순
+                        </button>
+                        <button type="button" class="btn btn-secondary helper-button btn-sm">평점순</button>
                     </div>
                 </div>
             </div>
@@ -88,23 +85,21 @@
     </div>
 
 
-    <div class="container helpeeBoard">
+    <div class="container helperBoard">
         <div class="row">
             <div class="col-md-2 order-1 order-md-1">
                 <div class="btn-group-vertical d-none d-md-block">
-                    <button type="button" class="btn btn-secondary helpee-button">All</button>
-                    <button type="button" class="btn btn-secondary helpee-button">이사</button>
-                    <button type="button" class="btn btn-secondary helpee-button">병원</button>
-                    <button type="button" class="btn btn-secondary helpee-button">출입국</button>
+                    <button type="button" class="btn btn-secondary helper-button">All</button>
+                    <button type="button" class="btn btn-secondary helper-button">이사</button>
+                    <button type="button" class="btn btn-secondary helper-button">병원</button>
+                    <button type="button" class="btn btn-secondary helper-button">출입국</button>
                 </div>
                 <div class="btn-group d-md-none">
-                    <button type="button" class="btn btn-secondary helpee-button">All</button>
-                    <button type="button" class="btn btn-secondary helpee-button">이사</button>
-                    <button type="button" class="btn btn-secondary helpee-button">병원</button>
-                    <button type="button" class="btn btn-secondary helpee-button">출입국</button>
+                    <button type="button" class="btn btn-secondary helper-button">All</button>
+                    <button type="button" class="btn btn-secondary helper-button">이사</button>
+                    <button type="button" class="btn btn-secondary helper-button">병원</button>
+                    <button type="button" class="btn btn-secondary helper-button">출입국</button>
                 </div>
-
-
 
                 <button type="button" class="btn btn-primary helpee-button-main d-none d-md-block">Pleas help me!
                 </button>
@@ -116,27 +111,28 @@
             </div>
 
             <div class="col-md-10 order-2 order-md-2">
-            	<c:forEach items="${helpeeList}" var="helpee">
-                <div class="row media helpeePost">
+
+            	<c:forEach items="${recentList}" var="helper">
+                <div class="row media helperPost">
                     <div class="col-md-3 order-1 order-md-1 align-items-center">
                         <img class="mr-3" src="https://cdn.pixabay.com/photo/2013/10/28/19/23/cat-201969_960_720.jpg"
                             alt="profileImage">
                     </div>
                     <div class="col-md-9 order-2 order-md-2">
                         <div class="media-body">
-                        	<c:if test="${helpee.moving==1}">
-                            <a href="#" class="badge badge-primary helpee-button-main">이사</a>
+                        	<c:if test="${helper.moving==1}">
+                            <a href="#" class="badge badge-primary helper-button-main">이사</a>
                             </c:if>
-                            <c:if test="${helpee.hospital==1}">
-                            <a href="#" class="badge badge-primary helpee-button-main">병원</a>
+                            <c:if test="${helper.hospital==1}">
+                            <a href="#" class="badge badge-primary helper-button-main">병원</a>
                             </c:if>
-                            <c:if test="${helpee.immigration==1}">
-                            <a href="#" class="badge badge-primary helpee-button-main">출입국</a>
+                            <c:if test="${helper.immigration==1}">
+                            <a href="#" class="badge badge-primary helper-button-main">출입국</a>
                             </c:if>
                             
                             <div class="row">
                                 <div class="col-md-6 order-2 order-md-1">
-                                    <h4>${helpee.userVO.name}</h4>
+                                    <h4>${helper.userVO.name}</h4>
                                 </div>
                                 <div class="col-md-6 order-1 order-md-2">
                                     <h5>{⭐️⭐️⭐️⭐️⭐️}</h5>
@@ -145,23 +141,23 @@
                             <div class="row">
                                 <div class="col-sm-6 order-2 order-sm-1">
                                     <div class="lang">
-                                        ${helpee.languageVO.language}
+                                        Language 랭귀지 연결해야돼 ㅅㅂ
                                     </div>
                                     <div class="reviewNum">
-                                        Total usage 
+                                        Total usage {rv_no}
                                     </div>
 
                                 </div>
                                 <div class="col-sm-6 order-1 order-sm-2">
                                     <div class="avDate">
-                                        Available date ${helpee.edate}
+                                        Available date ${helper.sta} ~ ${helper.end}
                                     </div>
                                     <div class="area">
-                                        Placed in <i class="fas fa-map-marker-alt"></i>${helpee.seoulVO.district}
+                                        Placed in <i class="fas fa-map-marker-alt"></i>${helper.rplace}
                                     </div>
                                 </div>
                             </div>
-                            <div>${helpee.e_intro}
+                            <div>{자기소개} ${helper.r_intro}
                                 <div id="dots"></div>
                                 <div id="more">
                                     <div class="boardReview">
@@ -173,7 +169,7 @@
                                             <li class="list-group-item">잠만 자요</li>
                                         </ul>
                                     </div>
-                                    <button type="button" class="btn btn-primary helpee-button-main">연락하기</button>
+                                    <button type="button" class="btn btn-primary helper-button-main">연락하기</button>
                                 </div>
 
                             </div>
@@ -186,8 +182,8 @@
                     </div>
                 </div>
                 </c:forEach>
-                
-                
+
+
                 <!--PAGING -->
                 <div class="row justify-content-center">
                     <nav aria-label="Page navigation">
@@ -213,6 +209,8 @@
             </div>
         </div>
     </div>
+
+
 
     <!--AUTH MODAL-->
     <!--LOGIN-->
@@ -242,12 +240,12 @@
                             <label class="form-check-label" for="logInCheck">Keep me logged in </label>
                             <a class="help-password" href="#">forgot your password?</a>
                         </div>
-                        <button type="submit" class="btn btn-primary helpee-button-main">Login</button>
+                        <button type="submit" class="btn btn-primary helper-button-main">Login</button>
                     </form>
                     <hr>
                     <h5>OR</h5>
                     <div class="sns-login">
-                        <a class="btn btn-primary helpee-button-main " href="#"><i class="fab fa-google"></i>
+                        <a class="btn btn-primary helper-button-main " href="#"><i class="fab fa-google"></i>
                             Continue with
                             Google
                         </a>
@@ -257,7 +255,6 @@
             </div>
         </div>
     </div>
-
 
 
 
@@ -304,12 +301,12 @@
                                 <option value="2">Male</option>
                             </select>
                         </div>
-                        <button type="submit" class="btn btn-primary helpee-button-main">Signup</button>
+                        <button type="submit" class="btn btn-primary helper-button-main">Signup</button>
                     </form>
                     <hr>
                     <h5>OR</h5>
                     <div class="sns-login">
-                        <a class="btn btn-primary helpee-button-main " href="#"><i class="fab fa-google"></i> Continue
+                        <a class="btn btn-primary helper-button-main " href="#"><i class="fab fa-google"></i> Continue
                             with
                             Google</a>
 
@@ -401,6 +398,7 @@
 
     </script>
 
-	
+
 </body>
+
 </html>
