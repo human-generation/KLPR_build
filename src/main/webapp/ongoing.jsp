@@ -123,9 +123,9 @@
 											<!-- 이아래문장을 폼으로감싸서 submit하기 -->		
 										<form action="updateState.do" method="POST">
 											<c:if test="${loginUser.uno eq matching_w.eno }">
-												<input type="hidden" value="${matching_w.mno}">
-												<input type="hidden" value="${matching_w.mstate}">
-												<button type="submit" class="btn btn-primary" value="${matching_w.rcno}">결제하기</button>
+												<input type="hidden" name="mstate" value="${matching_w.mstate}">
+												<input type="hidden" name="mno" value="${matching_w.mno }">
+												<button type="submit" class="btn btn-primary">결제하기</button>
 											</c:if>
 										</form>
 										</div>

@@ -158,12 +158,12 @@ public class MatchingDAOImpl implements MatchingDAO {
 				if(mvo.getMstate()==2) {
 					stmt2=conn.prepareStatement(UPDATE_PAID);
 					stmt2.setInt(1, mvo.getMno());
-					rs2=stmt2.executeQuery();
+					stmt2.executeUpdate();
 				}
 				else if(mvo.getMstate()==4) {
 					stmt2=conn.prepareStatement(UPDATE_ENDED);
 					stmt2.setInt(1, mvo.getMno());
-					rs2=stmt2.executeQuery();
+					stmt2.executeUpdate();
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();

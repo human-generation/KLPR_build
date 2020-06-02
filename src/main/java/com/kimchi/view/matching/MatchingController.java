@@ -5,6 +5,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -42,10 +43,12 @@ public class MatchingController {
 	
 	
 	@RequestMapping(value="/updateState.do", method= {RequestMethod.POST,RequestMethod.GET})
-	public String updatingState(MatchingVOExtra mvo, int mno, int mstate, MatchingDAOImpl matchingDAO) {
-		System.out.println(mvo.toString());
+	public String updatingState(int mstate, int mno, MatchingDAOImpl matchingDAO) {
+		MatchingVOExtra mvo=new MatchingVOExtra();
+		System.out.println(mno +" "+mstate);
 		mvo.setMno(mno);
 		mvo.setMstate(mstate);
+		System.out.println(mvo.toString());
 		matchingService.updateState(mvo);
 		return "myPage.do";
 	}
