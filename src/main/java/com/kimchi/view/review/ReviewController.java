@@ -1,4 +1,4 @@
-package com.kimchi.view.e_review;
+package com.kimchi.view.review;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -7,10 +7,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.kimchi.biz.e_review.E_ReviewService;
 import com.kimchi.biz.e_review.E_ReviewVO;
+import com.kimchi.biz.r_review.R_reviewVO;
+import com.kimchi.biz.r_review.impl.R_reviewDAOImpl;
 
 @Controller
-public class E_ReviewController {
-
+public class ReviewController {
 	@Autowired
 	private E_ReviewService e_reviewService;
 
@@ -28,6 +29,13 @@ public class E_ReviewController {
 		// DB에 저장
 		e_reviewService.insertE_Review(vo);
 		System.out.println("헬퍼가 헬피에 쓴 리뷰가 저장됐습니다.");
+		return "myPage.do";
+	}
+
+	@RequestMapping(value = "/r_review.do", method = { RequestMethod.GET, RequestMethod.POST })
+	public String r_review(R_reviewVO vo, R_reviewDAOImpl r_reviewDAO) {
+
+		r_reviewDAO.insertR_review(vo);
 		return "myPage.do";
 	}
 }

@@ -13,6 +13,7 @@ public class E_ReviewVO {
 	private int rno; // 리뷰 쓴 헬퍼 번호
 	private String ecomment; // 헬피에게 쓴 코멘트
 	private int escore; // 헬피에게 준 평점
+	private int uno;
 
 	public int getE_vno() {
 		return e_vno;
@@ -52,6 +53,14 @@ public class E_ReviewVO {
 
 	public void setEscore(int escore) {
 		this.escore = escore;
+	}
+
+	public int getUno() {
+		return uno;
+	}
+
+	public void setUno(int uno) {
+		this.uno = uno;
 	}
 
 	@Override
