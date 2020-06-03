@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.kimchi.biz.helper.HelperDAO;
 import com.kimchi.biz.helper.HelperService;
 import com.kimchi.biz.helper.HelperVO;
+import com.kimchi.biz.r_review.R_reviewVO;
 import com.kimchi.biz.seoul.SeoulDAO;
 import com.kimchi.biz.seoul.SeoulVO;
 
@@ -72,12 +73,6 @@ public class HelperServiceImpl implements HelperService {
 		System.out.println("HelperServiceImpl의 getSeoulList() 실행...");
 		return seoulDAO.getSeoulList(vo);
 	}
-	
-	@Override
-	public List<HelperVO> helper_avg(HelperVO vo) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public HelperVO getHelper(HelperVO vo) {
@@ -89,6 +84,18 @@ public class HelperServiceImpl implements HelperService {
 	public List<HelperVO> seoulHelperList(HelperVO vo) {
 		System.out.println("HelperServiceImpl의 seoulHelperList() 실행...");
 		return helperDAO.seoulHelperList(vo);
+	}
+
+	@Override
+	public List<R_reviewVO> getR_ReviewCountList(R_reviewVO vo) {
+		System.out.println("HelperServiceImpl의 getReviewCountList() 실행...");
+		return R_reviewDAO.getR_ReviewCountList(vo);
+	}
+
+	@Override
+	public List<R_reviewVO> getR_ReviewAvgList(R_reviewVO vo) {
+		System.out.println("HelperServiceImpl의 getReviewAvgList() 실행...");
+		return R_reviewDAO.getR_ReviewAvgList(vo);
 	}
 
 }
