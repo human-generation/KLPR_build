@@ -37,6 +37,9 @@ public class MatchingDAOImpl implements MatchingDAO {
 	
 	private final String UPDATE_PAID="UPDATE matching SET mstate=3 where mno=?";
 	private final String UPDATE_ENDED="UPDATE matching SET mstate=5 where mno=?";
+	
+	private final String LANGUAGE_GET_R="SELECT language FROM language WHERE lno=ANY(SELECT lno FROM helper WHERE uno=?)";
+	private final String LANGUAGE_GET_E="SELECT language FROM language WHERE lno=ANY(SELECT lno FROM helpee WHERE uno=?)";
 
 	@Override
 	public List<MatchingVOExtra> getMatchingList(UserVO vo, int state) { // state에 따라 리스트 리턴해주는 함수
@@ -89,6 +92,11 @@ public class MatchingDAOImpl implements MatchingDAO {
 				mvo.setSenderName(senderName(mvo.getMno()));
 				mvo.setReceiverName(receiverName(mvo.getMno()));
 				mvo.setMplaceName(convertPlace(mvo.getMplace()));
+				if(vo.getUno()==mvo.getRno()) {
+					mvo.setLanguage(convertLanguage(LANGUAGE_GET_E, mvo.getEno()));
+				}else if(vo.getUno()==mvo.getEno()){
+					mvo.setLanguage(convertLanguage(LANGUAGE_GET_R, mvo.getRno()));
+				}
 				matchingList.add(mvo);
 			}
 		} catch (Exception e) {
@@ -172,14 +180,22 @@ public class MatchingDAOImpl implements MatchingDAO {
 			}
 	}
 	
-	public String convertLanguage(int language) {
-		switch(language) {
-		case 1: return "English";
-		case 2:	return "German";
-		case 3: return "French";
-		case 4:	return "Italian";
-		default: return "";
+	public List<String> convertLanguage(String eOrh, int uno) {
+		List<String> list=new ArrayList<String>();
+		try{
+			conn=JDBCUtil.getConnection();
+			stmt2=conn.prepareStatement(eOrh);
+			stmt2.setInt(1, uno);
+			rs2=stmt2.executeQuery();
+			while(rs2.next()) {
+				list.add(rs2.getString("language"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			JDBCUtil.close(rs2, stmt2, conn);
 		}
+		return list;
 	}
 	
 	public String convertPlace(int mplace) { //실행시간 관점에서 하나 조회할때마다 join으로 db참고하는것보다 이게 더 빠르다는 판단,,,

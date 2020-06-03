@@ -86,7 +86,10 @@
 								<c:forEach items="${SendedRequestList}" var="matching_s">
 									<div class="card-body">
 										<div class="card">
-											<h6 class="card-header">${matching_s.senderName }</h6>
+											<c:if test="${loginUser.name eq matching_s.senderName }">
+											<h6 class="card-header">${matching_s.recevierName }</h6></c:if>
+											<c:if test="${loginUser.name eq matching_s.receiverName }">
+											<h6 class="card-header">${matching_s.senderName }</h6></c:if>
 											<div class="card-body">
 
 												<img class="profile-img-box"
@@ -105,7 +108,8 @@
 														<td><a href="#"
 															class="badge badge-primary helper-button-main">관공서</a></td>
 													</c:if>
-												<div class="lang">Language {language}</div>
+												<div class="lang">Language 
+												<c:forEach items="${matching_s.language}" var="language">${language} </c:forEach></div>
 												<div class="reviewNum">Total usage {rv_no}</div>
 												<div class="avDate">Available date {sta - end}</div>
 												<div class="area">
@@ -126,7 +130,10 @@
 								<c:forEach items="${ReceivedRequestList}" var="matching_r">
 									<div class="card-body">
 										<div class="card">
-											<h6 class="card-header">${matching_r.senderName }</h6>
+											<c:if test="${loginUser.name eq matching_r.senderName }">
+											<h6 class="card-header">${matching_r.recevierName }</h6></c:if>
+											<c:if test="${loginUser.name eq matching_r.receiverName }">
+											<h6 class="card-header">${matching_r.senderName }</h6></c:if>
 											<div class="card-body">
 
 												<img class="profile-img-box"
@@ -145,7 +152,7 @@
 														<td><a href="#"
 															class="badge badge-primary helper-button-main">관공서</a></td>
 													</c:if>
-												<div class="lang">Language {language}</div>
+												<div class="lang">Language <c:forEach items="${matching_r.language}" var="language">${language} </c:forEach></div>
 												<div class="reviewNum">Total usage {rv_no}</div>
 												<div class="avDate">Available date {sta - end}</div>
 												<div class="area">
