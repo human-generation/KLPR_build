@@ -56,12 +56,6 @@ public class HelperServiceImpl implements HelperService {
 	}
 
 	@Override
-	public List<HelperVO> scoreHelperList(HelperVO vo) {
-		System.out.println("HelperServiceImpl의 scoreHelperList() 실행...");
-		return helperDAO.scoreHelperList(vo);
-	}
-	
-	@Override
 	public List<HelperVO> moveHelper(HelperVO vo) {
 		System.out.println("HelperServiceImpl의 moveHelper() 실행...");
 		return helperDAO.moveHelper(vo);
@@ -80,15 +74,16 @@ public class HelperServiceImpl implements HelperService {
 	}
 
 	@Override
+	public List<HelperVO> seoulHelperList(HelperVO vo) {
+		System.out.println("HelperServiceImpl의 seoulHelperList() 실행...");
+		return helperDAO.seoulHelperList(vo);
+	}
+
+	
+	@Override
 	public List<SeoulVO> getSeoulList(SeoulVO vo) {
 		System.out.println("HelperServiceImpl의 getSeoulList() 실행...");
 		return seoulDAO.getSeoulList(vo);
-	}
-	
-	@Override
-	public List<HelperVO> helper_avg(HelperVO vo) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	@Override
@@ -96,11 +91,4 @@ public class HelperServiceImpl implements HelperService {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-	@Override
-	public List<HelperVO> seoulHelperList(HelperVO vo) {
-		System.out.println("HelperServiceImpl의 seoulHelperList() 실행...");
-		return helperDAO.seoulHelperList(vo);
-	}
-
 }

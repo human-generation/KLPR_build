@@ -25,30 +25,36 @@
 
 <body>
 
-    <nav id="mainNavbar" class="navbar navbar-expand-md navbar-dark py-1 fixed-top">
-        <a href="#" class="navbar-brand">K:LPER</a>
-        <button class="navbar-toggler" data-toggle="collapse" data-target="#navLinks" aria-label="Toggle navigation">
-            <i class="fas fa-align-right"></i>
-        </button>
-        <div class="collapse navbar-collapse" id="navLinks">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a href="getHelperList.do" class="nav-link">HELPER</a>
-                </li>
-                <li class="nav-item">
-                    <a href="getHelpeeList.do" class="nav-link">HELPEE</a>
-                </li>
-            </ul>
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" data-toggle="modal" data-target="#loginModal">Login</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link " data-toggle="modal" data-target="#signupModal">Signup</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+	<nav id="mainNavbar"
+		class="navbar navbar-expand-md navbar-dark py-1 fixed-top">
+		<a href="#" class="navbar-brand">K:LPER</a>
+		<button class="navbar-toggler" data-toggle="collapse"
+			data-target="#navLinks" aria-label="Toggle navigation">
+			<i class="fas fa-align-right"></i>
+		</button>
+		<div class="collapse navbar-collapse" id="navLinks">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item"><a href="getHelperList.do"
+					class="nav-link">HELPER</a></li>
+				<li class="nav-item"><a href="getHelpeeList.do"
+					class="nav-link">HELPEE</a></li>
+			</ul>
+			<ul class="navbar-nav ml-auto">
+				<c:if test="${empty sessionScope.userName}">
+					<li class="nav-item"><a class="nav-link" data-toggle="modal"
+						data-target="#loginModal">Login</a></li>
+					<li class="nav-item"><a class="nav-link " data-toggle="modal"
+						data-target="#signupModal">Signup</a></li>
+				</c:if>
+				<c:if test="${!empty sessionScope.userName}">
+					${sessionScope.userName}님&nbsp;
+					<li class="nav-item"><a class="nav-link" href="myPage.do">MyPage</a></li>
+					<li class="nav-item"><a class="nav-link" href="logout.do">Logout</a></li>
+				</c:if>
+			</ul>
+		</div>
+	</nav>
+
 
     <!-- HEADER END -->
     <!-- 본문 -->
@@ -79,7 +85,7 @@
                         <button type="button" onclick="location.href='recentHelperList.do'" class="btn btn-secondary helper-button btn-sm">
                         	최신순
                         </button>
-                        <button type="button" onclick="location.href='scoreHelperList.do'" class="btn btn-secondary helper-button btn-sm">
+                        <button type="button" class="btn btn-secondary helper-button btn-sm">
                         	평점순
                         </button>
                     </div>
@@ -137,7 +143,14 @@
                                     <h4>${helper.userVO.name}</h4>
                                 </div>
                                 <div class="col-md-6 order-1 order-md-2">
-                                    <h5>{☆☆☆☆☆}</h5>
+                                	리뷰 평점 : 
+                                   		<c:forEach items="${avgList}" var="avgList">
+											<c:choose>
+												<c:when test="${avgList.rno == helper.userVO.uno }">
+													${avgList.rscore }
+												</c:when>
+											</c:choose>
+										</c:forEach>
                                 </div>
                             </div>
                             <div class="row">
@@ -146,7 +159,14 @@
                                         Language ${helper.languageVO.language}
                                     </div>
                                     <div class="reviewNum">
-                                        Total usage {rv_no}
+                                                                   리뷰갯수 : 
+                                          <c:forEach items="${countList}" var="countList">
+											<c:choose>
+												<c:when test="${countList.rno == helper.userVO.uno }">
+													${countList.count }
+												</c:when>
+											</c:choose>
+										</c:forEach>                         
                                     </div>
 
                                 </div>
@@ -159,7 +179,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div>{자기소개} ${helper.r_intro}
+                            <div> ${helper.r_intro}
                                 <div id="dots"></div>
                                 <div id="more">
                                     <div class="boardReview">
