@@ -34,7 +34,7 @@
                     <a href="helperWriteForm.do" class="nav-link">HELPER</a>
                 </li>
                 <li class="nav-item">
-                    <a href="helpeeWriteForm.do" class="nav-link">HELPEE</a>
+                    <a href="helpeeList.do" class="nav-link">HELPEE</a>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
