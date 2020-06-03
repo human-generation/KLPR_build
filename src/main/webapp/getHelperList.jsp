@@ -136,7 +136,14 @@
                                     <h4>${helper.userVO.name}</h4>
                                 </div>
                                 <div class="col-md-6 order-1 order-md-2">
-                                    <h5>{☆☆☆☆☆}</h5>
+                                   	 리뷰 평점 :
+									<c:forEach items="${avgList}" var="avgList">
+										<c:choose>
+											<c:when test="${avgList.rno == helper.userVO.uno }">
+												${avgList.rscore}
+											</c:when>
+										</c:choose>
+									</c:forEach>
                                 </div>
                             </div>
                             <div class="row">
@@ -145,7 +152,14 @@
                                         Language ${helper.languageVO.language}
                                     </div>
                                     <div class="reviewNum">
-                                        Total usage {rv_no}
+                                    	리뷰갯수 : 
+										<c:forEach items="${countList }" var="countList">
+											<c:choose>
+												<c:when test="${countList.rno == helper.userVO.uno }">
+													${countList.count}
+												</c:when>
+											</c:choose>
+										</c:forEach>
                                     </div>
 
                                 </div>
