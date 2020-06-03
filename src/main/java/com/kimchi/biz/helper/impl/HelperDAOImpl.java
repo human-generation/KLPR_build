@@ -179,13 +179,8 @@ public class HelperDAOImpl implements HelperDAO {
 				seoul.setDistrict(rs.getString("district"));
 				helper.setSeoulVO(seoul);
 
-				R_reviewVO r_review = new R_reviewVO();
-				r_review.setAvg(rs.getInt("avg"));
-				helper.setR_reviewVO(r_review);
-				
 				helper.setSta(rs.getDate("sta"));
 				helper.setEnd(rs.getDate("end"));
-//				helper.setRplace(rs.getInt("rplace"));
 				helper.setMoving(rs.getInt("moving"));
 				helper.setHospital(rs.getInt("hospital"));
 				helper.setImmigration(rs.getInt("immigration"));

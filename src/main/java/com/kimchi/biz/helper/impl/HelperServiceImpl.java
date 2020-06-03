@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.kimchi.biz.helper.HelperDAO;
 import com.kimchi.biz.helper.HelperService;
 import com.kimchi.biz.helper.HelperVO;
+import com.kimchi.biz.r_review.R_reviewDAO;
 import com.kimchi.biz.r_review.R_reviewVO;
 import com.kimchi.biz.seoul.SeoulDAO;
 import com.kimchi.biz.seoul.SeoulVO;

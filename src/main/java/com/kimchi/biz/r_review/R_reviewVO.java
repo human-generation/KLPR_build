@@ -5,15 +5,15 @@ public class R_reviewVO {
 	private int r_vno;		 // 머더라?
 	private int eno;		 // 헬피번호
 	private String rcomment; // 줄리뷰
-	private int rscore;		 // 점수
+	private double rscore;		 // 점수
 	
-	private double avg;	// 평점
+	private int count;	// 리뷰갯수
 	
-	public double getAvg() {
-		return avg;
+	public int getCount() {
+		return count;
 	}
-	public void setAvg(double avg) {
-		this.avg = avg;
+	public void setCount(int count) {
+		this.count = count;
 	}
 	public int getRno() {
 		return rno;
@@ -39,10 +39,10 @@ public class R_reviewVO {
 	public void setRcomment(String rcomment) {
 		this.rcomment = rcomment;
 	}
-	public int getRscore() {
+	public double getRscore() {
 		return rscore;
 	}
-	public void setRscore(int rscore) {
+	public void setRscore(double rscore) {
 		this.rscore = rscore;
 	}
 	
