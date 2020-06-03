@@ -51,6 +51,7 @@
 				<c:if test="${!empty sessionScope.userName}">
 					${sessionScope.userName}님&nbsp;
 					<li class="nav-item"><a class="nav-link" href="myPage.do">MyPage</a></li>
+					<li class="nav-item"><a class="nav-link" href="alert.do">Alert</a>
 					<li class="nav-item"><a class="nav-link" href="logout.do">Logout</a></li>
 				</c:if>
 			</ul>

@@ -30,7 +30,11 @@ public class UserController {
 		UserVO user = userDAO.getUser(vo);
 		if (user != null) {
 			session.setAttribute("userName", user.getName());
-			System.out.println(user.getName());
+			session.setAttribute("userNumber", user.getUno());
+			session.setAttribute("userMoney", user.getMoney());
+			session.setAttribute("userGender", user.getGender());
+			session.setAttribute("userPhone", user.getPhone());
+			System.out.println(user.toString());
 //			return "getMain.do";
 			return "main.do";
 		} else {
