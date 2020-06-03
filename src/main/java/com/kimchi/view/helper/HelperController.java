@@ -33,14 +33,6 @@ public class HelperController {
 		// 서울 리스트 모델에 담기
 		model.addAttribute("seoulList", helperService.getSeoulList(svo));
 
-//		List<SeoulVO> seoulList = helperService.getSeoulList(svo);
-//		model.addAttribute("seoulList", seoulList);
-//		System.out.println(seoulList.toString());
-
-//		helperDAO.deleteHelper(vo);	// 날짜지난 홍보글부터 삭제
-
-//		List<HelperVO> helperList = helperDAO.getHelperList(vo); // 홍보글 리스트 불러오기
-//		session.setAttribute("helperList", helperList);
 		return "getHelperList.jsp";
 	}
 

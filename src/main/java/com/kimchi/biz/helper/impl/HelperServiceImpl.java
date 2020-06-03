@@ -25,6 +25,9 @@ public class HelperServiceImpl implements HelperService {
 	private SeoulDAO seoulDAO;
 	
 	@Autowired
+	private R_reviewDAO r_reviewDAO;
+	
+	@Autowired
 	HttpSession session;
 
 	@Override
@@ -43,12 +46,6 @@ public class HelperServiceImpl implements HelperService {
 	public List<HelperVO> recentHelperList(HelperVO vo) {
 		System.out.println("HelperServiceImpl의 recentHelperList() 실행...");
 		return helperDAO.recentHelperList(vo);
-	}
-
-	@Override
-	public List<HelperVO> scoreHelperList(HelperVO vo) {
-		System.out.println("HelperServiceImpl의 scoreHelperList() 실행...");
-		return helperDAO.scoreHelperList(vo);
 	}
 	
 	@Override
@@ -90,13 +87,13 @@ public class HelperServiceImpl implements HelperService {
 	@Override
 	public List<R_reviewVO> getR_ReviewCountList(R_reviewVO vo) {
 		System.out.println("HelperServiceImpl의 getReviewCountList() 실행...");
-		return R_reviewDAO.getR_ReviewCountList(vo);
+		return r_reviewDAO.getR_ReviewCountList(vo);
 	}
 
 	@Override
 	public List<R_reviewVO> getR_ReviewAvgList(R_reviewVO vo) {
 		System.out.println("HelperServiceImpl의 getReviewAvgList() 실행...");
-		return R_reviewDAO.getR_ReviewAvgList(vo);
+		return r_reviewDAO.getR_ReviewAvgList(vo);
 	}
 
 }
