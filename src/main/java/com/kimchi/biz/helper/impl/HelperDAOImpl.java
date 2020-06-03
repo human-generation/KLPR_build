@@ -12,7 +12,6 @@ import com.kimchi.biz.common.JDBCUtil;
 import com.kimchi.biz.helper.HelperDAO;
 import com.kimchi.biz.helper.HelperVO;
 import com.kimchi.biz.language.LanguageVO;
-import com.kimchi.biz.r_review.R_reviewVO;
 import com.kimchi.biz.seoul.SeoulVO;
 import com.kimchi.biz.user.UserVO;
 
@@ -61,6 +60,7 @@ public class HelperDAOImpl implements HelperDAO {
 				HelperVO helper = new HelperVO();
 
 				UserVO user = new UserVO();
+				user.setUno(rs.getInt("uno"));
 				user.setName(rs.getString("name"));
 				helper.setUserVO(user);
 
@@ -122,6 +122,7 @@ public class HelperDAOImpl implements HelperDAO {
 				HelperVO helper = new HelperVO();
 
 				UserVO user = new UserVO();
+				user.setUno(rs.getInt("uno"));
 				user.setName(rs.getString("name"));
 				helper.setUserVO(user);
 

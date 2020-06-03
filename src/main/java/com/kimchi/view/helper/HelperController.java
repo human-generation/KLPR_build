@@ -21,14 +21,14 @@ public class HelperController {
 
 	// 헬퍼 목록
 	@RequestMapping(value = "/getHelperList.do", method = RequestMethod.GET)
-	public String getHelperList(@ModelAttribute("helper") HelperVO vo, @ModelAttribute("rReview") R_reviewVO evo, @ModelAttribute("seoul") SeoulVO svo,
+	public String getHelperList(@ModelAttribute("helper") HelperVO vo, R_reviewVO rvo, @ModelAttribute("seoul") SeoulVO svo,
 			Model model) {
 		System.out.println("헬퍼 목록 처리 웽 모델썻지롱");
 
 		// 서울 리스트 모델에 담기
 		model.addAttribute("seoulList", helperService.getSeoulList(svo));
-		model.addAttribute("countList", helperService.getR_ReviewCountList(evo));
-		model.addAttribute("avgList", helperService.getR_ReviewAvgList(evo));
+		model.addAttribute("countList", helperService.getR_ReviewCountList(rvo));
+		model.addAttribute("avgList", helperService.getR_ReviewAvgList(rvo));
 		// 헬퍼 홍보글 리스트 모델에 담기
 		model.addAttribute("helperList", helperService.getHelperList(vo));
 
@@ -37,11 +37,11 @@ public class HelperController {
 
 	// 최신순 정렬
 	@RequestMapping(value = "/recentHelperList.do", method = RequestMethod.GET)
-	public String recentHelperList(@ModelAttribute("helper") HelperVO vo,  @ModelAttribute("rReview") R_reviewVO evo, @ModelAttribute("seoul") SeoulVO svo, Model model) {
+	public String recentHelperList(@ModelAttribute("helper") HelperVO vo, R_reviewVO rvo, @ModelAttribute("seoul") SeoulVO svo, Model model) {
 		System.out.println("최신순 헬퍼 목록 처리 모델로한거임");
 		model.addAttribute("seoulList", helperService.getSeoulList(svo));
-		model.addAttribute("countList", helperService.getR_ReviewCountList(evo));
-		model.addAttribute("avgList", helperService.getR_ReviewAvgList(evo));
+		model.addAttribute("countList", helperService.getR_ReviewCountList(rvo));
+		model.addAttribute("avgList", helperService.getR_ReviewAvgList(rvo));
 		model.addAttribute("helperList", helperService.recentHelperList(vo));
 		return "getHelperList.jsp";
 	}
@@ -49,7 +49,7 @@ public class HelperController {
 
 	// 이사 헬퍼 리스트
 	@RequestMapping(value = "/moveHelper.do", method = RequestMethod.GET)
-	public String moveHelper(@ModelAttribute("helper") HelperVO vo,  @ModelAttribute("rReview") R_reviewVO evo, @ModelAttribute("seoul") SeoulVO svo, Model model) {
+	public String moveHelper(@ModelAttribute("helper") HelperVO vo, R_reviewVO evo, @ModelAttribute("seoul") SeoulVO svo, Model model) {
 		System.out.println("모델로 이사헬퍼 리스트");
 		model.addAttribute("seoulList", helperService.getSeoulList(svo));
 		model.addAttribute("countList", helperService.getR_ReviewCountList(evo));
@@ -60,33 +60,33 @@ public class HelperController {
 
 	// 병원 헬퍼 리스트
 	@RequestMapping(value = "/hospitalHelper.do", method = RequestMethod.GET)
-	public String hospitalHelper(@ModelAttribute("helper") HelperVO vo,  @ModelAttribute("rReview") R_reviewVO evo, @ModelAttribute("seoul") SeoulVO svo, Model model) {
+	public String hospitalHelper(@ModelAttribute("helper") HelperVO vo, R_reviewVO rvo, @ModelAttribute("seoul") SeoulVO svo, Model model) {
 		System.out.println("모델로 병원헬퍼 리스트");
 		model.addAttribute("seoulList", helperService.getSeoulList(svo));
-		model.addAttribute("countList", helperService.getR_ReviewCountList(evo));
-		model.addAttribute("avgList", helperService.getR_ReviewAvgList(evo));
+		model.addAttribute("countList", helperService.getR_ReviewCountList(rvo));
+		model.addAttribute("avgList", helperService.getR_ReviewAvgList(rvo));
 		model.addAttribute("helperList", helperService.hospitalHelper(vo));
 		return "getHelperList.jsp";
 	}
 
 	// 출입국 헬퍼 리스트
 	@RequestMapping(value = "/immigrationHelper.do", method = RequestMethod.GET)
-	public String immigrationHelper(@ModelAttribute("helper") HelperVO vo,  @ModelAttribute("rReview") R_reviewVO evo, @ModelAttribute("seoul") SeoulVO svo, Model model) {
+	public String immigrationHelper(@ModelAttribute("helper") HelperVO vo, R_reviewVO rvo, @ModelAttribute("seoul") SeoulVO svo, Model model) {
 		System.out.println("모델로 출입국헬퍼 리스트");
 		model.addAttribute("seoulList", helperService.getSeoulList(svo));
-		model.addAttribute("countList", helperService.getR_ReviewCountList(evo));
-		model.addAttribute("avgList", helperService.getR_ReviewAvgList(evo));
+		model.addAttribute("countList", helperService.getR_ReviewCountList(rvo));
+		model.addAttribute("avgList", helperService.getR_ReviewAvgList(rvo));
 		model.addAttribute("helperList", helperService.immigrationHelper(vo));
 		return "getHelperList.jsp";
 	}
 
 	// 지역별 리스트
 	@RequestMapping(value = "/seoulHelperList.do", method = RequestMethod.GET)
-	public String seoulHelperList(@ModelAttribute("helper") HelperVO vo,  @ModelAttribute("rReview") R_reviewVO evo, @ModelAttribute("seoul") SeoulVO svo, Model model) {
+	public String seoulHelperList(@ModelAttribute("helper") HelperVO vo, R_reviewVO rvo, @ModelAttribute("seoul") SeoulVO svo, Model model) {
 		System.out.println("지역별 헬퍼 목록 처리 모델로한거임");
 		model.addAttribute("seoulList", helperService.getSeoulList(svo));
-		model.addAttribute("countList", helperService.getR_ReviewCountList(evo));
-		model.addAttribute("avgList", helperService.getR_ReviewAvgList(evo));
+		model.addAttribute("countList", helperService.getR_ReviewCountList(rvo));
+		model.addAttribute("avgList", helperService.getR_ReviewAvgList(rvo));
 		model.addAttribute("helperList", helperService.seoulHelperList(vo));
 		return "getHelperList.jsp";
 	}

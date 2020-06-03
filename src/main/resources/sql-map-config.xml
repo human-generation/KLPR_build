@@ -10,6 +10,8 @@
 	 
 	<!-- Alias 설정(이름이 기니까 별명을 줘서 짧게 쓰자 -->
 	<typeAliases>
+		<typeAlias type="com.kimchi.biz.helper.HelperVO" alias="helper"></typeAlias>
+		<typeAlias type="com.kimchi.biz.helper.HelperListVO" alias="helperList"></typeAlias>
 		<typeAlias type="com.kimchi.biz.helpee.HelpeeVO" alias="helpee"></typeAlias>
 		<typeAlias type="com.kimchi.biz.helpee.HelpeeListVO" alias="helpeeList"></typeAlias>
 		<typeAlias type="com.kimchi.biz.seoul.SeoulVO" alias="seoul"></typeAlias>
