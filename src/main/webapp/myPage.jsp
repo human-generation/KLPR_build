@@ -102,7 +102,7 @@
 								onclick="location.href='payment.do'">마일리지 충전</button>
 
 							<button type="button"
-								class="btn btn-secondary helper-button btn-lg">${userMoney }$</button>
+								class="btn btn-secondary helper-button btn-lg">${sessionScope.userMoney }$</button>
 						</div>
 
 					</div>

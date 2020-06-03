@@ -97,10 +97,10 @@
 								<div class="card-body">
 									<div class="card">
 										<c:choose>
-											<c:when test="${matching_w.rcno } eq ${loginUser.uno }">
+											<c:when test="${matching_w.rcno eq loginUser.uno }">
 												<h6 class="card-header">${matching_w.senderName }</h6>
 											</c:when>
-											<c:when test="${matching_w.seno } eq ${loginUser.uno }">
+											<c:when test="${matching_w.seno eq loginUser.uno }">
 												<h6 class="card-header">${matching_w.receiverName }</h6>
 											</c:when>
 										</c:choose>
@@ -122,11 +122,14 @@
 													<td><a href="#"
 														class="badge badge-primary helper-button-main">관공서</a></td>
 												</c:if>
-											<div class="lang">Language {language}</div>
+											<div class="lang">
+												Language
+												<c:forEach items="${matching_w.language}" var="language">${language} </c:forEach>
+											</div>
 											<div class="reviewNum">Total usage {rv_no}</div>
 											<div class="avDate">Available date {sta - end}</div>
 											<div class="area">
-												Placed in <i class="fas fa-map-marker-alt">${matching_w.mplace }</i>{rplace}
+												Placed in <i class="fas fa-map-marker-alt">${matching_w.mplaceName }</i>{rplace}
 											</div>
 											</p>
 											<a href="#" class="btn btn-primary">상태 {요청받음 mstate 0}</a>
@@ -151,7 +154,14 @@
 							<c:forEach items="${PaidList}" var="matching_p">
 								<div class="card-body">
 									<div class="card">
-										<h6 class="card-header">${matching_p.senderName }</h6>
+										<c:choose>
+											<c:when test="${matching_p.rcno eq loginUser.uno }">
+												<h6 class="card-header">${matching_p.senderName }</h6>
+											</c:when>
+											<c:when test="${matching_p.seno eq loginUser.uno }">
+												<h6 class="card-header">${matching_p.receiverName }</h6>
+											</c:when>
+										</c:choose>
 										<div class="card-body">
 
 											<img class="profile-img-box"
@@ -170,11 +180,14 @@
 													<td><a href="#"
 														class="badge badge-primary helper-button-main">관공서</a></td>
 												</c:if>
-											<div class="lang">Language {language}</div>
+											<div class="lang">
+												Language
+												<c:forEach items="${matching_p.language}" var="language">${language} </c:forEach>
+											</div>
 											<div class="reviewNum">Total usage {rv_no}</div>
 											<div class="avDate">Available date {sta - end}</div>
 											<div class="area">
-												Placed in <i class="fas fa-map-marker-alt">${matching_p.mplace }</i>{rplace}
+												Placed in <i class="fas fa-map-marker-alt">${matching_p.mplaceName }</i>{rplace}
 											</div>
 											</p>
 											<a href="#" class="btn btn-primary">상태 {수락대기중 mstate 1}</a> <a
@@ -191,7 +204,14 @@
 							<c:forEach items="${EndedList}" var="matching_e">
 								<div class="card-body">
 									<div class="card">
-										<h6 class="card-header">${matching_e.senderName }</h6>
+										<c:choose>
+											<c:when test="${matching_e.rcno eq loginUser.uno }">
+												<h6 class="card-header">${matching_e.senderName }</h6>
+											</c:when>
+											<c:when test="${matching_e.seno eq loginUser.uno }">
+												<h6 class="card-header">${matching_e.receiverName }</h6>
+											</c:when>
+										</c:choose>
 										<div class="card-body">
 
 											<img class="profile-img-box"
@@ -210,27 +230,30 @@
 													<td><a href="#"
 														class="badge badge-primary helper-button-main">관공서</a></td>
 												</c:if>
-											<div class="lang">Language {language}</div>
+
+												<div class="lang">
+												Language
+												<c:forEach items="${matching_e.language}" var="language">${language} </c:forEach>
+											</div>
 											<div class="reviewNum">Total usage {rv_no}</div>
 											<div class="avDate">Available date {sta - end}</div>
 											<div class="area">
-												Placed in <i class="fas fa-map-marker-alt">${matching_e.mplace }</i>{rplace}
+												Placed in <i class="fas fa-map-marker-alt">${matching_e.mplaceName } </i>{rplace}
 											</div>
-											</p>
-											<a href="#" class="btn btn-primary">상태 {수락대기중 mstate 1}</a>
-											<c:choose>
-												<c:when test="${matching_e.eno == loginUser.uno }">
-													<a href="updateState.do" class="btn btn-primary"
-														data-toggle="modal" data-target="#reviewModalr"
-														href="r_review.do">리뷰작성후 거래완료</a>
-												</c:when>
-												<c:otherwise>
-													<a href="updateState.do" class="btn btn-primary"
-														data-toggle="modal" data-target="#reviewModale"
-														href="insertE_Review.do">리뷰작성후 거래완료</a>
-												</c:otherwise>
-											</c:choose>
-										</div>
+											</p><a href="#" class="btn btn-primary">상태 {수락대기중 mstate 1}</a>
+												<c:choose>
+													<c:when test="${matching_e.eno == loginUser.uno }">
+														<a href="updateState.do" class="btn btn-primary"
+															data-toggle="modal" data-target="#reviewModalr"
+															href="r_review.do">리뷰작성후 거래완료</a>
+													</c:when>
+													<c:otherwise>
+														<a href="updateState.do" class="btn btn-primary"
+															data-toggle="modal" data-target="#reviewModale"
+															href="insertE_Review.do">리뷰작성후 거래완료</a>
+													</c:otherwise>
+												</c:choose>
+											</div>
 									</div>
 								</div>
 							</c:forEach>

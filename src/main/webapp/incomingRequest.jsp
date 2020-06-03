@@ -111,7 +111,10 @@
 														<td><a href="#"
 															class="badge badge-primary helper-button-main">관공서</a></td>
 													</c:if>
-												<div class="lang">Language {language}</div>
+												<div class="lang">
+													Language
+													<c:forEach items="${matching_w.language}" var="language">${language} </c:forEach>
+												</div>
 												<div class="reviewNum">Total usage {rv_no}</div>
 												<div class="avDate">Available date {sta - end}</div>
 												<div class="area">
@@ -151,7 +154,10 @@
 														<td><a href="#"
 															class="badge badge-primary helper-button-main">관공서</a></td>
 													</c:if>
-												<div class="lang">Language {language}</div>
+												<div class="lang">
+													Language
+													<c:forEach items="${matching_w.language}" var="language">${language} </c:forEach>
+												</div>
 												<div class="reviewNum">Total usage {rv_no}</div>
 												<div class="avDate">Available date {sta - end}</div>
 												<div class="area">

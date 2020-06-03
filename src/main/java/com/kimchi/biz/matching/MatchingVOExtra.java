@@ -1,5 +1,7 @@
 package com.kimchi.biz.matching;
 
+import java.util.List;
+
 public class MatchingVOExtra {
 	private int mno;
 	private int seno;
@@ -12,6 +14,8 @@ public class MatchingVOExtra {
 	private int mstate;
 	private String senderName;
 	private String receiverName;
+	private String mplaceName;
+	private List<String> language;
 
 	public int getMno() {
 		return mno;
@@ -101,11 +105,27 @@ public class MatchingVOExtra {
 		this.receiverName = receiverName;
 	}
 
+	public String getMplaceName() {
+		return mplaceName;
+	}
+
+	public void setMplaceName(String mplaceName) {
+		this.mplaceName = mplaceName;
+	}
+
+	public List<String> getLanguage() {
+		return language;
+	}
+
+	public void setLanguage(List<String> language) {
+		this.language = language;
+	}
+
 	@Override
 	public String toString() {
 		return "MatchingVOExtra [mno=" + mno + ", seno=" + seno + ", rcno=" + rcno + ", rno=" + rno + ", eno=" + eno
 				+ ", mdate=" + mdate + ", mplace=" + mplace + ", mservice=" + mservice + ", mstate=" + mstate
-				+ ", senderName=" + senderName + ", receiverName=" + receiverName + "]";
+				+ ", senderName=" + senderName + ", receiverName=" + receiverName + ", mplaceName=" + mplaceName
+				+ ", language=" + language + "]";
 	}
-
 }

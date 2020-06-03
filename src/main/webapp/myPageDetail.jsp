@@ -103,7 +103,10 @@
 							</div>
 							<div class="row">
 								<div class="col-sm-6 order-2 order-sm-1">
-									<div class="lang">Language {language}</div>
+									<div class="lang">
+										Language
+										<c:forEach items="${matching_w.language}" var="language">${language} </c:forEach>
+									</div>
 									<div class="reviewNum">Total usage {rv_no}</div>
 
 								</div>
@@ -130,14 +133,8 @@
 								<button type="button" class="btn btn-primary helper-button-main">거절하기</button>
 							</div>
 						</div>
-
 					</div>
 				</div>
-
-
-
-
-
 			</div>
 		</div>
 	</div>
