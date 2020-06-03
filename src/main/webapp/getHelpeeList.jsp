@@ -77,9 +77,9 @@
 							type="button" id="dropdownAddr" data-toggle="dropdown"
 							aria-haspopup="true" aria-expanded="false">I'm near..</button>
 						<div class="dropdown-menu" aria-labelledby="dropdownAddr">
-							<button class="dropdown-item" type="button">지역구가</button>
-							<button class="dropdown-item" type="button">들어갑니다</button>
-							<button class="dropdown-item" type="button">수정예정</button>
+							<c:forEach items="${seoulList}" var="seoul">
+                            	<button class="dropdown-item" onclick="location.href='seoulHelpeeList.do'" type="button">${seoul.district}</button>
+                        	</c:forEach>
 						</div>
 					</div>
 					<div class="btn-group" role="group" aria-label="SortBtn">
@@ -99,10 +99,10 @@
 		<div class="row">
 			<div class="col-md-2 order-1 order-md-1">
 				<div class="btn-group-vertical d-none d-md-block">
-					<button type="button" class="btn btn-secondary helpee-button">All</button>
-					<button type="button" class="btn btn-secondary helpee-button">이사</button>
-					<button type="button" class="btn btn-secondary helpee-button">병원</button>
-					<button type="button" class="btn btn-secondary helpee-button">출입국</button>
+					<button type="button" onclick="location.href='getHelpeeList.do'" class="btn btn-secondary helpee-button">All</button>
+					<button type="button" onclick="location.href='moveHelpee.do'" class="btn btn-secondary helpee-button">이사</button>
+					<button type="button" onclick="location.href='hospitalHelpee.do'" class="btn btn-secondary helpee-button">병원</button>
+					<button type="button" onclick="location.href='immigrationHelpee.do'" class="btn btn-secondary helpee-button">출입국</button>
 				</div>
 				<div class="btn-group d-md-none">
 					<button type="button" class="btn btn-secondary helpee-button">All</button>

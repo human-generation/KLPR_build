@@ -153,4 +153,181 @@ public class HelpeeDAOImpl implements HelpeeDAO {
 		return helpeeList;
 	}
 
+	@Override
+	public List<HelpeeVO> moveHelpee(HelpeeVO vo) {
+		System.out.println("------HelpeeDAOImpl의-moveHelpee() 기능 처리");
+
+		List<HelpeeVO> helpeeList = new ArrayList<HelpeeVO>();
+
+		try {
+			conn = JDBCUtil.getConnection();
+			stmt = conn.prepareStatement(HELPEE_MOVE);
+			rs = stmt.executeQuery();
+
+			while (rs.next()) {
+				HelpeeVO helpee = new HelpeeVO();
+
+				UserVO user = new UserVO();
+				user.setUno(rs.getInt("uno"));
+				user.setName(rs.getString("name"));
+				helpee.setUserVO(user);
+
+				LanguageVO language = new LanguageVO();
+				language.setLanguage(rs.getString("language"));
+				helpee.setLanguageVO(language);
+
+				SeoulVO seoul = new SeoulVO();
+				seoul.setDistrict(rs.getString("district"));
+				helpee.setSeoulVO(seoul);
+
+				helpee.setEdate(rs.getString("edate"));
+				helpee.setMoving(rs.getInt("moving"));
+				helpee.setHospital(rs.getInt("hospital"));
+				helpee.setImmigration(rs.getInt("immigration"));
+				helpee.setE_intro(rs.getString("e_intro"));
+				helpeeList.add(helpee);
+			}
+			System.out.println("확인 뿨킹: " + helpeeList.toString());
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(rs, stmt, conn);
+		}
+		return helpeeList;
+	}
+
+
+	@Override
+	public List<HelpeeVO> hospitalHelpee(HelpeeVO vo) {
+		System.out.println("------HelpeeDAOImpl의-hospitalHelpee() 기능 처리");
+
+		List<HelpeeVO> helpeeList = new ArrayList<HelpeeVO>();
+
+		try {
+			conn = JDBCUtil.getConnection();
+			stmt = conn.prepareStatement(HELPEE_HOSP);
+			rs = stmt.executeQuery();
+
+			while (rs.next()) {
+				HelpeeVO helpee = new HelpeeVO();
+
+				UserVO user = new UserVO();
+				user.setUno(rs.getInt("uno"));
+				user.setName(rs.getString("name"));
+				helpee.setUserVO(user);
+
+				LanguageVO language = new LanguageVO();
+				language.setLanguage(rs.getString("language"));
+				helpee.setLanguageVO(language);
+
+				SeoulVO seoul = new SeoulVO();
+				seoul.setDistrict(rs.getString("district"));
+				helpee.setSeoulVO(seoul);
+
+				helpee.setEdate(rs.getString("edate"));
+				helpee.setMoving(rs.getInt("moving"));
+				helpee.setHospital(rs.getInt("hospital"));
+				helpee.setImmigration(rs.getInt("immigration"));
+				helpee.setE_intro(rs.getString("e_intro"));
+				helpeeList.add(helpee);
+			}
+			System.out.println("확인 뿨킹: " + helpeeList.toString());
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(rs, stmt, conn);
+		}
+		return helpeeList;
+	}
+
+
+	@Override
+	public List<HelpeeVO> immigrationHelpee(HelpeeVO vo) {
+		System.out.println("------HelpeeDAOImpl의-immigrationHelpee() 기능 처리");
+
+		List<HelpeeVO> helpeeList = new ArrayList<HelpeeVO>();
+
+		try {
+			conn = JDBCUtil.getConnection();
+			stmt = conn.prepareStatement(HELPEE_IMMI);
+			rs = stmt.executeQuery();
+
+			while (rs.next()) {
+				HelpeeVO helpee = new HelpeeVO();
+
+				UserVO user = new UserVO();
+				user.setUno(rs.getInt("uno"));
+				user.setName(rs.getString("name"));
+				helpee.setUserVO(user);
+
+				LanguageVO language = new LanguageVO();
+				language.setLanguage(rs.getString("language"));
+				helpee.setLanguageVO(language);
+
+				SeoulVO seoul = new SeoulVO();
+				seoul.setDistrict(rs.getString("district"));
+				helpee.setSeoulVO(seoul);
+
+				helpee.setEdate(rs.getString("edate"));
+				helpee.setMoving(rs.getInt("moving"));
+				helpee.setHospital(rs.getInt("hospital"));
+				helpee.setImmigration(rs.getInt("immigration"));
+				helpee.setE_intro(rs.getString("e_intro"));
+				helpeeList.add(helpee);
+			}
+			System.out.println("확인 뿨킹: " + helpeeList.toString());
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(rs, stmt, conn);
+		}
+		return helpeeList;
+	}
+
+
+	@Override
+	public List<HelpeeVO> seoulHelpeeList(HelpeeVO vo) {
+		System.out.println("------HelpeeDAOImpl의-seoulHelpeeList() 기능 처리");
+
+		List<HelpeeVO> helpeeList = new ArrayList<HelpeeVO>();
+
+		try {
+			conn = JDBCUtil.getConnection();
+			stmt = conn.prepareStatement(HELPEE_SEOUL);
+			rs = stmt.executeQuery();
+
+			while (rs.next()) {
+				HelpeeVO helpee = new HelpeeVO();
+
+				UserVO user = new UserVO();
+				user.setUno(rs.getInt("uno"));
+				user.setName(rs.getString("name"));
+				helpee.setUserVO(user);
+
+				LanguageVO language = new LanguageVO();
+				language.setLanguage(rs.getString("language"));
+				helpee.setLanguageVO(language);
+
+				SeoulVO seoul = new SeoulVO();
+				seoul.setDistrict(rs.getString("district"));
+				helpee.setSeoulVO(seoul);
+
+				helpee.setEdate(rs.getString("edate"));
+				helpee.setMoving(rs.getInt("moving"));
+				helpee.setHospital(rs.getInt("hospital"));
+				helpee.setImmigration(rs.getInt("immigration"));
+				helpee.setE_intro(rs.getString("e_intro"));
+				helpeeList.add(helpee);
+			}
+			System.out.println("확인 뿨킹: " + helpeeList.toString());
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(rs, stmt, conn);
+		}
+		return helpeeList;
+	}
+	
+	 
+
 }

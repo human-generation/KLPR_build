@@ -55,11 +55,6 @@ public class HelpeeServiceImpl implements HelpeeService {
 		return helpeeDAO.recentHelpeeList(vo);
 	}
 
-	@Override
-	public List<HelpeeVO> scoreHelpeeList(HelpeeVO vo) {
-		System.out.println("HelpeeServiceImpl의 scoreHelpeeList() 실행...");
-		return helpeeDAO.scoreHelpeeList(vo);
-	}
 
 	@Override
 	public List<HelpeeVO> moveHelpee(HelpeeVO vo) {
