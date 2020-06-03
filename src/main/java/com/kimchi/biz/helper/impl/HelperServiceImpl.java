@@ -49,6 +49,12 @@ public class HelperServiceImpl implements HelperService {
 	}
 	
 	@Override
+	public List<HelperVO> scoreHelperList(HelperVO vo) {
+		System.out.println("HelperServiceImpl의 scoreHelperList() 실행...");
+		return helperDAO.scoreHelperList(vo);
+	}
+	
+	@Override
 	public List<HelperVO> moveHelper(HelperVO vo) {
 		System.out.println("HelperServiceImpl의 moveHelper() 실행...");
 		return helperDAO.moveHelper(vo);
