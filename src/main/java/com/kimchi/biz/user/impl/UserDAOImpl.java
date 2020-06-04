@@ -69,7 +69,6 @@ public class UserDAOImpl implements UserDAO {
 			stmt.setString(3, vo.getName());
 			stmt.setInt(4, vo.getGender());
 			stmt.setString(5, vo.getPhone());
-			stmt.setString(6, vo.getUcomment());
 			stmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();

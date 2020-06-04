@@ -11,4 +11,7 @@ public interface E_ReviewDAO {
 
 	// 헬피들이 받은 리뷰 리스트
 	public List<E_ReviewVO> getE_ReviewList(E_ReviewVO vo);
+	
+	public List<E_ReviewVO> getE_ReviewCountList(E_ReviewVO vo); // 헬피 리뷰 개수 세기
+	public List<E_ReviewVO> getE_ReviewAvgList(E_ReviewVO vo); // 헬피 평점 계산
 }

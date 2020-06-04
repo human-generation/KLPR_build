@@ -1,12 +1,7 @@
 package com.kimchi.biz.language;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-
-@XmlAccessorType(XmlAccessType.FIELD)
 public class LanguageVO {
-	@XmlAttribute
+
 	private int lno;
 	private String language;
 

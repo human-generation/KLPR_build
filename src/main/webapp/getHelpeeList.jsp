@@ -108,13 +108,13 @@
 						id="dropdownAddr" data-toggle="dropdown" aria-haspopup="true"
 						aria-expanded="false">I'm near..</button>
 					<div class="dropdown-menu" aria-labelledby="dropdownAddr">
-						<button class="dropdown-item" type="button">지역구가</button>
-						<button class="dropdown-item" type="button">들어갑니다</button>
-						<button class="dropdown-item" type="button">수정예정</button>
+						<c:forEach items="${seoulList}" var="seoul">
+                            	<button class="dropdown-item" onclick='location.href="seoulHelpeeList.do?eplace=${seoul.dno}";' type="button">${seoul.district}</button>
+                        	</c:forEach>
 					</div>
 				</div>
 				<div class="btn-group" role="group" aria-label="SortBtn">
-					<button type="button" class="btn  helper-button btn-sm">최신순</button>
+					<button type="button" class="btn  helper-button btn-sm" onclick="location.href='recentHelpeeList.do'">최신순</button>
 					<button type="button" class="btn  helper-button btn-sm">평점순</button>
 				</div>
 			</div>
@@ -126,10 +126,10 @@
 			<div class="col-md-2 order-1 order-md-1 p-0 ">
 				<div class="d-flex flex-column">
 					<div class="btn-group-vertical d-none d-md-block service-tag-box">
-						<button type="button" class="btn service-helper-button">All</button>
-						<button type="button" class="btn service-helper-button">이사</button>
-						<button type="button" class="btn service-helper-button">병원</button>
-						<button type="button" class="btn service-helper-button">출입국</button>
+						<button type="button" onclick="location.href='getHelpeeList.do'" class="btn btn-secondary helpee-button">All</button>
+					<button type="button" onclick="location.href='moveHelpee.do'" class="btn btn-secondary helpee-button">이사</button>
+					<button type="button" onclick="location.href='hospitalHelpee.do'" class="btn btn-secondary helpee-button">병원</button>
+					<button type="button" onclick="location.href='immigrationHelpee.do'" class="btn btn-secondary helpee-button">출입국</button>
 					</div>
 					<div class="btn-group d-md-none mobile-service-tag-box">
 						<button type="button" class="btn  helper-button">All</button>
@@ -188,38 +188,41 @@
 								
 								</c:if>
 								
-							<div
-								class="row profile-box-header d-flex justify-content-between">
+							<div class="row profile-box-header d-flex justify-content-between">
 								<div class="col-6 ">
-								<c:forEach items="${userList}" var="user"> 
-                                		<c:if test="${helpee.uno == user.uno}">
-									<h3 class="name-box">${user.name}</h3>
-									</c:if>
-                                    </c:forEach>
+									<h3 class="name-box">${helpee.userVO.name}</h3>									
 								</div>
 								<div class="col-6 d-flex flex-row-reverse">
-									<h6 class=" star-rating">⭐️⭐️⭐️⭐️⭐️</h6>
+									<h6 class=" star-rating"><c:forEach items="${avgList}" var="avgList">
+										<c:choose>
+											<c:when test="${avgList.eno == helpee.userVO.uno }">
+												${avgList.e_avg }
+											</c:when>											
+										</c:choose>
+									</c:forEach> ⭐️⭐️⭐️⭐️⭐️</h6>
+									
 								</div>
 							</div>
 							<div class="row profile-box-body">
 								<div class="col-sm-6 order-2 order-sm-1 p-0">
-									<div class="lang"><c:forEach items="${languageList}" var="language"> 
-                                		<c:if test="${language.lno == helpee.lno}">
-                                    		${language.language}
-                                    	</c:if>
-                                    </c:forEach></div>
-									<div class="reviewNum">Total usage</div>
+									<div class="lang">${helpee.languageVO.language}</div>
+									<div class="reviewNum">
+									리뷰갯수 : 
+											<c:forEach items="${countList }" var="countList">
+												<c:choose>
+													<c:when test="${countList.eno == helpee.userVO.uno }">
+														${countList.count }
+													</c:when>
+												</c:choose>
+											</c:forEach>
+									</div>
 
 								</div>
 								<div class="col-sm-6 order-1 order-sm-2 p-0">
 									<div class="avDate">Available date ${helpee.edate}</div>
-									<div class="area">
-									<c:forEach items="${seoulList}" var="seoul">
-                                    	<c:if test="${seoul.dno == helpee.eplace}">
-                                        Placed in <i class="fas fa-map-marker-alt"></i> ${seoul.district}
-                                    	</c:if>
-                                    </c:forEach>
-									</div>
+									<div class="area">						
+                                        Placed in <i class="fas fa-map-marker-alt"></i>${helpee.seoulVO.district}
+                                    </div>
 								</div>
 							</div>
 							<div class="self-desc">
@@ -471,6 +474,7 @@
 				document.getElementById('date-result-end').value = str2;
 			}
 		});
+		
 	</script>
 
 </body>

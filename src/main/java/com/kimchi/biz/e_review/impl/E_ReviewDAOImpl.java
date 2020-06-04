@@ -27,6 +27,9 @@ public class E_ReviewDAOImpl implements E_ReviewDAO {
 	private final String E_REVIEW_GET = "SELECT * FROM e_review WHERE e_vno=?";
 	private final String E_REVIEW_LIST = "SELECT * FROM e_review ORDER BY e_vno ASC";
 
+	private final String HELPEE_REVIEW_EVNO = "SELECT hp.uno, IFNULL(truncate(AVG(er.escore), 1), '리뷰없음') AS avg FROM helpee AS hp LEFT JOIN e_review AS er ON er.eno = hp.uno GROUP BY hp.uno;";
+	private final String HELPEE_REVIEW_COUNT = "SELECT eno, count(e_vno) AS count FROM e_review GROUP BY eno ORDER BY count";
+
 	// 헬피가 받는 리뷰 입력
 	@Override
 	public void insertE_Review(E_ReviewVO vo) {
@@ -112,6 +115,60 @@ public class E_ReviewDAOImpl implements E_ReviewDAO {
 			JDBCUtil.close(rs, stmt, conn);
 		}
 		return e_reviewList;
+	}
+
+	// 헬피 리뷰 개수 세기
+	@Override
+	public List<E_ReviewVO> getE_ReviewCountList(E_ReviewVO vo) {
+		List<E_ReviewVO> countList = new ArrayList<E_ReviewVO>();
+
+		try {
+			conn = JDBCUtil.getConnection();
+			stmt = conn.prepareStatement(HELPEE_REVIEW_COUNT);
+			rs = stmt.executeQuery();
+
+			while (rs.next()) {
+
+				E_ReviewVO e_reivew = new E_ReviewVO();
+				e_reivew.setEno(rs.getInt("eno"));
+				e_reivew.setCount(rs.getInt("count"));
+
+				countList.add(e_reivew);
+			}
+			System.out.println("확인 뿨킹: " + countList.toString());
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(rs, stmt, conn);
+		}
+		return countList;
+	}
+
+	// 헬피 리뷰 평점 계산
+	@Override
+	public List<E_ReviewVO> getE_ReviewAvgList(E_ReviewVO vo) {
+		List<E_ReviewVO> avgList = new ArrayList<E_ReviewVO>();
+
+		try {
+			conn = JDBCUtil.getConnection();
+			stmt = conn.prepareStatement(HELPEE_REVIEW_EVNO);
+			rs = stmt.executeQuery();
+
+			while (rs.next()) {
+
+				E_ReviewVO e_reivew = new E_ReviewVO();
+				e_reivew.setEno(rs.getInt("hp.uno"));
+				e_reivew.setE_avg(rs.getString("avg"));
+
+				avgList.add(e_reivew);
+			}
+			System.out.println("E리뷰 확인 뿨킹: " + avgList.toString());
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(rs, stmt, conn);
+		}
+		return avgList;
 	}
 
 }
