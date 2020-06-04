@@ -109,17 +109,15 @@
                         <div>
                            ${sessionScope.userPhone}&nbsp;
                         </div>
-                        <div>
-                            {ucomment}
-                        </div>
                     </div>
-                    <form autocomplete="off" class="helper-write-form"  action="helpeeWriteForm.do" method="post">
+                    <form autocomplete="off" class="helper-write-form"  action="helperWriteForm.do" method="post">
                         <div class="row">
                             <div class="col-md-6 my-1">
                             <input name="uno" type="hidden" value="${sessionScope.userNumber}"/>
-                                <input name="edate" id="date-result" type="hidden"></input>
+                            <input name="sta" type="hidden" id="date-result-start"/>
+								<input name="end" type="hidden" id="date-result-end"/>                              
                                 <input type="text" id="datepicker2" class="form-control"
-                                    placeholder="Select available date">
+                                    placeholder="Select available date" autocomplete="off">
                             </div>
                             <div class="col-md-6 my-1">
                                 <select class="custom-select" name="lno">
@@ -156,7 +154,7 @@
                         </div>
                         <div class="form-group my-3">
                             <label for="detailReview">Additional Infomation</label>
-                            <textarea id="detailReview" name="e_intro" class="form-control form-control-write"
+                            <textarea id="detailReview" name="r_intro" class="form-control form-control-write"
                                 rows="5"></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary helper-button-main">Submit!</button>
@@ -349,35 +347,23 @@
         // });
 
 
-        // var staEndPicker = new Lightpick({
-        //     field: document.getElementById('datepicker1'),
-        //     singleDate: false,
-        //     selectForward: true,
-        //     onSelect: function (start, end) {
-        //         var str = '';
-        //         var str2 = '';
-        //         str += start ? start.format('DD-MM-YYYY') + '' : '';
-        //         str2 += end ? end.format('DD-MM-YYYY') : '...';
-        //         document.getElementById('date-result-start').innerHTML = str;
-        //         document.getElementById('date-result-start').value = str;
-        //         document.getElementById('date-result-end').innerHTML = str2;
-        //         document.getElementById('date-result-end').value = str2;
-        //     }
-        // });
-
-        var datePicker = new Lightpick({
+        var staEndPicker = new Lightpick({
             field: document.getElementById('datepicker2'),
-            singleDate: true,
+            singleDate: false,
             selectForward: true,
             onSelect: function (start, end) {
                 var str = '';
+                var str2 = '';
                 str += start ? start.format('YYYY-MM-DD') + '' : '';
-                document.getElementById('date-result').innerHTML = str;
-                document.getElementById('date-result').value = str;
-
+                str2 += end ? end.format('YYYY-MM-DD') : '...';
+                document.getElementById('date-result-start').innerHTML = str;
+                document.getElementById('date-result-start').value = str;
+                document.getElementById('date-result-end').innerHTML = str2;
+                document.getElementById('date-result-end').value = str2;
             }
         });
-        
+
+
      // service 선택(이사, 병원, 출입국사무소)
 		$('button').click(function(){
 			inputs = $('.service');
@@ -392,4 +378,6 @@
     </script>
 
 </body>
+        
+     
 </html>

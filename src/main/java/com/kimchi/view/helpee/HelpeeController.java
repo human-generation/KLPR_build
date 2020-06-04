@@ -75,7 +75,7 @@ public class HelpeeController {
 	}
 	
 	// 헬피 요청 글 삭제
-	@RequestMapping(value = "/helpeeDelete.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/helpeeDelete.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public String helpeeDelete(@ModelAttribute("helpee") HelpeeVO vo) {
 		System.out.println("헬피-요청 글 삭제.");
 		
@@ -85,7 +85,7 @@ public class HelpeeController {
 	}
 	
 	// 헬피 요청 글 수정
-	@RequestMapping(value = "/helpeeUpdate.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/helpeeUpdate.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public String helpeeUpdateView(@ModelAttribute("helpee") HelpeeVO vo, @ModelAttribute("language") LanguageVO lvo,
 			@ModelAttribute("seoul") SeoulVO svo, @ModelAttribute("user") UserVO uvo, Model model) {
 		System.out.println("헬피-요청 글 상세 보기.");

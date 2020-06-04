@@ -3,6 +3,12 @@
     width: 100px;
 }
 
+.logo-main{
+    display: inline-block;
+    width: 350px;
+}
+
+
 .cls-1 {
     isolation: isolate;
 }
@@ -23,8 +29,8 @@
 body{
     font-family: 'Jost', sans-serif;
     color: #3d3f47;
-}
 
+}
 a{
     color: #3d3f47;
 }
@@ -100,6 +106,7 @@ input {
 /* navBar */
 
 #mainNavbar {
+    
     font-size: 1.5rem;
     font-weight: 100;    
 }
@@ -117,8 +124,12 @@ input {
     color: #fff;
     font-size: 2rem;
     font-weight: 400;
+    padding-top: 0;
+    
 }
-
+.navbar-brand{
+    padding:10px;
+}
 
 @media (max-width: 768px) {
     #mainNavbar {
@@ -154,10 +165,16 @@ input {
 /* main components */
 
 .jumbotron {
-    padding-top: 9rem;
+    width: 100vw;
+    height: 70vh;
     align-items: center;
-    padding-bottom: 3rem;
     margin: 0;
+}
+
+.jt-text{
+    font-weight: 400;
+    margin-top: 12rem;
+    color: #fff;
 }
 
 .container-fluid{
@@ -171,15 +188,84 @@ input {
 .carousel-caption {
     position: sticky;
 }
+.ds-data-container{
+    display: flex;
+}
+.ds-data1{
+    flex: auto;
+    width: auto;
+    height: 300px;
+    border: 1px solid lightgrey;
+    border-radius: 50px;
+    margin-top: 15px;
+}
+
+.ds-data2{
+    flex: auto;
+    width: auto;
+    height: 300px;
+    border: 1px solid lightgrey;
+    border-radius: 50px;
+    margin-top: 15px;
+}
+
+.ranking-box-container{
+  margin-top: 15px;
+}
+.card-header:first-child{
+    border-radius: 50px;
+    background-color: #ffc400;
+    color: #fff;
+    font-size: 1.3rem;
+    font-weight: 400;
+}
+
+.card{
+    border: none;
+}
+
+
+.card-body{
+    margin-top: 0.5rem;
+    margin-bottom: 2rem;
+    border-radius: 25px;
+    box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    transition: all ease 500ms;
+
+}
+
+.card-body:hover {
+    transform: scale(1.01);
+    box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.2);
+}
+
 
 .selUserStat{
-    margin: 10em auto;
-    padding: auto;
+    height: 120vh;
+    text-align: center;
+    padding-top: 50vh;
+}
+
+.custom-file-label {
+    border-radius: 50px;
+}
+.custom-file-label::after{
+    background-color: transparent;
+    border-radius: 0 50px 50px  0;
+}
+
+.form-desc{
+    border-radius: 25px;
 }
 
 
 
 /*Board*/
+.jt-btn{
+    margin-top: 5rem;
+
+}
 .helperBoard{
     margin-top: 2em;
 }
@@ -196,7 +282,7 @@ input {
 }
 
 .mobile-service-tag-box{
-    
+    margin: 0;
     width: 100%;
     height: 2.5em;
 }
@@ -291,7 +377,17 @@ input {
     background-color: transparent;
 }
 
+.name-box{
+    transition: all ease 500ms;
+}
+.name-box:hover{
+    transform: scale(1.1);
+   text-decoration: underline #3ee632;
+}
 
+.self-desc{
+
+}
 
 /*read more*/
 .read-more-state {
@@ -311,39 +407,89 @@ input {
   max-height: 999em;
 }
 
-.read-more-state ~ .read-more-trigger:before {
-  content: '<i class="fas fa-angle-down"></i>';
-}
-
-.read-more-state:checked ~ .read-more-trigger:before {
-  content: '<i class="fas fa-angle-up"></i>';
-}
 
 .read-more-trigger {
   cursor: pointer;
   display: inline-block;
+  margin: 15px;
   padding: 0 .5em;
-  color: #666;
-  font-size: 1rem;
+  color: #fff;
   line-height: 2;
-  border: 1px solid #ddd;
-  border-radius: .25em;
+  background-color: #477eff;
+  border-radius: 50px
+}
+.read-more-trigger:hover {
+    background-color: #3ee632;
 }
 
 .boardReview{
     padding-top: 1rem;
+    
+}
+
+.list-group{
+    border-radius: 25px;
+    border: none;
+    box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+
+.list-header{
+    display: inline-block;
+    padding: 0 1em;
+    color: #fff;
+    line-height: 2;
+    background-color: #3ee632;
+    border: none;
+    border-radius: 50px;
+    margin-bottom: 10px;
+}
+
+.list-group-item{
+    border: none;
 }
 
 
 /*writeForm*/
 .writeForm{
-    margin-top: 5em;
-    border: 1px solid lightgray;
+
+    height: 100vh;
+    margin-top: 6em;
+    padding: 2rem;
+    padding-top: 3rem;
+    box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.1);
     border-radius: 50px;
-    padding: 1em;
+    background-color: #fff;
+    transition: all ease 500ms;
+}
+
+.writeFormContainer{
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: #3ee632;
 }
 
 
+.form-control-write{
+    border-radius: 25px;
+}
+
+.checkbox-btn{
+    color: #fff;
+    background-color: #ffc400;
+    border: none;
+}
+
+
+.btn-secondary:not(:disabled):not(.disabled).active, .btn-secondary:not(:disabled):not(.disabled):active, .show>.btn-secondary.dropdown-toggle {
+    color: #fff;
+    background-color: #3ee632;
+}
+
+.btn-secondary:focus{
+    background-color: #ffc400;
+}
 
 /*myPage*/
 
@@ -361,6 +507,7 @@ input {
 /*footer*/
 
 .footer{
+    margin-top: 3rem;
     background-color: #3d3f47;
     color: #fff;
     padding-top: 2rem;

@@ -104,38 +104,37 @@
                         <div class="col-md-6 d-flex flex-row-reverse">
                              ${sessionScope.userGender}&nbsp;
                         </div>
+                        <div class="col-12">
+                        ${sessionScope.userPhone}&nbsp;
                     </div>
-                    <div class="writeFormContainer">
-                        <div>
-                           ${sessionScope.userPhone}&nbsp;
-                        </div>
-                        <div>
-                            {ucomment}
-                        </div>
                     </div>
-                    <form autocomplete="off" class="helper-write-form"  action="helpeeWriteForm.do" method="post">
+       
+                    <form class="helper-write-form"  action="helpeeUpdate.do" method="post">
                         <div class="row">
                             <div class="col-md-6 my-1">
                             <input name="uno" type="hidden" value="${sessionScope.userNumber}"/>
-                                <input name="edate" id="date-result" type="hidden"></input>
+                            <input name="eno" type="hidden" value="${helpee.eno}"/>
+                                <input name="edate" id="date-result" type="hidden" value="${edate}"/>
                                 <input type="text" id="datepicker2" class="form-control"
-                                    placeholder="Select available date">
+                                    placeholder="${helpee.edate}" autocomplete="off">
                             </div>
                             <div class="col-md-6 my-1">
-                                <select class="custom-select" name="lno">
+                                <select class="custom-select" disabled="disabled" name="lno" value="${helpee.lno}">
                                     <option selected>Choose your language</option>
                                		<c:forEach items="${languageList}" var="language">
-                                    <option value="${language.lno}">${language.language}</option>
+                                    <option value="${language.lno}"
+											<c:if test="${helpee.lno eq language.lno}">selected</c:if>>${language.language}</option>
                                     </c:forEach>
                                 </select>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6 my-1">
-                                <select class="custom-select" name="eplace">
+                                <select class="custom-select" name="eplace" value="${helpee.eplace}">
                                     <option selected>Choose your area</option>
                                    <c:forEach items="${seoulList}" var="seoul">
-										<option value="${seoul.dno}">${seoul.district}</option>
+										<option value="${seoul.dno}"
+											<c:if test="${helpee.eplace eq seoul.dno}">selected</c:if>>${seoul.district}</option>
 									</c:forEach>
                                 </select>
                             </div>
@@ -143,13 +142,19 @@
 
                                 <div class="btn-group btn-group-toggle" data-toggle="buttons">
                                     <label class="btn btn-secondary checkbox-btn">
-                                        <input name="moving" type="checkbox" class="service" value="1" autocomplete="off"> moving
+                                       <input name="moving" type="checkbox" class="service" value="1" 
+                                        	<c:if test="${helpee.moving eq 1}">checked</c:if>> 
+                                        	moving
                                     </label>
                                     <label class="btn btn-secondary checkbox-btn">
-                                        <input name="hospital" type="checkbox" class="service" value="1" autocomplete="off"> hospital
+                                        <input name="hospital" type="checkbox" class="service" value="1" 
+                                        	<c:if test="${helpee.hospital eq 1}">checked</c:if>> 
+                                        	hospital
                                     </label>
                                     <label class="btn btn-secondary checkbox-btn">
-                                        <input name="immigration" type="checkbox" class="service" value="1" autocomplete="off"> immigration
+                                        <input name="immigration" type="checkbox" class="service" value="1" 
+                                        	<c:if test="${helpee.immigration eq 1}">checked</c:if>> 
+                                        	immigration
                                     </label>
                                 </div>
                             </div>
@@ -157,7 +162,7 @@
                         <div class="form-group my-3">
                             <label for="detailReview">Additional Infomation</label>
                             <textarea id="detailReview" name="e_intro" class="form-control form-control-write"
-                                rows="5"></textarea>
+                                rows="5" value="${helpee.e_intro}">${helpee.e_intro}</textarea>
                         </div>
                         <button type="submit" class="btn btn-primary helper-button-main">Submit!</button>
                     </form>

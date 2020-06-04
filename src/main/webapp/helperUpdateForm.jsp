@@ -109,33 +109,35 @@
                         <div>
                            ${sessionScope.userPhone}&nbsp;
                         </div>
-                        <div>
-                            {ucomment}
-                        </div>
+                        
                     </div>
-                    <form autocomplete="off" class="helper-write-form"  action="helpeeWriteForm.do" method="post">
+                    <form autocomplete="off" class="helper-write-form"  action="helperUpdate.do" method="post">
                         <div class="row">
                             <div class="col-md-6 my-1">
                             <input name="uno" type="hidden" value="${sessionScope.userNumber}"/>
-                                <input name="edate" id="date-result" type="hidden"></input>
-                                <input type="text" id="datepicker2" class="form-control"
-                                    placeholder="Select available date">
+                            <input name="rno" type="hidden" value="${helper.rno}"/> 
+                            <input name="sta" type="hidden" id="date-result-start" value="${helper.sta}"/>
+							<input name="end" type="hidden" id="date-result-end" value="${helper.end}"/>                              
+                            <input type="text" id="datepicker2" class="form-control"
+                                    placeholder="${helper.sta} ~ ${helper.end}" autocomplete="off">
                             </div>
                             <div class="col-md-6 my-1">
-                                <select class="custom-select" name="lno">
+                                <select class="custom-select" disabled="disabled" name="lno" value="${helper.lno}">
                                     <option selected>Choose your language</option>
                                		<c:forEach items="${languageList}" var="language">
-                                    <option value="${language.lno}">${language.language}</option>
-                                    </c:forEach>
+                                    <option value="${language.lno}"
+											<c:if test="${helper.lno eq language.lno}">selected</c:if>>${language.language}</option>
+									</c:forEach>
                                 </select>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6 my-1">
-                                <select class="custom-select" name="eplace">
+                                <select class="custom-select" name="rplace" value="${helper.rplace}">
                                     <option selected>Choose your area</option>
                                    <c:forEach items="${seoulList}" var="seoul">
-										<option value="${seoul.dno}">${seoul.district}</option>
+										<option value="${seoul.dno}"
+											<c:if test="${helper.rplace eq seoul.dno}">selected</c:if>>${seoul.district}</option>
 									</c:forEach>
                                 </select>
                             </div>
@@ -143,21 +145,27 @@
 
                                 <div class="btn-group btn-group-toggle" data-toggle="buttons">
                                     <label class="btn btn-secondary checkbox-btn">
-                                        <input name="moving" type="checkbox" class="service" value="1" autocomplete="off"> moving
+                                       <input name="moving" class="service" type="checkbox" value="1"
+											<c:if test="${helper.moving eq 1}">checked</c:if>>
+											moving
                                     </label>
                                     <label class="btn btn-secondary checkbox-btn">
-                                        <input name="hospital" type="checkbox" class="service" value="1" autocomplete="off"> hospital
+                                        <input name="hospital" class="service" type="checkbox" value="1"
+											<c:if test="${helper.hospital eq 1}">checked</c:if>>
+											hospital
                                     </label>
                                     <label class="btn btn-secondary checkbox-btn">
-                                        <input name="immigration" type="checkbox" class="service" value="1" autocomplete="off"> immigration
+                                       <input name="immigration" class="service" type="checkbox" value="1"
+											<c:if test="${helper.immigration eq 1}">checked</c:if>>
+											immigration
                                     </label>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group my-3">
                             <label for="detailReview">Additional Infomation</label>
-                            <textarea id="detailReview" name="e_intro" class="form-control form-control-write"
-                                rows="5"></textarea>
+                            <textarea id="detailReview" name="r_intro" class="form-control form-control-write"
+                                rows="5" value="${helper.r_intro}">${helper.r_intro}</textarea>
                         </div>
                         <button type="submit" class="btn btn-primary helper-button-main">Submit!</button>
                     </form>
@@ -365,16 +373,19 @@
         //     }
         // });
 
-        var datePicker = new Lightpick({
+        var staEndPicker = new Lightpick({
             field: document.getElementById('datepicker2'),
-            singleDate: true,
+            singleDate: false,
             selectForward: true,
             onSelect: function (start, end) {
                 var str = '';
+                var str2 = '';
                 str += start ? start.format('YYYY-MM-DD') + '' : '';
-                document.getElementById('date-result').innerHTML = str;
-                document.getElementById('date-result').value = str;
-
+                str2 += end ? end.format('YYYY-MM-DD') : '...';
+                document.getElementById('date-result-start').innerHTML = str;
+                document.getElementById('date-result-start').value = str;
+                document.getElementById('date-result-end').innerHTML = str2;
+                document.getElementById('date-result-end').value = str2;
             }
         });
         

@@ -23,7 +23,7 @@ public class HelperController {
 	private HelperService helperService;
 
 	// 헬퍼 목록
-	@RequestMapping(value = "/getHelperList.do", method = {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value = "/getHelperList.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public String getHelperList(@ModelAttribute("helper") HelperVO vo, @ModelAttribute("language") LanguageVO lvo,
 			@ModelAttribute("seoul") SeoulVO svo, @ModelAttribute("user") UserVO uvo, Model model) {
 		System.out.println("헬퍼 목록 처리 웽");
@@ -34,82 +34,79 @@ public class HelperController {
 		List<LanguageVO> languageList = helperService.getLanguageList(lvo);
 		model.addAttribute("languageList", languageList);
 		System.out.println(languageList.toString());
-		
+
 		List<SeoulVO> seoulList = helperService.getSeoulList(svo);
 		model.addAttribute("seoulList", seoulList);
 		System.out.println(seoulList.toString());
-		
+
 		List<UserVO> userList = helperService.getUserList(uvo);
 		model.addAttribute("userList", userList);
-		
+
 		return "getHelperList.jsp";
 	}
 
 	// 헬퍼 홍보 작성 폼
-	@RequestMapping(value = "/helperWriteForm.do", method = { RequestMethod.GET})
+	@RequestMapping(value = "/helperWriteForm.do", method = { RequestMethod.GET })
 	public String helperFormView(@ModelAttribute("helper") HelperVO vo, @ModelAttribute("language") LanguageVO lvo,
 			@ModelAttribute("seoul") SeoulVO svo, Model model) {
 		System.out.println("헬퍼-홍보 글 작성 페이지로 이동");
-		
+
 		List<LanguageVO> languageList = helperService.getLanguageList(lvo);
 		model.addAttribute("languageList", languageList);
 		System.out.println(languageList.toString());
-		
+
 		List<SeoulVO> seoulList = helperService.getSeoulList(svo);
 		model.addAttribute("seoulList", seoulList);
 		System.out.println(seoulList.toString());
-		
+
 		return "helperWriteForm.jsp";
 	}
 
 	// 헬퍼 홍보 글 입력
-	@RequestMapping(value = "/helperWriteForm.do", method = {RequestMethod.POST})
+	@RequestMapping(value = "/helperWriteForm.do", method = { RequestMethod.POST })
 	public String helperForm(@ModelAttribute("helper") HelperVO vo, Model model) {
 		System.out.println("헬퍼-홍보 글 작성 submit. DB에 저장.");
 
 		// DB에 저장
 		helperService.insertHelper(vo);
-		
+
 		return "getHelperList.do";
 	}
-	
+
 	// 헬퍼 홍보 글 삭제
-	@RequestMapping(value = "/helperDelete.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/helperDelete.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public String helperDelete(@ModelAttribute("helper") HelperVO vo) {
 		System.out.println("헬퍼-홍보 글 삭제. DB에 저장.");
-		
+
 		helperService.deleteHelper(vo);
-		
+
 		return "getHelperList.do";
 	}
-	
-	@RequestMapping(value = "/helperUpdate.do", method = RequestMethod.GET)
+
+	@RequestMapping(value = "/helperUpdate.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public String helperUpdateView(@ModelAttribute("helper") HelperVO vo, @ModelAttribute("language") LanguageVO lvo,
 			@ModelAttribute("seoul") SeoulVO svo, @ModelAttribute("user") UserVO uvo, Model model) {
 		System.out.println("헬퍼-홍보 글 상세 보기.");
-		
+
 		HelperVO helper = helperService.getHelper(vo);
 		model.addAttribute("helper", helper);
-		
+
 		List<LanguageVO> languageList = helperService.getLanguageList(lvo);
 		model.addAttribute("languageList", languageList);
-		
+
 		List<SeoulVO> seoulList = helperService.getSeoulList(svo);
 		model.addAttribute("seoulList", seoulList);
-		
+
 		return "helperUpdateForm.jsp";
 	}
-	
+
 	@RequestMapping(value = "/helperUpdate.do", method = RequestMethod.POST)
 	public String helperUpdate(@ModelAttribute("helper") HelperVO vo, Model model) {
 		System.out.println("헬퍼-홍보 글 수정");
-		
+
 		helperService.updateHelper(vo);
-		
-		
+
 		return "getHelperList.do";
 	}
-	
-	
 
 }
