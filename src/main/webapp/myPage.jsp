@@ -21,37 +21,17 @@
 	crossorigin="anonymous"></script>
 
 <!-- custom css-->
-<link rel="stylesheet" href="index.css">
-
-<title>K:LPER | Get help in Korea</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="./css/sgintro.css">
+    <link rel="stylesheet" href="./css/sgbasic.css">
+    <link rel="stylesheet" href="https://indestructibletype.com/fonts/Jost.css" type="text/css" charset="utf-8" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <title>K:LPER | Get help in Korea</title>
 </head>
 <body>
 	<nav id="mainNavbar" class="navbar navbar-expand-md navbar-dark py-1 fixed-top">
         <div class="container">
-            <a href="main.do" class="navbar-brand">
-                <span class="logo">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 273.32 56.7">
-
-                        <g class="cls-1">
-                            <path class="cls-2"
-                                d="M.34.5h14V22.58L33.38.5H49.3L26.58,26.74,50.5,56.5H34.1L14.34,32V56.5H.34Z"
-                                transform="translate(-0.34 -0.5)" />
-                        </g>
-                        <polygon class="cls-2"
-                            points="85.07 0 98.76 0 98.76 44.87 121.52 44.87 121.52 56.7 85.07 56.7 85.07 0" />
-                        <path class="cls-2"
-                            d="M128.18.5h19.69q10.84,0,16.44,4.94t5.59,13.61q0,8.58-5.59,13.57t-16.44,5h-6V57.2H128.18Zm19.69,11.26h-6v14.5h6a10.2,10.2,0,0,0,6.48-1.86,6.46,6.46,0,0,0,2.35-5.35,6.54,6.54,0,0,0-2.35-5.43A10.2,10.2,0,0,0,147.87,11.76Z"
-                            transform="translate(-0.34 -0.5)" />
-                        <polygon class="cls-2"
-                            points="178.3 0 215.97 0 215.97 11.26 191.51 11.26 191.51 21.38 214.35 21.38 214.35 32.48 191.51 32.48 191.51 45.44 215.97 45.44 215.97 56.7 178.3 56.7 178.3 0" />
-                        <path class="cls-2"
-                            d="M227.49.5h20.65Q259,.5,264.63,5.68a17.38,17.38,0,0,1,5.63,13.37,18.35,18.35,0,0,1-2.88,10.25,16.87,16.87,0,0,1-8.46,6.52L273.66,57.2H257.54L245.39,37.6h-4.21V57.2H227.49Zm19.68,11.66h-6V26.91h6A9.85,9.85,0,0,0,253.65,25,6.63,6.63,0,0,0,256,19.54a6.62,6.62,0,0,0-2.35-5.47A10,10,0,0,0,247.17,12.16Z"
-                            transform="translate(-0.34 -0.5)" />
-                        <rect class="cls-2" x="60.08" y="35.45" width="13" height="13.55" />
-                        <rect class="cls-2" x="60.08" y="7" width="13" height="13.55" />
-                    </svg>
-                </span>
-            </a>
+            <a href="main.do" class="navbar-brand"></a>
 		
 		
 		 <button class="navbar-toggler" data-toggle="collapse" data-target="#navLinks"
@@ -80,7 +60,9 @@
 				</c:if>
 			</ul>
 		</div>
+		</div>
 	</nav>
+	
 
 	<!-- HEADER END -->
 	<!-- 본문 -->
@@ -88,94 +70,93 @@
 
 
 
-
-	<div class="container myPageBoard">
-		<div class="row">
-			<div class="col-md-2 order-1 order-md-1">
-				<div class="btn-group-vertical d-none d-md-block">
-					<button type="button" class="btn btn-secondary helper-button"
-						onclick="location.href='myPage.do'">My page</button>
-					<button type="button" class="btn btn-secondary helper-button"
-						onclick="location.href='incomingRequest.do'">요청내역</button>
-					<button type="button" class="btn btn-secondary helper-button"
-						onclick="location.href='myPageDetailProcess.do'">진행중내역</button>
-					<button type="button" class="btn btn-secondary helper-button">이전내역</button>
-					<button type="button" class="btn btn-secondary helper-button">나의정보수정</button>
-				</div>
-				<div class="btn-group d-md-none">
-					<button type="button" class="btn btn-secondary helper-button"
-						onclick="location.href='myPage.do'">My page</button>
-					<button type="button" class="btn btn-secondary helper-button"
-						onclick="location.href='incomingRequest.do'">요청내역</button>
-					<button type="button" class="btn btn-secondary helper-button"
-						onclick="location.href='myPageDetailProcess.do'">진행중내역</button>
-					<button type="button" class="btn btn-secondary helper-button">이전내역</button>
-					<button type="button" class="btn btn-secondary helper-button">나의정보수정</button>
-				</div>
-			</div>
-
-			<div class="col-md-10 order-2 order-md-2">
-				<div class="jumbotron myPageJt">
-					<div class="container">
-						<h1 class="display-4">My Wallet</h1>
-						<p class="lead">Lorem ipsum dolor sit, amet consectetur
-							adipisicing elit. Qui perferendis dignissimos aliquam. Eaque,
-							inventore.</p>
-
-						<div class="row float-right">
-							<button type="button"
-								class="btn btn-secondary helper-button btn-lg"
-								onclick="location.href='payment.do'">마일리지 충전</button>
-
-							<button type="button"
-								class="btn btn-secondary helper-button btn-lg">${sessionScope.userMoney }$</button>
-						</div>
-
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-6 col-lg-3">
-						<div class="card">
-							<div class="card-body">
-								<h5 class="card-title">신청중</h5>
-								<p class="card-text">승인을 기다리고 있는 거래</p>
-								<a href="incomingRequest.do"
-									class="btn btn-primary btn-sm helper-button-main">${mstate0}</a><a
-									href="#" class="btn btn-primary btn-sm helpee-button-main">${mstate1}</a>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-6 col-lg-3">
-						<div class="card">
-							<div class="card-body">
-								<h5 class="card-title">결제대기</h5>
-								<p class="card-text">결제를 기다리고 있는 거래</p>
-								<a href="#" class="btn btn-primary btn-sm helpee-button-main">${mstate2}</a>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-6 col-lg-3">
-						<div class="card">
-							<div class="card-body">
-								<h5 class="card-title">결제완료</h5>
-								<p class="card-text">결제완료 서비스대기중</p>
-								<a href="#" class="btn btn-primary btn-sm helpee-button-main">${mstate3}</a>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-6 col-lg-3">
-						<div class="card">
-							<div class="card-body">
-								<h5 class="card-title">거래완료</h5>
-								<p class="card-text">리뷰작성대기중</p>
-								<a href="#" class="btn btn-primary btn-sm helpee-button-main">${mstate4}</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+ <div class="post_sg">
+        <div class="container myPageBoard">
+            <div class="row">
+                <div class="menubar col-md-2 order-1 order-md-1">
+                    <div class="btn-group-vertical d-none d-md-block">
+                        <button type="button" class="btn  helper-button" onclick="location.href='myPage.do'">My page</button>
+                        <button type="button" class="btn  helper-button" onclick="location.href='incomingRequest.do'">View all requests</button>
+                        <button type="button" class="btn  helper-button" onclick="location.href='myPageDetailProcess.do'">Pending requests</button>
+                        <button type="button" class="btn  helper-button">History</button>
+                        <button type="button" class="btn  helper-button">Edit my info</button>
+                    </div>
+                    <div class="btn-group d-md-none">
+                        <button type="button" class="btn  helper-button" onclick="location.href='myPage.do'">My page</button>
+                        <button type="button" class="btn  helper-button" onclick="location.href='incomingRequest.do'">View all requests</button>
+                        <button type="button" class="btn  helper-button" onclick="location.href='myPageDetailProcess.do'">Pending requests</button>
+                        <button type="button" class="btn  helper-button">History</button>
+                        <button type="button" class="btn  helper-button">Edit my info</button>
+                    </div>
+                </div>
+                
+                
+                <div class="post col-md-10 order-2 order-md-2">
+                    <div class="jumbotron myPageJt">
+                        <div class="container">
+                            <div class="col pic">
+                                <div class="propic">
+                                </div>
+                            </div>
+                            <div class="col info">
+                                <div class="row">
+                                    <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                                    <em>My information</em>
+                                    <strong>${sessionScope.userName }</strong>
+                                    <button type="button" class="btn helper-button btn-lg tag">HELPER</button>
+                                    <b>${sessionScope.userGender } | Review 5.0 | 정보끌어오기</b>
+                                    <em>My Wallet</em>
+                                    <s>${sessionScope.userMoney }<em>won</em></s>
+                                    <button type="button" class="btn  helper-button btn-lg charge" onclick="location.href='payment.do'">CHARGE</button>
+                                </div>
+                            </div>    
+                        </div>
+                    </div>
+                    
+                    
+                    
+                     <div class="cardsg row">
+                        <div class="col-md-6 col-lg-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Applying</h5>
+                                    <p class="card-text">Transactions<br>spending approval</p>
+                                    <a href="incomingRequest.do" class="btn btn-sm helpee-button-main"><!--{mstate 0}-->${mstate0}</a><a href="incomingRequest.do"
+                                        class="btn btn-sm helper-button-main"><!--{mstate 1}-->${mstate1}</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Waiting<br>payment</h5>
+                                    <p class="card-text">Waiting payment</p>
+                                    <a href="myPageDetailProcess.do" class="btn btn-sm helpee-button-main"><!--거래{mstate 2}-->${mstate2}</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Completed<br>payment</h5>
+                                    <p class="card-text">Waiting for service</p>
+                                    <a href="myPageDetailProcess.do" class="btn btn-sm helpee-button-main"><!--거래 {mstate3}-->${mstate3}</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <div class="card">
+                                <div class="card-body lastcard">
+                                    <h5 class="card-title">Completed<br>deal</h5>
+                                    <p class="card-text">waiting for review</p>
+                                    <a href="myPageDetailProcess.do" class="btn btn-sm helpee-button-main"><!--<!--리뷰작성후 거래완료{mstate4, 5}-->${mstate4}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 	<!--AUTH MODAL-->
 	<!--LOGIN-->
@@ -281,86 +262,98 @@
 			</div>
 		</div>
 	</div>
+	</div>
 
 	<!--본문끝-->
 	<!--FOOTER START-->
 
-	<div class="container">
-		<section class="footer">
-			<div class="row">
-				<div class="col-sm">
-					<h5>내 계정</h5>
-					<ul>
-						<li><a class="footer-link" data-toggle="modal"
-							data-target="#loginModal">로그인</a></li>
-						<li><a class="footer-link" data-toggle="modal"
-							data-target="#signupModal">회원가입</a></li>
-					</ul>
-				</div>
-				<div class="col-sm">
-					<h5>서비스</h5>
-					<ul>
-						<li><a class="footer-link" href="#">서비스 개요</a></li>
-						<li><a class="footer-link" href="#">FAQ</a></li>
-						<li><a class="footer-link" href="#">고객센터</a></li>
-					</ul>
-				</div>
-				<div class="col-sm">
-					<div>
-						© 2020 Kelper LLC <br> <a class="footer-link" href="#">이용약관</a>
-						| <a class="footer-link" href="#">개인정보처리방침</a>
-					</div>
+	<div class="container-fluid footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm">
+                    <h5>Account</h5>
+                    <ul>
+                        <li><a class="footer-link" data-toggle="modal" data-target="#loginModal">Login</a>
+                        </li>
+                        <li><a class="footer-link" data-toggle="modal" data-target="#signupModal">Signup</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-sm">
+                    <h5>Our service</h5>
+                    <ul>
+                        <li><a class="footer-link" href="#">What is K:lper?</a></li>
+                        <li><a class="footer-link" href="#">FAQ</a></li>
+                        <li><a class="footer-link" href="#">Customer Service</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm">
+                    <div>
+                        © 2020 Kelper LLC <br>
+                        <a class="footer-link" href="#">Terms of Service</a> | <a class="footer-link" href="#">Privacy
+                            Policy</a>
+                    </div>
 
-				</div>
-			</div>
+                </div>
+            </div>
 
-		</section>
-	</div>
+        </div>
+    </div>
 
 
 
-	<!-- Optional JavaScript -->
-	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-		crossorigin="anonymous"></script>
-	<script
-		src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-		integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-		crossorigin="anonymous"></script>
-	<script
-		src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
-		integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
-		crossorigin="anonymous"></script>
 
-	<!-- custom js 추후 분리할것임-->
-	<script>
-		// navbar 
-		$(function() {
-			$(document).scroll(
-					function() {
-						var $nav = $("#mainNavbar");
-						$nav.toggleClass("scrolled", $(this).scrollTop() > $nav
-								.height());
-					});
-		});
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
 
-		// dropdown
-		function readMoreFunction() {
-			var dots = document.getElementById("dots");
-			var moreText = document.getElementById("more");
-			var btnText = document.getElementById("myBtn");
+    <!-- Moment Js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+    <script src="https://unpkg.com/lightpick@latest/lightpick.js"></script>
 
-			if (dots.style.display === "none") {
-				dots.style.display = "inline";
-				btnText.innerHTML = '<i class="fas fa-angle-down"></i>';
-				moreText.style.display = "none";
-			} else {
-				dots.style.display = "none";
-				btnText.innerHTML = '<i class="fas fa-angle-up"></i>';
-				moreText.style.display = "inline";
-			}
-		}
-	</script>
+    <!-- custom js 추후 분리할것임-->
+    <script>
+
+        // navbar
+        $(function () {
+            $(document).scroll(function () {
+                var $nav = $("#mainNavbar");
+                $nav.toggleClass("scrolled", $(this).scrollTop() > $nav.height());
+            });
+        });
+        
+     // dropdown
+        function readMoreFunction() {
+            var dots = document.getElementById("dots");
+            var moreText = document.getElementById("more");
+            var btnText = document.getElementById("myBtn");
+
+            if (dots.style.display === "none") {
+                dots.style.display = "inline";
+                btnText.innerHTML = '<i class="fas fa-angle-down"></i>';
+                moreText.style.display = "none";
+            } else {
+                dots.style.display = "none";
+                btnText.innerHTML = '<i class="fas fa-angle-up"></i>';
+                moreText.style.display = "inline";
+            }
+        }
+     
+        function check() {
+            if (document.getElementById('signupPassword').value !==
+                document.getElementById('passwordConfirm').value) {
+                document.getElementById('message').innerHTML = "<div class='alert alert-danger mt-1' role='alert'>Password not matched</div>";
+            }
+        }
+
+    </script>
 </body>
 </html>

@@ -1,0 +1,123 @@
+@charset "utf-8";
+
+*{
+    font-family: 'Roboto', sans-serif;
+}
+body{
+    background-color: #F1FAFF;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+body::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera*/}
+
+
+
+
+/* 글로벌 네비게이션 */
+.navbar-brand{
+    font-family: 'jost';
+    font-weight: 600;
+    color: #333F5D !important;
+}
+.nav-link{
+    font-family: 'jost';
+    font-weight: 500;
+    font-size: 0.65em;
+    color: #333F5D !important;
+    cursor: pointer;
+}
+
+.navbar{
+    background-color: #fff;
+    box-shadow:0px 3px 30px rgba(38,153,251,0.1);
+    clear: both;
+}
+/* 전체 wrpa*/
+
+@media (min-width: 1920px) {
+  .container {
+    max-width: 1280px;
+    padding: 0;
+  }
+}
+
+.post_sg{
+    padding-top: 40px;
+}
+/* 좌측 메뉴바 */
+.col-md-2{
+    -ms-flex: 0 0 18.5%;
+    flex: 0 0 18.5%;
+    max-width: 18.5%;
+    padding-right: 0;
+    padding-left: 0;
+}
+.menubar {
+    margin-left: 15px;
+    box-sizing: inherit;
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow:0px 20px 30px rgba(38,153,251,0.1);
+    padding: 0 !important;
+    transition: all 0.5s;
+}
+
+.menubar:hover{
+    
+    box-shadow:0px 20px 30px rgba(38,153,251,0.2);
+}
+
+div.btn-group-vertical{
+    padding-left: 6%;
+}
+
+div.btn-group-vertical> button:first-child{
+    font-family: 'Jost';
+    font-weight: 500;
+    font-size: 2.3em;
+    color:#333F5D;
+    text-align: left;
+    padding-top: 10%;
+    padding-bottom: 10%;
+}
+
+div.btn-group-vertical> button:not(:first-child) {
+    font-size: 1.1em;
+    color:#999FAE;
+    text-align: left;
+    font-weight: 400;
+    line-height: 1.5em;
+    transition: all 0.5s;
+}
+
+div.btn-group-vertical> button:not(:first-child):hover {
+     color: #477EFF;
+}
+
+/*버트 공동 호버*/
+.btn:hover{
+    color: #fff;
+}
+/* 푸터 */
+footer{
+    margin-top: 3%;
+    padding-top: 2%;
+    height: 25vmin;
+    background-color: #fff;
+}
+
+footer *{
+    color: #333F5D;
+}
+
+footer h5{
+    font-family: 'Jost';
+    font-weight: 500;
+    padding-bottom: 3%;
+}
+
+footer a:hover{
+    color: #477EFF;
+    text-decoration: none;
+}

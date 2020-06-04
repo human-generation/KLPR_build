@@ -8,54 +8,31 @@
 <html lang="en">
 
 <head>
-<!-- Required meta tags -->
-<meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<!-- Bootstrap CSS -->
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-	integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
-	crossorigin="anonymous">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
-<!-- fontawsome css-->
-<script src="https://kit.fontawesome.com/8b4a01720d.js"
-	crossorigin="anonymous"></script>
+    <!-- fontawsome css-->
+    <script src="https://kit.fontawesome.com/8b4a01720d.js" crossorigin="anonymous"></script>
 
-<!-- custom css-->
-<link rel="stylesheet" href="index.css">
+    <!-- custom css-->
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="./css/sgbasic.css">
+    <link rel="stylesheet" href="./css/sgrequest.css">
+    <link rel="stylesheet" href="https://indestructibletype.com/fonts/Jost.css" type="text/css" charset="utf-8" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
 
-<title>K:LPER | Get help in Korea</title>
+    <title>K:LPER | Get help in Korea</title>
 </head>
 
 <body>
 	<nav id="mainNavbar" class="navbar navbar-expand-md navbar-dark py-1 fixed-top">
         <div class="container">
-            <a href="main.do" class="navbar-brand">
-                <span class="logo">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 273.32 56.7">
-
-                        <g class="cls-1">
-                            <path class="cls-2"
-                                d="M.34.5h14V22.58L33.38.5H49.3L26.58,26.74,50.5,56.5H34.1L14.34,32V56.5H.34Z"
-                                transform="translate(-0.34 -0.5)" />
-                        </g>
-                        <polygon class="cls-2"
-                            points="85.07 0 98.76 0 98.76 44.87 121.52 44.87 121.52 56.7 85.07 56.7 85.07 0" />
-                        <path class="cls-2"
-                            d="M128.18.5h19.69q10.84,0,16.44,4.94t5.59,13.61q0,8.58-5.59,13.57t-16.44,5h-6V57.2H128.18Zm19.69,11.26h-6v14.5h6a10.2,10.2,0,0,0,6.48-1.86,6.46,6.46,0,0,0,2.35-5.35,6.54,6.54,0,0,0-2.35-5.43A10.2,10.2,0,0,0,147.87,11.76Z"
-                            transform="translate(-0.34 -0.5)" />
-                        <polygon class="cls-2"
-                            points="178.3 0 215.97 0 215.97 11.26 191.51 11.26 191.51 21.38 214.35 21.38 214.35 32.48 191.51 32.48 191.51 45.44 215.97 45.44 215.97 56.7 178.3 56.7 178.3 0" />
-                        <path class="cls-2"
-                            d="M227.49.5h20.65Q259,.5,264.63,5.68a17.38,17.38,0,0,1,5.63,13.37,18.35,18.35,0,0,1-2.88,10.25,16.87,16.87,0,0,1-8.46,6.52L273.66,57.2H257.54L245.39,37.6h-4.21V57.2H227.49Zm19.68,11.66h-6V26.91h6A9.85,9.85,0,0,0,253.65,25,6.63,6.63,0,0,0,256,19.54a6.62,6.62,0,0,0-2.35-5.47A10,10,0,0,0,247.17,12.16Z"
-                            transform="translate(-0.34 -0.5)" />
-                        <rect class="cls-2" x="60.08" y="35.45" width="13" height="13.55" />
-                        <rect class="cls-2" x="60.08" y="7" width="13" height="13.55" />
-                    </svg>
-                </span>
-            </a>
+            <a href="main.do" class="navbar-brand"></a>
 		
 		
 		 <button class="navbar-toggler" data-toggle="collapse" data-target="#navLinks"
@@ -84,19 +61,19 @@
 				</c:if>
 			</ul>
 		</div>
+		</div>
 	</nav>
 
 	<!-- HEADER END -->
 	<!-- 본문 -->
 
 
-
-
-
-	<div class="container myPageBoard">
-		<div class="row">
-			<div class="col-md-2 order-1 order-md-1">
-				<div class="btn-group-vertical d-none d-md-block">
+	<div class="post_sg">
+        
+    <div class="container myPageBoard">
+        <div class="row">
+            <div class="menubar col-md-2 order-1 order-md-1">
+                <div class="btn-group-vertical d-none d-md-block">
 					<button type="button" class="btn btn-secondary helper-button"
 						onclick="location.href='myPage.do'">My page</button>
 					<button type="button" class="btn btn-secondary helper-button"
@@ -118,8 +95,8 @@
 				</div>
 			</div>
 
-			<form action="incomingRequest.do" method="POST">
 				<div class="col-md-10 order-2 order-md-2">
+				 <div class="sgrequst post">
 					<div class="row">
 						<div class="col-md-6">
 							<div class="card">
@@ -127,12 +104,12 @@
 								<c:forEach items="${SendedRequestList}" var="matching_s">
 									<div class="card-body">
 										<div class="card">
-											<h6 class="card-header">${matching_s.senderName }</h6>
-											<div class="card-body">
+											<h6 class="h-name">${matching_s.senderName }</h6>
+											<div class="h-body">
 
-												<img class="profile-img-box"
-													src="https://cdn.pixabay.com/photo/2013/10/28/19/23/cat-201969_960_720.jpg"
-													alt="profileImage">
+												<img class="mr-3"
+                                                src="https://cdn.pixabay.com/photo/2013/10/28/19/23/cat-201969_960_720.jpg"
+                                                alt="profileImage">
 												<p class="card-text">
 													<c:if test="${matching_s.mservice ==1}">
 														<td><a href="#"
@@ -153,7 +130,7 @@
 												<div class="reviewNum">Total usage {rv_no}</div>
 												<div class="avDate">Available date {sta - end}</div>
 												<div class="area">
-													Placed in <i class="fas fa-map-marker-alt">${matching_s.mplace }</i>{rplace}
+													Placed in <i class="fas fa-map-marker-alt"></i>${matching_s.mplace }
 												</div>
 												</p>
 												<a href="#" class="btn btn-primary">상태 {요청받음 mstate 0}</a> <a
@@ -164,30 +141,32 @@
 								</c:forEach>
 							</div>
 						</div>
-						<div class="col-md-6">
+						
+						
+						<div class="col-md-6 tong">
 							<div class="card">
 								<h4 class="card-header">신청한 요청</h4>
 								<c:forEach items="${ReceivedRequestList}" var="matching_r">
 									<div class="card-body">
 										<div class="card">
-											<h6 class="card-header">${matching_r.senderName }</h6>
-											<div class="card-body">
+											<h6 class="h-name">${matching_r.senderName }</h6>
+											<div class="h-body">
 
-												<img class="profile-img-box"
-													src="https://cdn.pixabay.com/photo/2013/10/28/19/23/cat-201969_960_720.jpg"
-													alt="profileImage">
+												<img class="mr-3"
+                                                src="https://cdn.pixabay.com/photo/2013/10/28/19/23/cat-201969_960_720.jpg"
+                                                alt="profileImage">
 												<p class="card-text">
 													<c:if test="${matching_r.mservice ==1}">
 														<td><a href="#"
-															class="badge badge-primary helper-button-main">이사</a></td>
+															class="badge badge-primary helpee-button-main">이사</a></td>
 													</c:if>
 													<c:if test="${matching_r.mservice ==2}">
 														<td><a href="#"
-															class="badge badge-primary helper-button-main">병원</a></td>
+															class="badge badge-primary helpee-button-main">병원</a></td>
 													</c:if>
 													<c:if test="${matching_r.mservice ==3}">
 														<td><a href="#"
-															class="badge badge-primary helper-button-main">관공서</a></td>
+															class="badge badge-primary helpee-button-main">관공서</a></td>
 													</c:if>
 												<div class="lang">
 													Language
@@ -196,7 +175,7 @@
 												<div class="reviewNum">Total usage {rv_no}</div>
 												<div class="avDate">Available date {sta - end}</div>
 												<div class="area">
-													Placed in <i class="fas fa-map-marker-alt">${matching_r.mplace }</i>{rplace}
+													Placed in <i class="fas fa-map-marker-alt"></i>${matching_r.mplace }
 												</div>
 												</p>
 												<a href="#" class="btn btn-primary">상태 {수락대기중 mstate 1}</a>
@@ -209,26 +188,26 @@
 						</div>
 					</div>
 				</div>
-			</form>
+			</div>		
 		</div>
+	</div>
 	</div>
 
 	<!--AUTH MODAL-->
 	<!--LOGIN-->
-	<div class="modal fade" id="loginModal" tabindex="-1" role="dialog"
-		aria-labelledby="loginModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="modalLabel">Login</h5>
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
+	<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalLabel">Login</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
 
 				<div class="modal-body">
-					<form class="login-form" action="login.do">
+					<form class="login-form" action="login.do" method="post">
 						<div class="form-group">
 							<label for="inputEmail">Email address</label> <input name="email"
 								type="email" class="form-control" required>
@@ -242,22 +221,19 @@
 								class="form-check-label" for="logInCheck">Keep me logged
 								in </label> <a class="help-password" href="#">forgot your password?</a>
 						</div>
-						<button type="submit" class="btn btn-primary helper-button-main">Login</button>
+						<button type="submit" class="btn btn-primary">Login</button>
 					</form>
 					<hr>
 					<h5>OR</h5>
 					<div class="sns-login">
-						<a class="btn btn-primary helper-button-main " href="#"><i
-							class="fab fa-google"></i> Continue with Google </a>
+						<a class="btn btn-primary " href="#"><i class="fab fa-google"></i>
+							Continue with Google</a>
 
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-
-
-
 
 	<!--SIGNUP-->
 	<div class="modal fade" id="signupModal" tabindex="-1" role="dialog"
@@ -273,7 +249,7 @@
 				</div>
 
 				<div class="modal-body">
-					<form class="signup-form" action="singup.do">
+					<form class="signup-form" action="join.do" method="post">
 						<div class="form-group">
 							<label for="signupEmail">Email address</label> <input
 								name="email" type="email" class="form-control" required>
@@ -303,13 +279,13 @@
 								<option value="2">Male</option>
 							</select>
 						</div>
-						<button type="submit" class="btn btn-primary helper-button-main">Signup</button>
+						<button type="submit" class="btn btn-primary">Signup</button>
 					</form>
 					<hr>
 					<h5>OR</h5>
 					<div class="sns-login">
-						<a class="btn btn-primary helper-button-main " href="#"><i
-							class="fab fa-google"></i> Continue with Google</a>
+						<a class="btn btn-primary " href="#"><i class="fab fa-google"></i>
+							Continue with Google</a>
 
 					</div>
 
@@ -321,37 +297,38 @@
 	<!--본문끝-->
 	<!--FOOTER START-->
 
-	<div class="container">
-		<section class="footer">
-			<div class="row">
-				<div class="col-sm">
-					<h5>내 계정</h5>
-					<ul>
-						<li><a class="footer-link" data-toggle="modal"
-							data-target="#loginModal">로그인</a></li>
-						<li><a class="footer-link" data-toggle="modal"
-							data-target="#signupModal">회원가입</a></li>
-					</ul>
-				</div>
-				<div class="col-sm">
-					<h5>서비스</h5>
-					<ul>
-						<li><a class="footer-link" href="#">서비스 개요</a></li>
-						<li><a class="footer-link" href="#">FAQ</a></li>
-						<li><a class="footer-link" href="#">고객센터</a></li>
-					</ul>
-				</div>
-				<div class="col-sm">
-					<div>
-						© 2020 Kelper LLC <br> <a class="footer-link" href="#">이용약관</a>
-						| <a class="footer-link" href="#">개인정보처리방침</a>
-					</div>
+	<div class="container-fluid footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm">
+                    <h5>Account</h5>
+                    <ul>
+                        <li><a class="footer-link" data-toggle="modal" data-target="#loginModal">Login</a>
+                        </li>
+                        <li><a class="footer-link" data-toggle="modal" data-target="#signupModal">Signup</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-sm">
+                    <h5>Our service</h5>
+                    <ul>
+                        <li><a class="footer-link" href="#">What is K:lper?</a></li>
+                        <li><a class="footer-link" href="#">FAQ</a></li>
+                        <li><a class="footer-link" href="#">Customer Service</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm">
+                    <div>
+                        © 2020 Kelper LLC <br>
+                        <a class="footer-link" href="#">Terms of Service</a> | <a class="footer-link" href="#">Privacy
+                            Policy</a>
+                    </div>
 
-				</div>
-			</div>
+                </div>
+            </div>
 
-		</section>
-	</div>
+        </div>
+    </div>
 
 
 
@@ -368,7 +345,7 @@
 		src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
 		integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
 		crossorigin="anonymous"></script>
-
+		
 	<!-- custom js 추후 분리할것임-->
 	<script>
 		// navbar 

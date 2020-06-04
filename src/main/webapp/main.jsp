@@ -411,36 +411,6 @@
         });
 
 
-        const readBtn = document.querySelector(".read-more-trigger");
-        readBtn.addEventListener('click', function (e) {
-            if (readBtn.textContent === 'Read more') {
-
-                readBtn.innerText = "Read less";
-            }
-            else if (readBtn.textContent === 'Read less') {
-                readBtn.innerText = "Read more";
-
-            }
-        });
-
-
-        var picker = new Lightpick({
-            field: document.getElementById('datepicker'),
-            singleDate: false,
-            selectForward: true,
-            onSelect: function (start, end) {
-                var str = '';
-                var str2 = '';
-                str += start ? start.format('DD-MM-YYYY') + '' : '';
-                str2 += end ? end.format('DD-MM-YYYY') : '...';
-                document.getElementById('date-result-start').innerHTML = str;
-                document.getElementById('date-result-start').value = str;
-                document.getElementById('date-result-end').innerHTML = str2;
-                document.getElementById('date-result-end').value = str2;
-            }
-        });
-
-
         function check() {
             if (document.getElementById('signupPassword').value !==
                 document.getElementById('passwordConfirm').value) {
