@@ -85,7 +85,7 @@
                         <button type="button" onclick="location.href='recentHelperList.do'" class="btn btn-secondary helper-button btn-sm">
                         	최신순
                         </button>
-                        <button type="button" class="btn btn-secondary helper-button btn-sm">
+                        <button type="button" onclick="location.href='scoreHelperList.do'" class="btn btn-secondary helper-button btn-sm">
                         	평점순
                         </button>
                     </div>

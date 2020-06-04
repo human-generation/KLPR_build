@@ -9,32 +9,30 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import com.kimchi.biz.common.JDBCUtil;
-import com.kimchi.biz.r_review.R_ReviewDAO;
+import com.kimchi.biz.r_review.R_reviewDAO;
 import com.kimchi.biz.r_review.R_reviewVO;
 
-@Repository("R_ReviewDAO")
-public class R_ReviewDAOImpl implements R_ReviewDAO{
+@Repository("R_reviewDAO")
+public class R_reviewDAOImpl implements R_reviewDAO {
+
 	// JDBC 관련 변수들
 	private Connection conn = null;
 	private PreparedStatement stmt = null;
 	private ResultSet rs = null;
-	// SQL 명령어
-	// SQL 명령어
+
 	private final String HELPER_REVIEW_EVNO = "SELECT rno, truncate(AVG(rscore), 1) AS avg FROM r_review GROUP BY rno ORDER BY avg";
 	private final String HELPER_REVIEW_COUNT = "SELECT rno, count(r_vno) AS count FROM r_review GROUP BY rno ORDER BY count";
-	
+
 	@Override
-	// 헬퍼 리뷰 개수 세기
-	public List<R_reviewVO> getR_ReviewCountList(R_reviewVO vo) {
+	public List<R_reviewVO> getR_ReviewCountList(R_reviewVO vo) { // 헬퍼 리뷰갯수 세기
 		List<R_reviewVO> countList = new ArrayList<R_reviewVO>();
 
 		try {
 			conn = JDBCUtil.getConnection();
-			stmt = conn.prepareStatement(HELPER_REVIEW_EVNO);
+			stmt = conn.prepareStatement(HELPER_REVIEW_COUNT);
 			rs = stmt.executeQuery();
 
 			while (rs.next()) {
-
 				R_reviewVO r_reivew = new R_reviewVO();
 				r_reivew.setRno(rs.getInt("rno"));
 				r_reivew.setCount(rs.getInt("count"));
@@ -51,13 +49,12 @@ public class R_ReviewDAOImpl implements R_ReviewDAO{
 	}
 
 	@Override
-	// 헬퍼 리뷰 평점 계산
-	public List<R_reviewVO> getR_ReviewAvgList(R_reviewVO vo) {
+	public List<R_reviewVO> getR_ReviewAvgList(R_reviewVO vo) { // 헬퍼 평점
 		List<R_reviewVO> avgList = new ArrayList<R_reviewVO>();
 
 		try {
 			conn = JDBCUtil.getConnection();
-			stmt = conn.prepareStatement(HELPER_REVIEW_COUNT);
+			stmt = conn.prepareStatement(HELPER_REVIEW_EVNO);
 			rs = stmt.executeQuery();
 
 			while (rs.next()) {
@@ -76,5 +73,5 @@ public class R_ReviewDAOImpl implements R_ReviewDAO{
 		}
 		return avgList;
 	}
-	
+
 }
