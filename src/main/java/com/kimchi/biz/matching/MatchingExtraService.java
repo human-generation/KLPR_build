@@ -8,4 +8,6 @@ public interface MatchingExtraService {
 	public List<MatchingVOExtra> getMatchingList(UserVO vo, int state);
 
 	public void updateState(MatchingVOExtra mvo);
+	
+	public void insertMatching(MatchingVOExtra vo);
 }

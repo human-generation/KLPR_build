@@ -50,4 +50,13 @@ public class MatchingController {
 		matchingService.updateState(mvo);
 		return "myPage.do";
 	}
+
+	@RequestMapping(value = "/helperSendRequest.do", method = { RequestMethod.POST, RequestMethod.GET })
+	public String helperSendRequest(MatchingVOExtra vo) {
+		System.out.println("매칭테이블 insert됨. mstate=1");
+
+		// DB에 저장
+		matchingService.insertMatching(vo);
+		return "myPage.do";
+	}
 }

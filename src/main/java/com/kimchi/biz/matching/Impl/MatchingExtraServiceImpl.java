@@ -25,4 +25,9 @@ public class MatchingExtraServiceImpl implements MatchingExtraService {
 
 	}
 
+	@Override
+	public void insertMatching(MatchingVOExtra vo) {
+		matchingDAO.insertMatching(vo);
+	}
+
 }

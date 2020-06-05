@@ -10,4 +10,5 @@ public interface MatchingExtraDAO {
 	public List<MatchingVOExtra> getMatchingList(UserVO vo, int state);
 
 	public void setMatchingState(UserVO vo, HttpSession session);
+	public void insertMatching(MatchingVOExtra vo);
 }

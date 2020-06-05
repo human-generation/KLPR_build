@@ -8,7 +8,7 @@ public class E_ReviewVO {
 	private String ecomment; // 헬피에게 쓴 코멘트
 	private int escore; // 헬피에게 준 평점
 
-	// 희성언니
+	// 희성
 	private int uno;
 	// 나영
 	private String e_avg;

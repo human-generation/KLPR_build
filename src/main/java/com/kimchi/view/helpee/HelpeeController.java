@@ -23,7 +23,7 @@ public class HelpeeController {
 	private HelpeeService helpeeService;
 
 	// 전체 헬피 목록 출력
-	@RequestMapping(value = "/getHelpeeList.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/getHelpeeList.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public String getHelpeeList(@ModelAttribute("helpee") HelpeeVO hvo, @ModelAttribute("eReview") E_ReviewVO evo,
 			@ModelAttribute("seoul") SeoulVO svo, Model model) {
 		System.out.println("헬피 홍보글 목록으로 이동");

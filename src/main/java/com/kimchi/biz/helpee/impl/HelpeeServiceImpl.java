@@ -60,7 +60,6 @@ public class HelpeeServiceImpl implements HelpeeService {
 	@Override
 	public void updateHelpee(HelpeeVO vo) {
 		helpeeDAO.updateHelpee(vo);
-
 	}
 
 	@Override
@@ -76,6 +75,12 @@ public class HelpeeServiceImpl implements HelpeeService {
 	@Override
 	public List<UserVO> getUserList(UserVO vo) {
 		return userDAO.getUserList(vo);
+	}
+	
+	@Override
+	public List<SeoulVO> getSeoulList(SeoulVO vo) {
+		System.out.println("HelpeeServiceImpl의 getSeoulList() 실행...");
+		return seoulDAO.getSeoulList(vo);
 	}
 
 	@Override
@@ -120,10 +125,6 @@ public class HelpeeServiceImpl implements HelpeeService {
 		return helpeeDAO.seoulHelpeeList(vo);
 	}
 
-	@Override
-	public List<SeoulVO> getSeoulList(SeoulVO vo) {
-		System.out.println("HelpeeServiceImpl의 getSeoulList() 실행...");
-		return seoulDAO.getSeoulList(vo);
-	}
+	
 
 }

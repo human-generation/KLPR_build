@@ -27,7 +27,7 @@ public class E_ReviewDAOImpl implements E_ReviewDAO {
 	private final String E_REVIEW_GET = "SELECT * FROM e_review WHERE e_vno=?";
 	private final String E_REVIEW_LIST = "SELECT * FROM e_review ORDER BY e_vno ASC";
 
-	private final String HELPEE_REVIEW_EVNO = "SELECT hp.uno, IFNULL(truncate(AVG(er.escore), 1), '리뷰없음') AS avg FROM helpee AS hp LEFT JOIN e_review AS er ON er.eno = hp.uno GROUP BY hp.uno;";
+	private final String HELPEE_REVIEW_EVNO = "SELECT hp.uno, IFNULL(truncate(AVG(er.escore), 1), '-none-') AS avg FROM helpee AS hp LEFT JOIN e_review AS er ON er.eno = hp.uno GROUP BY hp.uno";
 	private final String HELPEE_REVIEW_COUNT = "SELECT eno, count(e_vno) AS count FROM e_review GROUP BY eno ORDER BY count";
 
 	// 헬피가 받는 리뷰 입력
@@ -135,7 +135,7 @@ public class E_ReviewDAOImpl implements E_ReviewDAO {
 
 				countList.add(e_reivew);
 			}
-			System.out.println("확인 뿨킹: " + countList.toString());
+			System.out.println("countList 확인: " + countList.toString());
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -162,7 +162,7 @@ public class E_ReviewDAOImpl implements E_ReviewDAO {
 
 				avgList.add(e_reivew);
 			}
-			System.out.println("E리뷰 확인 뿨킹: " + avgList.toString());
+			System.out.println("E리뷰 확인 : " + avgList.toString());
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

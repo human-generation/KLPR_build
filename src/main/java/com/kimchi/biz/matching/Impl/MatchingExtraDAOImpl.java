@@ -41,6 +41,9 @@ public class MatchingExtraDAOImpl implements MatchingExtraDAO {
 	private final String LANGUAGE_GET_R = "SELECT language FROM language WHERE lno=ANY(SELECT lno FROM helper WHERE uno=?)";
 	private final String LANGUAGE_GET_E = "SELECT language FROM language WHERE lno=ANY(SELECT lno FROM helpee WHERE uno=?)";
 
+	private final String MATCHING_INSERT = "INSERT INTO matching(seno, rcno, rno, eno, mdate, mplace, mservice, mstate) VALUES(?,?,?,?,?,?,?,1)";
+	private final String UPDATE_WAIT = "UPDATE matching SET mstate=2 where mno=?";
+	
 	@Override
 	public List<MatchingVOExtra> getMatchingList(UserVO vo, int state) { // state에 따라 리스트 리턴해주는 함수
 		List<MatchingVOExtra> matchingList = new ArrayList<MatchingVOExtra>();
@@ -169,6 +172,10 @@ public class MatchingExtraDAOImpl implements MatchingExtraDAO {
 				stmt2 = conn.prepareStatement(UPDATE_ENDED);
 				stmt2.setInt(1, mvo.getMno());
 				stmt2.executeUpdate();
+			} else if(mvo.getMstate() == 1) {
+				stmt2 = conn.prepareStatement(UPDATE_WAIT);
+				stmt2.setInt(1, mvo.getMno());
+				stmt2.executeUpdate();
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -249,6 +256,27 @@ public class MatchingExtraDAOImpl implements MatchingExtraDAO {
 			return "Jung-gu";
 		default:
 			return "";
+		}
+	}
+
+	@Override
+	public void insertMatching(MatchingVOExtra vo) {
+		System.out.println("--------MatchingExtraDAOImpl의 -insertMatching() 기능 실행");
+		try {
+			conn = JDBCUtil.getConnection();
+			stmt = conn.prepareStatement(MATCHING_INSERT);
+			stmt.setInt(1, vo.getSeno());
+			stmt.setInt(2, vo.getRcno());
+			stmt.setInt(3, vo.getRno());
+			stmt.setInt(4, vo.getEno());
+			stmt.setString(5, vo.getMdate());
+			stmt.setInt(6, vo.getMplace());
+			stmt.setInt(7, vo.getMservice());
+			stmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(stmt, conn);
 		}
 	}
 }

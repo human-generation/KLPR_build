@@ -100,11 +100,14 @@
 					<div class="row">
 						<div class="col-md-6">
 							<div class="card">
-								<h4 class="card-header">들어온 요청</h4>
+								<h4 class="card-header">신청한 요청</h4>
 								<c:forEach items="${SendedRequestList}" var="matching_s">
 									<div class="card-body">
 										<div class="card">
-											<h6 class="h-name">${matching_s.senderName }</h6>
+											<h6 class="h-name"><c:if test="${loginUser.name eq matching_s.senderName }">
+                                 ${matching_s.receiverName }</c:if>
+                                 <c:if test="${loginUser.name eq matching_s.receiverName }">
+                                 ${matching_s.senderName }</c:if></h6>
 											<div class="h-body">
 
 												<img class="mr-3"
@@ -133,7 +136,7 @@
 													Placed in <i class="fas fa-map-marker-alt"></i>${matching_s.mplace }
 												</div>
 												</p>
-												<a href="#" class="btn btn-primary">상태 {요청받음 mstate 0}</a> <a
+												<a href="#" class="btn btn-primary">수락 대기 중</a> <a
 													href="#" class="btn btn-primary">자세히보기</a>
 											</div>
 										</div>
@@ -145,11 +148,14 @@
 						
 						<div class="col-md-6 tong">
 							<div class="card">
-								<h4 class="card-header">신청한 요청</h4>
+								<h4 class="card-header">들어온 요청</h4>
 								<c:forEach items="${ReceivedRequestList}" var="matching_r">
 									<div class="card-body">
 										<div class="card">
-											<h6 class="h-name">${matching_r.senderName }</h6>
+											<h6 class="h-name"><c:if test="${loginUser.name eq matching_r.senderName }">
+                                 ${matching_r.receiverName }</c:if>
+                                 <c:if test="${loginUser.name eq matching_r.receiverName }">
+                                 ${matching_r.senderName }</c:if></h6>
 											<div class="h-body">
 
 												<img class="mr-3"
@@ -178,7 +184,13 @@
 													Placed in <i class="fas fa-map-marker-alt"></i>${matching_r.mplace }
 												</div>
 												</p>
-												<a href="#" class="btn btn-primary">상태 {수락대기중 mstate 1}</a>
+												<form action="updateState.do" method="POST">
+                                 <c:if test="${loginUser.uno eq matching_r.eno }">
+                                    <input type="hidden" name="mstate" value="${matching_r.mstate}">
+                                    <input type="hidden" name="mno" value="${matching_r.mno }">
+                                    <button type="submit" class="btn btn-primary">수락하기</button>
+                                 </c:if>
+                              </form>
 												<a href="#" class="btn btn-primary">자세히보기</a>
 											</div>
 										</div>

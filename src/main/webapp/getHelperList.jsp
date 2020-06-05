@@ -55,9 +55,7 @@
                     </svg>
                 </span>
             </a>
-		
-		
-		 <button class="navbar-toggler" data-toggle="collapse" data-target="#navLinks"
+            <button class="navbar-toggler" data-toggle="collapse" data-target="#navLinks"
                 aria-label="Toggle navigation">
                 <i class="fas fa-align-right"></i>
             </button>
@@ -84,12 +82,12 @@
 			</ul>
 		</div>
 	</nav>
-	
-	<!-- HEADER END -->
-	<!-- 본문 -->
+
+    <!-- HEADER END -->
+    <!-- 본문 -->
 
 
-	 <div class="jumbotron jumbotron-fluid">
+    <div class="jumbotron jumbotron-fluid">
         <div class="container jt-text">
             <h1 class="display-4 ">I can help you!</h1>
             <p class="lead">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Qui perferendis dignissimos
@@ -101,13 +99,13 @@
                         I'm near..
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownAddr">
-                        <button class="dropdown-item" type="button">지역구가</button>
-                        <button class="dropdown-item" type="button">들어갑니다</button>
-                        <button class="dropdown-item" type="button">수정예정</button>
+                    <c:forEach items="${seoulList}" var="seoul">
+                            	<button class="dropdown-item" onclick='location.href="seoulHelperList.do?rplace=${seoul.dno}";' type="button">${seoul.district}</button>
+                        	</c:forEach>
                     </div>
                 </div>
                 <div class="btn-group" role="group" aria-label="SortBtn">
-                    <button type="button" class="btn  helper-button btn-sm">최신순</button>
+                    <button type="button" class="btn  helper-button btn-sm" onclick="location.href='recentHelperList.do'">최신순</button>
                     <button type="button" class="btn  helper-button btn-sm">평점순</button>
                 </div>
             </div>
@@ -119,10 +117,10 @@
             <div class="col-md-2 order-1 order-md-1 p-0 ">
                 <div class="d-flex flex-column">
                     <div class="btn-group-vertical d-none d-md-block service-tag-box">
-                        <button type="button" class="btn service-helper-button">All</button>
-                        <button type="button" class="btn service-helper-button">이사</button>
-                        <button type="button" class="btn service-helper-button">병원</button>
-                        <button type="button" class="btn service-helper-button">출입국</button>
+                        <button type="button" onclick="location.href='getHelperList.do'" class="btn service-helper-button">All</button>
+                        <button type="button" onclick="location.href='moveHelper.do'" class="btn service-helper-button">이사</button>
+                        <button type="button" onclick="location.href='hospitalHelper.do'" class="btn service-helper-button">병원</button>
+                        <button type="button" onclick="location.href='immigrationHelper.do'" class="btn service-helper-button">출입국</button>
                     </div>
                     <div class="btn-group d-md-none mobile-service-tag-box">
                         <button type="button" class="btn  helper-button">All</button>
@@ -142,11 +140,13 @@
                 </button>
 
 
+
+
             </div>
 
-			<div class="col-md-10 order-2 order-md-2">
-				 <input type="checkbox" class="read-more-state" id="post-1" />
-				 <c:forEach items="${helperList}" var="helper">
+            <div class="col-md-10 order-2 order-md-2">
+                <input type="checkbox" class="read-more-state" id="post-1" />
+                <c:forEach items="${helperList}" var="helper">
                 <div class="row media helperPost profile-box-container ml-md-1 read-more-wrap">
                     <div class="col-md-3 order-1 order-md-1 d-flex justify-content-center">
 
@@ -156,15 +156,15 @@
                     </div>
                     <div class="col-md-9 order-2 order-md-2 d-flex">
                         <div class="media-body float-left">
-                        <c:if test="${helper.moving==1}">
-                            <a href="#" class="badge helper-button">이사</a></c:if>
-                            <c:if test="${helper.hospital==1}">
-                            <a href="#" class="badge helper-button">병원</a></c:if>
-                            <c:if test="${helper.immigration==1}">
-                            <a href="#" class="badge helper-button">출입국</a></c:if>
+                       		 <c:if test="${helper.moving==1}">
+							<a href="#" class="badge helper-button">이사</a></c:if>
+							 <c:if test="${helper.hospital==1}">
+							  <a href="#" class="badge helper-button">병원</a></c:if>
+							  <c:if test="${helper.immigration==1}">
+							  <a href="#" class="badge helper-button">출입국</a></c:if>
                             
                             <c:if test="${helper.uno == sessionScope.userNumber}">
-                            <form action="helperDelete.do" method="POST">
+							   <form action="helperDelete.do" method="POST">
                             <input name="rno" type="hidden" value="${helper.rno}"/>
 								<button type="submit" class="read-more-trigger">Delete</button>
 								</form>
@@ -172,45 +172,47 @@
 								<input name="rno" type="hidden" value="${helper.rno}"/>
 								<button type="submit" class="read-more-trigger">Update</button>
 								</form>
-
-								</c:if>                            
+								
+								</c:if>                 
+                            
                             
                             <div class="row profile-box-header d-flex justify-content-between">
                                 <div class="col-6 ">
-                                <c:forEach items="${userList}" var="user"> 
-                                		<c:if test="${helper.uno == user.uno}">
-                                    <h3 class="name-box">${user.name}</h3>
-                                    </c:if>
-                                    </c:forEach>
+                                    <h3 class="name-box">${helper.userVO.name}</h3>
                                 </div>
                                 <div class="col-6 d-flex flex-row-reverse">
-                                    <h6 class=" star-rating">⭐️⭐️⭐️⭐️⭐️</h6>
+                                    <h6 class=" star-rating"><c:forEach items="${avgList}" var="avgList">
+										<c:choose>
+											<c:when test="${avgList.rno == helper.userVO.uno }">
+												${avgList.r_avg }
+											</c:when>											
+										</c:choose>
+									</c:forEach> ⭐️⭐️⭐️⭐️⭐️</h6>
                                 </div>
                             </div>
                             <div class="row profile-box-body">
                                 <div class="col-sm-6 order-2 order-sm-1 p-0">
-                                    <div class="lang">                                 
-                                       <c:forEach items="${languageList}" var="language"> 
-                                		<c:if test="${language.lno == helper.lno}">
-                                    		${language.language}
-                                    	</c:if>
-                                    </c:forEach>
+                                    <div class="lang">
+                                       ${helper.languageVO.language}
                                     </div>
                                     <div class="reviewNum">
-                                        Total usage {rv_no}
+                                      	  리뷰갯수 : 
+											<c:forEach items="${countList }" var="countList">
+												<c:choose>
+													<c:when test="${countList.rno == helper.userVO.uno }">
+														${countList.count }
+													</c:when>
+												</c:choose>
+											</c:forEach>
                                     </div>
 
                                 </div>
                                 <div class="col-sm-6 order-1 order-sm-2 p-0">
                                     <div class="avDate">
-                                        Available date ${helper.sta} ~ ${helper.end}
+                                        Available date ${helper.sta} - ${helper.end}
                                     </div>
                                     <div class="area">
-                                       <c:forEach items="${seoulList}" var="seoul">
-                                    	<c:if test="${seoul.dno == helper.rplace}">
-                                        Placed in <i class="fas fa-map-marker-alt"></i> ${seoul.district}
-                                    	</c:if>
-                                    </c:forEach>
+                                        Placed in <i class="fas fa-map-marker-alt"></i>${helper.seoulVO.district}
                                     </div>
                                 </div>
                             </div>
@@ -230,17 +232,28 @@
                                         </ul>
                                     </div>
                                     <div class="d-flex justify-content-center">
-                                        <button type="button" class="btn  helper-button-main">Send
+                                    <form action="helperSendRequest.do" method="POST">
+                                    <input name="seno" type="hidden" value="${sessionScope.userNumber}"/>
+                                    <input name="rcno" type="hidden" value="${helper.userVO.uno}"/>
+                                    <input name="rno" type="hidden" value="${helper.userVO.uno}"/>
+                                    <input name="eno" type="hidden" value="${sessionScope.userNumber}"/>
+                                    <input name="mdate" type="hidden" value="${helper.sta}"/>
+                                    <input name="mplace" type="hidden" value="${helper.seoulVO.dno}"/>                                    
+                                    <c:if test="${helper.moving==1}"><input name="mservice" type="hidden" value="1"/></c:if>
+                                    <c:if test="${helper.hospital==1}"><input name="mservice" type="hidden" value="2"/></c:if>
+                                    <c:if test="${helper.immigration==1}"><input name="mservice" type="hidden" value="3"/></c:if>
+                                        <button type="submit" class="btn  helper-button-main">Send
                                             request</button>
+                                    </form>
                                     </div>
-                                </div>
-                            </div>
+								</div>
+							</div>
 
-                        </div>
+						</div>
 
-                    </div>
+					</div>
 
-                </div>
+				</div>
                 </c:forEach>
 
                 <!--PAGING -->
@@ -264,10 +277,9 @@
     </div>
 
 
-
-	<!--AUTH MODAL-->
-	<!--LOGIN-->
-	<div class="modal fade" id="loginModal" tabindex="-1" role="dialog"
+    <!--AUTH MODAL-->
+    <!--LOGIN-->
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog"
 		aria-labelledby="loginModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
@@ -370,100 +382,103 @@
 		</div>
 	</div>
 
-	<!--본문끝-->
-	<!--FOOTER START-->
-
-	<div class="container-fluid footer">
-		<div class="container">
-			<div class="row">
-				<div class="col-sm">
-					<h5>Account</h5>
-					<ul>
-						<li><a class="footer-link" data-toggle="modal"
-							data-target="#loginModal">Login</a></li>
-						<li><a class="footer-link" data-toggle="modal"
-							data-target="#signupModal">Signup</a></li>
-					</ul>
-				</div>
-				<div class="col-sm">
-					<h5>Our service</h5>
-					<ul>
-						<li><a class="footer-link" href="#">What is K:lper?</a></li>
-						<li><a class="footer-link" href="#">FAQ</a></li>
-						<li><a class="footer-link" href="#">Customer Service</a></li>
-					</ul>
-				</div>
-				<div class="col-sm">
-					<div>
-						© 2020 Kelper LLC <br> <a class="footer-link" href="#">Terms
-							of Service</a> | <a class="footer-link" href="#">Privacy Policy</a>
-					</div>
-
-				</div>
-			</div>
-
-		</div>
-	</div>
 
 
-	<!-- Optional JavaScript -->
-	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-		crossorigin="anonymous"></script>
-	<script
-		src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-		integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-		crossorigin="anonymous"></script>
-	<script
-		src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
-		integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
-		crossorigin="anonymous"></script>
+    <!--본문끝-->
+    <!--FOOTER START-->
+    <div class="container-fluid footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm">
+                    <h5>Account</h5>
+                    <ul>
+                        <li><a class="footer-link" data-toggle="modal" data-target="#loginModal">Login</a>
+                        </li>
+                        <li><a class="footer-link" data-toggle="modal" data-target="#signupModal">Signup</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-sm">
+                    <h5>Our service</h5>
+                    <ul>
+                        <li><a class="footer-link" href="#">What is K:lper?</a></li>
+                        <li><a class="footer-link" href="#">FAQ</a></li>
+                        <li><a class="footer-link" href="#">Customer Service</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm">
+                    <div>
+                        © 2020 Kelper LLC <br>
+                        <a class="footer-link" href="#">Terms of Service</a> | <a class="footer-link" href="#">Privacy
+                            Policy</a>
+                    </div>
 
-	<!-- Moment Js -->
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
-	<script src="https://unpkg.com/lightpick@latest/lightpick.js"></script>
+                </div>
+            </div>
 
-	<!-- custom js 추후 분리할것임-->
-	<script>
-		// navbar
-		$(function() {
-			$(document).scroll(
-					function() {
-						var $nav = $("#mainNavbar");
-						$nav.toggleClass("scrolled", $(this).scrollTop() > $nav
-								.height());
-					});
-		});
+        </div>
+    </div>
 
-		const readBtn = document.querySelector(".read-more-trigger");
-		readBtn.addEventListener('click', function(e) {
-			if (readBtn.textContent === 'Read more') {
 
-				readBtn.innerText = "Read less";
-			} else if (readBtn.textContent === 'Read less') {
-				readBtn.innerText = "Read more";
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
 
-			}
-		});
+    <!-- Moment Js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+    <script src="https://unpkg.com/lightpick@latest/lightpick.js"></script>
 
-		var picker = new Lightpick({
-			field : document.getElementById('datepicker'),
-			singleDate : false,
-			selectForward : true,
-			onSelect : function(start, end) {
-				var str = '';
-				var str2 = '';
-				str += start ? start.format('DD-MM-YYYY') + '' : '';
-				str2 += end ? end.format('DD-MM-YYYY') : '...';
-				document.getElementById('date-result-start').innerHTML = str;
-				document.getElementById('date-result-start').value = str;
-				document.getElementById('date-result-end').innerHTML = str2;
-				document.getElementById('date-result-end').value = str2;
-			}
-		});
-	</script>
+    <!-- custom js 추후 분리할것임-->
+    <script>
+
+        // navbar
+        $(function () {
+            $(document).scroll(function () {
+                var $nav = $("#mainNavbar");
+                $nav.toggleClass("scrolled", $(this).scrollTop() > $nav.height());
+            });
+        });
+
+
+        const readBtn = document.querySelector(".read-more-trigger");
+        readBtn.addEventListener('click', function (e) {
+            if (readBtn.textContent === 'Read more') {
+
+                readBtn.innerText = "Read less";
+            }
+            else if (readBtn.textContent === 'Read less') {
+                readBtn.innerText = "Read more";
+
+            }
+        });
+
+
+        var picker = new Lightpick({
+            field: document.getElementById('datepicker'),
+            singleDate: false,
+            selectForward: true,
+            onSelect: function (start, end) {
+                var str = '';
+                var str2 = '';
+                str += start ? start.format('DD-MM-YYYY') + '' : '';
+                str2 += end ? end.format('DD-MM-YYYY') : '...';
+                document.getElementById('date-result-start').innerHTML = str;
+                document.getElementById('date-result-start').value = str;
+                document.getElementById('date-result-end').innerHTML = str2;
+                document.getElementById('date-result-end').value = str2;
+            }
+        });
+
+
+    </script>
 
 </body>
 </html>

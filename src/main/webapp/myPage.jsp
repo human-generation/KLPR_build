@@ -104,7 +104,11 @@
                                     <em>My information</em>
                                     <strong>${sessionScope.userName }</strong>
                                     <button type="button" class="btn helper-button btn-lg tag">HELPER</button>
-                                    <b>${sessionScope.userGender } | Review 5.0 | 정보끌어오기</b>
+                                    <b>
+                                    <c:if test="${sessionScope.userGender == 0}">None of both</c:if>
+                                    <c:if test="${sessionScope.userGender == 1}">Female</c:if>
+                                    <c:if test="${sessionScope.userGender == 2}">Male</c:if>
+                                     | Review 5.0 | 정보끌어오기</b>
                                     <em>My Wallet</em>
                                     <s>${sessionScope.userMoney }<em>won</em></s>
                                     <button type="button" class="btn  helper-button btn-lg charge" onclick="location.href='payment.do'">CHARGE</button>

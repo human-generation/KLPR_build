@@ -177,12 +177,12 @@
 							  <a href="#" class="badge helper-button">출입국</a></c:if>
 							  
 							   <c:if test="${helpee.uno == sessionScope.userNumber}">
-							   <form action="helperDelete.do" method="POST">
-                            <input name="eno" type="hidden" value="${helper.eno}"/>
+							   <form action="helpeeDelete.do" method="POST">
+                            <input name="eno" type="hidden" value="${helpee.eno}"/>
 								<button type="submit" class="read-more-trigger">Delete</button>
 								</form>
 								<form action="helperUpdate.do" method="POST">
-								<input name="eno" type="hidden" value="${helper.eno}"/>
+								<input name="eno" type="hidden" value="${helpee.eno}"/>
 								<button type="submit" class="read-more-trigger">Update</button>
 								</form>
 								
@@ -196,10 +196,10 @@
 									<h6 class=" star-rating"><c:forEach items="${avgList}" var="avgList">
 										<c:choose>
 											<c:when test="${avgList.eno == helpee.userVO.uno }">
-												${avgList.e_avg }
+												${avgList.e_avg } 																			
 											</c:when>											
 										</c:choose>
-									</c:forEach> ⭐️⭐️⭐️⭐️⭐️</h6>
+									</c:forEach>⭐️⭐️⭐️⭐️⭐️</h6>
 									
 								</div>
 							</div>

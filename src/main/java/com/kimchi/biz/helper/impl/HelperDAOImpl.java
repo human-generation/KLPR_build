@@ -15,7 +15,7 @@ import com.kimchi.biz.language.LanguageVO;
 import com.kimchi.biz.seoul.SeoulVO;
 import com.kimchi.biz.user.UserVO;
 
-@Repository("HelperDAO")
+@Repository("helperDAO")
 public class HelperDAOImpl implements HelperDAO {
 
 	// JDBC 관련 변수들
@@ -23,20 +23,38 @@ public class HelperDAOImpl implements HelperDAO {
 	private PreparedStatement stmt = null;
 	private ResultSet rs = null;
 
-	// SQL 명령어 
+	// SQL 명령어
 //	private final String HELPERLISTJOIN_GET = "SELECT u.name, l.language, h.sta, h.end, h.rplace, h.moving, h.hospital, h.immigration, h.r_intro"
 //			+ " FROM helper AS h JOIN user AS u ON h.uno=u.uno JOIN language AS l ON h.lno=l.lno";
-	private final String HELPERLIST_GET = "SELECT * FROM helper ORDER BY rno";
+
 	private final String HELPER_GET = "SELECT * FROM helper WHERE rno=?";
 	private final String HELPER_INSERT = "INSERT INTO helper(uno, sta, end, rplace, moving, hospital, immigration, lno, r_intro) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
 	private final String HELPER_UPDATE = "UPDATE helper SET sta=?, end=?, rplace=?, moving=?, hospital=?, immigration=?, r_intro=? WHERE rno=?";
 	private final String HELPER_DELETE = "DELETE FROM helper WHERE rno=?";
 
+	private final String HELPERLIST_GET = "SELECT u.uno, u.name, h.sta, h.end, s.dno, s.district, h.moving, h.hospital, h.immigration, l.language, h.r_intro FROM helper AS h JOIN user AS u ON h.uno=u.uno JOIN language AS l ON h.lno=l.lno JOIN seoul AS s ON s.dno=h.rplace";
+	private final String HELPER_DATE_DELETE = "DELETE FROM helper WHERE end < CURDATE()";
+	private final String HELPERLIST_RECENTLY = "SELECT u.uno, u.name, h.sta, h.end, s.dno, s.district, h.moving, h.hospital, h.immigration, l.language, h.r_intro"
+			+ " FROM helper AS h JOIN user AS u ON h.uno=u.uno JOIN language AS l ON h.lno=l.lno JOIN seoul AS s ON s.dno=h.rplace ORDER BY h.rno DESC";
+//	private final String HELPERLIST_SCORE = "SELECT u.uno, u.name, h.sta, h.end, s.district, TRUNCATE(AVG(r.rscore),1) AS avg, h.moving, h.hospital, h.immigration, l.language, h.r_intro"
+//			+ " FROM helper AS h JOIN user AS u ON h.uno=u.uno JOIN language AS l ON h.lno=l.lno JOIN r_review AS r ON u.uno=r.rno"
+//			+ " JOIN seoul AS s ON s.dno=h.rplace GROUP BY r.rno ORDER BY avg DESC";
+
+	private final String HELPER_MOVE = "SELECT u.uno, u.name, h.sta, h.end, s.dno, s.district, h.moving, h.hospital, h.immigration, l.language, h.r_intro"
+			+ " FROM helper AS h JOIN user AS u ON h.uno=u.uno JOIN language AS l ON h.lno=l.lno JOIN seoul AS s ON s.dno=h.rplace WHERE h.moving=1";
+	private final String HELPER_HOSP = "SELECT u.uno, u.name, h.sta, h.end, s.dno, s.district, h.moving, h.hospital, h.immigration, l.language, h.r_intro"
+			+ " FROM helper AS h JOIN user AS u ON h.uno=u.uno JOIN language AS l ON h.lno=l.lno JOIN seoul AS s ON s.dno=h.rplace WHERE h.hospital=1";
+	private final String HELPER_IMMI = "SELECT u.uno, u.name, h.sta, h.end, s.dno, s.district, h.moving, h.hospital, h.immigration, l.language, h.r_intro"
+			+ " FROM helper AS h JOIN user AS u ON h.uno=u.uno JOIN language AS l ON h.lno=l.lno JOIN seoul AS s ON s.dno=h.rplace WHERE h.immigration=1";
+
+	private final String HELPER_SEOUL = "SELECT u.uno, u.name, h.sta, h.end, s.dno, s.district, h.moving, h.hospital, h.immigration, l.language, h.r_intro"
+			+ " FROM helper AS h JOIN user AS u ON h.uno=u.uno JOIN language AS l ON h.lno=l.lno JOIN seoul AS s ON s.dno=h.rplace"
+			+ " WHERE s.dno=?";
 
 	@Override
 	public List<HelperVO> getHelperList(HelperVO vo) { // 모든 헬퍼 리스트 보여주기
 		System.out.println("===> JDBC로 getHelperList() 기능 처리");
-		
+
 		List<HelperVO> helperList = new ArrayList<HelperVO>();
 		try {
 			conn = JDBCUtil.getConnection();
@@ -44,15 +62,25 @@ public class HelperDAOImpl implements HelperDAO {
 			rs = stmt.executeQuery();
 			while (rs.next()) {
 				HelperVO helper = new HelperVO();
-				helper.setRno(rs.getInt("rno"));
-				helper.setUno(rs.getInt("uno"));
+				UserVO user = new UserVO();
+				user.setUno(rs.getInt("uno"));
+				user.setName(rs.getString("name"));
+				helper.setUserVO(user);
+
+				LanguageVO language = new LanguageVO();
+				language.setLanguage(rs.getString("language"));
+				helper.setLanguageVO(language);
+
+				SeoulVO seoul = new SeoulVO();
+				seoul.setDno(rs.getInt("dno"));
+				seoul.setDistrict(rs.getString("district"));
+				helper.setSeoulVO(seoul);
 				helper.setSta(rs.getString("sta"));
 				helper.setEnd(rs.getString("end"));
-				helper.setRplace(rs.getInt("rplace"));
+//				helper.setRplace(rs.getInt("rplace"));
 				helper.setMoving(rs.getInt("moving"));
 				helper.setHospital(rs.getInt("hospital"));
 				helper.setImmigration(rs.getInt("immigration"));
-				helper.setLno(rs.getInt("lno"));
 				helper.setR_intro(rs.getString("r_intro"));
 				helperList.add(helper);
 			}
@@ -74,7 +102,7 @@ public class HelperDAOImpl implements HelperDAO {
 			stmt = conn.prepareStatement(HELPER_GET);
 			stmt.setInt(1, vo.getRno());
 			rs = stmt.executeQuery();
-			if(rs.next()) {
+			if (rs.next()) {
 				helper = new HelperVO();
 				helper.setRno(rs.getInt("rno"));
 				helper.setUno(rs.getInt("uno"));
@@ -87,9 +115,9 @@ public class HelperDAOImpl implements HelperDAO {
 				helper.setLno(rs.getInt("lno"));
 				helper.setR_intro(rs.getString("r_intro"));
 			}
-		}catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			JDBCUtil.close(rs, stmt, conn);
 		}
 		return helper;
@@ -98,7 +126,7 @@ public class HelperDAOImpl implements HelperDAO {
 	@Override
 	public void insertHelper(HelperVO vo) {
 		System.out.println("------HelperDAOImlp의-insertHelper() 기능 처리");
-		
+
 		try {
 			conn = JDBCUtil.getConnection();
 			stmt = conn.prepareStatement(HELPER_INSERT);
@@ -106,15 +134,15 @@ public class HelperDAOImpl implements HelperDAO {
 			stmt.setString(2, vo.getSta());
 			stmt.setString(3, vo.getEnd());
 			stmt.setInt(4, vo.getRplace());
-			stmt.setInt(5,vo.getMoving());
+			stmt.setInt(5, vo.getMoving());
 			stmt.setInt(6, vo.getHospital());
 			stmt.setInt(7, vo.getImmigration());
 			stmt.setInt(8, vo.getLno());
 			stmt.setString(9, vo.getR_intro());
 			stmt.executeUpdate();
-		}catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			JDBCUtil.close(stmt, conn);
 		}
 	}
@@ -134,12 +162,12 @@ public class HelperDAOImpl implements HelperDAO {
 			stmt.setString(7, vo.getR_intro());
 			stmt.setInt(8, vo.getRno());
 			stmt.executeUpdate();
-		}catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			JDBCUtil.close(stmt, conn);
-		}		
-		
+		}
+
 	}
 
 	@Override
@@ -150,10 +178,306 @@ public class HelperDAOImpl implements HelperDAO {
 			stmt = conn.prepareStatement(HELPER_DELETE);
 			stmt.setInt(1, vo.getRno());
 			stmt.executeUpdate();
-		}catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			JDBCUtil.close(stmt, conn);
 		}
 	}
+
+	// 날짜지난 헬퍼글 삭제하기
+	@Override
+	public void deleteDateHelper(HelperVO vo) {
+		System.out.println("===> JDBC로 deleteHelper() 기능 처리");
+		try {
+			conn = JDBCUtil.getConnection();
+			stmt = conn.prepareStatement(HELPER_DATE_DELETE);
+			stmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(stmt, conn);
+		}
+	}
+
+	@Override
+	public List<HelperVO> recentHelperList(HelperVO vo) { // 헬퍼리스트 최신순으로 정렬하기
+		System.out.println("===> JDBC로 recentHelperList() 기능 처리");
+
+		List<HelperVO> helperList = new ArrayList<HelperVO>();
+
+		try {
+			conn = JDBCUtil.getConnection();
+			stmt = conn.prepareStatement(HELPERLIST_RECENTLY);
+			rs = stmt.executeQuery();
+			while (rs.next()) {
+				HelperVO helper = new HelperVO();
+
+				UserVO user = new UserVO();
+				user.setUno(rs.getInt("uno"));
+				user.setName(rs.getString("name"));
+				helper.setUserVO(user);
+
+				LanguageVO language = new LanguageVO();
+				language.setLanguage(rs.getString("language"));
+				helper.setLanguageVO(language);
+
+				SeoulVO seoul = new SeoulVO();
+				seoul.setDno(rs.getInt("dno"));
+				seoul.setDistrict(rs.getString("district"));
+				helper.setSeoulVO(seoul);
+
+				helper.setSta(rs.getString("sta"));
+				helper.setEnd(rs.getString("end"));
+//				helper.setRplace(rs.getInt("rplace"));
+				helper.setMoving(rs.getInt("moving"));
+				helper.setHospital(rs.getInt("hospital"));
+				helper.setImmigration(rs.getInt("immigration"));
+				helper.setR_intro(rs.getString("r_intro"));
+				helperList.add(helper);
+			}
+			System.out.println("getHelperList 값 확인: " + helperList.toString());
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(rs, stmt, conn);
+		}
+		return helperList;
+	}
+
+//	@Override
+//	public List<HelperVO> scoreHelperList(HelperVO vo) { // 헬퍼리스트 평점순으로 정렬하기
+//		System.out.println("===> JDBC로 scoreHelperList() 기능 처리");
+//
+//		List<HelperVO> helperList = new ArrayList<HelperVO>();
+//
+//		try {
+//			conn = JDBCUtil.getConnection();
+//			stmt = conn.prepareStatement(HELPERLIST_SCORE);
+//			rs = stmt.executeQuery();
+//			while (rs.next()) {
+//				HelperVO helper = new HelperVO();
+//
+//				UserVO user = new UserVO();
+//				user.setUno(rs.getInt("uno"));
+//				user.setName(rs.getString("name"));
+//				helper.setUserVO(user);
+//
+//				LanguageVO language = new LanguageVO();
+//				language.setLanguage(rs.getString("language"));
+//				helper.setLanguageVO(language);
+//
+//				SeoulVO seoul = new SeoulVO();
+//				seoul.setDistrict(rs.getString("district"));
+//				helper.setSeoulVO(seoul);
+//
+//				R_ReviewVO r_review = new R_ReviewVO();
+//				r_review.setR_avg(rs.getString("avg"));
+//				helper.setR_reviewVO(r_review);
+//
+//				helper.setSta(rs.getString("sta"));
+//				helper.setEnd(rs.getString("end"));
+//				helper.setMoving(rs.getInt("moving"));
+//				helper.setHospital(rs.getInt("hospital"));
+//				helper.setImmigration(rs.getInt("immigration"));
+//				helper.setR_intro(rs.getString("r_intro"));
+//				helperList.add(helper);
+//			}
+//			System.out.println("getHelperList 값 확인: " + helperList.toString());
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		} finally {
+//			JDBCUtil.close(rs, stmt, conn);
+//		}
+//		return helperList;
+//	}
+
+	@Override
+	public List<HelperVO> moveHelper(HelperVO vo) { // 이사 헬퍼 리스트
+		System.out.println("===> JDBC로 MoveHelper() 기능 처리");
+
+		List<HelperVO> helperList = new ArrayList<HelperVO>();
+
+		try {
+			conn = JDBCUtil.getConnection();
+			stmt = conn.prepareStatement(HELPER_MOVE);
+			rs = stmt.executeQuery();
+			while (rs.next()) {
+				HelperVO helper = new HelperVO();
+
+				UserVO user = new UserVO();
+				user.setUno(rs.getInt("uno"));
+				user.setName(rs.getString("name"));
+				helper.setUserVO(user);
+
+				LanguageVO language = new LanguageVO();
+				language.setLanguage(rs.getString("language"));
+				helper.setLanguageVO(language);
+
+				SeoulVO seoul = new SeoulVO();
+				seoul.setDno(rs.getInt("dno"));
+				seoul.setDistrict(rs.getString("district"));
+				helper.setSeoulVO(seoul);
+
+				helper.setSta(rs.getString("sta"));
+				helper.setEnd(rs.getString("end"));
+				helper.setRplace(rs.getInt("rplace"));
+				helper.setMoving(rs.getInt("moving"));
+				helper.setHospital(rs.getInt("hospital"));
+				helper.setImmigration(rs.getInt("immigration"));
+				helper.setR_intro(rs.getString("r_intro"));
+				helperList.add(helper);
+			}
+			System.out.println("확인시발: " + helperList.toString());
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(rs, stmt, conn);
+		}
+		return helperList;
+	}
+
+	@Override
+	public List<HelperVO> hospitalHelper(HelperVO vo) { // 병원 헬퍼 리스트
+		System.out.println("===> JDBC로 hospitalHelper() 기능 처리");
+
+		List<HelperVO> helperList = new ArrayList<HelperVO>();
+
+		try {
+			conn = JDBCUtil.getConnection();
+			stmt = conn.prepareStatement(HELPER_HOSP);
+			rs = stmt.executeQuery();
+			while (rs.next()) {
+				HelperVO helper = new HelperVO();
+
+				UserVO user = new UserVO();
+				user.setUno(rs.getInt("uno"));
+				user.setName(rs.getString("name"));
+				helper.setUserVO(user);
+
+				LanguageVO language = new LanguageVO();
+				language.setLanguage(rs.getString("language"));
+				helper.setLanguageVO(language);
+
+				SeoulVO seoul = new SeoulVO();
+				seoul.setDno(rs.getInt("dno"));
+				seoul.setDistrict(rs.getString("district"));
+				helper.setSeoulVO(seoul);
+
+				helper.setSta(rs.getString("sta"));
+				helper.setEnd(rs.getString("end"));
+				helper.setRplace(rs.getInt("rplace"));
+				helper.setMoving(rs.getInt("moving"));
+				helper.setHospital(rs.getInt("hospital"));
+				helper.setImmigration(rs.getInt("immigration"));
+				helper.setR_intro(rs.getString("r_intro"));
+				helperList.add(helper);
+			}
+			System.out.println("getHelperList 값 확인: " + helperList.toString());
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(rs, stmt, conn);
+		}
+		return helperList;
+	}
+
+	@Override
+	public List<HelperVO> immigrationHelper(HelperVO vo) { // 출입국 헬퍼 리스트
+		System.out.println("===> JDBC로 immigrationHelper() 기능 처리");
+
+		List<HelperVO> helperList = new ArrayList<HelperVO>();
+
+		try {
+			conn = JDBCUtil.getConnection();
+			stmt = conn.prepareStatement(HELPER_IMMI);
+			rs = stmt.executeQuery();
+			while (rs.next()) {
+				HelperVO helper = new HelperVO();
+
+				UserVO user = new UserVO();
+				user.setUno(rs.getInt("uno"));
+				user.setName(rs.getString("name"));
+				helper.setUserVO(user);
+
+				LanguageVO language = new LanguageVO();
+				language.setLanguage(rs.getString("language"));
+				helper.setLanguageVO(language);
+
+				SeoulVO seoul = new SeoulVO();
+				seoul.setDno(rs.getInt("dno"));
+				seoul.setDistrict(rs.getString("district"));
+				helper.setSeoulVO(seoul);
+
+				helper.setSta(rs.getString("sta"));
+				helper.setEnd(rs.getString("end"));
+				helper.setRplace(rs.getInt("rplace"));
+				helper.setMoving(rs.getInt("moving"));
+				helper.setHospital(rs.getInt("hospital"));
+				helper.setImmigration(rs.getInt("immigration"));
+				helper.setR_intro(rs.getString("r_intro"));
+				helperList.add(helper);
+			}
+			System.out.println("getHelperList 값 확인: " + helperList.toString());
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(rs, stmt, conn);
+		}
+		return helperList;
+	}
+
+	@Override
+	public List<HelperVO> seoulHelperList(HelperVO vo) { // 서울리스트 구별
+		System.out.println("===> JDBC로 seoulHelperList() 기능 처리");
+
+		List<HelperVO> helperList = new ArrayList<HelperVO>();
+
+		try {
+			conn = JDBCUtil.getConnection();
+			stmt = conn.prepareStatement(HELPER_SEOUL);
+			stmt.setInt(1, vo.getRplace());
+			rs = stmt.executeQuery();
+
+			while (rs.next()) {
+				HelperVO helper = new HelperVO();
+
+				UserVO user = new UserVO();
+				user.setUno(rs.getInt("uno"));
+				user.setName(rs.getString("name"));
+				helper.setUserVO(user);
+
+				LanguageVO language = new LanguageVO();
+				language.setLanguage(rs.getString("language"));
+				helper.setLanguageVO(language);
+
+				SeoulVO seoul = new SeoulVO();
+				seoul.setDno(rs.getInt("dno"));
+				seoul.setDistrict(rs.getString("district"));
+				helper.setSeoulVO(seoul);
+
+				helper.setSta(rs.getString("sta"));
+				helper.setEnd(rs.getString("end"));
+				helper.setMoving(rs.getInt("moving"));
+				helper.setHospital(rs.getInt("hospital"));
+				helper.setImmigration(rs.getInt("immigration"));
+				helper.setR_intro(rs.getString("r_intro"));
+				helperList.add(helper);
+			}
+			System.out.println("getHelperList 값 확인: " + helperList.toString());
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(rs, stmt, conn);
+		}
+		return helperList;
+	}
+
+//	@Override
+//	public List<HelperVO> helper_avg(HelperVO vo) {
+//		System.out.println("===> JDBC로 헬퍼 평점 담아지나요? 네!");
+//
+//		List<HelperVO> helperList = new ArrayList<HelperVO>();
+//		return helperList;
+//	}
 }
