@@ -76,7 +76,7 @@
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownAddr">
                         <c:forEach items="${seoulList}" var="seoul">
-                            <button class="dropdown-item" onclick="location.href='seoulHelperList.do'" type="button">${seoul.district}</button>
+                            <button class="dropdown-item" onclick="location.href='seoulHelperList.do?dno=${seoul.dno}'" type="button">${seoul.district}</button>
                         </c:forEach>
                         
                         </div>

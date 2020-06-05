@@ -12,7 +12,6 @@ import com.kimchi.biz.common.JDBCUtil;
 import com.kimchi.biz.helper.HelperDAO;
 import com.kimchi.biz.helper.HelperVO;
 import com.kimchi.biz.language.LanguageVO;
-import com.kimchi.biz.r_review.R_reviewVO;
 import com.kimchi.biz.seoul.SeoulVO;
 import com.kimchi.biz.user.UserVO;
 
@@ -43,7 +42,7 @@ public class HelperDAOImpl implements HelperDAO {
 	
 	private final String HELPER_SEOUL = "SELECT u.uno, u.name, h.sta, h.end, s.district, h.moving, h.hospital, h.immigration, l.language, h.r_intro"
 			+ " FROM helper AS h JOIN user AS u ON h.uno=u.uno JOIN language AS l ON h.lno=l.lno JOIN seoul AS s ON s.dno=h.rplace"
-			+ " WHERE h.rplace=?";
+			+ " WHERE s.dno=?";
 	
 	
 	@Override
@@ -355,6 +354,7 @@ public class HelperDAOImpl implements HelperDAO {
 				helper.setLanguageVO(language);
 				
 				SeoulVO seoul = new SeoulVO();
+				seoul.setDno(rs.getInt("dno"));
 				seoul.setDistrict(rs.getString("district"));
 				helper.setSeoulVO(seoul);
 				
