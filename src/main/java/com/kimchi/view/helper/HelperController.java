@@ -39,7 +39,7 @@ public class HelperController {
 	}
 
 	// 헬퍼 홍보 작성 폼
-	@RequestMapping(value = "/helperWriteForm.do", method = { RequestMethod.GET })
+	@RequestMapping(value = "/helperWriteForm.do", method = RequestMethod.GET)
 	public String helperFormView(@ModelAttribute("helper") HelperVO vo, @ModelAttribute("language") LanguageVO lvo,
 			@ModelAttribute("seoul") SeoulVO svo, Model model) {
 		System.out.println("헬퍼-홍보 글 작성 페이지로 이동");
@@ -56,7 +56,7 @@ public class HelperController {
 	}
 
 	// 헬퍼 홍보 글 입력
-	@RequestMapping(value = "/helperWriteForm.do", method = { RequestMethod.POST })
+	@RequestMapping(value = "/helperWriteForm.do", method = RequestMethod.POST)
 	public String helperForm(@ModelAttribute("helper") HelperVO vo, Model model) {
 		System.out.println("헬퍼-홍보 글 작성 submit. DB에 저장.");
 
@@ -76,7 +76,7 @@ public class HelperController {
 		return "getHelperList.do";
 	}
 
-	@RequestMapping(value = "/helperUpdate.do", method = { RequestMethod.GET, RequestMethod.POST })
+	@RequestMapping(value = "/helperUpdate.do", method = RequestMethod.GET)
 	public String helperUpdateView(@ModelAttribute("helper") HelperVO vo, @ModelAttribute("language") LanguageVO lvo,
 			@ModelAttribute("seoul") SeoulVO svo, @ModelAttribute("user") UserVO uvo, Model model) {
 		System.out.println("헬퍼-홍보 글 상세 보기.");
@@ -114,17 +114,17 @@ public class HelperController {
 		return "getHelperList.jsp";
 	}
 
-	// 평점순 정렬
-//	@RequestMapping(value = "/scoreHelperList.do", method = RequestMethod.GET)
-//	public String scoreHelperList(@ModelAttribute("helper") HelperVO vo, R_ReviewVO rvo,
-//			@ModelAttribute("seoul") SeoulVO svo, Model model) {
-//		System.out.println("평점순 헬퍼 목록 처리 모델로한거임");
-//		model.addAttribute("seoulList", helperService.getSeoulList(svo));
-//		model.addAttribute("countList", helperService.getR_ReviewCountList(rvo));
-//		model.addAttribute("avgList", helperService.getR_ReviewAvgList(rvo));
-//		model.addAttribute("helperList", helperService.recentHelperList(vo));
-//		return "getHelperList.jsp";
-//	}
+//	 평점순 정렬
+	@RequestMapping(value = "/scoreHelperList.do", method = RequestMethod.GET)
+	public String scoreHelperList(@ModelAttribute("helper") HelperVO vo, R_ReviewVO rvo,
+			@ModelAttribute("seoul") SeoulVO svo, Model model) {
+		System.out.println("평점순 헬퍼 목록 처리 모델로한거임");
+		model.addAttribute("seoulList", helperService.getSeoulList(svo));
+		model.addAttribute("countList", helperService.getR_ReviewCountList(rvo));
+		model.addAttribute("avgList", helperService.getR_ReviewAvgList(rvo));
+		model.addAttribute("helperList", helperService.scoreHelperList(vo));
+		return "getHelperList.jsp";
+	}
 
 	// 이사 헬퍼 리스트
 	@RequestMapping(value = "/moveHelper.do", method = RequestMethod.GET)

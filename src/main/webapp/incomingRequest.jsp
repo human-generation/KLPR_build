@@ -74,25 +74,19 @@
         <div class="row">
             <div class="menubar col-md-2 order-1 order-md-1">
                 <div class="btn-group-vertical d-none d-md-block">
-					<button type="button" class="btn btn-secondary helper-button"
-						onclick="location.href='myPage.do'">My page</button>
-					<button type="button" class="btn btn-secondary helper-button"
-						onclick="location.href='incomingRequest.do'">요청내역</button>
-					<button type="button" class="btn btn-secondary helper-button"
-						onclick="location.href='myPageDetailProcess.do'">진행중내역</button>
-					<button type="button" class="btn btn-secondary helper-button">이전내역</button>
-					<button type="button" class="btn btn-secondary helper-button">나의정보수정</button>
-				</div>
-				<div class="btn-group d-md-none">
-					<button type="button" class="btn btn-secondary helper-button"
-						onclick="location.href='myPage.do'">My page</button>
-					<button type="button" class="btn btn-secondary helper-button"
-						onclick="location.href='incomingRequest.do'">요청내역</button>
-					<button type="button" class="btn btn-secondary helper-button"
-						onclick="location.href='myPageDetailProcess.do'">진행중내역</button>
-					<button type="button" class="btn btn-secondary helper-button">이전내역</button>
-					<button type="button" class="btn btn-secondary helper-button">나의정보수정</button>
-				</div>
+                        <button type="button" class="btn  helper-button" onclick="location.href='myPage.do'">My page</button>
+                        <button type="button" class="btn  helper-button" onclick="location.href='incomingRequest.do'">View all requests</button>
+                        <button type="button" class="btn  helper-button" onclick="location.href='myPageDetailProcess.do'">Pending requests</button>
+                        <button type="button" class="btn  helper-button">History</button>
+                        <button type="button" class="btn  helper-button">Edit my info</button>
+                    </div>
+                    <div class="btn-group d-md-none">
+                        <button type="button" class="btn  helper-button" onclick="location.href='myPage.do'">My page</button>
+                        <button type="button" class="btn  helper-button" onclick="location.href='incomingRequest.do'">View all requests</button>
+                        <button type="button" class="btn  helper-button" onclick="location.href='myPageDetailProcess.do'">Pending requests</button>
+                        <button type="button" class="btn  helper-button">History</button>
+                        <button type="button" class="btn  helper-button">Edit my info</button>
+                    </div>
 			</div>
 
 				<div class="col-md-10 order-2 order-md-2">
@@ -185,12 +179,10 @@
 												</div>
 												</p>
 												<form action="updateState.do" method="POST">
-                                 <c:if test="${loginUser.uno eq matching_r.eno }">
-                                    <input type="hidden" name="mstate" value="${matching_r.mstate}">
-                                    <input type="hidden" name="mno" value="${matching_r.mno }">
-                                    <button type="submit" class="btn btn-primary">수락하기</button>
-                                 </c:if>
-                              </form>
+                                    					<input type="hidden" name="mstate" value="${matching_r.mstate}">
+                                    					<input type="hidden" name="mno" value="${matching_r.mno }">
+                                    					<button type="submit" class="btn btn-primary">수락하기</button>
+                              					</form>
 												<a href="#" class="btn btn-primary">자세히보기</a>
 											</div>
 										</div>

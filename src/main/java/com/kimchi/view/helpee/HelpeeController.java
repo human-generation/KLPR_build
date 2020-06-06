@@ -109,6 +109,18 @@ public class HelpeeController {
 		model.addAttribute("helpeeList", helpeeService.recentHelpeeList(hvo));
 		return "getHelpeeList.jsp";
 	}
+	
+	// 헬피글 평점순 정렬
+	@RequestMapping(value = "/scoreHelpeeList.do", method = RequestMethod.GET)
+	public String scoreHelpeeList(@ModelAttribute("helpee") HelpeeVO hvo, E_ReviewVO evo,
+			@ModelAttribute("seoul") SeoulVO svo, Model model) {
+		System.out.println("헬피 홍보글 최신순 목록으로 이동");
+		model.addAttribute("seoulList", helpeeService.getSeoulList(svo));
+		model.addAttribute("countList", helpeeService.getE_ReviewCountList(evo));
+		model.addAttribute("avgList", helpeeService.getE_ReviewAvgList(evo));
+		model.addAttribute("helpeeList", helpeeService.scoreHelpeeList(hvo));
+		return "getHelpeeList.jsp";
+	}
 
 	// 이사 헬피 리스트
 	@RequestMapping(value = "/moveHelpee.do", method = RequestMethod.GET)

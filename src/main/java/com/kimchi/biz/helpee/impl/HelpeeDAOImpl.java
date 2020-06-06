@@ -30,21 +30,22 @@ public class HelpeeDAOImpl implements HelpeeDAO {
 	private final String HELPEE_UPDATE = "UPDATE helpee SET edate=?, eplace=?, moving=?, hospital=?, immigration=?, e_intro=? WHERE eno=?";
 	private final String HELPEE_DELETE = "DELETE FROM helpee WHERE eno=?";
 
-	private final String HELPEELIST_GET = "SELECT u.uno, u.name, p.edate, s.district, p.moving, p.hospital, p.immigration, l.language, p.e_intro"
+	private final String HELPEELIST_GET = "SELECT u.uno, u.name, p.eno, p.edate, s.dno, s.district, p.moving, p.hospital, p.immigration, l.language, p.e_intro"
 			+ " FROM helpee AS p JOIN user AS u ON p.uno=u.uno JOIN language AS l ON p.lno=l.lno JOIN seoul AS s ON p.eplace=s.dno";
 	private final String HELPEE_DATE_DELETE = "DELETE FROM helpee WHERE edate < CURDATE()";
-	private final String HELPEELIST_RECENTLY = "SELECT u.uno, u.name, p.edate, s.district, p.moving, p.hospital, p.immigration, l.language, p.e_intro"
+	private final String HELPEELIST_RECENTLY = "SELECT u.uno, u.name, p.eno, p.edate, s.dno, s.district, p.moving, p.hospital, p.immigration, l.language, p.e_intro"
 			+ " FROM helpee AS p JOIN user AS u ON p.uno=u.uno JOIN language AS l ON p.lno=l.lno JOIN seoul AS s ON p.eplace=s.dno"
 			+ " ORDER BY p.eno DESC";
+	private final String HELPEELIST_SCORE = "SELECT DISTINCT h.eno, u.uno, u.name, h.edate, s.dno, s.district, h.moving, h.hospital, h.immigration, l.language, h.e_intro, IFNULL(truncate(AVG(er.escore), 1), '-none-') AS avg FROM helpee AS h JOIN user AS u ON h.uno=u.uno JOIN language AS l ON h.lno=l.lno JOIN seoul AS s ON s.dno=h.eplace LEFT JOIN e_review AS er ON er.eno = h.uno GROUP BY h.eno ORDER BY avg DESC";
 
-	private final String HELPEE_MOVE = "SELECT u.uno, u.name, p.edate, s.district, p.moving, p.hospital, p.immigration, l.language, p.e_intro"
+	private final String HELPEE_MOVE = "SELECT u.uno, u.name, p.eno, p.edate, s.dno, s.district, p.moving, p.hospital, p.immigration, l.language, p.e_intro"
 			+ " FROM helpee AS p JOIN user AS u ON p.uno=u.uno JOIN language AS l ON p.lno=l.lno JOIN seoul AS s ON p.eplace=s.dno WHERE p.moving=1";
-	private final String HELPEE_HOSP = "SELECT u.uno, u.name, p.edate, s.district, p.moving, p.hospital, p.immigration, l.language, p.e_intro"
+	private final String HELPEE_HOSP = "SELECT u.uno, u.name, p.eno, p.edate, s.dno, s.district, p.moving, p.hospital, p.immigration, l.language, p.e_intro"
 			+ " FROM helpee AS p JOIN user AS u ON p.uno=u.uno JOIN language AS l ON p.lno=l.lno JOIN seoul AS s ON p.eplace=s.dno WHERE p.hospital=1";
-	private final String HELPEE_IMMI = "SELECT u.uno, u.name, p.edate, s.district, p.moving, p.hospital, p.immigration, l.language, p.e_intro"
+	private final String HELPEE_IMMI = "SELECT u.uno, u.name, p.eno, p.edate, s.dno, s.district, p.moving, p.hospital, p.immigration, l.language, p.e_intro"
 			+ " FROM helpee AS p JOIN user AS u ON p.uno=u.uno JOIN language AS l ON p.lno=l.lno JOIN seoul AS s ON p.eplace=s.dno WHERE p.immigration";
 
-	private final String HELPEE_SEOUL = "SELECT u.uno, u.name, p.edate, s.district, p.moving, p.hospital, p.immigration, l.language, p.e_intro FROM helpee AS p JOIN user AS u ON p.uno=u.uno JOIN language AS l ON p.lno=l.lno JOIN seoul AS s ON p.eplace=s.dno WHERE p.eplace=?;";
+	private final String HELPEE_SEOUL = "SELECT u.uno, u.name, p.eno, p.edate, s.dno, s.district, p.moving, p.hospital, p.immigration, l.language, p.e_intro FROM helpee AS p JOIN user AS u ON p.uno=u.uno JOIN language AS l ON p.lno=l.lno JOIN seoul AS s ON p.eplace=s.dno WHERE p.eplace=?;";
 
 	@Override
 	public List<HelpeeVO> getHelpeeList(HelpeeVO vo) {
@@ -70,9 +71,10 @@ public class HelpeeDAOImpl implements HelpeeDAO {
 				helpee.setLanguageVO(language);
 
 				SeoulVO seoul = new SeoulVO();
+				seoul.setDno(rs.getInt("dno"));
 				seoul.setDistrict(rs.getString("district"));
 				helpee.setSeoulVO(seoul);
-
+				helpee.setEno(rs.getInt("eno"));
 				helpee.setEdate(rs.getString("edate"));
 				helpee.setMoving(rs.getInt("moving"));
 				helpee.setHospital(rs.getInt("hospital"));
@@ -218,9 +220,55 @@ public class HelpeeDAOImpl implements HelpeeDAO {
 				helpee.setLanguageVO(language);
 
 				SeoulVO seoul = new SeoulVO();
+				seoul.setDno(rs.getInt("dno"));
 				seoul.setDistrict(rs.getString("district"));
 				helpee.setSeoulVO(seoul);
-
+				helpee.setEno(rs.getInt("eno"));
+				helpee.setEdate(rs.getString("edate"));
+				helpee.setMoving(rs.getInt("moving"));
+				helpee.setHospital(rs.getInt("hospital"));
+				helpee.setImmigration(rs.getInt("immigration"));
+				helpee.setE_intro(rs.getString("e_intro"));
+				helpeeList.add(helpee);
+			}
+			System.out.println("확인 뿨킹: " + helpeeList.toString());
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(rs, stmt, conn);
+		}
+		return helpeeList;
+	}
+	
+	// 헬피리스트 최신순으로 정렬하기
+	@Override
+	public List<HelpeeVO> scoreHelpeeList(HelpeeVO vo) {
+		System.out.println("------HelpeeDAOImpl의-scoreHelpeeList() 기능 처리");
+		
+		List<HelpeeVO> helpeeList = new ArrayList<HelpeeVO>();
+		
+		try {
+			conn = JDBCUtil.getConnection();
+			stmt = conn.prepareStatement(HELPEELIST_SCORE);
+			rs = stmt.executeQuery();
+			
+			while (rs.next()) {
+				HelpeeVO helpee = new HelpeeVO();
+				
+				UserVO user = new UserVO();
+				user.setUno(rs.getInt("uno"));
+				user.setName(rs.getString("name"));
+				helpee.setUserVO(user);
+				
+				LanguageVO language = new LanguageVO();
+				language.setLanguage(rs.getString("language"));
+				helpee.setLanguageVO(language);
+				
+				SeoulVO seoul = new SeoulVO();
+				seoul.setDno(rs.getInt("dno"));
+				seoul.setDistrict(rs.getString("district"));
+				helpee.setSeoulVO(seoul);
+				helpee.setEno(rs.getInt("eno"));
 				helpee.setEdate(rs.getString("edate"));
 				helpee.setMoving(rs.getInt("moving"));
 				helpee.setHospital(rs.getInt("hospital"));
@@ -261,9 +309,10 @@ public class HelpeeDAOImpl implements HelpeeDAO {
 				helpee.setLanguageVO(language);
 
 				SeoulVO seoul = new SeoulVO();
+				seoul.setDno(rs.getInt("dno"));
 				seoul.setDistrict(rs.getString("district"));
 				helpee.setSeoulVO(seoul);
-
+				helpee.setEno(rs.getInt("eno"));
 				helpee.setEdate(rs.getString("edate"));
 				helpee.setMoving(rs.getInt("moving"));
 				helpee.setHospital(rs.getInt("hospital"));
@@ -304,9 +353,10 @@ public class HelpeeDAOImpl implements HelpeeDAO {
 				helpee.setLanguageVO(language);
 
 				SeoulVO seoul = new SeoulVO();
+				seoul.setDno(rs.getInt("dno"));
 				seoul.setDistrict(rs.getString("district"));
 				helpee.setSeoulVO(seoul);
-
+				helpee.setEno(rs.getInt("eno"));
 				helpee.setEdate(rs.getString("edate"));
 				helpee.setMoving(rs.getInt("moving"));
 				helpee.setHospital(rs.getInt("hospital"));
@@ -347,9 +397,10 @@ public class HelpeeDAOImpl implements HelpeeDAO {
 				helpee.setLanguageVO(language);
 
 				SeoulVO seoul = new SeoulVO();
+				seoul.setDno(rs.getInt("dno"));
 				seoul.setDistrict(rs.getString("district"));
 				helpee.setSeoulVO(seoul);
-
+				helpee.setEno(rs.getInt("eno"));
 				helpee.setEdate(rs.getString("edate"));
 				helpee.setMoving(rs.getInt("moving"));
 				helpee.setHospital(rs.getInt("hospital"));
@@ -391,9 +442,10 @@ public class HelpeeDAOImpl implements HelpeeDAO {
 				helpee.setLanguageVO(language);
 
 				SeoulVO seoul = new SeoulVO();
+				seoul.setDno(rs.getInt("dno"));
 				seoul.setDistrict(rs.getString("district"));
 				helpee.setSeoulVO(seoul);
-
+				helpee.setEno(rs.getInt("eno"));
 				helpee.setEdate(rs.getString("edate"));
 				helpee.setMoving(rs.getInt("moving"));
 				helpee.setHospital(rs.getInt("hospital"));

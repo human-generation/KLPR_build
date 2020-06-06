@@ -106,7 +106,7 @@
                 </div>
                 <div class="btn-group" role="group" aria-label="SortBtn">
                     <button type="button" class="btn  helper-button btn-sm" onclick="location.href='recentHelperList.do'">최신순</button>
-                    <button type="button" class="btn  helper-button btn-sm">평점순</button>
+                    <button type="button" class="btn  helper-button btn-sm" onclick="location.href='scoreHelperList.do'">평점순</button>
                 </div>
             </div>
         </div>
@@ -163,12 +163,12 @@
 							  <c:if test="${helper.immigration==1}">
 							  <a href="#" class="badge helper-button">출입국</a></c:if>
                             
-                            <c:if test="${helper.uno == sessionScope.userNumber}">
+                            <c:if test="${helper.userVO.uno == sessionScope.userNumber}">
 							   <form action="helperDelete.do" method="POST">
                             <input name="rno" type="hidden" value="${helper.rno}"/>
 								<button type="submit" class="read-more-trigger">Delete</button>
 								</form>
-								<form action="helperUpdate.do" method="POST">
+								<form action="helperUpdate.do" method="GET">
 								<input name="rno" type="hidden" value="${helper.rno}"/>
 								<button type="submit" class="read-more-trigger">Update</button>
 								</form>
@@ -232,7 +232,7 @@
                                         </ul>
                                     </div>
                                     <div class="d-flex justify-content-center">
-                                    <form action="helperSendRequest.do" method="POST">
+                                    <form action="sendRequest.do" method="POST">
                                     <input name="seno" type="hidden" value="${sessionScope.userNumber}"/>
                                     <input name="rcno" type="hidden" value="${helper.userVO.uno}"/>
                                     <input name="rno" type="hidden" value="${helper.userVO.uno}"/>

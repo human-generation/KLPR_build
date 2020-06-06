@@ -51,7 +51,7 @@ public class MatchingController {
 		return "myPage.do";
 	}
 
-	@RequestMapping(value = "/helperSendRequest.do", method = { RequestMethod.POST, RequestMethod.GET })
+	@RequestMapping(value = "/sendRequest.do", method = { RequestMethod.POST, RequestMethod.GET })
 	public String helperSendRequest(MatchingVOExtra vo) {
 		System.out.println("매칭테이블 insert됨. mstate=1");
 

@@ -133,10 +133,10 @@ public class HelperServiceImpl implements HelperService {
 //		helperDAO.deleteDateHelper(vo);
 //	}
 	
-//	@Override
-//	public List<HelperVO> scoreHelperList(HelperVO vo) {
-//		System.out.println("HelperServiceImpl의 scoreHelperList() 실행...");
-//		return helperDAO.scoreHelperList(vo);
-//	}
+	@Override
+	public List<HelperVO> scoreHelperList(HelperVO vo) {
+		System.out.println("HelperServiceImpl의 scoreHelperList() 실행...");
+		return helperDAO.scoreHelperList(vo);
+	}
 
 }

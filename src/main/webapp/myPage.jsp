@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -103,7 +104,20 @@
                                     <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
                                     <em>My information</em>
                                     <strong>${sessionScope.userName }</strong>
-                                    <button type="button" class="btn helper-button btn-lg tag">HELPER</button>
+                                    <c:forEach items="${helperCountList }" var="helperCount">
+										<c:if test="${helperCount.rno == sessionScope.userNumber }">
+											<c:if test="${helperCount.count > 0}">
+											<button type="button" class="btn helper-button btn-lg tag">HELPER</button>
+											</c:if>
+										</c:if>
+									</c:forEach>
+									<c:forEach items="${helpeeCountList }" var="helpeeCount">
+										<c:if test="${helpeeCount.eno == sessionScope.userNumber }">
+											<c:if test="${helpeeCount.count > 0}">
+											<button type="button" class="btn helpee-button btn-lg tag">HELPEE</button>
+											</c:if>
+										</c:if>
+									</c:forEach>
                                     <b>
                                     <c:if test="${sessionScope.userGender == 0}">None of both</c:if>
                                     <c:if test="${sessionScope.userGender == 1}">Female</c:if>

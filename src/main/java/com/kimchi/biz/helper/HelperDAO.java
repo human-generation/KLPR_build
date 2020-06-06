@@ -11,7 +11,7 @@ public interface HelperDAO {
 	
 	public void deleteDateHelper(HelperVO vo);	// 날짜지난 헬퍼글 삭제하기
 	public List<HelperVO> recentHelperList(HelperVO vo);	// 헬퍼 리스트 최신순 정렬
-//	public List<HelperVO> scoreHelperList(HelperVO vo);	// 헬퍼 리스트 평점순 정렬
+	public List<HelperVO> scoreHelperList(HelperVO vo);	// 헬퍼 리스트 평점순 정렬
 	
 	public List<HelperVO> moveHelper(HelperVO vo);	// 이사 헬퍼 리스트	
 	public List<HelperVO> hospitalHelper(HelperVO vo);	// 병원 헬퍼 리스트

@@ -130,7 +130,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md-6 my-1">
-                                <select class="custom-select" name="eplace">
+                                <select class="custom-select" name="rplace">
                                     <option selected>Choose your area</option>
                                    <c:forEach items="${seoulList}" var="seoul">
 										<option value="${seoul.dno}">${seoul.district}</option>

@@ -109,9 +109,7 @@
                         <div>
                            ${sessionScope.userPhone}&nbsp;
                         </div>
-                        <div>
-                            {ucomment}
-                        </div>
+                      
                     </div>
                     <form autocomplete="off" class="helper-write-form"  action="helpeeWriteForm.do" method="post">
                         <div class="row">

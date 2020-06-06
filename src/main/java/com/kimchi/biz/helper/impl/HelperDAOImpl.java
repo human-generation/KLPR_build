@@ -32,22 +32,20 @@ public class HelperDAOImpl implements HelperDAO {
 	private final String HELPER_UPDATE = "UPDATE helper SET sta=?, end=?, rplace=?, moving=?, hospital=?, immigration=?, r_intro=? WHERE rno=?";
 	private final String HELPER_DELETE = "DELETE FROM helper WHERE rno=?";
 
-	private final String HELPERLIST_GET = "SELECT u.uno, u.name, h.sta, h.end, s.dno, s.district, h.moving, h.hospital, h.immigration, l.language, h.r_intro FROM helper AS h JOIN user AS u ON h.uno=u.uno JOIN language AS l ON h.lno=l.lno JOIN seoul AS s ON s.dno=h.rplace";
+	private final String HELPERLIST_GET = "SELECT u.uno, u.name, h.rno, h.sta, h.end, s.dno, s.district, h.moving, h.hospital, h.immigration, l.language, h.r_intro FROM helper AS h JOIN user AS u ON h.uno=u.uno JOIN language AS l ON h.lno=l.lno JOIN seoul AS s ON s.dno=h.rplace";
 	private final String HELPER_DATE_DELETE = "DELETE FROM helper WHERE end < CURDATE()";
-	private final String HELPERLIST_RECENTLY = "SELECT u.uno, u.name, h.sta, h.end, s.dno, s.district, h.moving, h.hospital, h.immigration, l.language, h.r_intro"
+	private final String HELPERLIST_RECENTLY = "SELECT u.uno, u.name, h.rno, h.sta, h.end, s.dno, s.district, h.moving, h.hospital, h.immigration, l.language, h.r_intro"
 			+ " FROM helper AS h JOIN user AS u ON h.uno=u.uno JOIN language AS l ON h.lno=l.lno JOIN seoul AS s ON s.dno=h.rplace ORDER BY h.rno DESC";
-//	private final String HELPERLIST_SCORE = "SELECT u.uno, u.name, h.sta, h.end, s.district, TRUNCATE(AVG(r.rscore),1) AS avg, h.moving, h.hospital, h.immigration, l.language, h.r_intro"
-//			+ " FROM helper AS h JOIN user AS u ON h.uno=u.uno JOIN language AS l ON h.lno=l.lno JOIN r_review AS r ON u.uno=r.rno"
-//			+ " JOIN seoul AS s ON s.dno=h.rplace GROUP BY r.rno ORDER BY avg DESC";
+	private final String HELPERLIST_SCORE = "SELECT DISTINCT h.rno, u.uno, u.name, h.sta, h.end, s.dno, s.district, h.moving, h.hospital, h.immigration, l.language, h.r_intro, IFNULL(truncate(AVG(rr.rscore), 1), '-none-') AS avg FROM helper AS h JOIN user AS u ON h.uno=u.uno JOIN language AS l ON h.lno=l.lno JOIN seoul AS s ON s.dno=h.rplace LEFT JOIN r_review AS rr ON rr.rno = h.uno GROUP BY h.rno ORDER BY avg DESC";
 
-	private final String HELPER_MOVE = "SELECT u.uno, u.name, h.sta, h.end, s.dno, s.district, h.moving, h.hospital, h.immigration, l.language, h.r_intro"
+	private final String HELPER_MOVE = "SELECT u.uno, u.name, h.rno, h.sta, h.end, s.dno, s.district, h.moving, h.hospital, h.immigration, l.language, h.r_intro"
 			+ " FROM helper AS h JOIN user AS u ON h.uno=u.uno JOIN language AS l ON h.lno=l.lno JOIN seoul AS s ON s.dno=h.rplace WHERE h.moving=1";
-	private final String HELPER_HOSP = "SELECT u.uno, u.name, h.sta, h.end, s.dno, s.district, h.moving, h.hospital, h.immigration, l.language, h.r_intro"
+	private final String HELPER_HOSP = "SELECT u.uno, u.name, h.rno, h.sta, h.end, s.dno, s.district, h.moving, h.hospital, h.immigration, l.language, h.r_intro"
 			+ " FROM helper AS h JOIN user AS u ON h.uno=u.uno JOIN language AS l ON h.lno=l.lno JOIN seoul AS s ON s.dno=h.rplace WHERE h.hospital=1";
-	private final String HELPER_IMMI = "SELECT u.uno, u.name, h.sta, h.end, s.dno, s.district, h.moving, h.hospital, h.immigration, l.language, h.r_intro"
+	private final String HELPER_IMMI = "SELECT u.uno, u.name, h.rno, h.sta, h.end, s.dno, s.district, h.moving, h.hospital, h.immigration, l.language, h.r_intro"
 			+ " FROM helper AS h JOIN user AS u ON h.uno=u.uno JOIN language AS l ON h.lno=l.lno JOIN seoul AS s ON s.dno=h.rplace WHERE h.immigration=1";
 
-	private final String HELPER_SEOUL = "SELECT u.uno, u.name, h.sta, h.end, s.dno, s.district, h.moving, h.hospital, h.immigration, l.language, h.r_intro"
+	private final String HELPER_SEOUL = "SELECT u.uno, u.name, h.rno, h.sta, h.end, s.dno, s.district, h.moving, h.hospital, h.immigration, l.language, h.r_intro"
 			+ " FROM helper AS h JOIN user AS u ON h.uno=u.uno JOIN language AS l ON h.lno=l.lno JOIN seoul AS s ON s.dno=h.rplace"
 			+ " WHERE s.dno=?";
 
@@ -75,6 +73,7 @@ public class HelperDAOImpl implements HelperDAO {
 				seoul.setDno(rs.getInt("dno"));
 				seoul.setDistrict(rs.getString("district"));
 				helper.setSeoulVO(seoul);
+				helper.setRno(rs.getInt("rno"));
 				helper.setSta(rs.getString("sta"));
 				helper.setEnd(rs.getString("end"));
 //				helper.setRplace(rs.getInt("rplace"));
@@ -226,7 +225,7 @@ public class HelperDAOImpl implements HelperDAO {
 				seoul.setDno(rs.getInt("dno"));
 				seoul.setDistrict(rs.getString("district"));
 				helper.setSeoulVO(seoul);
-
+				helper.setRno(rs.getInt("rno"));
 				helper.setSta(rs.getString("sta"));
 				helper.setEnd(rs.getString("end"));
 //				helper.setRplace(rs.getInt("rplace"));
@@ -245,52 +244,50 @@ public class HelperDAOImpl implements HelperDAO {
 		return helperList;
 	}
 
-//	@Override
-//	public List<HelperVO> scoreHelperList(HelperVO vo) { // 헬퍼리스트 평점순으로 정렬하기
-//		System.out.println("===> JDBC로 scoreHelperList() 기능 처리");
-//
-//		List<HelperVO> helperList = new ArrayList<HelperVO>();
-//
-//		try {
-//			conn = JDBCUtil.getConnection();
-//			stmt = conn.prepareStatement(HELPERLIST_SCORE);
-//			rs = stmt.executeQuery();
-//			while (rs.next()) {
-//				HelperVO helper = new HelperVO();
-//
-//				UserVO user = new UserVO();
-//				user.setUno(rs.getInt("uno"));
-//				user.setName(rs.getString("name"));
-//				helper.setUserVO(user);
-//
-//				LanguageVO language = new LanguageVO();
-//				language.setLanguage(rs.getString("language"));
-//				helper.setLanguageVO(language);
-//
-//				SeoulVO seoul = new SeoulVO();
-//				seoul.setDistrict(rs.getString("district"));
-//				helper.setSeoulVO(seoul);
-//
-//				R_ReviewVO r_review = new R_ReviewVO();
-//				r_review.setR_avg(rs.getString("avg"));
-//				helper.setR_reviewVO(r_review);
-//
-//				helper.setSta(rs.getString("sta"));
-//				helper.setEnd(rs.getString("end"));
-//				helper.setMoving(rs.getInt("moving"));
-//				helper.setHospital(rs.getInt("hospital"));
-//				helper.setImmigration(rs.getInt("immigration"));
-//				helper.setR_intro(rs.getString("r_intro"));
-//				helperList.add(helper);
-//			}
-//			System.out.println("getHelperList 값 확인: " + helperList.toString());
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		} finally {
-//			JDBCUtil.close(rs, stmt, conn);
-//		}
-//		return helperList;
-//	}
+	@Override
+	public List<HelperVO> scoreHelperList(HelperVO vo) { // 헬퍼리스트 평점순으로 정렬하기
+		System.out.println("===> JDBC로 scoreHelperList() 기능 처리");
+
+		List<HelperVO> helperList = new ArrayList<HelperVO>();
+
+		try {
+			conn = JDBCUtil.getConnection();
+			stmt = conn.prepareStatement(HELPERLIST_SCORE);
+			rs = stmt.executeQuery();
+			while (rs.next()) {
+				HelperVO helper = new HelperVO();
+
+				UserVO user = new UserVO();
+				user.setUno(rs.getInt("uno"));
+				user.setName(rs.getString("name"));
+				helper.setUserVO(user);
+
+				LanguageVO language = new LanguageVO();
+				language.setLanguage(rs.getString("language"));
+				helper.setLanguageVO(language);
+
+				SeoulVO seoul = new SeoulVO();
+				seoul.setDno(rs.getInt("dno"));
+				seoul.setDistrict(rs.getString("district"));
+				helper.setSeoulVO(seoul);
+				helper.setRno(rs.getInt("rno"));
+				helper.setSta(rs.getString("sta"));
+				helper.setEnd(rs.getString("end"));
+//				helper.setRplace(rs.getInt("rplace"));
+				helper.setMoving(rs.getInt("moving"));
+				helper.setHospital(rs.getInt("hospital"));
+				helper.setImmigration(rs.getInt("immigration"));
+				helper.setR_intro(rs.getString("r_intro"));
+				helperList.add(helper);
+			}
+			System.out.println("getHelperList 값 확인: " + helperList.toString());
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(rs, stmt, conn);
+		}
+		return helperList;
+	}
 
 	@Override
 	public List<HelperVO> moveHelper(HelperVO vo) { // 이사 헬퍼 리스트
@@ -318,10 +315,10 @@ public class HelperDAOImpl implements HelperDAO {
 				seoul.setDno(rs.getInt("dno"));
 				seoul.setDistrict(rs.getString("district"));
 				helper.setSeoulVO(seoul);
-
+				helper.setRno(rs.getInt("rno"));
 				helper.setSta(rs.getString("sta"));
 				helper.setEnd(rs.getString("end"));
-				helper.setRplace(rs.getInt("rplace"));
+//				helper.setRplace(rs.getInt("rplace"));
 				helper.setMoving(rs.getInt("moving"));
 				helper.setHospital(rs.getInt("hospital"));
 				helper.setImmigration(rs.getInt("immigration"));
@@ -363,10 +360,10 @@ public class HelperDAOImpl implements HelperDAO {
 				seoul.setDno(rs.getInt("dno"));
 				seoul.setDistrict(rs.getString("district"));
 				helper.setSeoulVO(seoul);
-
+				helper.setRno(rs.getInt("rno"));
 				helper.setSta(rs.getString("sta"));
 				helper.setEnd(rs.getString("end"));
-				helper.setRplace(rs.getInt("rplace"));
+//				helper.setRplace(rs.getInt("rplace"));
 				helper.setMoving(rs.getInt("moving"));
 				helper.setHospital(rs.getInt("hospital"));
 				helper.setImmigration(rs.getInt("immigration"));
@@ -408,10 +405,10 @@ public class HelperDAOImpl implements HelperDAO {
 				seoul.setDno(rs.getInt("dno"));
 				seoul.setDistrict(rs.getString("district"));
 				helper.setSeoulVO(seoul);
-
+				helper.setRno(rs.getInt("rno"));
 				helper.setSta(rs.getString("sta"));
 				helper.setEnd(rs.getString("end"));
-				helper.setRplace(rs.getInt("rplace"));
+//				helper.setRplace(rs.getInt("rplace"));
 				helper.setMoving(rs.getInt("moving"));
 				helper.setHospital(rs.getInt("hospital"));
 				helper.setImmigration(rs.getInt("immigration"));
@@ -455,7 +452,7 @@ public class HelperDAOImpl implements HelperDAO {
 				seoul.setDno(rs.getInt("dno"));
 				seoul.setDistrict(rs.getString("district"));
 				helper.setSeoulVO(seoul);
-
+				helper.setRno(rs.getInt("rno"));
 				helper.setSta(rs.getString("sta"));
 				helper.setEnd(rs.getString("end"));
 				helper.setMoving(rs.getInt("moving"));

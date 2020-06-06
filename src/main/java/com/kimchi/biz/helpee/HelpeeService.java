@@ -20,6 +20,8 @@ public interface HelpeeService {
 	public List<HelpeeVO> seoulHelpeeList(HelpeeVO vo);	// 헬퍼 리스트 지역별로
 
 	public List<HelpeeVO> recentHelpeeList(HelpeeVO vo);	// 헬피 리스트 최신순 정렬
+	public List<HelpeeVO> scoreHelpeeList(HelpeeVO vo);	// 헬피 리스트 최신순 정렬
+	
 	
 	public List<HelpeeVO> moveHelpee(HelpeeVO vo);	// 이사 헬퍼 리스트	
 	public List<HelpeeVO> hospitalHelpee(HelpeeVO vo);	// 병원 헬퍼 리스트
