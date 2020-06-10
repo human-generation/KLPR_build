@@ -1,5 +1,7 @@
 package com.kimchi.biz.user;
 
+import java.util.List;
+
 // DAO와 Service의 차이
 // DAO와 Service는 그 역할이 분명히 다르다.
 // DAO - 단일 데이터의 접근과 갱신만 처리한다(CRUD)
@@ -17,8 +19,20 @@ public interface UserDAO {
 	// 회원을 가입시킨다
 	public void insertUser(UserVO vo);
 
+<<<<<<< HEAD
 	public void updateUserMoney(UserVO vo, int pay);
 	
 	public void updateUser(UserVO vo);
 
+=======
+	// 회원의 돈 충전(소희)
+	public void updateUserMoney(UserVO vo, int pay);
+
+	// 회원 정보 수정(소희)
+	public void updateUser(UserVO vo);
+
+	// 회원 목록
+	public List<UserVO> getUserList(UserVO vo);
+
+>>>>>>> 515d5c339444b02052b07005f33f665bb56e3aac
 }

@@ -1,5 +1,10 @@
 Manifest-Version: 1.0
+<<<<<<< HEAD
 Built-By: Sohee
 Build-Jdk: 13.0.2
+=======
+Built-By: Yen
+Build-Jdk: 1.8.0_231
+>>>>>>> 515d5c339444b02052b07005f33f665bb56e3aac
 Created-By: Maven Integration for Eclipse
 

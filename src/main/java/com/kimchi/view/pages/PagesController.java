@@ -25,6 +25,7 @@ public class PagesController {
 		return "faq.jsp";
 	}
 
+<<<<<<< HEAD
 	@RequestMapping(value = "/myPage.do", method = {RequestMethod.GET,RequestMethod.POST} )
 	public String myPageView(HttpSession session) {
 		System.out.println("마이페이지로 이동");
@@ -35,6 +36,12 @@ public class PagesController {
 		matchingDAO.setMatchingState(user, session);
 		session.setAttribute("userMoney", user.getMoney());
 		return "myPage.jsp";
+=======
+	@RequestMapping(value = "/payment.do", method = RequestMethod.GET)
+	public String paymentView() {
+		System.out.println("결제페이지로 이동");
+		return "payment.jsp";
+>>>>>>> 515d5c339444b02052b07005f33f665bb56e3aac
 	}
 	
 	@RequestMapping(value="/payment.do", method= RequestMethod.GET)

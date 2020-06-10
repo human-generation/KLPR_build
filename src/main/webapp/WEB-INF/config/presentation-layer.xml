@@ -9,11 +9,17 @@
 
 	<!-- 아래 모든 설정을 Annotation으로 변경한다. -->
 	<context:component-scan
+<<<<<<< HEAD
 		base-package="com.kimchi.view">
 	</context:component-scan>
 	<context:component-scan
 		base-package="com.kimchi.biz">
 	</context:component-scan>
+=======
+		base-package="com.kimchi.view"/>
+	<context:component-scan
+		base-package="com.kimchi.biz"/>
+>>>>>>> 515d5c339444b02052b07005f33f665bb56e3aac
 
 	<!-- jackson라이브러리에 포함된 HttpMessageConvert가 등록된다 -->
 	<mvc:annotation-driven></mvc:annotation-driven>
@@ -51,35 +57,4 @@
 		</property>
 	</bean>
 
-	<!-- 다국어 설정 -->
-	<!-- MessageSource 등록 -->
-	<!-- message폴더내의 messageSource로 시작하는 프로퍼티 파일 -->
-	<bean id="messageSource"
-		class="org.springframework.context.support.ResourceBundleMessageSource">
-		<property name="basenames">
-			<list>
-				<value>message.messageSource</value>
-			</list>
-		</property>
-	</bean>
-
-	<!-- LocaleResolver 등록 -->
-	<!-- en이냐 ko냐 아니면 다른 언어냐 파일명에 자동 적용 -->
-	<!-- 1) AcceptHeaderLocaleResolver ; HTTP request 헤더에서 Accept-Language에 
-		설정된 Locale로 적용 ; 따로 설정하기 않으면 이것이 기본 설정 2) CookieLocaleResolver ; Cookie에 
-		저장된 Locale 정보를 추출하여 적용 3) SessionLocaleResolver ; HttpSession에 저장된 Locale정보를 
-		추출하여 적용 4) FixedLocaleResolver ; 특정 Locale로 고정하여 적용 -->
-	<!-- 무조건 이 id="localeResolver" 이름이어야 한다 -->
-	<bean id="localeResolver"
-		class="org.springframework.web.servlet.i18n.SessionLocaleResolver" />
-
-	<!-- LocaleChangeInterceptor 등록 -->
-	<!-- 언어 표현을 우리 마음대로 선택하고 싶을 때 -->
-	<!-- 클라이언트로부터 lang이라는 매개변수로 특정 Locale이 전송되면 해당 Locale로 변경하겠다 -->
-	<mvc:interceptors>
-		<bean
-			class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
-			<property name="paramName" value="lang" />
-		</bean>
-	</mvc:interceptors>
 </beans>

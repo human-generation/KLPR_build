@@ -9,6 +9,7 @@ import com.kimchi.biz.user.UserVO;
 
 @Service("userService")
 public class UserServiceImpl implements UserService {
+
 	@Autowired
 	private UserDAOImpl userDAO;
 
@@ -20,6 +21,18 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void insertUser(UserVO vo) {
 		userDAO.insertUser(vo);
+	}
+
+	@Override
+	public void updateUserMoney(UserVO vo, int pay) {
+		userDAO.updateUserMoney(vo, pay);
+
+	}
+
+	@Override
+	public void updateUser(UserVO vo) {
+		userDAO.updateUser(vo);
+
 	}
 
 }

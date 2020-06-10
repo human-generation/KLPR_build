@@ -2,7 +2,7 @@
 <!DOCTYPE configuration
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
-<configuration>
+  <configuration>
 	<!-- Properties 파일 설정(DB 연결 정보) -->
 	<!-- 
 	<properties resource="db.properties" />
@@ -10,6 +10,7 @@
 	 
 	<!-- Alias 설정(이름이 기니까 별명을 줘서 짧게 쓰자 -->
 	<typeAliases>
+<<<<<<< HEAD
 		<typeAlias type="com.springstudy.biz.board.BoardVO" alias="board"></typeAlias>
 		<typeAlias type="com.kimchi.biz.user.UserVO" alias="user"></typeAlias>
 	</typeAliases>
@@ -32,13 +33,19 @@
 	<mappers>
 		<mapper resource="mappings/board-mapping.xml" />
 		<mapper resource="mappings/user-mapping.xml" />
+=======
+		<typeAlias type="com.kimchi.biz.helpee.HelpeeVO" alias="helpee"></typeAlias>
+		<typeAlias type="com.kimchi.biz.helpee.HelpeeListVO" alias="helpeeList"></typeAlias>
+		<typeAlias type="com.kimchi.biz.seoul.SeoulVO" alias="seoul"></typeAlias>
+		<typeAlias type="com.kimchi.biz.language.LanguageVO" alias="language"></typeAlias>
+	</typeAliases>
+	
+	<mappers>
+		<mapper resource="mappings/helpee-mapping.xml" />
+		<mapper resource="mappings/seoul-mapping.xml" />
+		<mapper resource="mappings/language-mapping.xml" />
+>>>>>>> 515d5c339444b02052b07005f33f665bb56e3aac
 	</mappers>
 	
 </configuration>
-
-
-
-
-
-
 

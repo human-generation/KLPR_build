@@ -3,6 +3,8 @@ package com.kimchi.biz.user.impl;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,9 +24,17 @@ public class UserDAOImpl implements UserDAO {
 	// SQL 명령어
 	private final String USER_GET = "SELECT * FROM user WHERE email=? AND pw=?";
 	private final String USER_INSERT = "INSERT INTO user(email, pw, name, gender, money, phone) VALUES(?, ?, ?, ?, 0, ?)";
+<<<<<<< HEAD
 	private final String UPDATE_USER_MONEY="UPDATE user SET money=? WHERE UNO=?";
 	private final String UPDATE_USER="UPDATE user SET name=?, WHERE UNO=?";
 	
+=======
+	private final String UPDATE_USER_MONEY = "UPDATE user SET money=? WHERE UNO=?";
+	private final String UPDATE_USER = "UPDATE user SET name=?, WHERE UNO=?";
+
+	private final String USERLIST_GET = "SELECT uno, name FROM user ORDER BY uno";
+
+>>>>>>> 515d5c339444b02052b07005f33f665bb56e3aac
 	@Override
 	public UserVO getUser(UserVO vo) {
 		System.out.println("------UserDAOImlp의-getUser() 기능 처리");
@@ -73,14 +83,22 @@ public class UserDAOImpl implements UserDAO {
 			JDBCUtil.close(stmt, conn);
 		}
 	}
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> 515d5c339444b02052b07005f33f665bb56e3aac
 	@Override
 	public void updateUserMoney(UserVO vo, int pay) {
 		System.out.println("------UserDAOImpl의-updateUserMoney() 기능 처리");
 		try {
 			conn = JDBCUtil.getConnection();
 			stmt = conn.prepareStatement(UPDATE_USER_MONEY);
+<<<<<<< HEAD
 			stmt.setInt(1, vo.getMoney()+pay);
+=======
+			stmt.setInt(1, vo.getMoney() + pay);
+>>>>>>> 515d5c339444b02052b07005f33f665bb56e3aac
 			stmt.setInt(2, vo.getUno());
 			stmt.executeUpdate();
 			getUser(vo);
@@ -90,7 +108,11 @@ public class UserDAOImpl implements UserDAO {
 			JDBCUtil.close(stmt, conn);
 		}
 	}
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> 515d5c339444b02052b07005f33f665bb56e3aac
 	@Override
 	public void updateUser(UserVO vo) {
 		System.out.println("------UserDAOImpl의-updateUser() 기능 처리");
@@ -107,4 +129,31 @@ public class UserDAOImpl implements UserDAO {
 			JDBCUtil.close(stmt, conn);
 		}
 	}
+<<<<<<< HEAD
+=======
+
+	@Override
+	public List<UserVO> getUserList(UserVO vo) {
+		System.out.println("===> JDBC로 getUserList() 기능 처리");
+
+		List<UserVO> userList = new ArrayList<UserVO>();
+		try {
+			conn = JDBCUtil.getConnection();
+			stmt = conn.prepareStatement(USERLIST_GET);
+			rs = stmt.executeQuery();
+			while (rs.next()) {
+				UserVO user = new UserVO();
+				user.setUno(rs.getInt("uno"));
+				user.setName(rs.getString("name"));
+				userList.add(user);
+			}
+		} catch (Exception e) {
+
+		} finally {
+
+		}
+		return userList;
+	}
+
+>>>>>>> 515d5c339444b02052b07005f33f665bb56e3aac
 }
