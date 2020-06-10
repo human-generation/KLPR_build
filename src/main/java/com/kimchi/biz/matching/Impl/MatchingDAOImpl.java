@@ -36,7 +36,8 @@ public class MatchingDAOImpl implements MatchingDAO {
 	private final String R_YOUR_NAME = "SELECT name FROM user WHERE uno=(SELECT rcno FROM matching WHERE mno=?)";
 	
 	private final String UPDATE_PAID="UPDATE matching SET mstate=3 where mno=?";
-	private final String UPDATE_ENDED="UPDATE matching SET mstate=5 where mno=?";
+	private final String UPDATE_ENDED="UPDATE matching SET mstate=4 where mno=?";
+	private final String UPDATE_WAIT="UPDATE matching SET mstate=2 where mno=?";
 	
 	private final String LANGUAGE_GET_R="SELECT language FROM language WHERE lno=ANY(SELECT lno FROM helper WHERE uno=?)";
 	private final String LANGUAGE_GET_E="SELECT language FROM language WHERE lno=ANY(SELECT lno FROM helpee WHERE uno=?)";
@@ -167,8 +168,12 @@ public class MatchingDAOImpl implements MatchingDAO {
 					stmt2.setInt(1, mvo.getMno());
 					stmt2.executeUpdate();
 				}
-				else if(mvo.getMstate()==4) {
+				else if(mvo.getMstate()==3) {
 					stmt2=conn.prepareStatement(UPDATE_ENDED);
+					stmt2.setInt(1, mvo.getMno());
+					stmt2.executeUpdate();
+				}else if(mvo.getMstate()==1) {
+					stmt2=conn.prepareStatement(UPDATE_WAIT);
 					stmt2.setInt(1, mvo.getMno());
 					stmt2.executeUpdate();
 				}

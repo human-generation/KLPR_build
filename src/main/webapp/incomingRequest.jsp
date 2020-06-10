@@ -87,7 +87,7 @@
 									<div class="card-body">
 										<div class="card">
 											<c:if test="${loginUser.name eq matching_s.senderName }">
-											<h6 class="card-header">${matching_s.recevierName }</h6></c:if>
+											<h6 class="card-header">${matching_s.receiverName }</h6></c:if>
 											<c:if test="${loginUser.name eq matching_s.receiverName }">
 											<h6 class="card-header">${matching_s.senderName }</h6></c:if>
 											<div class="card-body">
@@ -117,7 +117,7 @@
 												</div>
 												</p>
 												<a href="#" class="btn btn-primary">상태 {요청받음 mstate 0}</a> <a
-													href="#" class="btn btn-primary">자세히보기</a>
+													href="updateState.do" class="btn btn-primary">자세히보기</a>
 											</div>
 										</div>
 									</div>
