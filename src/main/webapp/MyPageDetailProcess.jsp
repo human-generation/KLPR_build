@@ -1,561 +1,326 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE html>
-<html>
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<%@ include file="Header.jsp"%>
+<!-- 본문 -->
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<div class="mypage-board container">
+	<div class="row">
 
-    <!-- fontawsome css-->
-    <script src="https://kit.fontawesome.com/8b4a01720d.js" crossorigin="anonymous"></script>
+		<div class="col-md-3 order-1 order-md-1">
 
-    <!-- custom css-->
-    <link rel="stylesheet" href="index.css">
-    <link rel="stylesheet" href="./css/sgprocess.css">
-    <link rel="stylesheet" href="./css/sgbasic.css">
-    <link rel="stylesheet" href="https://indestructibletype.com/fonts/Jost.css" type="text/css" charset="utf-8" />
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+			<div class="d-flex flex-column">
+				<div class="btn-group-vertical mypage-menu d-none d-md-block">
+					<button type="button" class="btn mypage-button" onclick="location.href='myPage.do'">My
+						page</button>
+					<button type="button" class="btn mypage-button" onclick="location.href='incomingRequest.do'">View
+						all requests</button>
+					<button type="button" class="btn mypage-button" onclick="location.href='myPageDetailProcess.do'">Pending
+						requests</button>
+					<button type="button" class="btn mypage-button">History</button>
+					<button type="button" class="btn mypage-button">Edit my info</button>
+				</div>
 
-    <title>K:LPER | Get help in Korea</title>
-</head>
-<body>
-	<nav id="mainNavbar" class="navbar navbar-expand-md navbar-dark py-1 fixed-top">
-        <div class="container">
-            <a href="main.do" class="navbar-brand"></a>
-		
-		
-		 <button class="navbar-toggler" data-toggle="collapse" data-target="#navLinks"
-                aria-label="Toggle navigation">
-                <i class="fas fa-align-right"></i>
-            </button>
-            <div class="collapse navbar-collapse" id="navLinks">
-                <ul class="navbar-nav mr-auto">
-				<li class="nav-item"><a href="getHelperList.do"
-					class="nav-link">HELPER</a></li>
-				<li class="nav-item"><a href="getHelpeeList.do"
-					class="nav-link">HELPEE</a></li>
-			</ul>
 
-			<ul class="navbar-nav ml-auto">
-				<c:if test="${empty sessionScope.userName}">
-					<li class="nav-item"><a class="nav-link" data-toggle="modal"
-						data-target="#loginModal">Login</a></li>
-					<li class="nav-item"><a class="nav-link " data-toggle="modal"
-						data-target="#signupModal">Signup</a></li>
-				</c:if>
-				<c:if test="${!empty sessionScope.userName}">
-					${sessionScope.userName}님&nbsp;
-					<li class="nav-item"><a class="nav-link" href="myPage.do">MyPage</a></li>
-					<li class="nav-item"><a class="nav-link" href="logout.do">Logout</a></li>
-				</c:if>
-			</ul>
+				<div class="btn-group mypage-menu d-md-none">
+					<button type="button" class="btn mypage-button" onclick="location.href='myPage.do'">My
+						page</button>
+					<button type="button" class="btn mypage-button" onclick="location.href='incomingRequest.do'">Requests</button>
+					<button type="button" class="btn mypage-button"
+						onclick="location.href='myPageDetailProcess.do'">Pending</button>
+					<button type="button" class="btn mypage-button">History</button>
+					<button type="button" class="btn mypage-button">Edit Info</button>
+				</div>
+
+			</div>
 		</div>
-		</div>
-	</nav>
-	<!-- HEADER END -->
-	<!-- 본문 -->
 
 
 
 
+		<div class="col-md-9 order-2 order-md-2">
 
-	<div class="post_sg">
-        <div class="container myPageBoard">
-            <div class="row">
-                <div class="menubar col-md-2 order-1 order-md-1">
-                    <div class="btn-group-vertical d-none d-md-block">
-                        <button type="button" class="btn  helper-button" onclick="location.href='myPage.do'">My page</button>
-                        <button type="button" class="btn  helper-button" onclick="location.href='incomingRequest.do'">View all requests</button>
-                        <button type="button" class="btn  helper-button" onclick="location.href='myPageDetailProcess.do'">Pending requests</button>
-                        <button type="button" class="btn  helper-button">History</button>
-                        <button type="button" class="btn  helper-button">Edit my info</button>
-                    </div>
-                    <div class="btn-group d-md-none">
-                        <button type="button" class="btn  helper-button" onclick="location.href='myPage.do'">My page</button>
-                        <button type="button" class="btn  helper-button" onclick="location.href='incomingRequest.do'">View all requests</button>
-                        <button type="button" class="btn  helper-button" onclick="location.href='myPageDetailProcess.do'">Pending requests</button>
-                        <button type="button" class="btn  helper-button">History</button>
-                        <button type="button" class="btn  helper-button">Edit my info</button>
-                    </div>
-                </div>
+			<div class="row">
 
-			<div class="col-md-10 order-2 order-md-2">
-                <div class="sgprocess post">
-                    <div class="row">
-                        <div class="col-lg-4 tong">
-                            <div class="card">
-                                <h4 class="card-header">Payment waiting                                </h4>
-							<c:forEach items="${WaitingList}" var="matching_w">
-								<div class="card-body">
-                                    <div class="card">
-										<c:choose>
-											<c:when test="${matching_w.rcno eq loginUser.uno }">
-												<h6 class="h-name">${matching_w.senderName }</h6>
-											</c:when>
-											<c:when test="${matching_w.seno eq loginUser.uno }">
-												<h6 class="h-name">${matching_w.receiverName }</h6>
-											</c:when>
-										</c:choose>
-										<div class="h-body">
-											<img class="mr-3"
-                                                src="https://cdn.pixabay.com/photo/2013/10/28/19/23/cat-201969_960_720.jpg"
-                                                alt="profileImage">
-                                                
-											<p class="card-text">
-												<c:if test="${matching_w.mservice ==1}">
-													<td><a href="#"
-														class="badge badge-primary helpee-button-main">이사</a></td>
-												</c:if>
-												<c:if test="${matching_w.mservice ==2}">
-													<td><a href="#"
-														class="badge badge-primary helpee-button-main">병원</a></td>
-												</c:if>
-												<c:if test="${matching_w.mservice ==3}">
-													<td><a href="#"
-														class="badge badge-primary helpee-button-main">관공서</a></td>
-												</c:if>
-											<div class="lang">
-												Language
-												<c:forEach items="${matching_w.language}" var="language">${language} </c:forEach>
-											</div>
-											<div class="reviewNum">Total usage {rv_no}</div>
-											<div class="avDate">Available date {sta - end}</div>
-											<div class="area">
-												Placed in <i class="fas fa-map-marker-alt"></i>${matching_w.mplaceName }
-											</div>
-											</p>										
-											<!-- 이아래문장을 폼으로감싸서 submit하기 -->
-											<form action="updateState.do" method="POST">
-												<c:if test="${loginUser.uno eq matching_w.eno }">
-													<input type="hidden" name="mstate"
-														value="${matching_w.mstate}">
-													<input type="hidden" name="mno" value="${matching_w.mno }">
-													<button type="submit" class="btn btn-primary">결제하기</button>
-												</c:if>
-											</form>
+
+
+				<div class="col-lg-4">
+					<div class="mypage-post">
+
+
+						<h4 class="mypage-process-header">Payment waiting </h4>
+						<c:forEach items="${WaitingList}" var="matching_w">
+							<div class="mypage-process-body">
+
+
+								<div class="mypage-process">
+									<c:choose>
+										<c:when test="${matching_w.rcno eq loginUser.uno }">
+											<h6 class="h-name">${matching_w.senderName }</h6>
+										</c:when>
+										<c:when test="${matching_w.seno eq loginUser.uno }">
+											<h6 class="h-name">${matching_w.receiverName }</h6>
+										</c:when>
+									</c:choose>
+									<div class="h-body">
+										<img class="profile-img-box"
+											src="https://cdn.pixabay.com/photo/2013/10/28/19/23/cat-201969_960_720.jpg" alt="profileImage">
+
+										<p class="mypage-process-text">
+											<c:if test="${matching_w.mservice ==1}">
+												<td><a href="#" class="helper-badge">Moving/a></td>
+											</c:if>
+											<c:if test="${matching_w.mservice ==2}">
+												<td><a href="#" class="helper-badge">Hospital</a></td>
+											</c:if>
+											<c:if test="${matching_w.mservice ==3}">
+												<td><a href="#" class="helper-badge">Immigration</a></td>
+											</c:if>
+										<div class="lang">
+											Language
+											<c:forEach items="${matching_w.language}" var="language">${language} </c:forEach>
 										</div>
-									</div>
-								</div>
-							</c:forEach>
-						</div>
-					</div>
-					<div class="col-lg-4 tong">
-                            <div class="card">
-                                <h4 class="card-header">Completed payment</h4>
-							<c:forEach items="${PaidList}" var="matching_p">
-								<div class="card-body">
-									<div class="card">
-										<c:choose>
-											<c:when test="${matching_p.rcno eq loginUser.uno }">
-												<h6 class="h-name">${matching_p.senderName }</h6>
-											</c:when>
-											<c:when test="${matching_p.seno eq loginUser.uno }">
-												<h6 class="h-name">${matching_p.receiverName }</h6>
-											</c:when>
-										</c:choose>
-										<div class="h-body">
-
-											<img class="mr-3"
-                                                src="https://cdn.pixabay.com/photo/2013/10/28/19/23/cat-201969_960_720.jpg"
-                                                alt="profileImage">
-											<p class="card-text">
-												<c:if test="${matching_p.mservice ==1}">
-													<td><a href="#"
-														class="badge badge-primary helpee-button-main">이사</a></td>
-												</c:if>
-												<c:if test="${matching_p.mservice ==2}">
-													<td><a href="#"
-														class="badge badge-primary helpee-button-main">병원</a></td>
-												</c:if>
-												<c:if test="${matching_p.mservice ==3}">
-													<td><a href="#"
-														class="badge badge-primary helpee-button-main">관공서</a></td>
-												</c:if>
-											<div class="lang">
-												Language
-												<c:forEach items="${matching_p.language}" var="language">${language} </c:forEach>
-											</div>
-											<div class="reviewNum">Total usage {rv_no}</div>
-											<div class="avDate">Available date {sta - end}</div>
-											<div class="area">
-												Placed in <i class="fas fa-map-marker-alt"></i>${matching_p.mplaceName }
-											</div>
-											</p>
-											<a href="#" class="btn btn-primary">대화하기(미구현)</a>
+										<div class="reviewNum">Total usage {rv_no}</div>
+										<div class="avDate">Available date {sta - end}</div>
+										<div class="area">
+											Placed in <i class="fas fa-map-marker-alt"></i>${matching_w.mplaceName }
 										</div>
+										</p>
+										<!-- 이아래문장을 폼으로감싸서 submit하기 -->
+										<form action="updateState.do" method="POST">
+											<c:if test="${loginUser.uno eq matching_w.eno }">
+												<input type="hidden" name="mstate" value="${matching_w.mstate}">
+												<input type="hidden" name="mno" value="${matching_w.mno }">
+												<button type="submit" class="btn service-helper-button">Checkout</button>
+											</c:if>
+										</form>
 									</div>
 								</div>
-							</c:forEach>
-						</div>
+							</div>
+						</c:forEach>
 					</div>
-					<div class="col-lg-4 tong">
-                            <div class="card">
-                                <h4 class="card-header">Completed deal</h4>
-							<c:forEach items="${EndedList}" var="matching_e">
-								<div class="card-body">
-									<div class="card">
+				</div>
+
+
+
+
+
+				<div class="col-lg-4">
+					<div class="mypage-post">
+						<h4 class="mypage-process-header">Completed payment</h4>
+						<c:forEach items="${PaidList}" var="matching_p">
+							<div class="mypage-process-body">
+								<div class="mypage-process">
+									<c:choose>
+										<c:when test="${matching_p.rcno eq loginUser.uno }">
+											<h6 class="h-name">${matching_p.senderName }</h6>
+										</c:when>
+										<c:when test="${matching_p.seno eq loginUser.uno }">
+											<h6 class="h-name">${matching_p.receiverName }</h6>
+										</c:when>
+									</c:choose>
+									<div class="h-body">
+
+										<img class="profile-img-box"
+											src="https://cdn.pixabay.com/photo/2013/10/28/19/23/cat-201969_960_720.jpg" alt="profileImage">
+										<p class="mypage-process-text">
+											<c:if test="${matching_p.mservice ==1}">
+												<td><a href="#" class="helper-badge">이사</a></td>
+											</c:if>
+											<c:if test="${matching_p.mservice ==2}">
+												<td><a href="#" class="helper-badge">병원</a></td>
+											</c:if>
+											<c:if test="${matching_p.mservice ==3}">
+												<td><a href="#" class="helper-badge">관공서</a></td>
+											</c:if>
+										<div class="lang">
+											Language
+											<c:forEach items="${matching_p.language}" var="language">${language} </c:forEach>
+										</div>
+										<div class="reviewNum">Total usage {rv_no}</div>
+										<div class="avDate">Available date {sta - end}</div>
+										<div class="area">
+											Placed in <i class="fas fa-map-marker-alt"></i>${matching_p.mplaceName }
+										</div>
+										</p>
+										<a href="#" class="btn service-helper-button">대화하기(미구현)</a>
+									</div>
+								</div>
+							</div>
+						</c:forEach>
+					</div>
+				</div>
+
+
+
+				<div class="col-lg-4">
+					<div class="mypage-post">
+						<h4 class="mypage-process-header">Completed deal</h4>
+						<c:forEach items="${EndedList}" var="matching_e">
+							<div class="mypage-process-body">
+								<div class="mypage-process">
+									<c:choose>
+										<c:when test="${matching_e.rcno eq loginUser.uno }">
+											<h6 class="h-name">${matching_e.senderName }</h6>
+										</c:when>
+										<c:when test="${matching_e.seno eq loginUser.uno }">
+											<h6 class="h-name">${matching_e.receiverName }</h6>
+										</c:when>
+									</c:choose>
+									<div class="h-body">
+
+										<img class="profile-img-box"
+											src="https://cdn.pixabay.com/photo/2013/10/28/19/23/cat-201969_960_720.jpg" alt="profileImage">
+										<p class="mypage-process-text">
+											<c:if test="${matching_e.mservice ==1}">
+												<td><a href="#" class="bhelper-badge">이사</a></td>
+											</c:if>
+											<c:if test="${matching_e.mservice ==2}">
+												<td><a href="#" class="helper-badge">병원</a></td>
+											</c:if>
+											<c:if test="${matching_e.mservice ==3}">
+												<td><a href="#" class="helper-badge">관공서</a></td>
+											</c:if>
+
+										<div class="lang">
+											Language
+											<c:forEach items="${matching_e.language}" var="language">${language} </c:forEach>
+										</div>
+										<div class="reviewNum">Total usage {rv_no}</div>
+										<div class="avDate">Available date {sta - end}</div>
+										<div class="area">
+											Placed in <i class="fas fa-map-marker-alt"></i>${matching_e.mplaceName }
+										</div>
+										</p>
 										<c:choose>
-											<c:when test="${matching_e.rcno eq loginUser.uno }">
-												<h6 class="h-name">${matching_e.senderName }</h6>
+											<c:when test="${matching_e.eno == loginUser.uno }">
+												<a href="updateState.do" class="btn service-helper-button" data-toggle="modal"
+													data-target="#reviewModalr" href="r_review.do">리뷰작성후 거래완료</a>
 											</c:when>
-											<c:when test="${matching_e.seno eq loginUser.uno }">
-												<h6 class="h-name">${matching_e.receiverName }</h6>
-											</c:when>
+											<c:otherwise>
+												<a href="updateState.do" class="btn service-helper-button" data-toggle="modal"
+													data-target="#reviewModale" href="insertE_Review.do">리뷰작성후 거래완료</a>
+											</c:otherwise>
 										</c:choose>
-										<div class="h-body">
-
-											 <img class="mr-3"
-                                                src="https://cdn.pixabay.com/photo/2013/10/28/19/23/cat-201969_960_720.jpg"
-                                                alt="profileImage">
-											<p class="card-text">
-												<c:if test="${matching_e.mservice ==1}">
-													<td><a href="#"
-														class="badge badge-primary helpee-button-main">이사</a></td>
-												</c:if>
-												<c:if test="${matching_e.mservice ==2}">
-													<td><a href="#"
-														class="badge badge-primary helpee-button-main">병원</a></td>
-												</c:if>
-												<c:if test="${matching_e.mservice ==3}">
-													<td><a href="#"
-														class="badge badge-primary helpee-button-main">관공서</a></td>
-												</c:if>
-
-												<div class="lang">
-												Language
-												<c:forEach items="${matching_e.language}" var="language">${language} </c:forEach>
-											</div>
-											<div class="reviewNum">Total usage {rv_no}</div>
-											<div class="avDate">Available date {sta - end}</div>
-											<div class="area">
-												Placed in <i class="fas fa-map-marker-alt"></i>${matching_e.mplaceName }
-											</div>
-											</p>									
-												<c:choose>
-													<c:when test="${matching_e.eno == loginUser.uno }">
-														<a href="updateState.do" class="btn btn-primary"
-															data-toggle="modal" data-target="#reviewModalr"
-															href="r_review.do">리뷰작성후 거래완료</a>
-													</c:when>
-													<c:otherwise>
-														<a href="updateState.do" class="btn btn-primary"
-															data-toggle="modal" data-target="#reviewModale"
-															href="insertE_Review.do">리뷰작성후 거래완료</a>
-													</c:otherwise>
-												</c:choose>
-											</div>
 									</div>
 								</div>
-							</c:forEach>
-						</div>
+							</div>
+						</c:forEach>
 					</div>
 				</div>
 			</div>
+
 		</div>
 	</div>
-	</div></div>
-	
-	
-	
-	<!-- Additional Review Modal-->
-	<div class="modal fade" id="reviewModale" tabindex="-1" role="dialog"
-		aria-labelledby="reviewModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="modalLabel">Reivew</h5>
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
+</div>
+</div>
 
-				<div class="modal-body">
-					<form class="review-form" action="insertE_Review.do" method="POST">
-						<div class="row">
-							<div class="col-5">
-								<img class="mr-3" src="https://cdn.pixabay.com/photo/2013/10/28/19/23/cat-201969_960_720.jpg" alt="profileImage">
-							</div>
-							<div class="col-7">
-								<div class="media-body">
-									<a href="#" class="badge badge-primary helpee-button-main">이사</a>
-									<a href="#" class="badge badge-primary helpee-button-main">병원</a>
-									<a href="#" class="badge badge-primary helpee-button-main">출입국</a>
-									<h4>${sessionScope.userName }</h4>
-									<div class="btn">{mdate}</div>
-								</div>
 
-							</div>
-						</div>
-						<input type="hidden" name="rno" class="form-control"
-							value="${sessionScope.userNumber}" />
-						<div class="form-group">
-							<label for="reviewScore">평점남기기</label> <select name="escore"
-								class="form-control" required>
-								<option value="5">5</option>
-								<option value="4">4</option>
-								<option value="3">3</option>
-								<option value="2">2</option>
-								<option value="1">1</option>
-							</select>
-						</div>
-						<div class="form-group">
-							<label for="detailReview">Review your match</label>
-							<textarea name="ecomment" class="form-control" rows="3"></textarea>
-						</div>
 
-						<button type="submit" class="btn btn-primary helper-button-main">Submit
-							your review!</button>
-					</form>
-
-				</div>
+<!-- Additional Review Modal HELPEEE-->
+<div class="modal fade" id="reviewModale" tabindex="-1" role="dialog" aria-labelledby="reviewModalLabel"
+	aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="modalLabel">Reivew</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
 			</div>
-		</div>
-	</div>
 
-	<div class="modal fade" id="reviewModalr" tabindex="-1" role="dialog"
-		aria-labelledby="reviewModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="modalLabel">Reivew</h5>
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-
-				<div class="modal-body">
-					<form class="review-form" action="r_review.do" method="POST">
-						<div class="row">
-							<div class="col-5">
-								<img class="mr-3" src="https://cdn.pixabay.com/photo/2013/10/28/19/23/cat-201969_960_720.jpg" alt="profileImage">
+			<div class="modal-body">
+				<form class="review-form" action="insertE_Review.do" method="POST">
+					<div class="row">
+						<div class="col-5">
+							<img class="profile-img-box" src="https://cdn.pixabay.com/photo/2013/10/28/19/23/cat-201969_960_720.jpg"
+								alt="profileImage">
+						</div>
+						<div class="col-7">
+							<div class="media-body">
+								<a href="#" class="helpee-badge">이사</a>
+								<a href="#" class="helpee-badge">병원</a>
+								<a href="#" class="helpee-badge">출입국</a>
+								<h4>${sessionScope.userName }</h4>
+								<div class="btn">{mdate}</div>
 							</div>
-							<div class="col-7">
-								<div class="media-body">
-									<a href="#" class="badge badge-primary helpee-button-main">이사</a>
-									<a href="#" class="badge badge-primary helpee-button-main">병원</a>
-									<a href="#" class="badge badge-primary helpee-button-main">출입국</a>
-									<h4>${sessionScope.userName }</h4>
-									<div class="btn">{mdate}</div>
-								</div>
-							</div>
+
 						</div>
-						<div class="form-group">
-							<label for="reviewScore">평점남기기</label> <select name="rscore"
-								class="form-control" required>
-								<option value="5">5</option>
-								<option value="4">4</option>
-								<option value="3">3</option>
-								<option value="2">2</option>
-								<option value="1">1</option>
-							</select>
-						</div>
-						<input type="hidden" name="uno" value="${sessionScope.userNumber}" />
-						<div class="form-group">
-							<label for="detailReview">Review your match</label>
-							<textarea name="rcomment" class="form-control" rows="3"></textarea>
-						</div>
-
-						<button type="submit" class="btn btn-primary helper-button-main">Submit
-							your review!</button>
-					</form>
-
-				</div>
-			</div>
-		</div>
-	</div>
-
-
-
-	<!--AUTH MODAL-->
-	<!--LOGIN-->
-	<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="modalLabel">Login</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-
-				<div class="modal-body">
-					<form class="login-form" action="login.do" method="post">
-						<div class="form-group">
-							<label for="inputEmail">Email address</label> <input name="email"
-								type="email" class="form-control" required>
-						</div>
-						<div class="form-group">
-							<label for="inputPassword">Password</label> <input name="pw"
-								type="password" class="form-control" required>
-						</div>
-						<div class="form-check">
-							<input type="checkbox" class="form-check-input"> <label
-								class="form-check-label" for="logInCheck">Keep me logged
-								in </label> <a class="help-password" href="#">forgot your password?</a>
-						</div>
-						<button type="submit" class="btn btn-primary">Login</button>
-					</form>
-					<hr>
-					<h5>OR</h5>
-					<div class="sns-login">
-						<a class="btn btn-primary " href="#"><i class="fab fa-google"></i>
-							Continue with Google</a>
-
 					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<!--SIGNUP-->
-	<div class="modal fade" id="signupModal" tabindex="-1" role="dialog"
-		aria-labelledby="signupModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="modalLabel">Sign up</h5>
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-
-				<div class="modal-body">
-					<form class="signup-form" action="join.do" method="post">
-						<div class="form-group">
-							<label for="signupEmail">Email address</label> <input
-								name="email" type="email" class="form-control" required>
-						</div>
-						<div class="form-group">
-							<label for="signupPassword">Password</label> <input name="pw"
-								id="password" type="password" class="form-control" required>
-						</div>
-						<div class="form-group">
-							<label for="PasswordConfirm">Password confirm</label> <input
-								name="pw-confirm" id="password-confirm" type="password"
-								class="form-control" required>
-						</div>
-						<div class="form-group">
-							<label for="signupName">Name</label> <input name="name"
-								type="text" class="form-control" required>
-						</div>
-						<div class="form-group">
-							<label for="contactNumber">Contact number</label> <input
-								name="phone" type="text" class="form-control" required>
-						</div>
-						<div class="form-group">
-							<label for="gender">Are you..</label> <select name="gender"
-								class="form-control" required>
-								<option value="0">None of both</option>
-								<option value="1">Female</option>
-								<option value="2">Male</option>
-							</select>
-						</div>
-						<button type="submit" class="btn btn-primary">Signup</button>
-					</form>
-					<hr>
-					<h5>OR</h5>
-					<div class="sns-login">
-						<a class="btn btn-primary " href="#"><i class="fab fa-google"></i>
-							Continue with Google</a>
-
+					<input type="hidden" name="rno" class="form-control" value="${sessionScope.userNumber}" />
+					<div class="form-group">
+						<label for="reviewScore">평점남기기</label> <select name="escore" class="form-control" required>
+							<option value="5">5</option>
+							<option value="4">4</option>
+							<option value="3">3</option>
+							<option value="2">2</option>
+							<option value="1">1</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="detailReview">Review your match</label>
+						<textarea name="ecomment" class="form-control" rows="3"></textarea>
 					</div>
 
-				</div>
+					<button type="submit" class="btn service-helpee-button">Submit
+						your review!</button>
+				</form>
 			</div>
 		</div>
 	</div>
-
-	<!--본문끝-->
-	<!--FOOTER START-->
-
-	<div class="container-fluid footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm">
-                    <h5>Account</h5>
-                    <ul>
-                        <li><a class="footer-link" data-toggle="modal" data-target="#loginModal">Login</a>
-                        </li>
-                        <li><a class="footer-link" data-toggle="modal" data-target="#signupModal">Signup</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-sm">
-                    <h5>Our service</h5>
-                    <ul>
-                        <li><a class="footer-link" href="#">What is K:lper?</a></li>
-                        <li><a class="footer-link" href="#">FAQ</a></li>
-                        <li><a class="footer-link" href="#">Customer Service</a></li>
-                    </ul>
-                </div>
-                <div class="col-sm">
-                    <div>
-                        © 2020 Kelper LLC <br>
-                        <a class="footer-link" href="#">Terms of Service</a> | <a class="footer-link" href="#">Privacy
-                            Policy</a>
-                    </div>
-
-                </div>
-            </div>
-
-        </div>
-    </div>
+</div>
 
 
+<!-- Additional Review Modal HELPER-->
+<div class="modal fade" id="reviewModalr" tabindex="-1" role="dialog" aria-labelledby="reviewModalLabel"
+	aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="modalLabel">Reivew</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
 
-	<!-- Optional JavaScript -->
-	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-		crossorigin="anonymous"></script>
-	<script
-		src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-		integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-		crossorigin="anonymous"></script>
-	<script
-		src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
-		integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
-		crossorigin="anonymous"></script>
-		
-	<!-- custom js 추후 분리할것임-->
-	<script>
-		// navbar 
-		$(function() {
-			$(document).scroll(
-					function() {
-						var $nav = $("#mainNavbar");
-						$nav.toggleClass("scrolled", $(this).scrollTop() > $nav
-								.height());
-					});
-		});
+			<div class="modal-body">
+				<form class="review-form" action="r_review.do" method="POST">
+					<div class="row">
+						<div class="col-5">
+							<img class="profile-img-box" src="https://cdn.pixabay.com/photo/2013/10/28/19/23/cat-201969_960_720.jpg"
+								alt="profileImage">
+						</div>
+						<div class="col-7">
+							<div class="media-body">
+								<a href="#" class="helper-badge">이사</a>
+								<a href="#" class="helper-badge">병원</a>
+								<a href="#" class="helper-badge">출입국</a>
+								<h4>${sessionScope.userName }</h4>
+								<div class="btn">{mdate}</div>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="reviewScore">평점남기기</label> <select name="rscore" class="form-control" required>
+							<option value="5">5</option>
+							<option value="4">4</option>
+							<option value="3">3</option>
+							<option value="2">2</option>
+							<option value="1">1</option>
+						</select>
+					</div>
+					<input type="hidden" name="uno" value="${sessionScope.userNumber}" />
+					<div class="form-group">
+						<label for="detailReview">Review your match</label>
+						<textarea name="rcomment" class="form-control" rows="3"></textarea>
+					</div>
 
-		// dropdown
-		function readMoreFunction() {
-			var dots = document.getElementById("dots");
-			var moreText = document.getElementById("more");
-			var btnText = document.getElementById("myBtn");
+					<button type="submit" class="btn service-helper-button">Submit
+						your review!</button>
+				</form>
 
-			if (dots.style.display === "none") {
-				dots.style.display = "inline";
-				btnText.innerHTML = '<i class="fas fa-angle-down"></i>';
-				moreText.style.display = "none";
-			} else {
-				dots.style.display = "none";
-				btnText.innerHTML = '<i class="fas fa-angle-up"></i>';
-				moreText.style.display = "inline";
-			}
-		}
-	</script>
-</body>
-</html>
+			</div>
+		</div>
+	</div>
+</div>
+
+<%@ include file="Footer.jsp"%>
