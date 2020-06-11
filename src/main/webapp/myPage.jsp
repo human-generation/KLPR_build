@@ -88,7 +88,8 @@
 
                             <button type="button" class="btn charge" onclick="location.href='payment.do'">CHARGE
                             </button>
-                            <button type="button" class="btn charge" onclick="location.href='#'">See all charge history
+                            <button type="button" class="btn charge" onclick="location.href='#'">See all charge
+                                history
                             </button>
                         </div>
 
@@ -121,7 +122,7 @@
                             <h5 class="mypage-process-title">Waiting<br>payment</h5>
                             <p class="mypage-process-text">Waiting payment</p>
                             <a href="myPageDetailProcess.do" class="btn  mypage-button-round">
-                                <!--거래{mstate 2}-->${mstate2}</a>
+                                <!--거래{mstate 2}-->${mstate2}</a>l
                         </div>
                     </div>
                 </div>
@@ -149,7 +150,6 @@
         </div>
     </div>
 </div>
-
 
 
 
