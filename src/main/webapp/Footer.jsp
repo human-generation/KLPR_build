@@ -15,7 +15,7 @@
                 </div>
 
                 <div class="modal-body">
-                    <form class="login-form" action="login.do" method="post">
+                    <form class="login-form" action="login" method="post">
                         <div class="form-group">
                             <label for="inputEmail">Email address</label>
                             <input id="inputEmail" name="email" type="email" class="form-control" autocomplete="username" required>
@@ -56,7 +56,7 @@
                 </div>
 
                 <div class="modal-body">
-                    <form class="signup-form" action="join.do" method="post">
+                    <form class="signup-form" action="join" method="post">
                         <div class="form-group">
                             <label for="signupEmail">Email address</label>
                             <input name="email" id="signupEmail" type="email" class="form-control" autocomplete="username" required>

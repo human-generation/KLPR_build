@@ -109,6 +109,18 @@
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
 		</dependency>
+		
+		
+
+		<!-- URL Rewrite -->
+		<dependency>
+			<groupId>org.tuckey</groupId>
+			<artifactId>urlrewritefilter</artifactId>
+			<version>3.1.0</version>
+		</dependency>
+
+
+		
 
 		<!-- Test -->
 		<dependency>
@@ -172,6 +184,7 @@
 		
 	</dependencies>
 	<build>
+	<finalName>ROOT</finalName>
 		<plugins>
 			<plugin>
 				<artifactId>maven-eclipse-plugin</artifactId>

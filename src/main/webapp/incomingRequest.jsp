@@ -71,14 +71,9 @@
 											<c:if test="${matching_s.mservice ==3}">
 												<td><a href="#" class="helpee-badge">Immigration</a></td>
 											</c:if>
-										<div class="lang">
-											Language
-											<c:forEach items="${matching_w.language}" var="language">${language} </c:forEach>
-										</div>
-										<div class="reviewNum">Total usage {rv_no}</div>
-										<div class="avDate">Available date {sta - end}</div>
+										<div class="avDate">Available date <br> ${matching_s.mdate}</div>
 										<div class="area">
-											Placed in <i class="fas fa-map-marker-alt"></i>${matching_s.mplace }
+											Placed in <i class="fas fa-map-marker-alt"></i>${matching_s.mplaceName }
 										</div>
 										</p>
 										<div class="mypage-button-box">
@@ -130,14 +125,9 @@
 											<c:if test="${matching_r.mservice ==3}">
 												<td><a href="#" class="helper-badge">관공서</a></td>
 											</c:if>
-										<div class="lang">
-											Language
-											<c:forEach items="${matching_w.language}" var="language">${language} </c:forEach>
-										</div>
-										<div class="reviewNum">Total usage {rv_no}</div>
-										<div class="avDate">Available date {sta - end}</div>
+										<div class="avDate">Available date<br> ${matching_r.mdate}</div>
 										<div class="area">
-											Placed in <i class="fas fa-map-marker-alt"></i>${matching_r.mplace }
+											Placed in <i class="fas fa-map-marker-alt"></i>${matching_r.mplaceName }
 										</div>
 										</p>
 

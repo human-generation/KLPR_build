@@ -160,9 +160,13 @@
 									<div class="boardReview">
 										<ul class="list-group">
 											<li class="list-group-item">Review</li>
-											<li class="list-group-item">예의가 없어요</li>
-											<li class="list-group-item">말을 못해요</li>
-											<li class="list-group-item">잠만 자요</li>
+											<c:forEach items="${reviewList}" var="e_review">
+												<c:choose>
+													<c:when test="${e_review.eno == helpee.userVO.uno }">
+														<li class="list-group-item">${e_review.ecomment } ${e_review.escore }</li>
+													</c:when>
+												</c:choose>
+											</c:forEach>
 										</ul>
 									</div>
 									<div class="d-flex justify-content-center">

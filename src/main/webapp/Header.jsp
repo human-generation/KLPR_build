@@ -171,7 +171,7 @@
   <div class="main-body">
     <nav id="mainNavbar" class="navbar navbar-expand-md navbar-dark py-1 fixed-top">
       <div class="container">
-        <a href="main.do" class="navbar-brand">
+        <a href="main" class="navbar-brand">
           <span class="logo">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 273.32 56.7">
 
@@ -212,7 +212,7 @@
             <c:if test="${!empty sessionScope.userName}">
               <li class="nav-item"><a class="nav-link" href="myPage.do"><i class="fas fa-grin-hearts"></i> ${sessionScope.userName}</a></li>
               <li class="nav-item"><a class="nav-link" href="###"> <i class="fas fa-comments"></i></a></li>
-              <li class="nav-item"><a class="nav-link" href="logout.do"> Logout</a></li>
+              <li class="nav-item"><a class="nav-link" href="logout"> Logout</a></li>
             </c:if>
           </ul>
         </div>

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.kimchi.biz.e_review.E_ReviewService;
 import com.kimchi.biz.e_review.E_ReviewVO;
 import com.kimchi.biz.helpee.HelpeeService;
 import com.kimchi.biz.helpee.HelpeeVO;
@@ -22,6 +23,9 @@ public class HelpeeController {
 	@Autowired
 	private HelpeeService helpeeService;
 
+	@Autowired
+	private E_ReviewService e_reviewService;
+
 	// 전체 헬피 목록 출력
 	@RequestMapping(value = "/getHelpeeList.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public String getHelpeeList(@ModelAttribute("helpee") HelpeeVO hvo, @ModelAttribute("eReview") E_ReviewVO evo,
@@ -31,6 +35,7 @@ public class HelpeeController {
 		model.addAttribute("countList", helpeeService.getE_ReviewCountList(evo));
 		model.addAttribute("avgList", helpeeService.getE_ReviewAvgList(evo));
 		model.addAttribute("helpeeList", helpeeService.getHelpeeList(hvo));
+		model.addAttribute("reviewList", e_reviewService.getE_ReviewList(evo));
 
 		return "getHelpeeList.jsp";
 	}
@@ -107,9 +112,10 @@ public class HelpeeController {
 		model.addAttribute("countList", helpeeService.getE_ReviewCountList(evo));
 		model.addAttribute("avgList", helpeeService.getE_ReviewAvgList(evo));
 		model.addAttribute("helpeeList", helpeeService.recentHelpeeList(hvo));
+		model.addAttribute("reviewList", e_reviewService.getE_ReviewList(evo));
 		return "getHelpeeList.jsp";
 	}
-	
+
 	// 헬피글 평점순 정렬
 	@RequestMapping(value = "/scoreHelpeeList.do", method = RequestMethod.GET)
 	public String scoreHelpeeList(@ModelAttribute("helpee") HelpeeVO hvo, E_ReviewVO evo,
@@ -119,6 +125,7 @@ public class HelpeeController {
 		model.addAttribute("countList", helpeeService.getE_ReviewCountList(evo));
 		model.addAttribute("avgList", helpeeService.getE_ReviewAvgList(evo));
 		model.addAttribute("helpeeList", helpeeService.scoreHelpeeList(hvo));
+		model.addAttribute("reviewList", e_reviewService.getE_ReviewList(evo));
 		return "getHelpeeList.jsp";
 	}
 
@@ -131,6 +138,7 @@ public class HelpeeController {
 		model.addAttribute("countList", helpeeService.getE_ReviewCountList(evo));
 		model.addAttribute("avgList", helpeeService.getE_ReviewAvgList(evo));
 		model.addAttribute("helpeeList", helpeeService.moveHelpee(hvo));
+		model.addAttribute("reviewList", e_reviewService.getE_ReviewList(evo));
 		return "getHelpeeList.jsp";
 	}
 
@@ -143,6 +151,7 @@ public class HelpeeController {
 		model.addAttribute("countList", helpeeService.getE_ReviewCountList(evo));
 		model.addAttribute("avgList", helpeeService.getE_ReviewAvgList(evo));
 		model.addAttribute("helpeeList", helpeeService.hospitalHelpee(hvo));
+		model.addAttribute("reviewList", e_reviewService.getE_ReviewList(evo));
 		return "getHelpeeList.jsp";
 	}
 
@@ -155,6 +164,7 @@ public class HelpeeController {
 		model.addAttribute("countList", helpeeService.getE_ReviewCountList(evo));
 		model.addAttribute("avgList", helpeeService.getE_ReviewAvgList(evo));
 		model.addAttribute("helpeeList", helpeeService.immigrationHelpee(hvo));
+		model.addAttribute("reviewList", e_reviewService.getE_ReviewList(evo));
 		return "getHelpeeList.jsp";
 	}
 
@@ -167,6 +177,7 @@ public class HelpeeController {
 		model.addAttribute("countList", helpeeService.getE_ReviewCountList(evo));
 		model.addAttribute("avgList", helpeeService.getE_ReviewAvgList(evo));
 		model.addAttribute("helpeeList", helpeeService.seoulHelpeeList(hvo));
+		model.addAttribute("reviewList", e_reviewService.getE_ReviewList(evo));
 		return "getHelpeeList.jsp";
 	}
 

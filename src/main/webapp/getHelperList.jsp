@@ -169,9 +169,13 @@
                                         <ul class="list-group">
 
                                             <li class="list-group-item">Review</li>
-                                            <li class="list-group-item">예의가 없어요</li>
-                                            <li class="list-group-item">말을 못해요</li>
-                                            <li class="list-group-item">잠만 자요</li>
+                                            <c:forEach items="${reviewList}" var="r_review">
+												<c:choose>
+													<c:when test="${r_review.rno == helper.userVO.uno }">
+														<li class="list-group-item">${r_review.rcomment } ${r_review.rscore }</li>
+													</c:when>
+												</c:choose>
+											</c:forEach>
                                         </ul>
                                     </div>
                                     <div class="d-flex justify-content-center">

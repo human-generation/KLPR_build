@@ -75,12 +75,7 @@
 											<c:if test="${matching_w.mservice ==3}">
 												<td><a href="#" class="helper-badge">Immigration</a></td>
 											</c:if>
-										<div class="lang">
-											Language
-											<c:forEach items="${matching_w.language}" var="language">${language} </c:forEach>
-										</div>
-										<div class="reviewNum">Total usage {rv_no}</div>
-										<div class="avDate">Available date {sta - end}</div>
+										<div class="avDate">Available date<br> ${matching_w.mdate}</div>
 										<div class="area">
 											Placed in <i class="fas fa-map-marker-alt"></i>${matching_w.mplaceName }
 										</div>
@@ -132,12 +127,7 @@
 											<c:if test="${matching_p.mservice ==3}">
 												<td><a href="#" class="helper-badge">관공서</a></td>
 											</c:if>
-										<div class="lang">
-											Language
-											<c:forEach items="${matching_p.language}" var="language">${language} </c:forEach>
-										</div>
-										<div class="reviewNum">Total usage {rv_no}</div>
-										<div class="avDate">Available date {sta - end}</div>
+										<div class="avDate">Available date<br> ${matching_p.mdate}</div>
 										<div class="area">
 											Placed in <i class="fas fa-map-marker-alt"></i>${matching_p.mplaceName }
 										</div>
@@ -181,12 +171,7 @@
 												<td><a href="#" class="helper-badge">관공서</a></td>
 											</c:if>
 
-										<div class="lang">
-											Language
-											<c:forEach items="${matching_e.language}" var="language">${language} </c:forEach>
-										</div>
-										<div class="reviewNum">Total usage {rv_no}</div>
-										<div class="avDate">Available date {sta - end}</div>
+										<div class="avDate">Available date<br> ${matching_e.mdate}</div>
 										<div class="area">
 											Placed in <i class="fas fa-map-marker-alt"></i>${matching_e.mplaceName }
 										</div>

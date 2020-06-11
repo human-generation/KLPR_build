@@ -25,7 +25,7 @@ public class R_ReviewDAOImpl implements R_ReviewDAO {
 	private final String R_REVIEW_INSERT = "INSERT INTO r_review (eno, rno, rcomment, rscore) VALUES(?,?,?,?)";
 	private final String R_REVIEW_UPDATE = "UPDATE matching SET mstate=4 WHERE eno=? AND rno=? AND mstate=3";
 	private final String R_REVIEW_GET = "SELECT * FROM r_review WHERE r_vno=?";
-	private final String R_REVIEW_LIST = "SELECT * FROM r_review ORDER BY r_vno ASC";
+	private final String R_REVIEW_LIST = "SELECT * FROM r_review ORDER BY r_vno DESC";
 
 	private final String HELPER_REVIEW_EVNO = "SELECT hp.uno, IFNULL(truncate(AVG(rr.rscore), 1), '-none-') AS avg FROM helper AS hp LEFT JOIN r_review AS rr ON rr.rno = hp.uno GROUP BY hp.uno";
 	private final String HELPER_REVIEW_COUNT = "SELECT rno, count(r_vno) AS count FROM r_review GROUP BY rno ORDER BY count";
@@ -107,8 +107,8 @@ public class R_ReviewDAOImpl implements R_ReviewDAO {
 			rs = stmt.executeQuery();
 			while (rs.next()) {
 				R_ReviewVO r_review = new R_ReviewVO();
-				r_review.setR_vno(rs.getInt("r_vno"));
-				r_review.setEno(rs.getInt("eno"));
+//				r_review.setR_vno(rs.getInt("r_vno"));
+//				r_review.setEno(rs.getInt("eno"));
 				r_review.setRno(rs.getInt("rno"));
 				r_review.setRcomment(rs.getString("rcomment"));
 				r_review.setRscore(rs.getInt("rscore"));

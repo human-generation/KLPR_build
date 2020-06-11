@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.kimchi.biz.helper.HelperService;
 import com.kimchi.biz.helper.HelperVO;
 import com.kimchi.biz.language.LanguageVO;
+import com.kimchi.biz.r_review.R_ReviewService;
 import com.kimchi.biz.r_review.R_ReviewVO;
 import com.kimchi.biz.seoul.SeoulVO;
 import com.kimchi.biz.user.UserVO;
@@ -21,6 +22,9 @@ public class HelperController {
 
 	@Autowired
 	private HelperService helperService;
+
+	@Autowired
+	private R_ReviewService r_reviewService;
 
 	// 헬퍼 목록
 	@RequestMapping(value = "/getHelperList.do", method = { RequestMethod.GET, RequestMethod.POST })
@@ -34,6 +38,7 @@ public class HelperController {
 		model.addAttribute("avgList", helperService.getR_ReviewAvgList(rvo));
 		// 헬퍼 홍보글 리스트 모델에 담기
 		model.addAttribute("helperList", helperService.getHelperList(vo));
+		model.addAttribute("reviewList", r_reviewService.getR_ReviewList(rvo));
 
 		return "getHelperList.jsp";
 	}
@@ -111,6 +116,7 @@ public class HelperController {
 		model.addAttribute("countList", helperService.getR_ReviewCountList(rvo));
 		model.addAttribute("avgList", helperService.getR_ReviewAvgList(rvo));
 		model.addAttribute("helperList", helperService.recentHelperList(vo));
+		model.addAttribute("reviewList", r_reviewService.getR_ReviewList(rvo));
 		return "getHelperList.jsp";
 	}
 
@@ -123,18 +129,20 @@ public class HelperController {
 		model.addAttribute("countList", helperService.getR_ReviewCountList(rvo));
 		model.addAttribute("avgList", helperService.getR_ReviewAvgList(rvo));
 		model.addAttribute("helperList", helperService.scoreHelperList(vo));
+		model.addAttribute("reviewList", r_reviewService.getR_ReviewList(rvo));
 		return "getHelperList.jsp";
 	}
 
 	// 이사 헬퍼 리스트
 	@RequestMapping(value = "/moveHelper.do", method = RequestMethod.GET)
-	public String moveHelper(@ModelAttribute("helper") HelperVO vo, R_ReviewVO evo,
+	public String moveHelper(@ModelAttribute("helper") HelperVO vo, R_ReviewVO rvo,
 			@ModelAttribute("seoul") SeoulVO svo, Model model) {
 		System.out.println("모델로 이사헬퍼 리스트");
 		model.addAttribute("seoulList", helperService.getSeoulList(svo));
-		model.addAttribute("countList", helperService.getR_ReviewCountList(evo));
-		model.addAttribute("avgList", helperService.getR_ReviewAvgList(evo));
+		model.addAttribute("countList", helperService.getR_ReviewCountList(rvo));
+		model.addAttribute("avgList", helperService.getR_ReviewAvgList(rvo));
 		model.addAttribute("helperList", helperService.moveHelper(vo));
+		model.addAttribute("reviewList", r_reviewService.getR_ReviewList(rvo));
 		return "getHelperList.jsp";
 	}
 
@@ -147,6 +155,7 @@ public class HelperController {
 		model.addAttribute("countList", helperService.getR_ReviewCountList(rvo));
 		model.addAttribute("avgList", helperService.getR_ReviewAvgList(rvo));
 		model.addAttribute("helperList", helperService.hospitalHelper(vo));
+		model.addAttribute("reviewList", r_reviewService.getR_ReviewList(rvo));
 		return "getHelperList.jsp";
 	}
 
@@ -159,6 +168,7 @@ public class HelperController {
 		model.addAttribute("countList", helperService.getR_ReviewCountList(rvo));
 		model.addAttribute("avgList", helperService.getR_ReviewAvgList(rvo));
 		model.addAttribute("helperList", helperService.immigrationHelper(vo));
+		model.addAttribute("reviewList", r_reviewService.getR_ReviewList(rvo));
 		return "getHelperList.jsp";
 	}
 
@@ -171,6 +181,7 @@ public class HelperController {
 		model.addAttribute("countList", helperService.getR_ReviewCountList(rvo));
 		model.addAttribute("avgList", helperService.getR_ReviewAvgList(rvo));
 		model.addAttribute("helperList", helperService.seoulHelperList(vo));
+		model.addAttribute("reviewList", r_reviewService.getR_ReviewList(rvo));
 		return "getHelperList.jsp";
 	}
 

@@ -28,7 +28,7 @@ public class MatchingExtraDAOImpl implements MatchingExtraDAO {
 	private final String SENDED_MATCHING_GET = "SELECT * FROM matching WHERE seno=? AND mstate=1";
 	private final String RECEIVED_MATCHING_GET = "SELECT * FROM matching WHERE rcno=? AND mstate=1";
 	private final String WAITING_MATCHING_GET = "SELECT * FROM matching WHERE (seno=? OR rcno=?) AND mstate=2";
-	private final String PAID_MATCHING_GET = "SELECT * FROM matching WHERE (rcno=? OR seno=?) AND mstate=3";
+	private final String PAID_MATCHING_GET = "SELECT * FROM matching WHERE (rcno=? OR seno=?) AND mstate=3 AND date_format(mdate, '%Y-%m-%d') >= date_format(curdate(), '%Y-%m-%d')";
 	private final String ENDED_MATCHING_GET = "SELECT * FROM matching WHERE (rcno=? OR seno=?) AND mstate=3 AND date_format(mdate, '%Y-%m-%d') < date_format(curdate(), '%Y-%m-%d')";
 	private final String DENIED_MATCHING_GET = "SELECT * FROM matching WHERE (rcno=? OR seno=?) AND mstate=4";
 

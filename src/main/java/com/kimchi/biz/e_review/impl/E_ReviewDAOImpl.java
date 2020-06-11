@@ -25,7 +25,7 @@ public class E_ReviewDAOImpl implements E_ReviewDAO {
 	private final String E_REVIEW_INSERT = "INSERT INTO e_review(eno, rno, ecomment, escore) VALUES(?,?,?,?)";
 	private final String E_REVIEW_UPDATE = "UPDATE matching SET mstate=4 WHERE rno=? AND eno=? AND mstate=3";
 	private final String E_REVIEW_GET = "SELECT * FROM e_review WHERE e_vno=?";
-	private final String E_REVIEW_LIST = "SELECT * FROM e_review ORDER BY e_vno ASC";
+	private final String E_REVIEW_LIST = "SELECT * FROM e_review ORDER BY e_vno DESC";
 
 	private final String HELPEE_REVIEW_EVNO = "SELECT hp.uno, IFNULL(truncate(AVG(er.escore), 1), '-none-') AS avg FROM helpee AS hp LEFT JOIN e_review AS er ON er.eno = hp.uno GROUP BY hp.uno";
 	private final String HELPEE_REVIEW_COUNT = "SELECT eno, count(e_vno) AS count FROM e_review GROUP BY eno ORDER BY count";
@@ -102,9 +102,9 @@ public class E_ReviewDAOImpl implements E_ReviewDAO {
 			rs = stmt.executeQuery();
 			while (rs.next()) {
 				E_ReviewVO e_review = new E_ReviewVO();
-				e_review.setE_vno(rs.getInt("e_vno"));
+//				e_review.setE_vno(rs.getInt("e_vno"));
 				e_review.setEno(rs.getInt("eno"));
-				e_review.setRno(rs.getInt("rno"));
+//				e_review.setRno(rs.getInt("rno"));
 				e_review.setEcomment(rs.getString("ecomment"));
 				e_review.setEscore(rs.getInt("escore"));
 				e_reviewList.add(e_review);
