@@ -3,6 +3,8 @@ package com.kimchi.biz.user.impl;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
@@ -23,6 +25,8 @@ public class UserDAOImpl implements UserDAO {
 	private final String USER_INSERT = "INSERT INTO user(email, pw, name, gender, money, phone) VALUES(?, ?, ?, ?, 0, ?)";
 	private final String UPDATE_USER_MONEY = "UPDATE user SET money=? WHERE UNO=?";
 	private final String UPDATE_USER = "UPDATE user SET name=?, WHERE UNO=?";
+
+	private final String USERLIST_GET = "SELECT uno, name FROM user ORDER BY uno";
 
 	@Override
 	public UserVO getUser(UserVO vo) {
@@ -65,7 +69,6 @@ public class UserDAOImpl implements UserDAO {
 			stmt.setString(3, vo.getName());
 			stmt.setInt(4, vo.getGender());
 			stmt.setString(5, vo.getPhone());
-			stmt.setString(6, vo.getUcomment());
 			stmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -106,6 +109,29 @@ public class UserDAOImpl implements UserDAO {
 		} finally {
 			JDBCUtil.close(stmt, conn);
 		}
+	}
+
+	@Override
+	public List<UserVO> getUserList(UserVO vo) {
+		System.out.println("===> JDBC로 getUserList() 기능 처리");
+
+		List<UserVO> userList = new ArrayList<UserVO>();
+		try {
+			conn = JDBCUtil.getConnection();
+			stmt = conn.prepareStatement(USERLIST_GET);
+			rs = stmt.executeQuery();
+			while (rs.next()) {
+				UserVO user = new UserVO();
+				user.setUno(rs.getInt("uno"));
+				user.setName(rs.getString("name"));
+				userList.add(user);
+			}
+		} catch (Exception e) {
+
+		} finally {
+
+		}
+		return userList;
 	}
 
 }

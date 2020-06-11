@@ -1,18 +1,18 @@
 package com.kimchi.biz.e_review;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-
-@XmlAccessorType(XmlAccessType.FIELD)
 public class E_ReviewVO {
 	// 헬퍼가 헬피에게 쓰는 리뷰 = 헬피가 받는 리뷰
-	@XmlAttribute
 	private int e_vno; // 헬피가 받는 리뷰 번호
 	private int eno; // 헬피 번호
 	private int rno; // 리뷰 쓴 헬퍼 번호
 	private String ecomment; // 헬피에게 쓴 코멘트
 	private int escore; // 헬피에게 준 평점
+
+	// 희성
+	private int uno;
+	// 나영
+	private String e_avg;
+	private int count;
 
 	public int getE_vno() {
 		return e_vno;
@@ -54,10 +54,34 @@ public class E_ReviewVO {
 		this.escore = escore;
 	}
 
+	public int getUno() {
+		return uno;
+	}
+
+	public void setUno(int uno) {
+		this.uno = uno;
+	}
+
+	public String getE_avg() {
+		return e_avg;
+	}
+
+	public void setE_avg(String e_avg) {
+		this.e_avg = e_avg;
+	}
+
+	public int getCount() {
+		return count;
+	}
+
+	public void setCount(int count) {
+		this.count = count;
+	}
+
 	@Override
 	public String toString() {
 		return "E_ReviewVO [e_vno=" + e_vno + ", eno=" + eno + ", rno=" + rno + ", ecomment=" + ecomment + ", escore="
-				+ escore + "]";
+				+ escore + ", uno=" + uno + ", e_avg=" + e_avg + ", count=" + count + "]";
 	}
 
 }

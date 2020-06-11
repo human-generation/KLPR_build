@@ -21,7 +21,7 @@ public class MatchingController {
 	private MatchingExtraService matchingService;
 
 	@RequestMapping(value = "/incomingRequest.do", method = { RequestMethod.GET, RequestMethod.POST })
-	public String getBoardList(HttpSession session, Model model, Model model2, MatchingDAOImpl matchingDAO) {
+	public String getBoardList(HttpSession session, Model model, Model model2) {
 		UserVO vo = (UserVO) session.getAttribute("loginUser");
 		System.out.println(vo.toString());
 
@@ -31,7 +31,7 @@ public class MatchingController {
 	}
 
 	@RequestMapping(value = "/myPageDetailProcess.do", method = { RequestMethod.GET, RequestMethod.POST })
-	public String getBoardList(HttpSession session, Model model, MatchingDAOImpl matchingDAO) {
+	public String getBoardList(HttpSession session, Model model) {
 		UserVO vo = (UserVO) session.getAttribute("loginUser");
 		System.out.println(vo.toString());
 		model.addAttribute("WaitingList", matchingService.getMatchingList(vo, 2));
@@ -41,9 +41,22 @@ public class MatchingController {
 	}
 
 	@RequestMapping(value = "/updateState.do", method = { RequestMethod.POST, RequestMethod.GET })
-	public String updatingState(MatchingVOExtra mvo, MatchingDAOImpl matchingDAO) {
+	public String updatingState(int mstate, int mno, MatchingDAOImpl matchingDAO) {
+		MatchingVOExtra mvo = new MatchingVOExtra();
+		System.out.println(mno + " " + mstate);
+		mvo.setMno(mno);
+		mvo.setMstate(mstate);
 		System.out.println(mvo.toString());
 		matchingService.updateState(mvo);
+		return "myPage.do";
+	}
+
+	@RequestMapping(value = "/sendRequest.do", method = { RequestMethod.POST, RequestMethod.GET })
+	public String helperSendRequest(MatchingVOExtra vo) {
+		System.out.println("매칭테이블 insert됨. mstate=1");
+
+		// DB에 저장
+		matchingService.insertMatching(vo);
 		return "myPage.do";
 	}
 }
