@@ -46,4 +46,24 @@
 		<servlet-name>action</servlet-name>
 		<url-pattern>*.do</url-pattern>
 	</servlet-mapping>
+	
+	<!-- python mapping -->
+	<servlet>
+		<servlet-name>PyServlet</servlet-name>
+		<servlet-class>org.python.util.PyServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>PyServlet</servlet-name>
+		<url-pattern>*.py</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>NewJythonServlet</servlet-name>
+		<servlet-class>NewJythonServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>NewJthonServlet</servlet-name>
+		<url-pattern>/NewJythonservlet</url-pattern>
+	</servlet-mapping>
+	
 </web-app>
