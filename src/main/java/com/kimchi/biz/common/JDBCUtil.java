@@ -1,9 +1,6 @@
 package com.kimchi.biz.common;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.sql.*;
 
 public class JDBCUtil {
 	public static Connection getConnection() {
@@ -13,8 +10,8 @@ public class JDBCUtil {
 			// "jdbc:mysql://ip주소:포트번호/스키마?characterEncoding=UTF-8&serverTimezone=UTC",
 			// "아이디", "비밀번호");
 			return DriverManager.getConnection(
-					"jdbc:mysql://127.0.0.1:3306/klpr?characterEncoding=UTF-8&serverTimezone=UTC", "humangeneration",
-					"qlxmzoavm!");
+					"jdbc:mysql://127.0.0.1:3306/klpr?characterEncoding=UTF-8&serverTimezone=UTC", "klprstaff",
+					"qlxmzoavmtmxpq!");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
