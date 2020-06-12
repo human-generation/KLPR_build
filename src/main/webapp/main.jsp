@@ -399,18 +399,11 @@
 		}
 	</script>
 	
+	
+	<!-- Map D3 code -->
 	<div id="chart"></div>
     <div id="title">
         <h2> K:LPER</h2>
-        <p>라고 당당하게 썼지만 정말,,...,,, 어케 scv랑 연동하는 지 모르겠다<br>
-        <a href="http://localhost:8080/KLPR/main.do">K:LPER</a> 홈페이지를 참고해주세요.
-        <p>
-          <a href="http://www.wikitree.co.kr/main/news_view.php?id=217101">Data</a> by Wikitree</a>
-          and <a href="https://gist.github.com/e9t/ba9edd99793a5c91eaab">code</a>
-          by <a href="http://lucypark.kr">Lucy Park</a>.
-          <br>
-          <a href="http://opensource.org/licenses/Apache-2.0">Licensed with Apache 2.0</a>
-        </p>
     </div>
     <script src="http://d3js.org/d3.v3.min.js"></script>
     <script src="http://d3js.org/topojson.v1.min.js"></script>
@@ -421,10 +414,10 @@
         height = 600;
     
     var svg = d3.select("#chart").append("svg")   // #chart에 svg를 넣어라
-        .attr("width", width)                     // 속성 width을 var width로 바꾸기
+        .attr("width", width)                     
         .attr("height", height);                 
 
-    var map = svg.append("g").attr("id", "map"),    //svg에 g를 추가하고 id와 map속성을 가져옴
+    var map = svg.append("g").attr("id", "map"),   
         places = svg.append("g").attr("id", "places");
 
     var projection = d3.geo.mercator()
