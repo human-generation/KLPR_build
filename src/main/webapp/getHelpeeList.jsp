@@ -80,7 +80,12 @@
 					</div>
 					<div class="col-md-9 order-2 order-md-2">
 						<div class="media-body">
+
+
 							<div class="d-flex justify-content-between">
+
+
+
 								<div class="sevice-tag-badge">
 									<c:if test="${helpee.moving==1}">
 										<span class="helpee-badge">Moving</span>
@@ -92,20 +97,25 @@
 										<span class="helpee-badge">Immigration</span>
 									</c:if>
 								</div>
+
+
 								<div class="edit-button float-right">
 									<c:if test="${helpee.userVO.uno == sessionScope.userNumber}">
-										<form action="helpeeDelete.do" method="POST">
+										<form class="d-inline" action="helpeeDelete.do" method="POST">
 											<input name="eno" type="hidden" value="${helpee.eno}" />
-											<button type="submit" class="helpee-badge">Delete</button>
+											<button type="submit" class="btn helpee-badge">Delete</button>
 										</form>
-										<form action="helpeeUpdate.do" method="GET">
+										<form class="d-inline" action="helpeeUpdate.do" method="GET">
 											<input name="eno" type="hidden" value="${helpee.eno}" />
-											<button type="submit" class="helpee-badge">Update</button>
+											<button type="submit" class="btn helpee-badge">Update</button>
 										</form>
-
 									</c:if>
 								</div>
+
+
+
 							</div>
+
 
 							<div class="row profile-box-header d-flex justify-content-between">
 								<div class="col-6 ">

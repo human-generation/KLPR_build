@@ -10,11 +10,14 @@
         <p class="lead">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Qui perferendis dignissimos
             aliquam. Eaque, inventore.</p>
         <div class="row float-right jt-btn m-1">
+
+
             <div class="dropdown">
                 <button class="btn helper-button dropdown-toggle" type="button" id="dropdownAddr" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
                     I'm near..
                 </button>
+
                 <div class="dropdown-menu" aria-labelledby="dropdownAddr">
                     <c:forEach items="${seoulList}" var="seoul">
                         <button class="dropdown-item" onclick='location.href="seoulHelperList.do?rplace=${seoul.dno}";'
@@ -86,7 +89,13 @@
                     </div>
                     <div class="col-md-9 order-2 order-md-2">
                         <div class="media-body">
+
+
+
                             <div class="d-flex justify-content-between">
+
+
+
                                 <div class="sevice-tag-badge">
                                     <c:if test="${helper.moving==1}">
                                         <span class="helper-badge">Moving</span>
@@ -98,19 +107,22 @@
                                         <span class="helper-badge">Immigration</span>
                                     </c:if>
                                 </div>
-                                <div class="edit-button">
+
+                                <div class="edit-button float-right">
                                     <c:if test="${helper.userVO.uno == sessionScope.userNumber}">
-                                        <form action="helperDelete.do" method="POST">
+                                        <form class="d-inline" action="helperDelete.do" method="POST">
                                             <input name="rno" type="hidden" value="${helper.rno}" />
-                                            <button type="submit" class="helper-badge">Delete</button>
+                                            <button type="submit" class="d-inline btn helper-badge">Delete</button>
                                         </form>
-                                        <form action="helperUpdate.do" method="GET">
+                                        <form class="d-inline" action="helperUpdate.do" method="GET">
                                             <input name="rno" type="hidden" value="${helper.rno}" />
-                                            <button type="submit" class="helper-badge">Update</button>
+                                            <button type="submit" class="d-inline btn helper-badge">Update</button>
                                         </form>
 
                                     </c:if>
                                 </div>
+
+
                             </div>
 
 

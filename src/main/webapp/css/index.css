@@ -145,6 +145,7 @@ input {
     height: 70vh;
     align-items: center;
     margin: 0;
+    padding: 20px;
 }
 
 .jt-text{
@@ -233,7 +234,14 @@ input {
 
 
 
+
+
 /*helper Board*/
+.dropdown-menu{
+    height:300px;
+    overflow-y:auto;
+}
+
 .jt-btn{
     margin-top: 5rem;
 
