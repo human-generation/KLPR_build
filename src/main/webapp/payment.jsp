@@ -65,14 +65,29 @@
 			</ul>
 		</div>
 	</nav>
-	<form action="payment.do" method="POST">
+	<form action="kakaoPay.do" method="POST">
+		
+		
+		<input type="radio" name="payment_method" value="kakaopay">카카오페이
+		<input type="radio" name="payment_method" value="paypal">페이팔	<br>
+		
+		
 		충전할 금액을 선택하세요 <select name="pay">
 			<option value="10000">10,000</option>
 			<option value="20000">20,000</option>
 			<option value="30000">30,000</option>
 			<option value="50000">50,000</option>
 			<option value="100000">100,000</option>
-		</select> <input type="submit" value="충전하기">
+		</select> 
+		
+		<input type="hidden" name="uno" class="form-control"
+							value="${sessionScope.userNumber}" />
+							
+								
+		
+							
+		<input type="submit" value="충전하기">
+	
 	</form>
 	<a href="myPage.do">뒤로가기</a>
 </body>
