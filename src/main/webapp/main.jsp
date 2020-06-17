@@ -143,25 +143,15 @@
         // .attr("r", 10); // 원 크기
         .attr("r", function(d) { return d.size_r});
         
+      places.selectAll("text")
+      	.data(data)
+	    .enter().append("text")
+	    .attr("x", function(d) { return projection([d.lon, d.lat])[0]; })
+	    .attr("y", function(d) { return projection([d.lon, d.lat])[1] + 8; });
+	    .text(function(d) { return d.name });
+        
 
     });
-    
-     d3.csv("seoul_helpee.csv", function(data) {
-        places.selectAll("rect")
-          .data(data)
-          .enter().append("rect")
-          .attr("cx", function(d) { return projection([d.lon, d.lat])[0]; })
-          .attr("cy", function(d) { return projection([d.lon, d.lat])[1]; })
-          // .attr("r", 10); // 원 크기
-          .attr("r", function(d) { return d.size_e});
-          
-    /*  places.selectAll("text")
-          .data(data)
-          .enter().append("text")
-          .attr("x", function(d) { return projection([d.lon, d.lat])[0]; })
-          .attr("y", function(d) { return projection([d.lon, d.lat])[1] + 8; });
-          .text(function(d) { return d.name }); */
-      });
     
     </script>
     </section>
