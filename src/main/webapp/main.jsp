@@ -89,7 +89,7 @@
             </div>
         </div>
     </section>
-<<<<<<< HEAD
+
     
     <!-- Map D3 code -->
     <section class="container ranking-box-container">
@@ -142,7 +142,7 @@
         .attr("cx", function(d) { return projection([d.lon, d.lat])[0]; })
         .attr("cy", function(d) { return projection([d.lon, d.lat])[1]; })
         // .attr("r", 10); // 원 크기
-        .attr("r", function(d) { return d.size_r});
+        .attr("r", function(d) { return d.size});
         
       places.selectAll("text")
       	.data(data)
@@ -156,8 +156,7 @@
     
     </script>
     </section>
-=======
->>>>>>> parent of 44ba31f... mhjsp에서 브랜치딴 bubble chart 입니다~
+
 
 	<!--RANKING-->
 	<section class="container ranking-box-container">
