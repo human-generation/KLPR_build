@@ -1,5 +1,7 @@
 package com.kimchi.biz.messenger.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -39,5 +41,9 @@ public class MessengerServiceImpl implements MessengerService{
 		
 	}
 
-	
+	@Override
+	public List<MessengerVO> getMessageList(MessengerVO vo) {
+		return messengerDAO.getMessageList(vo);
+	}
+
 }

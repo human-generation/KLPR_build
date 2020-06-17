@@ -1,7 +1,5 @@
 package com.kimchi.biz.messenger;
 
-import java.util.Date;
-
 public class MessengerVO {
 	
 	private int msgno;
