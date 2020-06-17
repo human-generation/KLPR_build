@@ -132,7 +132,15 @@
 											Placed in <i class="fas fa-map-marker-alt"></i>${matching_p.mplaceName }
 										</div>
 										</p>
-										<a href="#" class="btn service-helper-button">대화하기(미구현)</a>
+										<c:choose>
+										<c:when test="${matching_p.rno eq loginUser.uno}">
+										<a href="helperMsg.do" class="btn service-helper-button">Send Message[여기]</a>
+										</c:when>
+										<c:when test="${matching_p.eno eq loginUser.uno}">
+										<a href="helpeeMsg.do" class="btn service-helper-button">Send Message[저기]</a>
+										</c:when>
+										</c:choose>
+
 									</div>
 								</div>
 							</div>

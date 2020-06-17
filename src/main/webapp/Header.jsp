@@ -26,8 +26,10 @@
   <link rel="stylesheet" href="./css/lightpick.css">
 
   <!-- custom css-->
+  <link rel="stylesheet" href="./css/chat.css">
   <link rel="stylesheet" href="./css/index.css">
 
+	
   <title>K:LPER | Get help in Korea</title>
 </head>
 
@@ -109,13 +111,13 @@
 
     //인풋 플레이스 홀더랑 발류로 넣는거 고려
     function buildProfile(user) {
-      let profile = `
+      let profile =
             <form class="signup-form" action="join.do" method="post">
             <div
 			class="col-md-3 order-1 order-md-1 d-flex justify-content-center">
 
 			<img class="profile-img-box"
-				src="https://graph.facebook.com/${user.id}/picture?type=large"
+				src="https://graph.facebook.com/${user.uno}/picture?type=large"
 				alt="profileImage">
 		</div>
         <div class="form-group">

@@ -30,7 +30,7 @@
                             <div class="col-md-6 my-1">
                             <input name="uno" type="hidden" value="${sessionScope.userNumber}"/>
                             <input name="eno" type="hidden" value="${helpee.eno}"/>
-                                <input name="edate" id="date-result" type="hidden" value="${edate}"/>
+                                <input name="edate" id="date-result" type="hidden" value="${helpee.edate}"/>
                                 <input type="text" id="datepicker2" class="form-control"
                                     placeholder="${helpee.edate}" autocomplete="off">
                             </div>
@@ -94,7 +94,7 @@
 
 <script>
 var datePicker = new Lightpick({
-	  field: document.getElementById('datepicker'),
+	  field: document.getElementById('datepicker2'),
 	  singleDate: true,
 	  selectForward: true,
 	  onSelect: function (start, end) {
