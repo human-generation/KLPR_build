@@ -89,6 +89,7 @@
             </div>
         </div>
     </section>
+<<<<<<< HEAD
     
     <!-- Map D3 code -->
     <section class="container ranking-box-container">
@@ -155,6 +156,8 @@
     
     </script>
     </section>
+=======
+>>>>>>> parent of 44ba31f... mhjsp에서 브랜치딴 bubble chart 입니다~
 
 	<!--RANKING-->
 	<section class="container ranking-box-container">
@@ -207,5 +210,5 @@
 		</div>
 
 	</section>
-	
+
 	<%@ include file="Footer.jsp"%>
