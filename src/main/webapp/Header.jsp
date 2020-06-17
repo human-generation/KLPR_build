@@ -91,7 +91,7 @@
             <c:if test="${!empty sessionScope.userName}">
               <li class="nav-item"><a class="nav-link" href="myPage.do"><i class="fas fa-grin-hearts"></i>
                   ${sessionScope.userName}</a></li>
-              <li class="nav-item"><a class="nav-link" href="###"> <i class="fas fa-comments"></i></a></li>
+              <li class="nav-item"><a class="nav-link" href="###" onclick="toggleChat()"> <i class="fas fa-comments"></i></a></li>
               <li class="nav-item"><a class="nav-link" href="logout.do"> Logout</a></li>
             </c:if>
           </ul>

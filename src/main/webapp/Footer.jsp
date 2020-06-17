@@ -46,8 +46,82 @@
 </div>
 
 
+<!-- Chat popup -->
 
-<!--본문끝-->
+
+
+<div class="overlay-chat">
+
+  <div class="chat-popup" id="myForm">
+    <div class="chat-form-container">
+
+
+
+
+
+      <div class="card chat-card">
+        <div class="chat-card-header col-12 d-flex ">
+          <div class="mr-auto p-2">Incoming Chat</div>
+          <button type="button" class="btn chat-button-round p-2"><i class="fas fa-redo"></i></button>
+          <button type="button" class="btn chat-button-round p-2" onclick="toggleChat()"><i
+              class=" fas fa-times"></i></button>
+        </div>
+
+
+
+
+
+        <!--챗룸예시시작-->
+
+        <div class="chat-room-list">
+          <div class="row m-2 chat-room-indi">
+            <div class="col-3 align-self-center d-flex">
+              <img class="chat-img-box" src="https://cdn.pixabay.com/photo/2013/10/28/19/23/cat-201969_960_720.jpg"
+                alt="profileImage" />
+            </div>
+            <div class="col-9">
+              <h5>{상대방 유저}</h5>
+              <div> 마지막메세지 </div>
+              <div class="d-flex flex-row-reverse">
+                메세지날짜
+              </div>
+            </div>
+          </div>
+
+
+
+          <div class="row m-2 chat-room-indi">
+            <div class="col-3 align-self-center d-flex">
+              <img class="chat-img-box" src="https://cdn.pixabay.com/photo/2013/10/28/19/23/cat-201969_960_720.jpg"
+                alt="profileImage" />
+            </div>
+            <div class="col-9">
+              <h5>{상대방 유저}</h5>
+              <div> 마지막메세지 </div>
+              <div class="d-flex flex-row-reverse">
+                메세지날짜
+              </div>
+            </div>
+          </div>
+
+
+
+
+
+        <!--챗룸예시끝-->
+
+
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- chat popup end -->
+
+
 <!--FOOTER START-->
 <div class="container-fluid footer">
     <div class="container">
@@ -71,7 +145,7 @@
             </div>
             <div class="col-sm">
                 <div>
-                    © 2020 Kelper LLC <br>
+                    Â© 2020 Kelper LLC <br>
                     <a class="footer-link" href="#">Terms of Service</a> | <a class="footer-link" href="#">Privacy
                         Policy</a>
                 </div>
@@ -106,6 +180,7 @@
 <script src="./js/ppPayment.js"></script>
 <!-- costum Js -->
 <script src="./js/app.js"></script>
+<script src="./js/chat.js"></script>
 
 </body>
 
