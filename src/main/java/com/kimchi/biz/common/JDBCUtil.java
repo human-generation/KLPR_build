@@ -13,7 +13,7 @@ public class JDBCUtil {
 			// "jdbc:mysql://ip주소:포트번호/스키마?characterEncoding=UTF-8&serverTimezone=UTC",
 			// "아이디", "비밀번호");
 			return DriverManager.getConnection(
-					"jdbc:mysql://3.34.66.181:3306/klpr?characterEncoding=UTF-8&serverTimezone=UTC", "klprstaff",
+					"jdbc:mysql://15.164.5.192:3306/klpr?characterEncoding=UTF-8&serverTimezone=UTC", "klperstaff",
 					"qlxmzoavmtmxpq!");
 		} catch (Exception e) {
 			e.printStackTrace();
