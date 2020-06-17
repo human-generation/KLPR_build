@@ -910,10 +910,6 @@ svg circle {
     opacity: .5;
     stroke: white;
 }
-svg circle:hover {
-    fill: #4169E1;
-    stroke: white;
-}
 svg text {
     pointer-events: none;
 }

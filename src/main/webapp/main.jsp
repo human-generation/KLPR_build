@@ -78,15 +78,75 @@
         </div>
     </div>
 
-	<!--DS JS-->
+	<!--D3 JS-->
 	<section class="container ds-data-container">
         <div class="row align-items-center ">
-            <div class="col-lg-6 ds-data1">
+        
+        <!-- D3 Bubble Chart -->
+        <div id="chart"></div>
+        <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="http://d3js.org/topojson.v1.min.js"></script>
+    <script>
+    
+    // json에서 받아 올 좌표 크기 지정
+    var width = 800,
+        height = 600;
+    
+    var svg = d3.select("#chart").append("svg")   // #chart에 svg를 넣어라
+        .attr("width", width)                     // 속성 width을 var width로 바꾸기
+        .attr("height", height);                 
 
-            </div>
-            <div class="col-lg-6 ds-data2">
+    var map = svg.append("g").attr("id", "map"),    //svg에 g를 추가하고 id와 map속성을 가져옴
+        places = svg.append("g").attr("id", "places");
 
-            </div>
+    var projection = d3.geo.mercator()
+        .center([126.9895, 37.5651])
+        .scale(100000)
+        .translate([width/2, height/2]);
+
+    var path = d3.geo.path().projection(projection);
+
+    d3.json("seoul_municipalities_topo_simple.json", function(error, data) {
+      var features = topojson.feature(data, data.objects.seoul_municipalities_geo).features;
+      map.selectAll('path')
+          .data(features)
+        .enter().append('path')
+          .attr('class', function(d) { console.log(); return 'municipality c' + d.properties.code })
+          .attr('d', path);
+
+      map.selectAll('text')
+          .data(features)
+        .enter().append("text")
+          .attr("transform", function(d) { return "translate(" + path.centroid(d) + ")"; })
+          .attr("dy", ".35em")
+          .attr("class", "municipality-label")
+          .text(function(d) { return d.properties.name_eng; })
+    });
+
+    d3.csv("seoul_gu.csv", function(data) {
+      places.selectAll("circle")
+        .data(data)
+        .enter().append("circle")
+        .attr("cx", function(d) { return projection([d.lon, d.lat])[0]; })
+        .attr("cy", function(d) { return projection([d.lon, d.lat])[1]; })
+        // .attr("r", 10); // 원 크기
+        .attr("r", function(d) { if (d.size != null) return d.size});
+
+      places.selectAll("text")
+        .data(data)
+        .enter().append("text")
+        .attr("x", function(d) { return projection([d.lon, d.lat])[0]; })
+        .attr("y", function(d) { return projection([d.lon, d.lat])[1] + 8; });
+        // .text(function(d) { return d.name });
+    });
+    </script>
+        
+            <!--  <div class="col-lg-6 ds-data1">
+
+            </div>-->
+            <!--<div class="col-lg-6 ds-data2">
+
+            </div>-->
         </div>
     </section>
 
