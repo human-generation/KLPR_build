@@ -910,6 +910,11 @@ svg circle {
     opacity: .5;
     stroke: white;
 }
+
+svg circle:hover {
+    fill: #4169E1;
+    stroke: white;
+}
 svg text {
     pointer-events: none;
 }
@@ -919,7 +924,7 @@ svg .municipality {
 }
 svg .municipality-label {
     fill: #bbb;
-    font-size: 12px;
+    font-size: 9px;
     font-weight: 300;
     text-anchor: middle;
 }
@@ -930,6 +935,7 @@ svg #map text {
 }
 svg #places text {
     color: #777;
+    font-size: 5px;
     text-anchor: start;
 }
 
