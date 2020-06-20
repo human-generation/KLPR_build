@@ -83,14 +83,14 @@
         <div class="row align-items-center ">
         
         <!-- D3 Bubble Chart -->
-        <div id="seoul_helpee"></div>
+        <div id="seoul-helpee"></div>
         <div id="blank" style="margin: 20px;"></div>
-        <div id="seoul_helper"></div>
+        <div id="seoul-helper"></div>
         <script src="http://d3js.org/d3.v3.min.js"></script>
     	<script src="http://d3js.org/topojson.v1.min.js"></script>
     	<script>
-    	initMap(550, 360, "seoul_helpee", "seoul_municipalities_topo_simple.json", "seoul_helpee.csv", "circle1");
-    	initMap(550, 360, "seoul_helper", "seoul_municipalities_topo_simple.json", "seoul_helper.csv", "circle2");
+    	initMap(550, 360, "seoul-helpee", "seoul_municipalities_topo_simple.json", "seoul_helpee.csv", "circle1");
+    	initMap(550, 360, "seoul-helper", "seoul_municipalities_topo_simple.json", "seoul_helper.csv", "circle2");
     	
     	function initMap(width, height, chartId, mapJson, bubbleCsv, bubble) {
     	
