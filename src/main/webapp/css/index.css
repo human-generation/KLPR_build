@@ -924,18 +924,17 @@ svg .municipality {
 }
 svg .municipality-label {
     fill: #bbb;
-    font-size: 9px;
+    font-size: 12px;
     font-weight: 300;
     text-anchor: middle;
 }
 svg #map text {
     color: #333;
-    font-size: 10px;
+    font-size: 5px;
     text-anchor: middle;
 }
 svg #places text {
     color: #777;
-    font-size: 5px;
     text-anchor: start;
 }
 
