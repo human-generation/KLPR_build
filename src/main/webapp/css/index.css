@@ -905,14 +905,23 @@ input {
 
 /* D3 Bubble Chart css */
 
-svg circle {
-	fill: #00FFFF;
+svg #chart_helpee-places circle {
+    fill: #ffc400;
     opacity: .5;
     stroke: white;
 }
+svg #chart_helpee-places circle:hover {
+    fill: #477eff;
+    stroke: white;
+}
 
-svg circle:hover {
-    fill: #4169E1;
+svg #chart_helper-places circle {
+    fill: #477eff;
+    opacity: .5;
+    stroke: white;
+}
+svg #chart_helper-places circle:hover {
+    fill: #ffc400;
     stroke: white;
 }
 svg text {
@@ -924,7 +933,7 @@ svg .municipality {
 }
 svg .municipality-label {
     fill: #bbb;
-    font-size: 12px;
+    font-size: 5px;
     font-weight: 300;
     text-anchor: middle;
 }
@@ -935,6 +944,7 @@ svg #map text {
 }
 svg #places text {
     color: #777;
+    font-size: 5px;
     text-anchor: start;
 }
 

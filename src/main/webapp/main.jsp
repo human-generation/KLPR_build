@@ -83,16 +83,16 @@
         <div class="row align-items-center ">
         
         <!-- D3 Bubble Chart -->
-        <div id="chart1"></div>
+        <div id="seoul_helpee"></div>
         <div id="blank" style="margin: 20px;"></div>
-        <div id="chart2"></div>
+        <div id="seoul_helper"></div>
         <script src="http://d3js.org/d3.v3.min.js"></script>
     	<script src="http://d3js.org/topojson.v1.min.js"></script>
     	<script>
-    	initMap(550, 360, "chart1", "seoul_municipalities_topo_simple.json", "seoul_helpee.csv");
-    	initMap(550, 360, "chart2", "seoul_municipalities_topo_simple.json", "seoul_helper.csv");
+    	initMap(550, 360, "seoul_helpee", "seoul_municipalities_topo_simple.json", "seoul_helpee.csv", "circle1");
+    	initMap(550, 360, "seoul_helper", "seoul_municipalities_topo_simple.json", "seoul_helper.csv", "circle2");
     	
-    	function initMap(width, height, chartId, mapJson, bubbleCsv) {
+    	function initMap(width, height, chartId, mapJson, bubbleCsv, bubble) {
     	
     		var svg = d3.select("#"+chartId).append("svg")   
         		.attr("width", width)                 
@@ -126,7 +126,7 @@
     	   });
 
     	   d3.csv(bubbleCsv, function(data) {
-      			places.selectAll("circle")
+      			places.selectAll("id"+bubble)
         			  .data(data)
         			  .enter().append("circle")
         			  .attr("cx", function(d) { return projection([d.lon, d.lat])[0]; })
